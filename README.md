@@ -27,7 +27,7 @@ Before you can start contributing to PortfolioBuilder, you need to set up your d
 
 ### Install Dependencies
 
-1. Navigate to the project directory and install the required dependencies using Flutter's package manager:
+1. Navigate to the project directory and install the required dependencies using Node package manager:
 
    ```bash
    cd frontend
@@ -74,6 +74,6 @@ We welcome all contributions, big or small. Here's how you can contribute to Col
 
 ## Happy Hacking!
 
-Thank you for participating in CollegeCupid's Hacktoberfest. We appreciate your contributions, and together, we can make CollegeCupid even better for college students everywhere. If you have any questions or need assistance, feel free to reach out to us via GitHub issues or our community chat.
+Thank you for participating in Portfolio Builder Hacktoberfest. We appreciate your contributions, and together, we can make PortfolioBuilder even better for college students everywhere. If you have any questions or need assistance, feel free to reach out to us via GitHub issues or our community chat.
 
 Happy coding! 🚀🎉
