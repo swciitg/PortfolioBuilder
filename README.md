@@ -22,7 +22,7 @@ Before you can start contributing to PortfolioBuilder, you need to set up your d
 1. Clone your forked repository to your local machine using the following command:
 
    ```bash
-   git clone https://github.com/swciitg/PortfolioBuilder.git
+   git clone https://github.com/<your-username>/PortfolioBuilder.git
    ```
 
 ### Install Dependencies
