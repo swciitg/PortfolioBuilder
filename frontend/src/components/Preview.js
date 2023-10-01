@@ -54,8 +54,10 @@ const Preview = ({
               <!-- Font Awesome icons (free version)-->
               <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
               <!-- Google fonts-->
-              <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
-              <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+              <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap" rel="stylesheet"
+    type="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet"
+    type="text/css">
               <!-- Core theme CSS (includes Bootstrap)-->
               <link href="https://startbootstrap.github.io/startbootstrap-resume/css/styles.css" rel="stylesheet" />
               <style>.bg-primary {--bs-bg-opacity: 1; background-color: ${Colour} !important;}
