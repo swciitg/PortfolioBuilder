@@ -54,7 +54,7 @@ Before you can start contributing to PortfolioBuilder, you need to set up your d
 
 ## Contributing
 
-We welcome all contributions, big or small. Here's how you can contribute to CollegeCupid:
+We welcome all contributions, big or small. Here's how you can contribute to PortfolioBuilder:
 
 1. **Pick an Issue**: Check out our [Issues](https://github.com/swciitg/PortfolioBuilder/issues) page to find a task that interests you. 
 
