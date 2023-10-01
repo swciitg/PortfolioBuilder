@@ -20,11 +20,11 @@ app.use(express.json());
 app.use(authRouter);
 
 
-app.listen(process.env.PORT,(req,res,err)=>{
+app.listen(process.env.PORT||5001,(req,res,err)=>{
     if(err){
         console.log(err);
     }
     else{
-        console.log("Server listening on PORT ", process.env.PORT);
+        console.log("Server listening on PORT ", process.env.PORT||5001);
     }
 })
