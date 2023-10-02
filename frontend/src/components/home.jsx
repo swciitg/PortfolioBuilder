@@ -21,7 +21,7 @@ const HomePage = () => {
             <div className="header">
                  <img src={img5}></img>
                  <div className="heading">
-                    <p >Student web commitee - IIT Guwahati</p>
+            <p>Student web commitee - IIT Guwahati</p>
                  </div>
                 
             </div>

@@ -35,13 +35,16 @@
 }
 .heading
 {
-    width: max-content;
+    width: 35vw;
     font-size: 20px;
     line-height: 24.5px;
     font-weight: 600;
     font-family: 'Inter', sans-serif;
     display: flex;
+    height: 4.5vh;
     flex-direction: row;
+    margin-left: 5.5vw;
+    margin-top: -5.5vh;
 }
 .part1
 {
@@ -74,8 +77,6 @@
  
 .header
 {
-    display: flex;
-    flex-direction: row;
     gap: 10px;
     margin-left: 0px;
     margin-top: 5px;
