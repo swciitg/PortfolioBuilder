@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Poppins&family=Smooch+Sans:wght@500&display=swap');
+.main_part
+{
+    margin-left:0px;
+    display: flex;
+    flex-direction: column;
+    gap: 16vh;
+    width: 23vw;
+    padding-left: 2vw;
+    margin-top: 2vh;
+}
+.landing_page
+{
+    display: flex;
+    flex-direction: column;
+    gap: -4vh;
+    margin-left: 25px;
+}
+.head-one
+{
+    font-family: 'Smooch Sans', sans-serif;
+    font-weight: 700;
+    font-size: 75px;
+    width: max-content;
+
+}
+.head-two
+{
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+    line-height: 21px;
+    font-weight: 400;
+    margin-left: 5vw;
+    margin-top: -1vh;
+}
+.heading
+{
+    width: max-content;
+    font-size: 20px;
+    line-height: 24.5px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: row;
+}
+.part1
+{
+    display: flex;
+    flex-direction: column;
+  gap: 8vh;
+}
+.bottom-part
+{
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+}
+  .button-home
+  {
+    background-color: #c9cecb;
+    border-radius: 25px;
+    width: 25vw;
+    height: 8vh;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: row;
+    padding-top: 2.5vh;
+    padding-left: 5vw;
+    gap: 0.85vw;
+  }
+ 
+.header
+{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-left: 0px;
+    margin-top: 5px;
+    
+}
+.anot
+{
+    display: flex;
+    flex-direction: row;
+    margin-top: 2vh;
+}
+.main
+{
+    display: flex;
+    flex-direction: row;
+    gap: 21vw;
+}
+.part2
+{
+    display: flex;
+    flex-direction: column;
+    gap: 8vh;
+    margin-top: 16vh;
+    position: relative;
+    right: 8vw;
+}
+.img-one
+{
+    width: 26vw;
+    height: 36vh;
+    z-index: 1;
+}
+.img-two
+{
+    width: 26vw;
+    height: 36vh;
+    z-index: 2;
+}
+.img-three
+{
+    width: 26vw;
+    height: 36vh;
+    z-index: 1;
+}
+.img-four
+{
+    width: 26vw;
+    height: 36vh;
+    z-index: 2;
+}
