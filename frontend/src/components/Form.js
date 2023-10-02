@@ -5,8 +5,11 @@ import EducationList from "./Form/Education/EducationList";
 import ExperienceList from "./Form/Experience/ExperienceList";
 import InterestList from "./Form/Interests/InterestList";
 import SkillsList from "./Form/Skills/SkillsList";
+import Header from './Bootstrap/Header';
+import SectionTitleEdit from './Form/SectionTitleEdit'; 
+import PortfolioCard from "./portfolioCard";
 
-const Form = ({ FormData, onChange }) => {
+const Form = ({ FormData, onChange, experienceTitle,educationTitle,skillsTitle, handleExperienceTitleChange ,handleSkillsTitleChange,handleEducationTitleChange}) => {
   const Desc = {
     FullName: [
       "text",
@@ -51,7 +54,11 @@ const Form = ({ FormData, onChange }) => {
       "Theme Colour",
       "Please choose the colour for your portfolio"
     ]
+    
   };
+
+  
+
   return (
     <div className="Form">
       <h1 className="text-xl mb-2 font-bold">Basic Info</h1>
@@ -71,11 +78,12 @@ const Form = ({ FormData, onChange }) => {
             />
           )
       )}
-      <h3 className='mt-5 mb-2 mx-3'>Experience</h3>
+       
+      <h3 className='mt-5 mb-2 mx-3'><SectionTitleEdit title={experienceTitle} onTitleChange={handleExperienceTitleChange} /></h3>
       <ExperienceList />
-      <h3 className='mt-5 mb-2 mx-3'>Education</h3>
+      <h3 className='mt-5 mb-2 mx-3'><SectionTitleEdit title={educationTitle} onTitleChange={handleEducationTitleChange} /></h3>
       <EducationList />
-      <h3 className='mt-5 mb-2 mx-3'>Skills</h3>
+      <h3 className='mt-5 mb-2 mx-3'><SectionTitleEdit title={skillsTitle} onTitleChange={handleSkillsTitleChange}/></h3>
       <SkillsList />
       <h3 className='mt-5 mb-2 mx-3'>Interests</h3>
       <InterestList />
