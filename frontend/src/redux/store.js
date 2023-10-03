@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
-import  experiences  from "../components/Form/Experience/reducers";
+import  experiences  from "../components/Form/Experience/reducers"
+import { titlesReducer } from '../components/Form/Experience/reducers';
 import  educations  from "../components/Form/Education/reducers";
 import  awards  from "../components/Form/Awards/reducers";
 import  interests  from "../components/Form/Interests/reducers";
@@ -11,6 +12,7 @@ const allreducers = {
     awards:awards,
     interests:interests,
     skills:skills,
+    title : titlesReducer
 };
 
 const rootReducer = combineReducers(allreducers);

@@ -1,12 +1,13 @@
-import { Provider } from "react-redux";
 import FormGroup from "./Bootstrap/FormGroup";
 import AwardList from "./Form/Awards/AwardList";
 import EducationList from "./Form/Education/EducationList";
 import ExperienceList from "./Form/Experience/ExperienceList";
 import InterestList from "./Form/Interests/InterestList";
 import SkillsList from "./Form/Skills/SkillsList";
+import { SectionTitle } from "./sectionTitle/sectionTitle";
 
 const Form = ({ FormData, onChange }) => {
+
   const Desc = {
     FullName: [
       "text",
@@ -66,23 +67,23 @@ const Form = ({ FormData, onChange }) => {
               Desc={Desc[fd][2]}
               Value={FormData[fd]}
               Placeholder={`Enter something for ${Desc[fd][1]}`}
-              onChange={fd === "FullName" ? () => {} : onChange}
+              onChange={fd === "FullName" ? () => { } : onChange}
               readOnly={fd === "FullName" ? true : undefined}
             />
           )
       )}
-      <h3 className='mt-5 mb-2 mx-3'>Experience</h3>
+      <SectionTitle initialTitle="Experience" titleType="experience"/>
       <ExperienceList />
-      <h3 className='mt-5 mb-2 mx-3'>Education</h3>
+      <SectionTitle initialTitle="Education" titleType='education'/>
       <EducationList />
-      <h3 className='mt-5 mb-2 mx-3'>Skills</h3>
+      <SectionTitle initialTitle="Skills" titleType="skills"/>
       <SkillsList />
-      <h3 className='mt-5 mb-2 mx-3'>Interests</h3>
+      <SectionTitle initialTitle="Interests" titleType="interests"/>
       <InterestList />
-      <h3 className='mt-5 mb-2 mx-3'>Awards</h3>
-        <AwardList />
-      </div>
-    
+      <SectionTitle initialTitle="Awards" titleType="awards"/>
+      <AwardList />
+    </div>
+
   );
 };
 

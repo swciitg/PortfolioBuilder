@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import Form from "./Form";
 
 const Preview = ({
   FullName,
@@ -17,7 +18,12 @@ const Preview = ({
   skills,
   interests,
   awards,
-  Colour
+  Colour,
+  experienceTitle,
+  skillsTitle,
+  interestsTitle,
+  awardsTitle,
+  educationTitle
 }) => {
   const Meta = {
     Facebook: ["facebook-f", "https://fb.me/"],
@@ -28,7 +34,8 @@ const Preview = ({
     GitHub: ["github", "https://github.com"],
     StackOverflow: ["stack-overflow", "https://stackoverflow.com/u/"]
   };
-  const navbar= `<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+
+  const navbar = `<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
                 <a class="navbar-brand js-scroll-trigger" href="#page-top">
                   <span class="d-block d-lg-none">${FullName}</span>
                   <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="${Thubmnail}" alt="${FullName}" /></span>
@@ -36,12 +43,12 @@ const Preview = ({
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                   <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Experience</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Interests</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Awards</a></li>
+                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
+                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">${experienceTitle}</a></li>
+                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">${educationTitle}</a></li>
+                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">${skillsTitle}</a></li>
+                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">${interestsTitle}</a></li>
+                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">${awardsTitle}</a></li>
                   </ul>
                 </div>
               </nav>`
@@ -103,9 +110,9 @@ const Preview = ({
                     <p class="lead mb-5">${Description}</p>
                     <div class="social-icons">
           ${Object.keys(Socials).map(
-            soc =>
-              `            <a class="social-icon" href="${Meta[soc][1]}${Socials[soc]}"><i class="fab fa-${Meta[soc][0]}"></i></a>`
-          ).join(`
+    soc =>
+      `            <a class="social-icon" href="${Meta[soc][1]}${Socials[soc]}"><i class="fab fa-${Meta[soc][0]}"></i></a>`
+  ).join(`
           `)}
                     </div>
                   </div>
@@ -114,29 +121,25 @@ const Preview = ({
                 <!-- Experience-->
                 <section class="resume-section" id="experience">
                   <div class="resume-section-content">
-                    <h2 class="mb-5">Experience</h2>
-                    ${experiences.map(
-                      experience => `
+                    <h2 class="mb-5">${experienceTitle}</h2>
+                    ${experiences.map(experience => `
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                       <div class="flex-grow-1">
                         <h3 class="mb-0">${experience.experience.position}</h3>
-                        <div class="subheading mb-3">${
-                          experience.experience.company
-                        }</div>
+                        <div class="subheading mb-3">${experience.experience.company
+    }</div>
                         <p>${experience.experience.desc}</p>
                       </div>
-                      <div class="flex-shrink-0"><span class="text-primary">${
-                        experience.experience.start
-                      } - ${
-                        experience.experience.end
-                          ? experience.experience.end
-                          : experience.experience.presentJob
-                          ? "Present"
-                          : ""
-                      }</span></div>
+                      <div class="flex-shrink-0"><span class="text-primary">${experience.experience.start
+    } - ${experience.experience.end
+      ? experience.experience.end
+      : experience.experience.presentJob
+        ? "Present"
+        : ""
+    }</span></div>
                     </div>
                     `
-                    ).join(`
+  ).join(`
           `)}
                   </div>
                 </section>
@@ -144,27 +147,25 @@ const Preview = ({
                 <!-- Education-->
                 <section class="resume-section" id="education">
                   <div class="resume-section-content">
-                    <h2 class="mb-5">Education</h2>
+                    <h2 class="mb-5">${educationTitle}</h2>
                     ${educations.map(
-                      education => `
+    education => `
                     <div class="d-flex flex-column flex-md-row justify-content-between">
                       <div class="flex-grow-1">
                         <h3 class="mb-0">${education.education.university}</h3>
                         <div class="subheading mb-3">${education.education.degree}</div>
                         <p>GPA: ${education.education.gpa}</p>
                       </div>
-                      <div class="flex-shrink-0"><span class="text-primary">${
-                        education.education.start
-                      } - ${
-                        education.education.end
-                          ? education.education.end
-                          : education.education.presentJob
-                          ? "Present"
-                          : ""
-                      }</span></div>
+                      <div class="flex-shrink-0"><span class="text-primary">${education.education.start
+      } - ${education.education.end
+        ? education.education.end
+        : education.education.presentJob
+          ? "Present"
+          : ""
+      }</span></div>
                     </div>
                     `
-                    ).join(`
+  ).join(`
           `)}
                   </div>
                 </section>
@@ -172,17 +173,17 @@ const Preview = ({
                 <!-- Skills-->
                 <section class="resume-section" id="skills">
                   <div class="resume-section-content">
-                    <h2 class="mb-5">Skills</h2>
+                    <h2 class="mb-5">${skillsTitle}</h2>
                     <div class="subheading mb-3">Programming Languages & Tools</div>
                     <ul class="fa-ul mb-0">
                       ${skills.map(
-                        skill => `
+    skill => `
                       <li>
                         <span class="fa-li"><i class="fas fa-check"></i></span>
                         ${skill.skill.skill}
                       </li>
                       `
-                      ).join(`
+  ).join(`
           `)}
                     </ul>
                   </div>
@@ -191,12 +192,12 @@ const Preview = ({
                 <!-- Interests-->
                 <section class="resume-section" id="interests">
                   <div class="resume-section-content">
-                    <h2 class="mb-5">Interests</h2>
+                    <h2 class="mb-5">${interestsTitle}</h2>
                     ${interests.map(
-                      interest => `
+    interest => `
                     <p>${interest.interest.interest}</p>
                     `
-                    ).join(`
+  ).join(`
           `)}
                   </div>
                 </section>
@@ -204,16 +205,16 @@ const Preview = ({
                 <!-- Awards-->
                 <section class="resume-section" id="awards">
                   <div class="resume-section-content">
-                    <h2 class="mb-5">Awards & Certifications</h2>
+                    <h2 class="mb-5">${awardsTitle}</h2>
                     <ul class="fa-ul mb-0">
                       ${awards.map(
-                        award => `
+    award => `
                       <li>
                         <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
                         ${award.award.award}
                       </li>
                       `
-                      ).join(`
+  ).join(`
           `)}
                     </ul>
                   </div>
@@ -228,7 +229,7 @@ const Preview = ({
 `;
   return (
     <div className="Preview w-full">
-      <br/>
+      <br />
       <iframe
         className="w-full h-96 border rounded-md"
         src={`data:text/html,${encodeURIComponent(finalHTML)}`}
@@ -244,7 +245,12 @@ const mapStateToProps = state => ({
   educations: state.educations,
   awards: state.awards,
   interests: state.interests,
-  skills: state.skills
+  skills: state.skills,
+  experienceTitle: state.title.experienceTitle,
+  skillsTitle: state.title.skillsTitle,
+  interestsTitle: state.title.interestsTitle,
+  awardsTitle: state.title.awardsTitle,
+  educationTitle: state.title.educationTitle
 });
 
 export default connect(mapStateToProps)(Preview);
