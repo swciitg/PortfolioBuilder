@@ -1,19 +1,42 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { updateExperience, updateSkills, updateAwards, updateInterests, updateEducation } from '../Form/Experience/actions';
 
-export const SectionTitle = ({ initialTitle }) => {
+export const SectionTitle = ({ initialTitle, titleType }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState(initialTitle);
+
+  const dispatch = useDispatch();
 
   const handleDoubleClick = () => {
     setIsEditing(true);
   };
 
-  const handleBlur = () => {
-    setIsEditing(false);
-  };
-
   const handleChange = (event) => {
     setTitle(event.target.value);
+  };
+
+  const handleBlur = () => {
+    setIsEditing(false);
+    switch (titleType) {
+      case 'experience':
+        dispatch(updateExperience(title));
+        break;
+      case 'skills':
+        dispatch(updateSkills(title));
+        break;
+      case 'awards':
+        dispatch(updateAwards(title));
+        break;
+      case 'interests':
+        dispatch(updateInterests(title));
+        break;
+      case 'education':
+        dispatch(updateEducation(title));
+        break;
+      default:
+        break;
+    }
   };
 
   return (

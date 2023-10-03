@@ -8,7 +8,6 @@ import { SectionTitle } from "./sectionTitle/sectionTitle";
 
 const Form = ({ FormData, onChange }) => {
 
-
   const Desc = {
     FullName: [
       "text",
@@ -73,15 +72,15 @@ const Form = ({ FormData, onChange }) => {
             />
           )
       )}
-      <SectionTitle initialTitle="Experience" />
+      <SectionTitle initialTitle="Experience" titleType="experience"/>
       <ExperienceList />
-      <SectionTitle initialTitle="Education" />
+      <SectionTitle initialTitle="Education" titleType='education'/>
       <EducationList />
-      <SectionTitle initialTitle="Skills" />
+      <SectionTitle initialTitle="Skills" titleType="skills"/>
       <SkillsList />
-      <SectionTitle initialTitle="Interests" />
+      <SectionTitle initialTitle="Interests" titleType="interests"/>
       <InterestList />
-      <SectionTitle initialTitle="Awards" />
+      <SectionTitle initialTitle="Awards" titleType="awards"/>
       <AwardList />
     </div>
 
