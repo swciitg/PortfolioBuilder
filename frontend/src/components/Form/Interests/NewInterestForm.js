@@ -3,8 +3,6 @@ import { connect } from "react-redux";
 import { createInterest } from "./actions";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const NewInterestForm = ({ interests=[], onCreatePressed }) =>{
 
@@ -24,11 +22,6 @@ const NewInterestForm = ({ interests=[], onCreatePressed }) =>{
                 className="btn btn-success btn-sm rounded-circle rounded-full w-7 h-7 bg-green-400 text-white"
                 disabled={interest === ''}
                 onClick={()=>{
-                    toast.success('Interest added successfully', {
-                        position: "top-right",
-                        autoClose: 3000,
-                        closeOnClick:true
-                        });
                     onCreatePressed({interest});
                     setInterest('');
                 }}
