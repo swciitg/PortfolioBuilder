@@ -28,13 +28,13 @@ const PortfolioCard = () => {
       Email: "",
       Colour: "#5538BC",
       Socials: {
-        Facebook: "xyz",
-        WhatsApp: "xyz",
-        Instagram: "xyz",
-        Twitter: "xyz",
-        LinkedIn: "xyz",
-        GitHub: "xyz",
-        StackOverflow: "xyz",
+        Facebook: "",
+        WhatsApp: "",
+        Instagram: "",
+        Twitter: "",
+        LinkedIn: "",
+        GitHub: "",
+        StackOverflow: "",
       },
     },
     fileDownloadUrl: null,
@@ -51,7 +51,8 @@ const PortfolioCard = () => {
   };
 
   const handleChange = (e) => {
-    setInitialState((prevState) => {
+    Object.keys(data.FormData).includes(e.target.name) ?
+    (setInitialState((prevState) => {
       return {
         ...prevState,
         FormData: {
@@ -60,7 +61,20 @@ const PortfolioCard = () => {
         },
         PreviewMode: false,
       };
-    });
+   })) 
+    : (setInitialState((prevState) => {
+      return {
+        ...prevState,
+        FormData: {
+          ...initialState.FormData,
+          Socials: {
+            ...initialState.FormData.Socials,
+            [e.target.name]: e.target.value,
+          },
+        },
+        PreviewMode: false,
+      };
+    }))
   };
 
   const clickHandler = async () => {

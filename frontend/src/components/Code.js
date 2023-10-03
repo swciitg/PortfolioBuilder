@@ -25,7 +25,7 @@ const Code = ({
     Instagram: ["instagram", "https://instagr.am/"],
     Twitter: ["twitter", "https://twitter.com/"],
     LinkedIn: ["linkedin-in", "https://linkedin.com/in/"],
-    GitHub: ["github", "https://github.com"],
+    GitHub: ["github", "https://github.com/"],
     StackOverflow: ["stack-overflow", "https://stackoverflow.com/u/"]
   };
   const navbar= `<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
@@ -104,13 +104,18 @@ const Code = ({
                         <a href="mailto:${Email}">${Email}</a>
                       </div>
                       <p class="lead mb-5">${Description}</p>
+                      ${Object.keys(Socials).some((soc) => Socials[soc].length > 0) ? `
                       <div class="social-icons">
-            ${Object.keys(Socials).map(
-              soc =>
-                `            <a class="social-icon" href="${Meta[soc][1]}${Socials[soc]}"><i class="fab fa-${Meta[soc][0]}"></i></a>`
-            ).join(`
-            `)}
-                      </div>
+                        ${Object.keys(Socials)
+                          .filter((soc) => Socials[soc].length > 0)
+                          .map((soc) => `
+                            <a class="social-icon" href="${Meta[soc][1]}${Socials[soc]}">
+                              <i class="fab fa-${Meta[soc][0]}"></i>
+                            </a>
+                          `)
+                          .join('\n')}
+                      </div>` : ''}
+                    
                     </div>
                   </section>
                   <hr class="m-0" />

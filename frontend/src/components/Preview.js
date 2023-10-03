@@ -101,13 +101,17 @@ const Preview = ({
                       <a href="mailto:${Email}">${Email}</a>
                     </div>
                     <p class="lead mb-5">${Description}</p>
+                    ${Object.keys(Socials).some((soc) => Socials[soc].length > 0) ? `
                     <div class="social-icons">
-          ${Object.keys(Socials).map(
-            soc =>
-              `            <a class="social-icon" href="${Meta[soc][1]}${Socials[soc]}"><i class="fab fa-${Meta[soc][0]}"></i></a>`
-          ).join(`
-          `)}
-                    </div>
+                      ${Object.keys(Socials)
+                        .filter((soc) => Socials[soc].length > 0)
+                        .map((soc) => `
+                          <a class="social-icon" href="${Meta[soc][1]}${Socials[soc]}">
+                            <i class="fab fa-${Meta[soc][0]}"></i>
+                          </a>
+                        `)
+                        .join('\n')}
+                    </div>` : ''}
                   </div>
                 </section>
                 <hr class="m-0" />
