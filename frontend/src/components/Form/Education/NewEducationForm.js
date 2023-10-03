@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {DatePickerComponent} from '@syncfusion/ej2-react-calendars';
 import moment from 'moment';
 import { connect } from "react-redux";
@@ -85,6 +87,7 @@ const NewEducationForm = ({ educations=[], onCreatePressed }) =>{
                           (end === '' && !presentUniversity)
                 }
                 onClick={()=>{
+                    toast.success('Education added successfully');
                     onCreatePressed({university, degree, gpa, start, end, presentUniversity});
                     setUniversity('');
                     setDegree('');

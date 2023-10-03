@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { createAward } from "./actions";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const NewAwardForm = ({ awards=[], onCreatePressed }) =>{
 
@@ -22,6 +24,11 @@ const NewAwardForm = ({ awards=[], onCreatePressed }) =>{
                 className="btn btn-success btn-sm rounded-circle rounded-full w-7 h-7 bg-green-400 text-white"
                 disabled={award === ''}
                 onClick={()=>{
+                    toast.success('Award added successfully', {
+                        position: "top-right",
+                        autoClose: 3000,
+                        closeOnClick:true
+                        });
                     onCreatePressed({award});
                     setAward('');
                 }}
