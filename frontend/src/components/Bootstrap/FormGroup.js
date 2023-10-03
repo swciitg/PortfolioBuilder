@@ -25,6 +25,8 @@ const FormGroup = ({
         value={Value}
         placeholder={Placeholder}
         defaultValue={defaultValue}
+        checked={Checked}
+        defaultChecked={defaultChecked}
         aria-describedby={Id + "Help"}
         readOnly={readOnly}
       />
