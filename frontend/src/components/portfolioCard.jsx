@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { Component } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import he from "he";
 import Form from "./Form";
 import Header from "./Bootstrap/Header";
-import Split from "react-split";
 import Code from "./Code";
 import Preview from "./Preview";
 import { Link, useNavigate } from "react-router-dom";
