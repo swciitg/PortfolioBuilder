@@ -1,4 +1,3 @@
-import { Provider } from "react-redux";
 import FormGroup from "./Bootstrap/FormGroup";
 import SocialMedia from "./Bootstrap/SocialMedia";
 import AwardList from "./Form/Awards/AwardList";
@@ -6,8 +5,10 @@ import EducationList from "./Form/Education/EducationList";
 import ExperienceList from "./Form/Experience/ExperienceList";
 import InterestList from "./Form/Interests/InterestList";
 import SkillsList from "./Form/Skills/SkillsList";
+import { SectionTitle } from "./sectionTitle/sectionTitle";
 
 const Form = ({ FormData, onChange }) => {
+
   const Desc = {
     FullName: [
       "text",
@@ -97,7 +98,6 @@ const Form = ({ FormData, onChange }) => {
       <h1 className="text-xl mb-2 font-bold">Basic Info</h1>
       {Object.keys(FormData).map(
         fd =>
-  
             fd!=="Socials"? Object.keys(Desc).includes(fd) && (
               <FormGroup
                 key={fd}
@@ -120,18 +120,18 @@ const Form = ({ FormData, onChange }) => {
             )
 
       )}
-      <h3 className='mt-5 mb-2 mx-3'>Experience</h3>
+      <SectionTitle initialTitle="Experience" titleType="experience"/>
       <ExperienceList />
-      <h3 className='mt-5 mb-2 mx-3'>Education</h3>
+      <SectionTitle initialTitle="Education" titleType='education'/>
       <EducationList />
-      <h3 className='mt-5 mb-2 mx-3'>Skills</h3>
+      <SectionTitle initialTitle="Skills" titleType="skills"/>
       <SkillsList />
-      <h3 className='mt-5 mb-2 mx-3'>Interests</h3>
+      <SectionTitle initialTitle="Interests" titleType="interests"/>
       <InterestList />
-      <h3 className='mt-5 mb-2 mx-3'>Awards</h3>
-        <AwardList />
-      </div>
-    
+      <SectionTitle initialTitle="Awards" titleType="awards"/>
+      <AwardList />
+    </div>
+
   );
 };
 

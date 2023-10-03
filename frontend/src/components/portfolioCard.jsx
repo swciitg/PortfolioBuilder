@@ -1,8 +1,8 @@
+
 import React, { useState } from "react";
-import { Component } from "react";
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import { toast } from "react-toastify"
 import he from "he";
 import Form from "./Form";
 import Header from "./Bootstrap/Header";
@@ -113,25 +113,21 @@ const PortfolioCard = () => {
   return (
     <div className="App w-full">
       <Header
-        className={`bg-${
-          initialState.Dark ? "white border-b-2" : "black"
-        } text-${
-          initialState.Dark ? "black" : "white"
-        } flex justify-center h-12 items-center mb-8`}
+        className={`bg-${initialState.Dark ? "white border-b-2" : "black"
+          } text-${initialState.Dark ? "black" : "white"
+          } flex justify-center h-12 items-center mb-8`}
       >
         <h1 className="text-2xl text-center inline mx-6 my-0">
           Portfolio Generator
         </h1>
         <button
-          className={`btn btn-sm btn-outline-${
-            initialState.Dark ? "primary" : "secondary"
-          } rounded-full`}
+          className={`btn btn-sm btn-outline-${initialState.Dark ? "primary" : "secondary"
+            } rounded-full`}
           onClick={toggleHeader}
         >
           <i
-            className={`fa fa-${
-              initialState.Dark ? "sun" : "moon"
-            }-o text-xl m-0`}
+            className={`fa fa-${initialState.Dark ? "sun" : "moon"
+              }-o text-xl m-0`}
           ></i>
         </button>
       </Header>
@@ -157,9 +153,8 @@ const PortfolioCard = () => {
               href={initialState.fileDownloadUrl}
             >
               <button
-                className={`btn btn-${
-                  initialState.Dark ? "success" : "primary"
-                } bg-green-700 text-white mx-2 p-3`}
+                className={`btn btn-${initialState.Dark ? "success" : "primary"
+                  } bg-green-700 text-white mx-2 p-3`}
                 onClick={() => {
                   download();
                 }}
@@ -180,7 +175,7 @@ const PortfolioCard = () => {
                 pauseOnFocusLoss={false}
                 draggable
                 pauseOnHover={false}
-                theme= {initialState.Dark ? "dark" : "light"}
+                theme={initialState.Dark ? "dark" : "light"}
               />
             </a>
           </div>
@@ -188,11 +183,10 @@ const PortfolioCard = () => {
             <ul className="flex">
               <li className="mr-2">
                 <span
-                  className={`cursor-pointer px-4 py-2 rounded-t-lg ${
-                    !initialState.PreviewMode
-                      ? "bg-blue-500 text-white"
-                      : "bg-gray-300"
-                  }`}
+                  className={`cursor-pointer px-4 py-2 rounded-t-lg ${!initialState.PreviewMode
+                    ? "bg-blue-500 text-white"
+                    : "bg-gray-300"
+                    }`}
                   onClick={(e) => {
                     e.preventDefault();
                     setInitialState((prevState) => {
@@ -208,11 +202,10 @@ const PortfolioCard = () => {
               </li>
               <li>
                 <span
-                  className={`cursor-pointer px-4 py-2 rounded-t-lg ${
-                    initialState.PreviewMode
-                      ? "bg-blue-500 text-white"
-                      : "bg-gray-300"
-                  }`}
+                  className={`cursor-pointer px-4 py-2 rounded-t-lg ${initialState.PreviewMode
+                    ? "bg-blue-500 text-white"
+                    : "bg-gray-300"
+                    }`}
                   onClick={(e) => {
                     e.preventDefault();
                     setInitialState((prevState) => {
