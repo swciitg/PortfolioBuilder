@@ -17,7 +17,12 @@ const Code = ({
   skills,
   interests,
   awards,
-  Colour
+  Colour,
+  experienceTitle,
+  skillsTitle,
+  interestsTitle,
+  awardsTitle,
+  educationTitle
 }) => {
   const Meta = {
     Facebook: ["facebook-f", "https://fb.me/"],
@@ -117,7 +122,7 @@ const Code = ({
                   <!-- Experience-->
                   <section class="resume-section" id="experience">
                     <div class="resume-section-content">
-                      <h2 class="mb-5">Experience</h2>
+                      <h2 class="mb-5">${experienceTitle}</h2>
                       ${experiences.map(
                         experience => `
                       <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
@@ -147,7 +152,7 @@ const Code = ({
                   <!-- Education-->
                   <section class="resume-section" id="education">
                     <div class="resume-section-content">
-                      <h2 class="mb-5">Education</h2>
+                      <h2 class="mb-5">${educationTitle}</h2>
                       ${educations.map(
                         education => `
                       <div class="d-flex flex-column flex-md-row justify-content-between">
@@ -175,7 +180,7 @@ const Code = ({
                   <!-- Skills-->
                   <section class="resume-section" id="skills">
                     <div class="resume-section-content">
-                      <h2 class="mb-5">Skills</h2>
+                      <h2 class="mb-5">${skillsTitle}</h2>
                       <div class="subheading mb-3">Programming Languages & Tools</div>
                       <ul class="fa-ul mb-0">
                         ${skills.map(
@@ -194,7 +199,7 @@ const Code = ({
                   <!-- Interests-->
                   <section class="resume-section" id="interests">
                     <div class="resume-section-content">
-                      <h2 class="mb-5">Interests</h2>
+                      <h2 class="mb-5">${interestsTitle}</h2>
                       ${interests.map(
                         interest => `
                       <p>${interest.interest.interest}</p>
@@ -207,7 +212,7 @@ const Code = ({
                   <!-- Awards-->
                   <section class="resume-section" id="awards">
                     <div class="resume-section-content">
-                      <h2 class="mb-5">Awards & Certifications</h2>
+                      <h2 class="mb-5">${awardsTitle}</h2>
                       <ul class="fa-ul mb-0">
                         ${awards.map(
                           award => `
@@ -239,7 +244,12 @@ const mapStateToProps = state => ({
   educations: state.educations,
   awards: state.awards,
   interests: state.interests,
-  skills: state.skills
+  skills: state.skills,
+  experienceTitle: state.title.experienceTitle,
+  skillsTitle: state.title.skillsTitle,
+  interestsTitle: state.title.interestsTitle,
+  awardsTitle: state.title.awardsTitle,
+  educationTitle: state.title.educationTitle
 });
 
 export default connect(mapStateToProps)(Code);
