@@ -3,6 +3,8 @@ import NewExperienceForm from './NewExperienceForm';
 import Experience from './Experience';
 import { connect, useSelector } from 'react-redux';
 import { removeExperience } from './actions';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ExperienceList = ({ experiences = [], onRemovePressed }) => {
     
@@ -21,6 +23,12 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    onRemovePressed: experience => dispatch(removeExperience(experience)),
+    onRemovePressed: experience => {
+        toast.success('Experience removed successfully', {
+            position: "top-right",
+            autoClose: 2000,
+            closeOnClick:true
+            });
+        dispatch(removeExperience(experience))},
 });
 export default connect(mapStateToProps,mapDispatchToProps)(ExperienceList);
