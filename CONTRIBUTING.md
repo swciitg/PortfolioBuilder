@@ -10,6 +10,7 @@ Thank you for considering contributing to the PorfolioBuilder. We welcome contri
 - [Pull Requests](#pull-requests)
 - [Development Guidelines](#development-guidelines)
 - [Commit Guidelines](#commit-guidelines)
+- [Contribution Guidelines](#contribution-guidelines)
 - [Thanks For Contributing!](#thanks-for-contributing)
 
 
@@ -89,6 +90,11 @@ Please follow these guidelines when making commits:
 - Use present tense and imperative mood in commit messages (e.g., "Bug fix" instead of "Fixed bug" or "Fixes bug").
 - Keep commit messages concise but descriptive.
 - Reference issue numbers in commit messages where relevant (e.g., "Fix #123: Add login functionality").
+
+## Contribution-Guidelines
+- **Wait for Our Team to Assign an Issue to You**: Don't start working on an issue unless it has been assigned to you.
+- **If an Issue Has Been Assigned to Someone Else and You Want to Work on It**: You can send us a message. If the assignee is unable to fix the issue within the stipulated period of time, we may reassign the issue to you.
+
 
 ## Thanks For Contributing!
 
