@@ -5,8 +5,9 @@ import EducationList from "./Form/Education/EducationList";
 import ExperienceList from "./Form/Experience/ExperienceList";
 import InterestList from "./Form/Interests/InterestList";
 import SkillsList from "./Form/Skills/SkillsList";
+import { useState } from "react";
 
-const Form = ({ FormData, onChange }) => {
+const Form = ({ FormData, onChange,isExperienceEnabled, isEducationEnabled,isSkillEnabled, toggleExperience, toggleEducation, toggleSkill }) => {
   const Desc = {
     FullName: [
       "text",
@@ -52,6 +53,10 @@ const Form = ({ FormData, onChange }) => {
       "Please choose the colour for your portfolio"
     ]
   };
+ 
+  // ... other section enable/disable state variables
+
+  
   return (
     <div className="Form">
       <h1 className="text-xl mb-2 font-bold">Basic Info</h1>
@@ -71,12 +76,51 @@ const Form = ({ FormData, onChange }) => {
             />
           )
       )}
-      <h3 className='mt-5 mb-2 mx-3'>Experience</h3>
-      <ExperienceList />
-      <h3 className='mt-5 mb-2 mx-3'>Education</h3>
-      <EducationList />
-      <h3 className='mt-5 mb-2 mx-3'>Skills</h3>
-      <SkillsList />
+        {/* Experience Section */}
+        <div>
+        {isExperienceEnabled ? (
+          <>
+            <h3 className='mt-5 mb-2 mx-3'>Experience</h3>
+            <ExperienceList />
+          </>
+        ) : (
+          <p>Experience section is disabled.</p>
+        )}
+        
+        <button onClick={toggleExperience}>
+          {isExperienceEnabled ? 'Remove' : 'Add'} Experience
+        </button>
+      </div>
+
+       {/* Education Section */}
+       <div>
+        {isEducationEnabled ? (
+          <>
+            <h3 className='mt-5 mb-2 mx-3'>Education</h3>
+            <EducationList />
+          </>
+        ) : (
+          <p>Education section is disabled.</p>
+        )}
+        <button onClick={toggleEducation}>
+          {isEducationEnabled ? 'Remove' : 'Add'} Education
+        </button>
+      </div>
+
+      <div>
+        {isSkillEnabled ? (
+          <>
+            <h3 className='mt-5 mb-2 mx-3'>Skills</h3>
+            <SkillsList />
+          </>
+        ) : (
+          <p>Skills section is disabled.</p>
+        )}
+        <button onClick={toggleSkill}>
+          {isSkillEnabled ? 'Remove' : 'Add'} Skills
+        </button>
+      </div>
+
       <h3 className='mt-5 mb-2 mx-3'>Interests</h3>
       <InterestList />
       <h3 className='mt-5 mb-2 mx-3'>Awards</h3>

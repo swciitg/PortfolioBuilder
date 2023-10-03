@@ -78,6 +78,22 @@ const PortfolioCard=()=> {
       };
     });
   };
+
+  const [isExperienceEnabled, setIsExperienceEnabled] = useState(true);
+  const [isSkillEnabled, setIsSkillEnabled] = useState(true);
+  const [isEducationEnabled, setIsEducationEnabled] = useState(true);
+
+  const toggleExperience = () => {
+    setIsExperienceEnabled(!isExperienceEnabled);
+  };
+
+  const toggleEducation = () => {
+    setIsEducationEnabled(!isEducationEnabled);
+  };
+  const toggleSkill = () => {
+    setIsSkillEnabled(!isSkillEnabled)  
+  };
+
   return (
     <div className="App w-full">
     <Header className={`bg-${initialState.Dark ? "white border-b-2" : "black"} text-${initialState.Dark ? "black" : "white"} flex justify-center h-12 items-center mb-8`} >
@@ -101,6 +117,13 @@ const PortfolioCard=()=> {
             ...initialState.FormData
           }}
           onChange={handleChange}
+          isEducationEnabled={isEducationEnabled}
+          isExperienceEnabled={isExperienceEnabled}
+          isSkillEnabled={isSkillEnabled}
+          toggleExperience={toggleExperience}
+          toggleEducation={toggleEducation}
+          toggleSkill={toggleSkill}
+        
         />
         <a
           className='text-xl cursor-pointer'
@@ -169,6 +192,10 @@ const PortfolioCard=()=> {
           <Preview
             {...initialState.FormData}
             FullName={`${initialState.FormData.FirstName} ${initialState.FormData.LastName}`}
+            isEducationEnabled={isEducationEnabled}
+            isExperienceEnabled={isExperienceEnabled}
+            isSkillEnabled={isSkillEnabled}
+         
           />
         ) : (
           <Code
