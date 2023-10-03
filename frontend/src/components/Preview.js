@@ -43,12 +43,12 @@ const Preview = ({
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                   <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Experience</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Interests</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Awards</a></li>
+                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
+                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">${experienceTitle}</a></li>
+                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">${educationTitle}</a></li>
+                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">${skillsTitle}</a></li>
+                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">${interestsTitle}</a></li>
+                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">${awardsTitle}</a></li>
                   </ul>
                 </div>
               </nav>`
@@ -127,16 +127,16 @@ const Preview = ({
                       <div class="flex-grow-1">
                         <h3 class="mb-0">${experience.experience.position}</h3>
                         <div class="subheading mb-3">${experience.experience.company
-      }</div>
+    }</div>
                         <p>${experience.experience.desc}</p>
                       </div>
                       <div class="flex-shrink-0"><span class="text-primary">${experience.experience.start
-      } - ${experience.experience.end
-        ? experience.experience.end
-        : experience.experience.presentJob
-          ? "Present"
-          : ""
-      }</span></div>
+    } - ${experience.experience.end
+      ? experience.experience.end
+      : experience.experience.presentJob
+        ? "Present"
+        : ""
+    }</span></div>
                     </div>
                     `
   ).join(`
