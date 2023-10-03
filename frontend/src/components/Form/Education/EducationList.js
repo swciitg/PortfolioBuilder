@@ -3,6 +3,8 @@ import NewEducationForm from './NewEducationForm';
 import Education from './Education';
 import { connect } from 'react-redux';
 import { removeEducation } from './actions';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const EducationList = ({ educations = [], onRemovePressed }) => {
     return(
@@ -20,7 +22,13 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    onRemovePressed: education => dispatch(removeEducation(education)),
+    onRemovePressed: education => {
+        toast.success('Education removed successfully', {
+            position: "top-right",
+            autoClose: 2000,
+            closeOnClick:true
+            });
+        dispatch(removeEducation(education))},
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EducationList);
