@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import moment from 'moment';
 import { connect } from "react-redux";
 import { createExperience } from "./actions";
@@ -84,12 +85,18 @@ const NewExperienceForm = ({ experiences=[], onCreatePressed }) =>{
                           (end === '' && !presentJob)
                 }
                 onClick={() => {
+                    toast.success('Experience added successfully', {
+                        position: "top-right",
+                        autoClose: 3000,
+                        closeOnClick:true
+                        });
                     {console.log("hello")}
                     onCreatePressed({position, company, desc, start, end, presentJob});
                     setPosition('');
                     setCompany('');
                     setDesc('')
                     setPresentJob(false);
+
                 }}
             >
                 <FontAwesomeIcon icon={faPlus} />
