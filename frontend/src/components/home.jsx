@@ -19,7 +19,7 @@ const HomePage = () => {
         <div className="main">
         <div className=" main_part">
             <div className="header">
-                 <img src={img5}></img>
+                <div className='swc-img'> <img src={img5}></img></div>
                  <div className="heading">
             <p>Student web commitee - IIT Guwahati</p>
                  </div>
@@ -38,12 +38,12 @@ const HomePage = () => {
         </div>
         <div className="anot">
             <div className="part1" >
-                <img className="img_three"  src={img3} ></img>
-                <img className="img-four" src={img4} ></img>
+               <div className="img_three" ><img  src={img3} ></img></div> 
+                <div className="img-four" ><img src={img4} ></img></div>
             </div>
             <div className=" part2">
-               <img className="img-one" src={img1}></img>
-               <img className="img-two" src={img2}></img> 
+              <div className="img-one"> <img  src={img1}></img></div>
+              <div className="img-two"> <img  src={img2}></img></div>
             </div>
         </div>
     </div>

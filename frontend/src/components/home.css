@@ -20,37 +20,43 @@
 {
     font-family: 'Smooch Sans', sans-serif;
     font-weight: 700;
-    font-size: 75px;
+    font-size: 5.2vw;
     width: max-content;
 
 }
 .head-two
 {
     font-family: 'Poppins', sans-serif;
-    font-size: 17px;
+    font-size: 1.1vw;
     line-height: 21px;
     font-weight: 400;
     margin-left: 5vw;
     margin-top: -1vh;
+    width: max-content;
+}
+.swc-img
+{
+    width: 4.4vw;
 }
 .heading
 {
-    width: 35vw;
-    font-size: 20px;
-    line-height: 24.5px;
+    width: max-content;
+    font-size: 1.38vw;
+    line-height: 1.70vw;
     font-weight: 600;
     font-family: 'Inter', sans-serif;
-    display: flex;
+    
     height: 4.5vh;
-    flex-direction: row;
+    
     margin-left: 5.5vw;
+    /* margin-top: 0.05rem; */
+
     margin-top: -5.5vh;
 }
 .part1
 {
     display: flex;
     flex-direction: column;
-  gap: 8vh;
 }
 .bottom-part
 {
@@ -65,7 +71,9 @@
     width: 25vw;
     height: 8vh;
     text-align: center;
-    font-size: 16px;
+    font-size: 1.2vw;
+    position: relative;
+    left: 1.5rem;
     margin: 4px 2px;
     font-family: 'Poppins', sans-serif;
     display: flex;
@@ -98,32 +106,170 @@
 {
     display: flex;
     flex-direction: column;
-    gap: 8vh;
-    margin-top: 16vh;
+
+    margin-top: 16%;
     position: relative;
     right: 8vw;
 }
 .img-one
 {
     width: 26vw;
-    height: 36vh;
+    height: 25vh;
     z-index: 1;
 }
 .img-two
 {
     width: 26vw;
-    height: 36vh;
+    height: 25vh;
     z-index: 2;
+    position: relative;
+     margin-top: 9.5vw;
 }
 .img-three
 {
     width: 26vw;
-    height: 36vh;
+    height: 25vh;
     z-index: 1;
 }
 .img-four
 {
     width: 26vw;
-    height: 36vh;
+    height: 25vh;
     z-index: 2;
+    margin-top: 5.5vw;
 }
+
+.img-btn
+{
+    width: 2.2vw;
+    height: 2.4vh;
+    
+}
+@media screen and (max-width: 1030px) {
+    .img-two {
+       margin-top: 2.5vw;
+    }
+    .heading
+    {
+        margin-top: -3.5vw;
+    }
+  }
+  @media screen and (max-width: 844px) {
+    .anot{
+       margin-top: 7vh;
+    }
+    .img-two {
+        margin-top: 1.8vw;
+     }
+     .heading
+     {
+         margin-top: -3.5vw;
+     }
+  }
+
+  @media screen and (max-width: 808px) {
+    .anot{
+       margin-top: 7vh;
+    }
+    .img-two {
+        margin-top: 1.5vw;
+     }
+     .img-four
+     {
+        margin-top: 6.5vw;
+     }
+     .heading
+     {
+         margin-top: -3.5vw;
+     }
+  }
+  @media screen and (max-width: 790px) {
+    .anot{
+       margin-top: 7vh;
+    }
+    .img-two {
+        margin-top: 5px;
+     }
+     .img-four
+     {
+        margin-top: 4.5vw;
+     }
+  }
+  @media screen and (max-width: 790px) {
+    .anot{
+       margin-top: 9.5vh;
+    }
+    .part1
+    {
+        gap: 12vh;
+    }
+    .part2
+    {
+        gap: 7.4vh;
+        margin-top: 33%;
+    }
+    .heading
+    {
+        margin-top: -3.5vw;
+    }
+    
+
+  }
+  @media screen and (max-width: 720px) {
+   
+    .part1
+    {
+        gap: 13.50vh;
+    }
+    .part2
+    {
+        gap: 7.4vh;
+        margin-top: 36%;
+    }
+    .heading
+    {
+        margin-top: -2.5vw;
+    }
+  .button-home
+  {
+    height: 5.4vh;
+  }
+  .img-btn
+  {
+    padding-bottom: 10px;
+  }
+  }
+  @media screen and (max-width: 567px) {
+   
+    .part1
+    {
+        gap: 13.50vh;
+    }
+    .part2
+    {
+        gap: 4.0vh;
+        margin-top: 36%;
+    }
+   
+
+  }
+  @media screen and (max-width: 504px) {
+   
+    .part1
+    {
+        gap: 13.50vh;
+    }
+    .part2
+    {
+       
+        margin-top: 40%;
+    }
+   
+
+    .img-two
+    {
+       margin-top: -10px;
+    }
+     
+  }
+ 
