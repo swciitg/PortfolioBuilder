@@ -55,22 +55,26 @@ const Form = ({ FormData, onChange }) => {
   return (
     <div className="Form">
       <h1 className="text-xl mb-2 font-bold">Basic Info</h1>
-      {Object.keys(FormData).map(
-        fd =>
-          Object.keys(Desc).includes(fd) && (
-            <FormGroup
-              key={fd}
-              Label={Desc[fd][1]}
-              Type={Desc[fd][0]}
-              Id={fd}
-              Desc={Desc[fd][2]}
-              Value={FormData[fd]}
-              Placeholder={`Enter something for ${Desc[fd][1]}`}
-              onChange={fd === "FullName" ? () => { } : onChange}
-              readOnly={fd === "FullName" ? true : undefined}
-            />
-          )
-      )}
+      fd!=="Socials"? Object.keys(Desc).includes(fd) && (
+      <FormGroup
+        key={fd}
+        Label={Desc[fd][1]}
+        Type={Desc[fd][0]}
+        Id={fd}
+        Desc={Desc[fd][2]}
+        Value={FormData[fd]}
+        Placeholder={`Enter something for ${Desc[fd][1]}`}
+        onChange={fd === "FullName" ? () => { } : onChange}
+        readOnly={fd === "FullName" ? true : undefined}
+      />
+      ) :
+      : (
+      <SocialMedia
+        MediaData={Desc[fd]}
+        value={FormData[fd]}
+        onChange={fd === "FullName" ? () => { } : onChange}
+      />
+      )
       <h3 className='mt-5 mb-2 mx-3'>Experience</h3>
       <ExperienceList />
       <h3 className='mt-5 mb-2 mx-3'>Education</h3>
@@ -80,6 +84,7 @@ const Form = ({ FormData, onChange }) => {
       <h3 className='mt-5 mb-2 mx-3'>Interests</h3>
       <InterestList />
       <h3 className='mt-5 mb-2 mx-3'>Awards</h3>
+      <SectionTitle initialTitle="Awards" titleType="awards" />
       <AwardList />
     </div>
 
