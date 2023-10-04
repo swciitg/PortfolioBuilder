@@ -31,7 +31,7 @@ const Preview = ({
     Instagram: ["instagram", "https://instagr.am/"],
     Twitter: ["twitter", "https://twitter.com/"],
     LinkedIn: ["linkedin-in", "https://linkedin.com/in/"],
-    GitHub: ["github", "https://github.com"],
+    GitHub: ["github", "https://github.com/"],
     StackOverflow: ["stack-overflow", "https://stackoverflow.com/u/"]
   };
 
