@@ -66,7 +66,7 @@ const Form = ({ FormData, onChange }) => {
               Desc={Desc[fd][2]}
               Value={FormData[fd]}
               Placeholder={`Enter something for ${Desc[fd][1]}`}
-              onChange={fd === "FullName" ? () => {} : onChange}
+              onChange={fd === "FullName" ? () => { } : onChange}
               readOnly={fd === "FullName" ? true : undefined}
             />
           )
@@ -80,9 +80,9 @@ const Form = ({ FormData, onChange }) => {
       <h3 className='mt-5 mb-2 mx-3'>Interests</h3>
       <InterestList />
       <h3 className='mt-5 mb-2 mx-3'>Awards</h3>
-        <AwardList />
-      </div>
-    
+      <AwardList />
+    </div>
+
   );
 };
 

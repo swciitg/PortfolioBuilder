@@ -1,6 +1,6 @@
-const Header = ({dark, children, className, to, Link}) => {
+const Header = ({ dark, children, className, to, Link }) => {
     dark = !!dark ? "dark" : "light";
-    return(
+    return (
         <nav className={
             `navbar navbar-${dark} bg-${dark}` + (className ? " " + className : "")
         }>
