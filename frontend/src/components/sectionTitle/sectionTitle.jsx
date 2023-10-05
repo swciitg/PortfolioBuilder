@@ -42,7 +42,7 @@ export const SectionTitle = ({ initialTitle, titleType }) => {
   return (
     <h3 className='mt-5 mb-2 mx-3' onDoubleClick={handleDoubleClick}>
       {isEditing ? (
-        <input type="text" value={title} onBlur={handleBlur} onChange={handleChange} autoFocus />
+        <input className='dark:bg-zinc-800' type="text" value={title} onBlur={handleBlur} onChange={handleChange} autoFocus />
       ) : (
         title
       )}
