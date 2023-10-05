@@ -33,7 +33,7 @@ const Code = ({
     GitHub: ["github", "https://github.com/"],
     StackOverflow: ["stack-overflow", "https://stackoverflow.com/u/"]
   };
-  const navbar= `<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+  const navbar = `<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
                 <a class="navbar-brand js-scroll-trigger" href="#page-top">
                   <span class="d-block d-lg-none">${FullName}</span>
                   <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="${Thubmnail}" alt="${FullName}" /></span>
@@ -51,7 +51,7 @@ const Code = ({
                 </div>
               </nav>`
   return (
-    <div className="Code">
+    <div className="Code dark:text-gray-100">
       <pre className="border rounded bg-light p-3 codefile overflow-x-scroll">
         {`<!DOCTYPE html>
             <html lang="en">
@@ -112,13 +112,13 @@ const Code = ({
                       ${Object.keys(Socials).some((soc) => Socials[soc].length > 0) ? `
                       <div class="social-icons">
                         ${Object.keys(Socials)
-                          .filter((soc) => Socials[soc].length > 0)
-                          .map((soc) => `
+              .filter((soc) => Socials[soc].length > 0)
+              .map((soc) => `
                             <a class="social-icon" href="${Meta[soc][1]}${Socials[soc]}">
                               <i class="fab fa-${Meta[soc][0]}"></i>
                             </a>
                           `)
-                          .join('\n')}
+              .join('\n')}
                       </div>` : ''}
                     
                     </div>
@@ -129,27 +129,24 @@ const Code = ({
                     <div class="resume-section-content">
                       <h2 class="mb-5">${experienceTitle}</h2>
                       ${experiences.map(
-                        experience => `
+                experience => `
                       <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
                           <h3 class="mb-0">${experience.experience.position}</h3>
-                          <div class="subheading mb-3">${
-                            experience.experience.company
-                          }</div>
+                          <div class="subheading mb-3">${experience.experience.company
+                  }</div>
                           <p>${experience.experience.desc}</p>
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">${
-                          experience.experience.start
-                        } - ${
-                          experience.experience.end
-                            ? experience.experience.end
-                            : experience.experience.presentJob
-                            ? "Present"
-                            : ""
-                        }</span></div>
+                        <div class="flex-shrink-0"><span class="text-primary">${experience.experience.start
+                  } - ${experience.experience.end
+                    ? experience.experience.end
+                    : experience.experience.presentJob
+                      ? "Present"
+                      : ""
+                  }</span></div>
                       </div>
                       `
-                      ).join(`
+              ).join(`
             `)}
                     </div>
                   </section>
@@ -159,25 +156,23 @@ const Code = ({
                     <div class="resume-section-content">
                       <h2 class="mb-5">${educationTitle}</h2>
                       ${educations.map(
-                        education => `
+                education => `
                       <div class="d-flex flex-column flex-md-row justify-content-between">
                         <div class="flex-grow-1">
                           <h3 class="mb-0">${education.education.university}</h3>
                           <div class="subheading mb-3">${education.education.degree}</div>
                           <p>GPA: ${education.education.gpa}</p>
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">${
-                          education.education.start
-                        } - ${
-                          education.education.end
-                            ? education.education.end
-                            : education.education.presentJob
-                            ? "Present"
-                            : ""
-                        }</span></div>
+                        <div class="flex-shrink-0"><span class="text-primary">${education.education.start
+                  } - ${education.education.end
+                    ? education.education.end
+                    : education.education.presentJob
+                      ? "Present"
+                      : ""
+                  }</span></div>
                       </div>
                       `
-                      ).join(`
+              ).join(`
             `)}
                     </div>
                   </section>
@@ -189,13 +184,13 @@ const Code = ({
                       <div class="subheading mb-3">Programming Languages & Tools</div>
                       <ul class="fa-ul mb-0">
                         ${skills.map(
-                          skill => `
+                skill => `
                         <li>
                           <span class="fa-li"><i class="fas fa-check"></i></span>
                           ${skill.skill.skill}
                         </li>
                         `
-                        ).join(`
+              ).join(`
             `)}
                       </ul>
                     </div>
@@ -206,10 +201,10 @@ const Code = ({
                     <div class="resume-section-content">
                       <h2 class="mb-5">${interestsTitle}</h2>
                       ${interests.map(
-                        interest => `
+                interest => `
                       <p>${interest.interest.interest}</p>
                       `
-                      ).join(`
+              ).join(`
             `)}
                     </div>
                   </section>
@@ -220,13 +215,13 @@ const Code = ({
                       <h2 class="mb-5">${awardsTitle}</h2>
                       <ul class="fa-ul mb-0">
                         ${awards.map(
-                          award => `
+                award => `
                         <li>
                           <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
                           ${award.award.award}
                         </li>
                         `
-                        ).join(`
+              ).join(`
             `)}
                       </ul>
                     </div>

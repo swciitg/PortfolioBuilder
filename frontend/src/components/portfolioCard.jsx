@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { toast } from "react-toastify"
@@ -49,6 +49,26 @@ const PortfolioCard = () => {
       };
     });
   };
+
+  // to store previous theme on refresh
+  useEffect(() => {
+    if (localStorage.theme === 'dark') {
+      document.documentElement.classList.add('dark');
+      toggleHeader();
+    } 
+  }, [])
+
+  // toggle theme by adding/removing dark as class on page
+  useEffect(()=>{
+    if(!initialState.Dark) {
+      document.documentElement.classList.add('dark');
+      localStorage.theme = 'dark';
+    }
+    else {
+      document.documentElement.classList.remove('dark');
+      localStorage.theme = 'light';
+    }
+  }, [initialState.Dark])
 
   const handleChange = (e) => {
     Object.keys(data.FormData).includes(e.target.name) ?
@@ -111,9 +131,9 @@ const PortfolioCard = () => {
     }
   };
   return (
-    <div className="App w-full">
+    <div className="App w-full overflow-y-scroll  dark:bg-black dark:text-white">
       <Header
-        className={`bg-${initialState.Dark ? "white border-b-2" : "black"
+        className={` bg-${initialState.Dark ? "white border-b-2" : "black"
           } text-${initialState.Dark ? "black" : "white"
           } flex justify-center h-12 items-center mb-8`}
       >
@@ -185,7 +205,7 @@ const PortfolioCard = () => {
                 <span
                   className={`cursor-pointer px-4 py-2 rounded-t-lg ${!initialState.PreviewMode
                     ? "bg-blue-500 text-white"
-                    : "bg-gray-300"
+                    : "bg-gray-300 text-black"
                     }`}
                   onClick={(e) => {
                     e.preventDefault();
@@ -204,7 +224,7 @@ const PortfolioCard = () => {
                 <span
                   className={`cursor-pointer px-4 py-2 rounded-t-lg ${initialState.PreviewMode
                     ? "bg-blue-500 text-white"
-                    : "bg-gray-300"
+                    : "bg-gray-300 text-black"
                     }`}
                   onClick={(e) => {
                     e.preventDefault();
