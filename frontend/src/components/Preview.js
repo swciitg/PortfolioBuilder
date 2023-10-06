@@ -49,11 +49,11 @@ const Preview = ({
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                   <ul class="navbar-nav">
                   <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">${experienceTitle}</a></li>
-                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">${educationTitle}</a></li>
-                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">${skillsTitle}</a></li>
-                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">${interestsTitle}</a></li>
-                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">${awardsTitle}</a></li>
+                  ${isExperienceEnabled ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">${experienceTitle}</a></li>` : ''}
+                  ${isEducationEnabled ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">${educationTitle}</a></li>` : ''}
+                  ${isSkillEnabled ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">${skillsTitle}</a></li>`: ''}
+                  ${isInterestEnabled ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">${interestsTitle}</a></li>` : ''}
+                  ${isAwardsEnabled ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">${awardsTitle}</a></li>` : ''}                  
                   </ul>
                 </div>
               </nav>`;
