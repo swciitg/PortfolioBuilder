@@ -7,7 +7,8 @@ import InterestList from "./Form/Interests/InterestList";
 import SkillsList from "./Form/Skills/SkillsList";
 import { SectionTitle } from "./sectionTitle/sectionTitle";
 
-const Form = ({ FormData, onChange }) => {
+const Form = ({ FormData, onChange, isExperienceEnabled, isEducationEnabled, isSkillEnabled, isInterestEnabled, isAwardsEnabled,
+toggleExperience,toggleEducation,toggleSkill,toggleInterest,toggleAward }) => {
 
   const Desc = {
     FullName: [
@@ -120,16 +121,78 @@ const Form = ({ FormData, onChange }) => {
             )
 
       )}
-      <SectionTitle initialTitle="Experience" titleType="experience"/>
-      <ExperienceList />
-      <SectionTitle initialTitle="Education" titleType='education'/>
-      <EducationList />
-      <SectionTitle initialTitle="Skills" titleType="skills"/>
-      <SkillsList />
-      <SectionTitle initialTitle="Interests" titleType="interests"/>
-      <InterestList />
-      <SectionTitle initialTitle="Awards" titleType="awards"/>
-      <AwardList />
+
+       <div>
+        {isExperienceEnabled ? (
+          <>
+            <SectionTitle initialTitle="Experience" titleType="experience"/>
+            <ExperienceList />
+          </>
+        ) : (
+          <p>Experience section is disabled.</p>
+        )}
+        
+        <button onClick={toggleExperience}>
+          {isExperienceEnabled ? 'Remove' : 'Add'} Experience
+        </button>
+      </div>
+
+      <div>
+        {isEducationEnabled ? (
+          <>
+            <SectionTitle initialTitle="Education" titleType='education'/>
+            <EducationList />
+          </>
+        ) : (
+          <p>Education section is disabled.</p>
+        )}
+        <button onClick={toggleEducation}>
+          {isEducationEnabled ? 'Remove' : 'Add'} Education
+        </button>
+      </div>
+      
+      <div>
+      {isSkillEnabled ? (
+          <>
+            <SectionTitle initialTitle="Skills" titleType="skills"/>
+            <SkillsList />
+          </>
+        ) : (
+          <p>Skills section is disabled.</p>
+        )}
+        <button onClick={toggleSkill}>
+          {isSkillEnabled ? 'Remove' : 'Add'} Skills
+        </button>
+      </div>
+
+      <div>
+      {isInterestEnabled ? (
+          <>
+           <SectionTitle initialTitle="Interests" titleType="interests"/>
+           <InterestList />
+          </>
+        ) : (
+          <p>Interest section is disabled.</p>
+        )}
+        <button onClick={toggleInterest}>
+          {isInterestEnabled ? 'Remove' : 'Add'} Interest
+        </button>
+      </div>
+
+      <div>
+      {isAwardsEnabled ? (
+          <>
+           <SectionTitle initialTitle="Awards" titleType="awards"/>
+           <AwardList />
+          </>
+        ) : (
+          <p>Awards section is disabled.</p>
+        )}
+        <button onClick={toggleAward}>
+          {isAwardsEnabled ? 'Remove' : 'Add'} Awards
+        </button>
+      </div>
+
     </div>
 
   );

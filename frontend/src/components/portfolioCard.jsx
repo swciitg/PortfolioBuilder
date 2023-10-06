@@ -39,6 +39,7 @@ const PortfolioCard = () => {
     },
     fileDownloadUrl: null,
     PreviewMode: false,
+    
   };
   const [initialState, setInitialState] = useState(data);
   const toggleHeader = () => {
@@ -130,6 +131,31 @@ const PortfolioCard = () => {
       console.error("Download error:", error);
     }
   };
+
+  const [isExperienceEnabled, setIsExperienceEnabled] = useState(true);
+  const [isSkillEnabled, setIsSkillEnabled] = useState(true);
+  const [isEducationEnabled, setIsEducationEnabled] = useState(true);
+  const [isInterestEnabled, setisInterestEnabled] = useState(true);
+  const [isAwardsEnabled, setisAwardsEnabled] = useState(true);
+
+
+  const toggleExperience = () => {
+    setIsExperienceEnabled(!isExperienceEnabled);
+  };
+
+  const toggleEducation = () => {
+    setIsEducationEnabled(!isEducationEnabled);
+  };
+  const toggleSkill = () => {
+    setIsSkillEnabled(!isSkillEnabled)  
+  };
+  const toggleInterest = () => {
+    setisInterestEnabled(!isInterestEnabled)  
+  };
+  const toggleAward = () => {
+    setisAwardsEnabled(!isAwardsEnabled)  
+  };
+
   return (
     <div className="App w-full overflow-y-scroll  dark:bg-black dark:text-white">
       <Header
@@ -166,6 +192,17 @@ const PortfolioCard = () => {
                 ...initialState.FormData,
               }}
               onChange={handleChange}
+              isEducationEnabled={isEducationEnabled}
+              isExperienceEnabled={isExperienceEnabled}
+              isSkillEnabled={isSkillEnabled}
+              isInterestEnabled={isInterestEnabled}
+              isAwardsEnabled={isAwardsEnabled}
+
+              toggleExperience={toggleExperience}
+              toggleEducation={toggleEducation}
+              toggleSkill={toggleSkill}
+              toggleInterest={toggleInterest}
+              toggleAward={toggleAward}
             />
             <a
               className="text-xl cursor-pointer"
@@ -244,11 +281,21 @@ const PortfolioCard = () => {
               <Preview
                 {...initialState.FormData}
                 FullName={`${initialState.FormData.FirstName} ${initialState.FormData.LastName}`}
+                isEducationEnabled={isEducationEnabled}
+                isExperienceEnabled={isExperienceEnabled}
+                isSkillEnabled={isSkillEnabled}
+                isAwardsEnabled={isAwardsEnabled}
+                isInterestEnabled={isInterestEnabled}
               />
             ) : (
               <Code
                 {...initialState.FormData}
                 FullName={`${initialState.FormData.FirstName} ${initialState.FormData.LastName}`}
+                isEducationEnabled={isEducationEnabled}
+                isExperienceEnabled={isExperienceEnabled}
+                isSkillEnabled={isSkillEnabled}
+                isAwardsEnabled={isAwardsEnabled}
+                isInterestEnabled={isInterestEnabled}
               />
             )}
           </div>
