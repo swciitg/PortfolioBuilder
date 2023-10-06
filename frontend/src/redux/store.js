@@ -6,12 +6,15 @@ import  educations  from "../components/Form/Education/reducers";
 import  awards  from "../components/Form/Awards/reducers";
 import  interests  from "../components/Form/Interests/reducers";
 import  skills  from "../components/Form/Skills/reducers";
+import projects from '../components/Form/Projects/reducer';
+
 const allreducers = {
     experiences:experiences,
     educations:educations,
     awards:awards,
     interests:interests,
     skills:skills,
+    projects: projects,
     title : titlesReducer
 };
 
