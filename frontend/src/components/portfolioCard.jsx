@@ -183,7 +183,7 @@ const PortfolioCard = () => {
       >
         Home
       </Link>
-      <div className="container pl-12 my-4">
+      <div className="w-full pl-12 my-1">
         <div className="flex flex-row">
           <div className="p-3 w-1/2">
             <Form

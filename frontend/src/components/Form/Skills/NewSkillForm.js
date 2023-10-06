@@ -1,51 +1,70 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { createSkill } from "./actions";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const NewSkillForm = ({ skills = [], onCreatePressed }) => {
+  const [skill, setSkill] = useState("");
+  const [isTyping, setIsTyping] = useState(false); // State variable to track typing
+  const [isSkillFilled, setIsSkillFilled] = useState(false); // State variable to track skill field filled
 
-    const [skill, setSkill] = useState('');
+  const handleInputChange = () => {
+    setIsTyping(true); // Set the state to true when the user starts typing
+  };
 
-    return (
-        <div className="border rounded bg-light p-3 m-2">
-            <input
-                className="dark:bg-zinc-800 form-control form-control-sm mb-2 w-24 p-1 border outline-none"
-                type="text"
-                placeholder="Skill"
-                value={skill}
-                onChange={e => setSkill(e.target.value)}
-            />
-            <div className="text-right">
-                <button
-                    className="btn btn-success btn-sm rounded-full w-7 h-7 bg-green-400 text-white"
-                    disabled={skill === ''}
-                    onClick={() => {
-                        toast.success('Skill added successfully', {
-                            position: "top-right",
-                            autoClose: 3000,
-                            closeOnClick: true
-                        });
-                        onCreatePressed({ skill });
-                        setSkill('');
-                    }}
-                >
-                    <FontAwesomeIcon icon={faPlus} />
-                </button>
-            </div>
-        </div>
-    )
-}
+  const handleBlur = () => {
+    setIsTyping(false); // Reset the state when the user clicks outside the input field
+  };
 
-const mapStateToProps = state => ({
-    skills: state.skills,
+  // Use useEffect to check if the skill field is filled whenever it changes
+  useEffect(() => {
+    if (skill) {
+      setIsSkillFilled(true);
+    } else {
+      setIsSkillFilled(false);
+    }
+  }, [skill]);
+
+  return (
+    <div
+      className={`border rounded ${
+        isSkillFilled ? "border-green-500" : isTyping ? "border-yellow-500" : ""
+      } p-3 m-2`}
+    >
+      <input
+        className={`form-control form-control-sm mb-2 w-24 p-1 border outline-none`}
+        type="text"
+        placeholder="Skill"
+        value={skill}
+        onChange={(e) => {
+          setSkill(e.target.value);
+          handleInputChange();
+        }}
+        onBlur={handleBlur}
+      />
+      <div className="text-right">
+        <button
+          className="btn btn-success btn-sm rounded-full w-7 h-7 bg-green-400 text-white"
+          disabled={skill === ""}
+          onClick={() => {
+            onCreatePressed({ skill });
+            setSkill("");
+          }}
+        >
+          <FontAwesomeIcon icon={faPlus} />
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const mapStateToProps = (state) => ({
+  skills: state.skills,
 });
 
-const mapDispatchToProps = dispatch => ({
-    onCreatePressed: skill => dispatch(createSkill(skill)),
+const mapDispatchToProps = (dispatch) => ({
+  onCreatePressed: (skill) => dispatch(createSkill(skill)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewSkillForm);
