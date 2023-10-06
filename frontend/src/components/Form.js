@@ -198,9 +198,7 @@ toggleExperience,toggleEducation,toggleSkill,toggleInterest,toggleAward }) => {
           {isAwardsEnabled ? 'Remove' : 'Add'} Awards
         </button>
       </div>
-
       <ProjectList/>
-
     </div>
   );
 };
