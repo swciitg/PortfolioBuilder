@@ -137,6 +137,7 @@ const PortfolioCard = () => {
   const [isEducationEnabled, setIsEducationEnabled] = useState(true);
   const [isInterestEnabled, setisInterestEnabled] = useState(true);
   const [isAwardsEnabled, setisAwardsEnabled] = useState(true);
+  const [isProjectEnabled, setisProjectEnabled] = useState(true);
 
 
   const toggleExperience = () => {
@@ -183,7 +184,7 @@ const PortfolioCard = () => {
       >
         Home
       </Link>
-      <div className="container pl-12 my-4">
+      <div className="w-full pl-12 my-1">
         <div className="flex flex-row">
           <div className="p-3 w-1/2">
             <Form
@@ -286,6 +287,7 @@ const PortfolioCard = () => {
                 isSkillEnabled={isSkillEnabled}
                 isAwardsEnabled={isAwardsEnabled}
                 isInterestEnabled={isInterestEnabled}
+                isProjectEnabled={isProjectEnabled}
               />
             ) : (
               <Code
