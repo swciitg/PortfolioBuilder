@@ -4,6 +4,7 @@ export const UPDATE_SKILLS = 'UPDATE_SKILLS';
 export const UPDATE_INTERESTS = 'UPDATE_INTERESTS';
 export const UPDATE_AWARDS = 'UPDATE_AWARDS';
 export const UPDATE_EDUCATION = 'UPDATE_EDUCATION';
+export const UPDATE_PROJECTS = 'UPDATE_PROJECTS';
 
 export const createExperience = experience => ({
     type: CREATE_EXPERIENCE,
@@ -36,6 +37,10 @@ export const updateEducation = (newTitle) => ({
     type: UPDATE_EDUCATION,
     payload: newTitle,
   });
+export const updateProjects = (newTitle) => ({
+  type: UPDATE_PROJECTS,
+  payload: newTitle,
+});
 
 export const removeExperience = experience => ({
     type: REMOVE_EXPERIENCE,

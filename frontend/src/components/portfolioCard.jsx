@@ -156,6 +156,9 @@ const PortfolioCard = () => {
   const toggleAward = () => {
     setisAwardsEnabled(!isAwardsEnabled)  
   };
+  const toggleProject = () => {
+    setisProjectEnabled(!isProjectEnabled)  
+  };
 
   return (
     <div className="App w-full overflow-y-scroll  dark:bg-black dark:text-white">
@@ -198,12 +201,14 @@ const PortfolioCard = () => {
               isSkillEnabled={isSkillEnabled}
               isInterestEnabled={isInterestEnabled}
               isAwardsEnabled={isAwardsEnabled}
+              isProjectEnabled={isProjectEnabled}
 
               toggleExperience={toggleExperience}
               toggleEducation={toggleEducation}
               toggleSkill={toggleSkill}
               toggleInterest={toggleInterest}
               toggleAward={toggleAward}
+              toggleProject={toggleProject}
             />
             <a
               className="text-xl cursor-pointer"
@@ -298,6 +303,7 @@ const PortfolioCard = () => {
                 isSkillEnabled={isSkillEnabled}
                 isAwardsEnabled={isAwardsEnabled}
                 isInterestEnabled={isInterestEnabled}
+                isProjectEnabled={isProjectEnabled}
               />
             )}
           </div>

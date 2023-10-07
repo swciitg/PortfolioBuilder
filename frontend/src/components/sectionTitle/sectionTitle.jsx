@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateExperience, updateSkills, updateAwards, updateInterests, updateEducation } from '../Form/Experience/actions';
+import { updateExperience, updateSkills, updateAwards, updateInterests, updateEducation, updateProjects } from '../Form/Experience/actions';
 
 export const SectionTitle = ({ initialTitle, titleType }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -34,6 +34,9 @@ export const SectionTitle = ({ initialTitle, titleType }) => {
       case 'education':
         dispatch(updateEducation(title));
         break;
+      case 'projects':
+      dispatch(updateProjects(title));
+      break;
       default:
         break;
     }

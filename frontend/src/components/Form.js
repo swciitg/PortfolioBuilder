@@ -9,7 +9,7 @@ import SkillsList from "./Form/Skills/SkillsList";
 import { SectionTitle } from "./sectionTitle/sectionTitle";
 
 const Form = ({ FormData, onChange, isExperienceEnabled, isEducationEnabled, isSkillEnabled, isInterestEnabled, isAwardsEnabled,
-toggleExperience,toggleEducation,toggleSkill,toggleInterest,toggleAward }) => {
+  isProjectEnabled,toggleProject,toggleExperience,toggleEducation,toggleSkill,toggleInterest,toggleAward }) => {
   const Desc = {
     FullName: [
       "text",
@@ -198,9 +198,19 @@ toggleExperience,toggleEducation,toggleSkill,toggleInterest,toggleAward }) => {
           {isAwardsEnabled ? 'Remove' : 'Add'} Awards
         </button>
       </div>
-
-      <ProjectList/>
-
+      <div>
+      {isProjectEnabled ? (
+          <>
+           <SectionTitle initialTitle="Projects" titleType="projects"/>
+           <ProjectList />
+          </>
+        ) : (
+          <p>Projects section is disabled.</p>
+        )}
+        <button onClick={toggleProject}>
+          {isProjectEnabled ? 'Remove' : 'Add'} Projects
+        </button>
+      </div>
     </div>
   );
 };

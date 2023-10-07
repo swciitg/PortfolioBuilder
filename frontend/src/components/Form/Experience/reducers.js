@@ -1,4 +1,4 @@
-import { CREATE_EXPERIENCE, REMOVE_EXPERIENCE,UPDATE_EXPERIENCE,UPDATE_SKILLS,UPDATE_AWARDS,UPDATE_INTERESTS,UPDATE_EDUCATION } from "./actions";
+import { CREATE_EXPERIENCE, REMOVE_EXPERIENCE,UPDATE_EXPERIENCE,UPDATE_SKILLS,UPDATE_AWARDS,UPDATE_INTERESTS,UPDATE_EDUCATION,UPDATE_PROJECTS } from "./actions";
 
 const experiences = (state=[], action) =>{
     const {type, payload} = action;
@@ -25,7 +25,8 @@ const initialState = {
   skillsTitle: "Skills",
   interestsTitle: "Interests",
   awardsTitle: "Awards",
-  educationTitle: "Education"
+  educationTitle: "Education",
+  projectsTitle:"Projects"
 };
 
 export const titlesReducer = (state = initialState, action) => {
@@ -54,6 +55,11 @@ export const titlesReducer = (state = initialState, action) => {
       return {
         ...state,
         educationTitle: action.payload
+      };
+      case UPDATE_PROJECTS:
+      return {
+        ...state,
+        projectsTitle: action.payload
       };
     default:
       return state;

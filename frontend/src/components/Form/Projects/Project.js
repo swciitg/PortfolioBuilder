@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus } from "@fortawesome/free-solid-svg-icons";
 
 const Project = ({ project, onRemovePressed }) => {
-  const projectData = project.project
+  const projectData = project.project;
+
   return (
     <div className="card dark:bg-lime-300 dark:text-black bg-light pb-1 pr-1 mb-1 small">
       <div className="card-body">
@@ -31,6 +32,34 @@ const Project = ({ project, onRemovePressed }) => {
             {projectData.guidedByProfessor ? "Yes" : "No"}
           </div>
         </div>
+        {/* Professor's Name */}
+        {projectData.guidedByProfessor && (
+          <div className="row">
+            <div className="col-2">Professor's Name:</div>
+            <div className="col-10">{projectData.professorName}</div>
+          </div>
+        )}
+        {/* Club Project */}
+        {projectData.isClubProject && (
+          <div className="row">
+            <div className="col-2">Club Project:</div>
+            <div className="col-10">Yes</div>
+          </div>
+        )}
+        {/* Club Name */}
+        {projectData.isClubProject && (
+          <div className="row">
+            <div className="col-2">Club Name:</div>
+            <div className="col-10">{projectData.clubName}</div>
+          </div>
+        )}
+        {/* Self-Project */}
+        {projectData.isSelfProject && (
+          <div className="row">
+            <div className="col-2">Self-Project:</div>
+            <div className="col-10">Yes</div>
+          </div>
+        )}
       </div>
       <div className="text-right">
         <button
