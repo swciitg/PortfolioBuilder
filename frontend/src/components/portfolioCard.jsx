@@ -137,6 +137,7 @@ const PortfolioCard = () => {
   const [isEducationEnabled, setIsEducationEnabled] = useState(true);
   const [isInterestEnabled, setisInterestEnabled] = useState(true);
   const [isAwardsEnabled, setisAwardsEnabled] = useState(true);
+  const [isProjectEnabled, setisProjectEnabled] = useState(true);
 
 
   const toggleExperience = () => {
@@ -154,6 +155,9 @@ const PortfolioCard = () => {
   };
   const toggleAward = () => {
     setisAwardsEnabled(!isAwardsEnabled)  
+  };
+  const toggleProject = () => {
+    setisProjectEnabled(!isProjectEnabled)  
   };
 
   return (
@@ -197,12 +201,14 @@ const PortfolioCard = () => {
               isSkillEnabled={isSkillEnabled}
               isInterestEnabled={isInterestEnabled}
               isAwardsEnabled={isAwardsEnabled}
+              isProjectEnabled={isProjectEnabled}
 
               toggleExperience={toggleExperience}
               toggleEducation={toggleEducation}
               toggleSkill={toggleSkill}
               toggleInterest={toggleInterest}
               toggleAward={toggleAward}
+              toggleProject={toggleProject}
             />
             <a
               className="text-xl cursor-pointer"
@@ -286,6 +292,7 @@ const PortfolioCard = () => {
                 isSkillEnabled={isSkillEnabled}
                 isAwardsEnabled={isAwardsEnabled}
                 isInterestEnabled={isInterestEnabled}
+                isProjectEnabled={isProjectEnabled}
               />
             ) : (
               <Code
@@ -296,6 +303,7 @@ const PortfolioCard = () => {
                 isSkillEnabled={isSkillEnabled}
                 isAwardsEnabled={isAwardsEnabled}
                 isInterestEnabled={isInterestEnabled}
+                isProjectEnabled={isProjectEnabled}
               />
             )}
           </div>
