@@ -211,7 +211,7 @@ const PortfolioCard = () => {
             >
               <button
                 className={`btn btn-${initialState.Dark ? "success" : "primary"
-                  } bg-green-700 text-white mx-2 p-3`}
+                  } hover:bg-green-700 bg-green-500 text-white rounded inline-flex items-center mt-2 mx-2 p-3`}
                 onClick={() => {
                   download();
                 }}
@@ -220,7 +220,9 @@ const PortfolioCard = () => {
                 disabled={initialState.PreviewMode}
                 title="Go to the Code View to download."
               >
-                Download
+                 <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+
+                <span>Download</span>
               </button>
               <ToastContainer
                 position="top-right"
@@ -236,7 +238,7 @@ const PortfolioCard = () => {
               />
             </a>
           </div>
-          <div className="p-3 w-1/2">
+          <div className="fixed top-12 right-0 h-screen overflow-scroll p-3 w-1/2">
             <ul className="flex">
               <li className="mr-2">
                 <span

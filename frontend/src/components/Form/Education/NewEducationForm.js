@@ -53,41 +53,41 @@ const NewEducationForm = ({ educations = [], onCreatePressed }) => {
       } p-3 m-2`}
     >
       <input
-        className="form-control form-control-sm mb-2 mr-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
+        className="dark:bg-zinc-800 form-control form-control-sm mb-2 mr-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
         type="text"
         placeholder="University/College"
         value={university}
         onChange={(e) => setUniversity(e.target.value)}
       />
       <input
-        className="form-control form-control-sm mb-2 mr-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
+        className="dark:bg-zinc-800 form-control form-control-sm mb-2 mr-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
         type="text"
         placeholder="Degree"
         value={degree}
         onChange={(e) => setDegree(e.target.value)}
       />
       <input
-        className="form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
+        className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
         type="text"
         placeholder="GPA"
         value={gpa}
         onChange={(e) => setGpa(e.target.value)}
       />
       <div className="row ">
-        <div className="col mb-2 p-1 border rounded-sm w-40">
+        <div className="dark:bg-zinc-800 col mb-2 p-1 border rounded-sm w-40">
           <input
             type="date"
-            className="outline-none p-1"
+            className="dark:bg-zinc-800 outline-none p-1"
             placeholder="start Date"
             onChange={(e) =>
               setStartDate(moment(e.target.value).format("MM YYYY"))
             }
           />
         </div>
-        <div className="col mb-2 p-1 border rounded-sm w-40">
+        <div className="dark:bg-zinc-800 col mb-2 p-1 border rounded-sm w-40">
           <input
             type="date"
-            className="outline-none p-1"
+            className="dark:bg-zinc-800 outline-none p-1"
             placeholder="End Date"
             onChange={(e) =>
               setEndDate(moment(e.target.value).format("MM YYYY"))
