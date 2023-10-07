@@ -14,6 +14,10 @@ const NewProjectForm = ({ onCreatePressed }) => {
     githubLink: "",
     timeline: "",
     guidedByProfessor: false,
+    professorName: "", // New field for professor's name
+    isClubProject: false, // New field for club project
+    clubName: "", // New field for club name
+    isSelfProject: false,
   });
 
   const handleChange = (e) => {
@@ -39,6 +43,10 @@ const NewProjectForm = ({ onCreatePressed }) => {
       githubLink: "",
       timeline: "",
       guidedByProfessor: false,
+      professorName: "", // New field for professor's name
+      isClubProject: false, // New field for club project
+      clubName: "", // New field for club name
+      isSelfProject: false,
     });
   };
 
@@ -108,6 +116,50 @@ const NewProjectForm = ({ onCreatePressed }) => {
           onChange={handleChange}
         />
         <label className="form-check-label">Guided by Professor</label>
+      </div>
+      {projectData.guidedByProfessor && (
+       <input
+       type="text"
+       className="form-control mb-2"
+       name="professorName"
+       placeholder="Professor's Name"
+       value={projectData.professorName}
+       onChange={handleChange}
+     />
+      )}
+      
+      {/* Club Project Checkbox */}
+      <div className="form-check mb-2">
+        <input
+          type="checkbox"
+          className="form-check-input"
+          name="isClubProject"
+          checked={projectData.isClubProject}
+          onChange={handleChange}
+        />
+        <label className="form-check-label">Club Project</label>
+      </div>
+      {/* Club Name */}
+      {projectData.isClubProject && (
+        <input
+          type="text"
+          className="form-control mb-2"
+          name="clubName"
+          placeholder="Club Name"
+          value={projectData.clubName}
+          onChange={handleChange}
+        />
+      )}
+      {/* Self-Project Checkbox */}
+      <div className="form-check mb-2">
+        <input
+          type="checkbox"
+          className="form-check-input"
+          name="isSelfProject"
+          checked={projectData.isSelfProject}
+          onChange={handleChange}
+        />
+        <label className="form-check-label">Self-Project</label>
       </div>
       <div className="text-right">
         <button
