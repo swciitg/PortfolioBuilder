@@ -1,4 +1,4 @@
-import { CREATE_INTEREST, REMOVE_INTEREST } from "./actions";
+import { CREATE_INTEREST, EDIT_INTEREST, REMOVE_INTEREST } from "./actions";
 
 const interests = (state=[], action) =>{
     const {type, payload} = action;
@@ -14,6 +14,10 @@ const interests = (state=[], action) =>{
         case REMOVE_INTEREST: {
             const {interest} = payload;
             return state.filter(obj => obj.interest !== interest);
+        }
+        case EDIT_INTEREST: {
+            const {oldInterest, newInterest} = payload;
+            
         }
         default: 
             return state;

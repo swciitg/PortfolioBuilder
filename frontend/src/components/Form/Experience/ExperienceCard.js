@@ -22,7 +22,7 @@ const ExperienceCard = ({ experience, onRemovePressed, onEditPressed}) => {
     setEditedExperience(experience);
   };
   return (
-    <div className="flex-col rounded-lg shadow-lg p-6 relative w-1/2 row">
+    <div className="flex-col rounded-lg shadow-lg p-6 relative w-[60%] row">
       {
          <ExperienceInfo experience={experience} isEditing={isEditing} setEditedExperience={setEditedExperience}/>
       }

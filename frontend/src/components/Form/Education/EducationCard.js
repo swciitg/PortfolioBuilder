@@ -21,7 +21,7 @@ const EducationCard = ({ education, onRemovePressed, onEditPressed}) => {
     setEditedEducation(education);
   };
   return (
-    <div className="flex-col rounded-lg shadow-lg p-6 relative w-1/2 row">
+    <div className="flex-col rounded-lg shadow-lg p-6 relative w-[60%] row">
       {
          <EducationInfo education={education} isEditing={isEditing} setEditedEducation={setEditedEducation}/>
       }

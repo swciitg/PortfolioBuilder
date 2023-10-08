@@ -15,19 +15,16 @@ const skills = (state=[], action) =>{
             const {skill} = payload;
             return state.filter(obj => obj.skill !== skill);
         }
-        case EDIT_SKILL: { // Handle the "Edit Skill" action
-            const { oldSkill, newSkill } = payload; //obj.skill === oldSkill
+        case EDIT_SKILL: {
+            const { oldSkill, newSkill } = payload;
             const index = state.findIndex(obj => obj.skill === oldSkill);
             
             if (index !== -1) {
-              // Create a copy of the state array and update the skill at the specified index
-              console.log(state)
               const newState = [...state];
               newState[index] = { skill: {skill: newSkill} };
-              console.log(newState)
               return newState;
             }
-            return state; // If the skill to edit is not found, return the original state
+            return state;
         }
         default: 
             return state;
