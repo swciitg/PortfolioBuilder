@@ -177,7 +177,7 @@ const PortfolioCard = () => {
           ></i>
         </button>
       </Header>
-      <div className="mt-16">
+      <div className="pt-16">
         <Link
           className="pl-4 text-xl font-medium text-blue-500 cursor-pointer"
           to={"/"}
