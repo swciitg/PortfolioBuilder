@@ -307,7 +307,7 @@ const Preview = ({
     <div className="Preview h-screen w-full">
       <br />
       <iframe
-        className="w-full h-screen border rounded-md"
+        className="w-full h-[85vh] border rounded-md"
         src={`data:text/html,${encodeURIComponent(finalHTML)}`}
         frameborder="0"
         title="Preview"

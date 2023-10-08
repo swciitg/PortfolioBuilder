@@ -214,7 +214,7 @@ const Code = ({
 
   return (
     <div className="Code dark:text-gray-100">
-      <pre className="border rounded bg-light p-3 codefile overflow-x-scroll">
+      <pre className="border rounded bg-light p-3 h-[88vh] overflow-y-scroll codefile overflow-x-scroll">
         {`<!DOCTYPE html>
             <html lang="en">
               <head>

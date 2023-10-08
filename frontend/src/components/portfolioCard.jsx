@@ -157,11 +157,11 @@ const PortfolioCard = () => {
   };
 
   return (
-    <div className="App w-full overflow-y-scroll  dark:bg-black dark:text-white">
+    <div className="App w-full  dark:bg-black dark:text-white">
       <Header
         className={` bg-${initialState.Dark ? "white border-b-2" : "black"
           } text-${initialState.Dark ? "black" : "white"
-          } flex justify-center h-12 items-center mb-8`}
+          } flex justify-center h-12 fixed top-0 w-full items-center mb-8`}
       >
         <h1 className="text-2xl text-center inline mx-6 my-0">
           Portfolio Generator
@@ -177,12 +177,15 @@ const PortfolioCard = () => {
           ></i>
         </button>
       </Header>
-      <Link
-        className="pl-4 text-xl font-medium text-blue-500 cursor-pointer"
-        to={"/"}
-      >
-        Home
-      </Link>
+      <div className="mt-16">
+        <Link
+          className="pl-4 text-xl font-medium text-blue-500 cursor-pointer"
+          to={"/"}
+        >
+          Home
+        </Link>
+      </div>
+      
       <div className="w-full pl-12 my-1">
         <div className="flex flex-row">
           <div className="p-3 w-1/2">
@@ -238,7 +241,7 @@ const PortfolioCard = () => {
               />
             </a>
           </div>
-          <div className="fixed top-12 right-0 h-screen overflow-scroll p-3 w-1/2">
+          <div className="fixed top-12 right-0 h-screen p-3 w-1/2">
             <ul className="flex">
               <li className="mr-2">
                 <span
