@@ -11,3 +11,10 @@ export const removeEducation = education => ({
     type: REMOVE_EDUCATION,
     payload: {education}
 });
+
+export const EDIT_EDUCATION = 'EDIT_EDUCATION';
+
+export const editEducation = (oldEducation, newEducation) => ({
+    type: EDIT_EDUCATION,
+    payload: {oldEducation, newEducation}
+});

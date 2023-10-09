@@ -570,7 +570,7 @@ if (isProjectEnabled) {
           </html>
 `;
   return (
-    <div className="Preview w-full">
+    <div className="Preview h-screen w-full">
       <br />
       <div className="d-flex justify-content-center mt-4">
       <button className="btn  me-2" onClick={() => handleDesignChange('NavbarDesign1')}>Navbar 1</button>
@@ -580,7 +580,7 @@ if (isProjectEnabled) {
     </div>
      
       <iframe
-        className="w-full h-96 border rounded-md"
+        className="w-full h-[85vh] border rounded-md"
         src={`data:text/html,${encodeURIComponent(finalHTML)}`}
         frameborder="0"
         title="Preview"

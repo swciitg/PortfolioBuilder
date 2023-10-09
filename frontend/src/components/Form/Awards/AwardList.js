@@ -2,16 +2,17 @@ import React from 'react';
 import NewAwardForm from './NewAwardForm';
 import Award from './Award';
 import { connect } from 'react-redux';
-import { removeAward } from './actions';
+import { editAward, removeAward } from './actions';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AwardCard from './AwardCard';
 
-const AwardList = ({ awards = [], onRemovePressed }) => {
+const AwardList = ({ awards = [], onRemovePressed, onEditPressed }) => {
     return(
     <div>
         <NewAwardForm />
         <div className="container mb-3">
-            {awards.map(award => <Award award={award.award} onRemovePressed={onRemovePressed}/>)}
+            {awards.map(award => <AwardCard award={award.award} onRemovePressed={onRemovePressed} onEditPressed={onEditPressed}/>)}
         </div>
     </div>
     )
@@ -29,6 +30,7 @@ const mapDispatchToProps = dispatch => ({
             closeOnClick:true
             });
         dispatch(removeAward(award))},
+    onEditPressed: (award, editedAward) => dispatch(editAward(award, editedAward)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AwardList);
