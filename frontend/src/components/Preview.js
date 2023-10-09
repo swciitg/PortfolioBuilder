@@ -276,27 +276,66 @@ else if(navbarDesign==="NavbarDesign4")
 
   if (isSkillEnabled) {
     skillsSection = `
-    <section class="resume-section" id="skills">
-                  <div class="resume-section-content">
-                    <h2 class="mb-5">${skillsTitle}</h2>
-                    <div class="subheading mb-3">Programming Languages & Tools</div>
-                    <ul class="fa-ul mb-0">
-                      ${skills.map(
-                        (skill) => `
-                      <li>
-                        <span class="fa-li"><i class="fas fa-check"></i></span>
-                        ${skill.skill.skill}
-                      </li>
-                      `
-                      ).join(`
-          `)}
-                    </ul>
+      <section class="resume-section" id="skills">
+        <div class="resume-section-content">
+          <h2 class="mb-5">${skillsTitle}</h2>
+          <div class="subheading mb-3">Programming Languages & Tools</div>
+          <ul class="skills-list d-flex flex-wrap p-0">
+            ${skills
+              .map((skill) => `
+                <li class="mr-4 mb-4">
+                  <div class="skill-item text-center p-3">
+                    ${skill.image ? `<img src="${skill.url}" class="skill-image" />` : ''}
+                    <span class="skill-name">${skill.name}</span>
                   </div>
-                </section>
-                <hr class="m-0" />
-  `;
+                </li>
+              `)
+              .join('')}
+          </ul>
+        </div>
+      </section>
+      <hr class="m-0" />
+    `;
+  
+    // Add CSS for styling
+    const customStyles = `
+      <style>
+        .skills-list {
+          list-style: none;
+        }
+  
+        .skill-item {
+          background-color: #ffffff;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          padding: 10px;
+          width: 150px;
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+  
+        .skill-image {
+          width: 50px;
+          height: 50px;
+          margin-bottom: 10px;
+        }
+  
+        .skill-name {
+          font-weight: bold;
+        }
+        .mr-4 {
+          margin-right: 20px; /* You can adjust this value to control the spacing */
+        }
+  
+        .mb-4 {
+          margin-bottom: 20px; /* You can adjust this value to control the spacing */
+        }
+      </style>
+    `;
+  
+    // Add the custom styles to the HTML
+    skillsSection += customStyles;
   } else {
-    skillsSection = "";
+    skillsSection = '';
   }
   
   let interestSection;
@@ -555,7 +594,7 @@ const mapStateToProps = (state) => ({
   educations: state.educations,
   awards: state.awards,
   interests: state.interests,
-  skills: state.skills,
+  skills: state.skills.selectedSkills,
   experienceTitle: state.title.experienceTitle,
   skillsTitle: state.title.skillsTitle,
   interestsTitle: state.title.interestsTitle,

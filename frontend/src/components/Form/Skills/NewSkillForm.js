@@ -1,56 +1,50 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import { createSkill } from "./actions";
+import {selectSkill } from "./actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
-const NewSkillForm = ({ skills = [], onCreatePressed }) => {
-  const [skill, setSkill] = useState("");
-  const [isTyping, setIsTyping] = useState(false); // State variable to track typing
-  const [isSkillFilled, setIsSkillFilled] = useState(false); // State variable to track skill field filled
+// Define some sample skills
 
-  const handleInputChange = () => {
-    setIsTyping(true); // Set the state to true when the user starts typing
+const NewSkillForm = ({ onCreatePressed, onSelectSkill,availableSkills}) => {
+  const [selectedSkillName, setSelectedSkillName] = useState("");
+
+  const handleSkillChange = (e) => {
+    const selectedName = e.target.value;
+    setSelectedSkillName(selectedName);
   };
 
-  const handleBlur = () => {
-    setIsTyping(false); // Reset the state when the user clicks outside the input field
-  };
-
-  // Use useEffect to check if the skill field is filled whenever it changes
-  useEffect(() => {
-    if (skill) {
-      setIsSkillFilled(true);
-    } else {
-      setIsSkillFilled(false);
+  const handleCreateSkill = () => {
+    console.log("hi");
+    const skillObject = availableSkills.find((skill) => skill.name === selectedSkillName);
+    if (skillObject) {
+      onSelectSkill(skillObject); // Dispatch the selectSkill action
     }
-  }, [skill]);
+    else {
+      // Handle the case where skillObject is not found (e.g., show an error message)
+      console.error(selectedSkillName);
+    }
+  };
 
   return (
-    <div
-      className={`border rounded ${
-        isSkillFilled ? "border-green-500" : isTyping ? "border-yellow-500" : ""
-      } p-3 m-2`}
-    >
-      <input
-        className={`form-control form-control-sm mb-2 w-24 p-1 border outline-none`}
-        type="text"
-        placeholder="Skill"
-        value={skill}
-        onChange={(e) => {
-          setSkill(e.target.value);
-          handleInputChange();
-        }}
-        onBlur={handleBlur}
-      />
+    <div className={`border rounded p-3 m-2`}>
+      <select
+        className={`form-select form-select-sm mb-2 w-24 p-1 border`}
+        value={selectedSkillName}
+        onChange={handleSkillChange}
+      >
+        <option value="">Select a Skill</option>
+        {availableSkills.map((skill) => (
+          <option key={skill.name} value={skill.name}>
+            {skill.name}
+          </option>
+        ))}
+      </select>
       <div className="text-right">
         <button
           className="btn btn-success btn-sm rounded-full w-7 h-7 bg-green-400 text-white"
-          disabled={skill === ""}
-          onClick={() => {
-            onCreatePressed({ skill });
-            setSkill("");
-          }}
+          disabled={!selectedSkillName}
+          onClick={handleCreateSkill}
         >
           <FontAwesomeIcon icon={faPlus} />
         </button>
@@ -60,11 +54,13 @@ const NewSkillForm = ({ skills = [], onCreatePressed }) => {
 };
 
 const mapStateToProps = (state) => ({
-  skills: state.skills,
+  availableSkills: state.skills.availableSkills,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onCreatePressed: (skill) => dispatch(createSkill(skill)),
-});
+  onSelectSkill: (skill) => {
+    console.log("onSelectSkill called with skill:", skill); // Add this line
+    dispatch(selectSkill(skill));
+  },});
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewSkillForm);
