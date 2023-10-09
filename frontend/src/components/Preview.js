@@ -399,10 +399,10 @@ if (isProjectEnabled) {
           </html>
 `;
   return (
-    <div className="Preview w-full">
+    <div className="Preview h-screen w-full">
       <br />
       <iframe
-        className="w-full h-96 border rounded-md"
+        className="w-full h-[85vh] border rounded-md"
         src={`data:text/html,${encodeURIComponent(finalHTML)}`}
         frameborder="0"
         title="Preview"

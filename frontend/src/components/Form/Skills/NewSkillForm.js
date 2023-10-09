@@ -33,7 +33,7 @@ const NewSkillForm = ({ skills = [], onCreatePressed }) => {
       } p-3 m-2`}
     >
       <input
-        className={`form-control form-control-sm mb-2 w-24 p-1 border outline-none`}
+        className={`dark:bg-zinc-800 form-control form-control-sm mb-2 w-24 p-1 border outline-none`}
         type="text"
         placeholder="Skill"
         value={skill}

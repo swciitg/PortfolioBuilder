@@ -39,7 +39,7 @@ const NewAwardForm = ({ awards = [], onCreatePressed }) => {
       } p-3 m-2`}
     >
       <input
-        className="form-control form-control-sm mb-2 w-96 border p-1 outline-gray-200"
+        className="dark:bg-zinc-800 form-control form-control-sm mb-2 w-96 border p-1 outline-gray-200"
         type="text"
         placeholder="Award/Achievement/Certification"
         value={award}
