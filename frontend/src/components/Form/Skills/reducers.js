@@ -1,6 +1,4 @@
-
 import {REMOVE_SKILL,SELECT_SKILL} from "./actions";
-import { CREATE_SKILL, EDIT_SKILL, REMOVE_SKILL } from "./actions";
 
 
 let availableSkills = [
@@ -172,7 +170,6 @@ let availableSkills = [
 ];
 
 
-
 const initialState = {
   availableSkills: [...availableSkills], // Initialize with all available skills
   selectedSkills: [],
@@ -205,19 +202,6 @@ const skills = (state = initialState, action) => {
         availableSkills: updatedAvailableSkills,
         selectedSkills: updatedSelectedSkills,
       };
-      case EDIT_SKILL: {
-            const { oldSkill, newSkill } = payload;
-            const index = state.findIndex(obj => obj.skill === oldSkill);
-            
-            if (index !== -1) {
-              const newState = [...state];
-              newState[index] = { skill: {skill: newSkill} };
-              return newState;
-            }
-            return state;
-        }
-        default: 
-            return state;
     }
     
       case REMOVE_SKILL: {
