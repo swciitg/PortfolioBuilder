@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { editSkill, removeSkill } from './actions';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import SkillCard from './SkillCard';
 
 const SkillsList = ({ skills = {}, onRemovePressed }) => {
   const selectedSkills = skills.selectedSkills;
@@ -35,10 +34,7 @@ const mapDispatchToProps = (dispatch) => ({
       closeOnClick: true,
     });
     dispatch(removeSkill(skill))
-  },
-    onEditPressed: (oldSkill, newSkill) => {
-        dispatch(editSkill(oldSkill, newSkill))
-    }
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SkillsList);
