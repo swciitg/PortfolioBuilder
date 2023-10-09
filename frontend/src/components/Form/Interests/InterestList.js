@@ -2,16 +2,17 @@ import React from 'react';
 import NewInterestForm from './NewInterestForm';
 import Interest from './Interest';
 import { connect } from 'react-redux';
-import { removeInterest } from './actions';
+import { editInterest, removeInterest } from './actions';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import InterestCard from './InterestCard';
 
-const InterestList = ({ interests = [], onRemovePressed }) => {
+const InterestList = ({ interests = [], onRemovePressed, onEditPressed }) => {
     return(
     <div>
         <NewInterestForm />
         <div className="container mb-3">
-            {interests.map(interest => <Interest interest={interest.interest} onRemovePressed={onRemovePressed}/>)}
+            {interests.map(interest => <InterestCard interest={interest.interest} onRemovePressed={onRemovePressed} onEditPressed={onEditPressed}/>)}
         </div>
     </div>
     )
@@ -28,6 +29,7 @@ const mapDispatchToProps = dispatch => ({
             autoClose: 2000,
             closeOnClick:true
             });},
+    onEditPressed: (oldInterest, newInterest) => dispatch(editInterest(oldInterest, newInterest)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(InterestList);
