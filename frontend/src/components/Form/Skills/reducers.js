@@ -3,7 +3,6 @@ import {REMOVE_SKILL,SELECT_SKILL} from "./actions";
 import { CREATE_SKILL, EDIT_SKILL, REMOVE_SKILL } from "./actions";
 
 
-
 let availableSkills = [
   {
     name: "Problem-solving",
@@ -78,37 +77,37 @@ let availableSkills = [
   {
     name: "Circuit Design",
     image: "circuit_design.png",
-    url: ""
+    url: "https://tse2.mm.bing.net/th?id=OIP.wELNzsx1bdnj4FFdsi6jNwHaHa&pid=Api&P=0&h=180"
   },
   {
     name: "Digital Electronics",
     image: "digital_electronics.png",
-    url: ""
+    url: "https://tse1.mm.bing.net/th?id=OIP._mQ3zTz4oGVLkDr77LjtIQHaH0&pid=Api&P=0&h=180"
   },
   {
     name: "Analog Electronics",
     image: "analog_electronics.png",
-    url: ""
+    url: "https://tse1.mm.bing.net/th?id=OIP.zmw-2uJuuTY2CgniS0j-3gAAAA&pid=Api&P=0&h=180"
   },
   {
     name: "Power Systems",
     image: "power_systems.png",
-    url: ""
+    url: "https://tse2.mm.bing.net/th?id=OIP.e1axzqUqBxCrKLjkf5AsCwHaEK&pid=Api&P=0&h=180"
   },
   {
     name: "Control Systems",
     image: "control_systems.png",
-    url: ""
+    url: "https://tse2.mm.bing.net/th?id=OIP.da_heMo1H82HFUUPMpeuYAHaE8&pid=Api&P=0&h=180"
   },
   {
     name: "Signal Processing",
     image: "signal_processing.png",
-    url: ""
+    url: "Signal Processing"
   },
   {
     name: "Microcontrollers",
     image: "microcontrollers.png",
-    url: ""
+    url: "https://tse2.mm.bing.net/th?id=OIP.N-8xCu15dGtDYMb1QxbbzAAAAA&pid=Api&P=0&h=180"
   },
   {
     name: "PCB Design",
@@ -126,19 +125,14 @@ let availableSkills = [
     url: ""
   },
   {
-    name: "CAD (Computer-Aided Design)",
-    image: "cad.png",
-    url: ""
-  },
-  {
-    name: "SolidWorks",
-    image: "solidworks.png",
-    url: ""
+    name: "Matlab",
+    image: "Matlab.png",
+    url: "https://tse3.mm.bing.net/th?id=OIP.9Gf9zF05WEFts71W9SZyNwHaEL&pid=Api&P=0&h=180"
   },
   {
     name: "AutoCAD",
     image: "autocad.png",
-    url: ""
+    url: "https://tse4.mm.bing.net/th?id=OIP.pEnN4yBbyQ4zVxpUl26owwHaEK&pid=Api&P=0&h=180"
   },
   {
     name: "Finite Element Analysis (FEA)",
@@ -171,11 +165,12 @@ let availableSkills = [
     url: ""
   },
   {
-    name: "Mechanical Simulation",
-    image: "mechanical_simulation.png",
-    url: ""
+    name: "Figma",
+    image: "Figma.png",
+    url: "https://tse4.mm.bing.net/th?id=OIP.DLc5RcpBx1Bdg10uCpuqkgHaFj&pid=Api&P=0&h=180"
   },
 ];
+
 
 
 const initialState = {
