@@ -161,11 +161,11 @@ const PortfolioCard = () => {
   };
 
   return (
-    <div className="App w-full overflow-y-scroll  dark:bg-black dark:text-white">
+    <div className="App w-full  dark:bg-black dark:text-white">
       <Header
         className={` bg-${initialState.Dark ? "white border-b-2" : "black"
           } text-${initialState.Dark ? "black" : "white"
-          } flex justify-center h-12 items-center mb-8`}
+          } flex justify-center h-12 fixed top-0 w-full items-center mb-8`}
       >
         <h1 className="text-2xl text-center inline mx-6 my-0">
           Portfolio Generator
@@ -181,12 +181,15 @@ const PortfolioCard = () => {
           ></i>
         </button>
       </Header>
-      <Link
-        className="pl-4 text-xl font-medium text-blue-500 cursor-pointer"
-        to={"/"}
-      >
-        Home
-      </Link>
+      <div className="pt-16">
+        <Link
+          className="pl-4 text-xl font-medium text-blue-500 cursor-pointer"
+          to={"/"}
+        >
+          Home
+        </Link>
+      </div>
+      
       <div className="w-full pl-12 my-1">
         <div className="flex flex-row">
           <div className="p-3 w-1/2">
@@ -217,7 +220,7 @@ const PortfolioCard = () => {
             >
               <button
                 className={`btn btn-${initialState.Dark ? "success" : "primary"
-                  } bg-green-700 text-white mx-2 p-3`}
+                  } hover:bg-green-700 bg-green-500 text-white rounded inline-flex items-center mt-2 mx-2 p-3`}
                 onClick={() => {
                   download();
                 }}
@@ -226,7 +229,9 @@ const PortfolioCard = () => {
                 disabled={initialState.PreviewMode}
                 title="Go to the Code View to download."
               >
-                Download
+                 <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+
+                <span>Download</span>
               </button>
               <ToastContainer
                 position="top-right"
@@ -242,7 +247,7 @@ const PortfolioCard = () => {
               />
             </a>
           </div>
-          <div className="p-3 w-1/2">
+          <div className="fixed top-12 right-0 h-screen p-3 w-1/2">
             <ul className="flex">
               <li className="mr-2">
                 <span
