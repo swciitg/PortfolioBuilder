@@ -17,7 +17,14 @@ const interests = (state=[], action) =>{
         }
         case EDIT_INTEREST: {
             const {oldInterest, newInterest} = payload;
+            const index = state.findIndex(obj => obj.interest === oldInterest);
             
+            if (index !== -1) {
+              const newState = [...state];
+              newState[index] = { interest: {interest: newInterest} };
+              return newState;
+            }
+            return state;
         }
         default: 
             return state;
