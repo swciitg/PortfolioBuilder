@@ -1,12 +1,5 @@
 import { connect } from "react-redux";
 import Form from "./Form";
-import React, { useEffect } from "react";
-import NavbarToggle from "./NavbarToggle";
-import NavbarDesign1 from "./NavbarDesign1";
-import NavbarDesign2 from "./NavbarDesign2";
-import NavbarDesign3 from "./NavbarDesign3";
-import { useState } from "react";
-
 
 const Preview = ({
   FullName,
@@ -40,14 +33,6 @@ const Preview = ({
   isAwardsEnabled,
   isProjectEnabled
 }) => {
-  const [navbarDesign, setNavbarDesign] = useState('NavbarDesign1');
-
-  const handleDesignChange = (design) => {
-    console.log(design);
-    setNavbarDesign(design);
-  };
- 
-
   const Meta = {
     Facebook: ["facebook-f", "https://fb.me/"],
     WhatsApp: ["whatsapp", "https://wa.me/"],
@@ -56,10 +41,9 @@ const Preview = ({
     LinkedIn: ["linkedin-in", "https://linkedin.com/in/"],
     GitHub: ["github", "https://github.com/"],
     StackOverflow: ["stack-overflow", "https://stackoverflow.com/u/"],
-    
   };
-  const navbar1=
-`<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+
+  const navbar = `<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
                 <a class="navbar-brand js-scroll-trigger" href="#page-top">
                   <span class="d-block d-lg-none">${FullName}</span>
                   <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="${Thubmnail}" alt="${FullName}" /></span>
@@ -76,127 +60,7 @@ const Preview = ({
                   ${isProjectEnabled ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects">${projectsTitle}</a></li>` : ''}                  
                   </ul>
                 </div>
-              </nav>`
-  
-const navbar2=
-`<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="sideNav">
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-</button>
-<div class="collapse navbar-collapse" id="navbarResponsive">
-  <ul class="navbar-nav">
-    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-    ${isExperienceEnabled ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">${experienceTitle}</a></li>` : ''}
-    ${isEducationEnabled ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">${educationTitle}</a></li>` : ''}
-    ${isSkillEnabled ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">${skillsTitle}</a></li>`: ''}
-    ${isInterestEnabled ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">${interestsTitle}</a></li>` : ''}
-    ${isAwardsEnabled ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">${awardsTitle}</a></li>` : ''} 
-    ${isProjectEnabled ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects">${projectsTitle}</a></li>` : ''}                  
-  </ul>
-</div>
-</nav>
-`
-
-const navbar3=
-`<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-<a class="navbar-brand js-scroll-trigger" href="#page-top">
-  <span class="d-block d-lg-none">${FullName}</span>
-  <span class="d-none d-lg-block">
-    <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="${Thubmnail}" alt="${FullName}" />
-  </span>
-</a>
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-</button>
-<div class="collapse navbar-collapse" id="navbarResponsive">
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link js-scroll-trigger" href="#about">
-        <i class="fas fa-user"></i> About
-      </a>
-    </li>
-    ${isExperienceEnabled ? `
-      <li class="nav-item">
-        <a class="nav-link js-scroll-trigger" href="#experience">
-          <i class="fas fa-briefcase"></i> ${experienceTitle}
-        </a>
-      </li>
-    ` : ''}
-    ${isEducationEnabled ? `
-      <li class="nav-item">
-        <a class="nav-link js-scroll-trigger" href="#education">
-          <i class="fas fa-graduation-cap"></i> ${educationTitle}
-        </a>
-      </li>
-    ` : ''}
-    ${isSkillEnabled ? `
-      <li class="nav-item">
-        <a class="nav-link js-scroll-trigger" href="#skills">
-          <i class="fas fa-cogs"></i> ${skillsTitle}
-        </a>
-      </li>
-    ` : ''}
-    ${isInterestEnabled ? `
-      <li class="nav-item">
-        <a class="nav-link js-scroll-trigger" href="#interests">
-          <i class="fas fa-heart"></i> ${interestsTitle}
-        </a>
-      </li>
-    ` : ''}
-    ${isAwardsEnabled ? `
-      <li class="nav-item">
-        <a class="nav-link js-scroll-trigger" href="#awards">
-          <i class="fas fa-award"></i> ${awardsTitle}
-        </a>
-      </li>
-    ` : ''}
-    ${isProjectEnabled ? `
-      <li class="nav-item">
-        <a class="nav-link js-scroll-trigger" href="#projects">
-        <i class="fas fa-laptop-code"></i> ${projectsTitle}
-        </a>
-      </li>
-    ` : ''}
-  </ul>
-</div>
-</nav>
-`
-
-const navbar4=
-`<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="sideNav">
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-</button>
-<div class="collapse navbar-collapse" id="navbarResponsive">
-  <ul class="navbar-nav">
-    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-    ${isExperienceEnabled ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience"><i class="fas fa-briefcase"></i> ${experienceTitle}</a></li>` : ''}
-    ${isEducationEnabled ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education"><i class="fas fa-graduation-cap"></i> ${educationTitle}</a></li>` : ''}
-    ${isSkillEnabled ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills"><i class="fas fa-cogs"></i> ${skillsTitle}</a></li>`: ''}
-    ${isInterestEnabled ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests"><i class="fas fa-heart"></i> ${interestsTitle}</a></li>` : ''}
-    ${isAwardsEnabled ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards"><i class="fas fa-award"></i> ${awardsTitle}</a></li>` : ''} 
-    ${isProjectEnabled ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects"><i class="fas fa-laptop-code"></i> ${projectsTitle}</a></li>` : ''}                  
-  </ul>
-</div>
-</nav>`
-
-let navbar;
-
-if(navbarDesign==="NavbarDesign1"){
-  navbar=navbar1
-}
-else if(navbarDesign==="NavbarDesign2")
-{
-  navbar=navbar2
-}
-else if(navbarDesign==="NavbarDesign3")
-{
-  navbar=navbar3;
-}
-else if(navbarDesign==="NavbarDesign4")
-{
-  navbar=navbar4;
-}
+              </nav>`;
   let experienceSection;
 
   if (isExperienceEnabled) {
@@ -338,6 +202,7 @@ else if(navbarDesign==="NavbarDesign4")
     skillsSection = '';
   }
   
+  
   let interestSection;
 
   if (isInterestEnabled) {
@@ -471,6 +336,10 @@ if (isProjectEnabled) {
 }
 
   
+
+
+
+
   const finalHTML = `<!DOCTYPE html>
           <html lang="en">
             <head>
@@ -512,7 +381,7 @@ if (isProjectEnabled) {
             </head>
             <body id="page-top">
               <!-- Navigation-->
-              ${navbar}
+           ${navbar}
               <!-- Page Content-->
               <div class="container-fluid p-0">
                 <!-- About-->
@@ -572,13 +441,6 @@ if (isProjectEnabled) {
   return (
     <div className="Preview h-screen w-full">
       <br />
-      <div className="d-flex justify-content-center mt-4">
-      <button className="btn  me-2" onClick={() => handleDesignChange('NavbarDesign1')}>Navbar 1</button>
-      <button className="btn btn-secondary me-2" onClick={() => handleDesignChange('NavbarDesign2')}>Navbar 2</button>
-      <button className="btn btn-success me-2" onClick={() => handleDesignChange('NavbarDesign3')}>Navbar 3</button>
-      <button className="btn btn-danger" onClick={() => handleDesignChange('NavbarDesign4')}>Navbar 4</button>
-    </div>
-     
       <iframe
         className="w-full h-[85vh] border rounded-md"
         src={`data:text/html,${encodeURIComponent(finalHTML)}`}
