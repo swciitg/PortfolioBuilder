@@ -6,9 +6,12 @@ export const removeSkill = skill => ({
     payload: {skill}
 });
 
+
 export const SELECT_SKILL='SELECT_SKILL'
 
 export const selectSkill = (skill) => ({
     type: SELECT_SKILL,
     payload: { skill },
   });
+
+

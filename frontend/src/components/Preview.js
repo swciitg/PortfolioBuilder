@@ -1,8 +1,6 @@
 import { connect } from "react-redux";
 import Form from "./Form";
-import React, { useEffect } from "react";
-import { useState } from "react"
-import HomePage from "./home";
+import React from "react";
 
 
 const Preview = ({
@@ -38,9 +36,6 @@ const Preview = ({
   isProjectEnabled,
   Navbar
 }) => {
- 
- 
-
   const Meta = {
     Facebook: ["facebook-f", "https://fb.me/"],
     WhatsApp: ["whatsapp", "https://wa.me/"],
@@ -49,10 +44,7 @@ const Preview = ({
     LinkedIn: ["linkedin-in", "https://linkedin.com/in/"],
     GitHub: ["github", "https://github.com/"],
     StackOverflow: ["stack-overflow", "https://stackoverflow.com/u/"],
-    
   };
-  
-  
 
   let experienceSection;
 
@@ -195,6 +187,7 @@ const Preview = ({
     skillsSection = '';
   }
   
+  
   let interestSection;
 
   if (isInterestEnabled) {
@@ -328,6 +321,10 @@ if (isProjectEnabled) {
 }
 
   
+
+
+
+
   const finalHTML = `<!DOCTYPE html>
           <html lang="en">
             <head>
@@ -427,12 +424,10 @@ if (isProjectEnabled) {
           </html>
 `;
   return (
-    <div className="Preview w-full">
+    <div className="Preview h-screen w-full">
       <br />
-      
-      
       <iframe
-        className="w-full h-96 border rounded-md"
+        className="w-full h-[85vh] border rounded-md"
         src={`data:text/html,${encodeURIComponent(finalHTML)}`}
         frameborder="0"
         title="Preview"

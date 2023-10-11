@@ -11,3 +11,10 @@ export const removeInterest = interest => ({
     type: REMOVE_INTEREST,
     payload: {interest}
 });
+
+export const EDIT_INTEREST = 'EDIT_INTEREST';
+
+export const editInterest = (oldInterest, newInterest) => ({
+    type: EDIT_INTEREST,
+    payload: {oldInterest, newInterest}
+});

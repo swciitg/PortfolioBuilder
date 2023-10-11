@@ -2,7 +2,7 @@ import React from 'react';
 import NewSkillForm from './NewSkillForm';
 import Skill from './Skill';
 import { connect } from 'react-redux';
-import { removeSkill } from './actions';
+import { editSkill, removeSkill } from './actions';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -34,7 +34,7 @@ const mapDispatchToProps = (dispatch) => ({
       closeOnClick: true,
     });
     dispatch(removeSkill(skill))
-  },
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SkillsList);
