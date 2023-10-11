@@ -42,6 +42,8 @@ const PortfolioCard = () => {
     
   };
   const [initialState, setInitialState] = useState(data);
+  // state for preview
+  const [currentView,setCurrentView]=useState("fullscreen"); 
   const toggleHeader = () => {
     setInitialState((prevState) => {
       return {
@@ -288,6 +290,65 @@ const PortfolioCard = () => {
                 </span>
               </li>
             </ul>
+            {initialState.PreviewMode?
+            (  <div className="mt-4 ml-1">
+               <ul className="flex space-x-4">
+                {/* Mobile View */}
+              <li>
+                <button
+                  className={`flex items-center p-2 ${currentView=='mobile' ? "bg-blue-500" :"bg-white"} border border-blue-500 rounded-lg hover:bg-blue-500 hover:text-white`}
+                  onClick={()=>{
+                    setCurrentView('mobile');
+                    setInitialState((prevState) => {
+                      return {
+                        ...prevState,
+                        PreviewMode: false,
+                      };
+                    });
+                    setInitialState((prevState) => {
+                      return {
+                        ...prevState,
+                        PreviewMode: true,
+                      };
+                    });
+                  }}
+                >
+                  <i className="fas fa-mobile-alt mr-2"></i>
+                  Mobile
+                </button>
+              </li>
+      
+              {/* Tablet View */}
+              <li>
+                <button
+                  className={`flex items-center p-2 ${currentView=='tablet' ? "bg-blue-500" :"bg-white"} border border-blue-500 rounded-lg hover:bg-blue-500 hover:text-white`}
+                  onClick={()=>{
+                    setCurrentView('tablet');
+                  }}
+                >
+                  <i className="fas fa-tablet-alt mr-2"></i>
+                  Tablet
+                </button>
+              </li>
+      
+              {/* Full Screen View */}
+              <li>
+                <button
+                  className={`flex items-center p-2 ${currentView=='fullscreen' ? "bg-blue-500" :"bg-white"} border border-blue-500 rounded-lg hover:bg-blue-500 hover:text-white`}
+                  onClick={()=>{
+                    setCurrentView('fullscreen');
+                  }}
+                >
+                  <i className="fas fa-desktop mr-2"></i>
+                  Full Screen
+                </button>
+              </li>
+            </ul>
+          </div>
+      ):
+          (null) 
+          }
+            
             {initialState.PreviewMode ? (
               <Preview
                 {...initialState.FormData}
@@ -298,6 +359,7 @@ const PortfolioCard = () => {
                 isAwardsEnabled={isAwardsEnabled}
                 isInterestEnabled={isInterestEnabled}
                 isProjectEnabled={isProjectEnabled}
+                currentView={currentView}
               />
             ) : (
               <Code

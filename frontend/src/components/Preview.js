@@ -31,7 +31,8 @@ const Preview = ({
   isSkillEnabled,
   isInterestEnabled,
   isAwardsEnabled,
-  isProjectEnabled
+  isProjectEnabled,
+  currentView
 }) => {
   const Meta = {
     Facebook: ["facebook-f", "https://fb.me/"],
@@ -438,14 +439,31 @@ if (isProjectEnabled) {
             </body>
           </html>
 `;
+
+  //height and width for the iframe tab corresponding to the type of view
+  let height, width;
+  if (currentView == 'fullscreen') {
+    width = "100%";
+    height = "100%";
+  }
+  else if (currentView == 'mobile') {
+    width = "390px";
+    height = "550px"
+  }
+  else {
+    width = "700px";
+    height = "1000px"
+  }
   return (
-    <div className="Preview h-screen w-full">
+    <div className="Preview h-screen w-full flex justify-center mt-1">
       <br />
       <iframe
-        className="w-full h-[85vh] border rounded-md"
+        className="border rounded-md"
         src={`data:text/html,${encodeURIComponent(finalHTML)}`}
         frameborder="0"
         title="Preview"
+        height={height}
+        width={width}
       ></iframe>
     </div>
   );
