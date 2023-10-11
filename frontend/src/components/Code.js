@@ -30,7 +30,8 @@ const Code = ({
   isSkillEnabled,
   isInterestEnabled,
   isAwardsEnabled,
-  isProjectEnabled
+  isProjectEnabled,
+  Navbar
   
 }) => {
   const Meta = {
@@ -42,25 +43,6 @@ const Code = ({
     GitHub: ["github", "https://github.com/"],
     StackOverflow: ["stack-overflow", "https://stackoverflow.com/u/"],
   };
-  const navbar = `<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-                <a class="navbar-brand js-scroll-trigger" href="#page-top">
-                  <span class="d-block d-lg-none">${FullName}</span>
-                  <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="${Thubmnail}" alt="${FullName}" /></span>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                  <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-                    ${isExperienceEnabled ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">${experienceTitle}</a></li>` : ''}
-                    ${isEducationEnabled ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">${educationTitle}</a></li>` : ''}
-                    ${isSkillEnabled ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">${skillsTitle}</a></li>`: ''}
-                    ${isInterestEnabled ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">${interestsTitle}</a></li>` : ''}
-                    ${isAwardsEnabled ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">${awardsTitle}</a></li>` : ''} 
-                    ${isProjectEnabled? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects">${projectsTitle}</a></li>` : ''} 
-
-                  </ul>
-                </div>
-              </nav>`;
   let experienceSection;
 
   if (isExperienceEnabled) {
@@ -384,7 +366,7 @@ if (isProjectEnabled) {
               </head>
               <body id="page-top">
                 <!-- Navigation-->
-           ${navbar}
+           ${Navbar}
                 <!-- Page Content-->
                 <div class="container-fluid p-0">
                   <!-- About-->
