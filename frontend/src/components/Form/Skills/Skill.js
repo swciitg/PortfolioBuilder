@@ -4,9 +4,9 @@ import { faMinus } from "@fortawesome/free-solid-svg-icons";
 
 const Skill = ({ skill, onRemovePressed }) => {
   return (
-    <div className=" d-inline-block mr-4 mb-4">
+    <div className=" d-inline-block mr-4 mb-4 ">
       <div
-        className="skill-item text-center p-3"
+        className="skill-item text-center p-3 "
         style={{
           backgroundColor: "#ffffff",
           border: "1px solid #ddd",
@@ -18,13 +18,13 @@ const Skill = ({ skill, onRemovePressed }) => {
       >
         {skill.image && (
           <div>
-            <img
-              src={skill.url}
-              alt={skill.name}
-              style={{ width: "50px", height: "50px",marginBottom: "10px"}}
-            />
             <span
-              style={{ fontSize: "14px", fontWeight: "bold", textAlign: "center",color: "#333" }}
+              style={{
+                fontSize: "14px",
+                fontWeight: "bold",
+                textAlign: "center",
+                color: "#333",
+              }}
             >
               {skill.name}
             </span>
@@ -35,7 +35,7 @@ const Skill = ({ skill, onRemovePressed }) => {
         className="btn btn-danger btn-sm"
         onClick={() => onRemovePressed(skill)}
       >
-        <FontAwesomeIcon icon={faMinus} />
+        <i class="fa fa-times" aria-hidden="true"></i>
       </button>
     </div>
   );

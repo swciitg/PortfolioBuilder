@@ -22,8 +22,7 @@ const HomePage = () => {
                 <div className='swc-img'> <img src={img5}></img></div>
                  <div className="heading">
             <p>Student web commitee - IIT Guwahati</p>
-                 </div>
-                
+                 </div>     
             </div>
             <div className='bottom-part'>
                 <div className="landing_page" >
@@ -33,7 +32,6 @@ const HomePage = () => {
                 {/* <button id='btn-login' className='btn-primary'><img src={img6} /><p>Click Me</p>  </button> */}
                 <button className="button-home" onClick={clickHandler}>
                 <img className='img-btn' src={img6} />Login With Microsoft</button>
-                 
             </div>
         </div>
         <div className="anot">

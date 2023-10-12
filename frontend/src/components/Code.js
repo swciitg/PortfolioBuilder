@@ -30,8 +30,7 @@ const Code = ({
   isSkillEnabled,
   isInterestEnabled,
   isAwardsEnabled,
-  isProjectEnabled
-  
+  isProjectEnabled,
 }) => {
   const Meta = {
     Facebook: ["facebook-f", "https://fb.me/"],
@@ -51,12 +50,36 @@ const Code = ({
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                   <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-                    ${isExperienceEnabled ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">${experienceTitle}</a></li>` : ''}
-                    ${isEducationEnabled ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">${educationTitle}</a></li>` : ''}
-                    ${isSkillEnabled ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">${skillsTitle}</a></li>`: ''}
-                    ${isInterestEnabled ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">${interestsTitle}</a></li>` : ''}
-                    ${isAwardsEnabled ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">${awardsTitle}</a></li>` : ''} 
-                    ${isProjectEnabled? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects">${projectsTitle}</a></li>` : ''} 
+                    ${
+                      isExperienceEnabled
+                        ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">${experienceTitle}</a></li>`
+                        : ""
+                    }
+                    ${
+                      isEducationEnabled
+                        ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">${educationTitle}</a></li>`
+                        : ""
+                    }
+                    ${
+                      isSkillEnabled
+                        ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">${skillsTitle}</a></li>`
+                        : ""
+                    }
+                    ${
+                      isInterestEnabled
+                        ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">${interestsTitle}</a></li>`
+                        : ""
+                    }
+                    ${
+                      isAwardsEnabled
+                        ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">${awardsTitle}</a></li>`
+                        : ""
+                    } 
+                    ${
+                      isProjectEnabled
+                        ? `<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects">${projectsTitle}</a></li>`
+                        : ""
+                    } 
 
                   </ul>
                 </div>
@@ -147,25 +170,31 @@ const Code = ({
     skillsSection = `
       <section class="resume-section" id="skills">
         <div class="resume-section-content">
-          <h2 class="mb-5">${skillsTitle}</h2>
+          <h2 class="mb-5 ">${skillsTitle}</h2>
           <div class="subheading mb-3">Programming Languages & Tools</div>
           <ul class="skills-list d-flex flex-wrap p-0">
             ${skills
-              .map((skill) => `
+              .map(
+                (skill) => `
                 <li class="mr-4 mb-4">
                   <div class="skill-item text-center p-3">
-                    ${skill.image ? `<img src="${skill.url}" class="skill-image" />` : ''}
+                    ${
+                      skill.image
+                        ? `<img src="${skill.url}" class="skill-image" />`
+                        : ""
+                    }
                     <span class="skill-name">${skill.name}</span>
                   </div>
                 </li>
-              `)
-              .join('')}
+              `
+              )
+              .join("")}
           </ul>
         </div>
       </section>
       <hr class="m-0" />
     `;
-  
+
     // Add CSS for styling
     const customStyles = `
       <style>
@@ -200,13 +229,13 @@ const Code = ({
         }
       </style>
     `;
-  
+
     // Add the custom styles to the HTML
     skillsSection += customStyles;
   } else {
-    skillsSection = '';
+    skillsSection = "";
   }
-  
+
   let interestSection;
 
   if (isInterestEnabled) {
@@ -258,87 +287,122 @@ const Code = ({
 
   let projectSection;
 
-if (isProjectEnabled) {
-  projectSection = `
+  if (isProjectEnabled) {
+    projectSection = `
     <!-- Projects-->
     <section class="resume-section" id="projects">
       <div class="resume-section-content">
         <h2 class="mb-5">${projectsTitle}</h2>
-        ${projects.map(
-          (project) => `
+        ${projects
+          .map(
+            (project) => `
         <div class="d-flex flex-column flex-md-row justify-content-between">
           <div class="flex-grow-1">
             <h3 class="mb-0">${project.project.name}</h3>
             <div class="subheading mb-3">${project.project.techStack}</div>
             <p>${project.project.description}</p>
             <!-- Professor's Name -->
-            ${project.project.guidedByProfessor ? `
+            ${
+              project.project.guidedByProfessor
+                ? `
               <div class="mb-3">
                 <strong>Guided by Professor: </strong>
-                ${project.project.guidedByProfessor ? 'Yes' : 'No'}
+                ${project.project.guidedByProfessor ? "Yes" : "No"}
               </div>
-            ` : ''}
+            `
+                : ""
+            }
             <!-- Professor's Name -->
-            ${project.project.guidedByProfessor && project.project.professorName ? `
+            ${
+              project.project.guidedByProfessor && project.project.professorName
+                ? `
               <div class="mb-3">
                 <strong>Professor's Name: </strong>
                 ${project.project.professorName}
               </div>
-            ` : ''}
+            `
+                : ""
+            }
             <!-- Club Project -->
-            ${project.project.isClubProject ? `
+            ${
+              project.project.isClubProject
+                ? `
               <div class="mb-3">
                 <strong>Club Project: </strong>
                 Yes
               </div>
-            ` : ''}
+            `
+                : ""
+            }
             <!-- Club Name -->
-            ${project.project.isClubProject && project.project.clubName ? `
+            ${
+              project.project.isClubProject && project.project.clubName
+                ? `
               <div class="mb-3">
                 <strong>Club Name: </strong>
                 ${project.project.clubName}
               </div>
-            ` : ''}
+            `
+                : ""
+            }
             <!-- Self-Project -->
-            ${project.project.isSelfProject ? `
+            ${
+              project.project.isSelfProject
+                ? `
               <div class="mb-3">
                 <strong>Self-Project: </strong>
                 Yes
               </div>
-            ` : ''}
+            `
+                : ""
+            }
             <!-- Website Link -->
-            ${project.project.websiteLink ? `
+            ${
+              project.project.websiteLink
+                ? `
               <div class="mb-3">
                 <strong>Website Link: </strong>
                 <a href="${project.project.websiteLink}" target="_blank">${project.project.websiteLink}</a>
               </div>
-            ` : ''}
+            `
+                : ""
+            }
             <!-- GitHub Link -->
-            ${project.project.githubLink ? `
+            ${
+              project.project.githubLink
+                ? `
               <div class="mb-3">
                 <strong>GitHub Link: </strong>
                 <a href="${project.project.githubLink}" target="_blank">${project.project.githubLink}</a>
               </div>
-            ` : ''}
+            `
+                : ""
+            }
             <!-- Image -->
-            ${project.project.image ? `
+            ${
+              project.project.image
+                ? `
               <div class="mb-3">
                 <img src="${project.project.image}" alt="${project.project.name}" class="img-fluid">
               </div>
-            ` : ''}
+            `
+                : ""
+            }
           </div>
-          <div class="flex-shrink-0"><span class="text-primary">${project.project.timeline}</span></div>
+          <div class="flex-shrink-0"><span class="text-primary">${
+            project.project.timeline
+          }</span></div>
         </div>
         `
-        ).join("\n")}
+          )
+          .join("\n")}
       </div>
     </section>
     <hr class="m-0" />
   `;
-} else {
-  projectSection = "";
-}
-
+  } else {
+    projectSection = "";
+  }
 
   return (
     <div className="Code dark:text-gray-100">
@@ -459,7 +523,7 @@ const mapStateToProps = (state) => ({
   educationTitle: state.title.educationTitle,
   projectsTitle: state.title.projectsTitle,
 
-  projects: state.projects.map((projectObj) => projectObj.project)
+  projects: state.projects.map((projectObj) => projectObj.project),
 });
 
 export default connect(mapStateToProps)(Code);

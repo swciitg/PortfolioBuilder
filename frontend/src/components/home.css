@@ -81,6 +81,7 @@
     padding-top: 2.5vh;
     padding-left: 5vw;
     gap: 0.85vw;
+    box-shadow: 18px 18px 40px grey;
   }
  
 .header
@@ -141,8 +142,9 @@
 
 .img-btn
 {
-    width: 2.2vw;
-    height: 2.4vh;
+    margin-top: 4px;
+    width: 2.5vw;
+    height: 2.7vh;
     
 }
 @media screen and (max-width: 1030px) {
