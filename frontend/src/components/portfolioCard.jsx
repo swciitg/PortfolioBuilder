@@ -271,8 +271,7 @@ const handleDesignChange = (design) => {
   }
 
   return (
-
-    <div className="App w-full  dark:bg-black dark:text-white">
+      <div className="App w-full  dark:bg-black dark:text-white">
       <Header
         className={` bg-${initialState.Dark ? "white border-b-2" : "black"
           } text-${initialState.Dark ? "black" : "white"
@@ -292,12 +291,14 @@ const handleDesignChange = (design) => {
           ></i>
         </button>
       </Header>
-      <Link
-        className="pl-4 text-xl font-medium text-blue-500 cursor-pointer"
-        to={"/"}
-      >
-        Home
-      </Link>
+      <div className="pt-16">
+        <Link
+          className="pl-4 text-xl font-medium text-blue-500 cursor-pointer"
+          to={"/"}
+        >
+          Home
+        </Link>
+        </div>
       <div className="d-flex justify-content-center mt-4">
         <button className="btn me-2" onClick={() => handleDesignChange('NavbarDesign1')}>
           Navbar 1
