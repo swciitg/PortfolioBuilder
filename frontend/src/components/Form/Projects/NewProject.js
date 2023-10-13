@@ -51,62 +51,66 @@ const NewProjectForm = ({ onCreatePressed }) => {
   };
 
   return (
-    <div className="border rounded p-3 m-2">
-      <input
-        type="text"
-        className="form-control mb-2"
-        name="name"
-        placeholder="Project Name"
-        value={projectData.name}
-        onChange={handleChange}
-      />
-      <textarea
-        className="form-control mb-2"
-        name="description"
-        placeholder="Project Description"
-        value={projectData.description}
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        className="form-control mb-2"
-        name="image"
-        placeholder="Project Image URL"
-        value={projectData.image}
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        className="form-control mb-2"
-        name="techStack"
-        placeholder="Tech Stack"
-        value={projectData.techStack}
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        className="form-control mb-2"
-        name="websiteLink"
-        placeholder="Website Link"
-        value={projectData.websiteLink}
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        className="form-control mb-2"
-        name="githubLink"
-        placeholder="GitHub Link"
-        value={projectData.githubLink}
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        className="form-control mb-2"
-        name="timeline"
-        placeholder="Project Timeline"
-        value={projectData.timeline}
-        onChange={handleChange}
-      />
+    <div className="border rounded p-3 m-2 ">
+      <div className="p-1">
+        <input
+          type="text"
+          className="dark:bg-zinc-800 form-control form-control-sm mb-2 w-60 border p-1 outline-gray-200"
+          name="name"
+          placeholder="Proect Name"
+          value={projectData.name}
+          onChange={handleChange}
+        />
+        <textarea
+          className="dark:bg-zinc-800 w-4/5 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
+          name="description"
+          placeholder="Project Description"
+          value={projectData.description}
+          onChange={handleChange}
+        />
+        <div className="gap-y-3">
+          <input
+            type="text"
+            className="dark:bg-zinc-800 form-control form-control-sm mb-2 w-60 border p-1 outline-gray-200"
+            name="image"
+            placeholder="Project Image URL"
+            value={projectData.image}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            className="dark:bg-zinc-800 form-control form-control-sm mb-2 w-60 border p-1 outline-gray-200"
+            name="techStack"
+            placeholder="Tech Stack"
+            value={projectData.techStack}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            className="dark:bg-zinc-800 form-control form-control-sm mb-2 w-60 border p-1 outline-gray-200"
+            name="websiteLink"
+            placeholder="Website Link"
+            value={projectData.websiteLink}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            className="dark:bg-zinc-800 form-control form-control-sm mb-2 w-60 border p-1 outline-gray-200"
+            name="githubLink"
+            placeholder="GitHub Link"
+            value={projectData.githubLink}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            className="dark:bg-zinc-800 form-control form-control-sm mb-2 w-60 border p-1 outline-gray-200"
+            name="timeline"
+            placeholder="Project Timeline"
+            value={projectData.timeline}
+            onChange={handleChange}
+          />
+        </div>
+      </div>
       <div className="form-check mb-2">
         <input
           type="checkbox"
@@ -118,16 +122,16 @@ const NewProjectForm = ({ onCreatePressed }) => {
         <label className="form-check-label">Guided by Professor</label>
       </div>
       {projectData.guidedByProfessor && (
-       <input
-       type="text"
-       className="form-control mb-2"
-       name="professorName"
-       placeholder="Professor's Name"
-       value={projectData.professorName}
-       onChange={handleChange}
-     />
+        <input
+          type="text"
+          className="form-control mb-2"
+          name="professorName"
+          placeholder="Professor's Name"
+          value={projectData.professorName}
+          onChange={handleChange}
+        />
       )}
-      
+
       {/* Club Project Checkbox */}
       <div className="form-check mb-2">
         <input
