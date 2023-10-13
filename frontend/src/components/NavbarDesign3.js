@@ -17,52 +17,49 @@ const NavbarDesign3 = ({
   isProjectEnabled,
 }) => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-      <div className="container">
-        <a className="navbar-brand" href="#">{FullName}</a>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse justify-content-center w-100" id="navbarNav">
-        <ul className="navbar-nav ml-auto">
-            <li className="nav-item">
-              <a className="nav-link" href="#about">About</a>
-            </li>
-            {isExperienceEnabled && (
-              <li className="nav-item">
-                <a className="nav-link" href="#experience">{experienceTitle}</a>
-              </li>
-            )}
-            {isEducationEnabled && (
-              <li className="nav-item">
-                <a className="nav-link" href="#education">{educationTitle}</a>
-              </li>
-            )}
-            {isSkillEnabled && (
-              <li className="nav-item">
-                <a className="nav-link" href="#skills">{skillsTitle}</a>
-              </li>
-            )}
-            {isInterestEnabled && (
-              <li className="nav-item">
-                <a className="nav-link" href="#interests">{interestsTitle}</a>
-              </li>
-            )}
-            {isAwardsEnabled && (
-              <li className="nav-item">
-                <a className="nav-link" href="#awards">{awardsTitle}</a>
-              </li>
-            )}
-            {isProjectEnabled && (
-              <li className="nav-item">
-                <a className="nav-link" href="#projects">{projectsTitle}</a>
-              </li>
-            )}
-          </ul>
+    <nav className="navbar navbar-light bg-light fixed-top">
+      <div className="container d-flex justify-content-between align-items-center">
+        <a className="navbar-brand" href="#">
+          {FullName}
+        </a>
+        <div className="d-flex">
+          <a className="nav-link me-3" href="#about">
+            About
+          </a>
+          {isExperienceEnabled && (
+            <a className="nav-link me-3" href="#experience">
+              {experienceTitle}
+            </a>
+          )}
+          {isEducationEnabled && (
+            <a className="nav-link me-3" href="#education">
+              {educationTitle}
+            </a>
+          )}
+          {isSkillEnabled && (
+            <a className="nav-link me-3" href="#skills">
+              {skillsTitle}
+            </a>
+          )}
+          {isInterestEnabled && (
+            <a className="nav-link me-3" href="#interests">
+              {interestsTitle}
+            </a>
+          )}
+          {isAwardsEnabled && (
+            <a className="nav-link me-3" href="#awards">
+              {awardsTitle}
+            </a>
+          )}
+          {isProjectEnabled && (
+            <a className="nav-link me-3" href="#projects">
+              {projectsTitle}
+            </a>
+          )}
         </div>
       </div>
     </nav>
   );
-}
+};
 
 export default NavbarDesign3;
