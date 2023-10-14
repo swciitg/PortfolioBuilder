@@ -44,7 +44,7 @@ const Form = ({ FormData, onChange, isExperienceEnabled, isEducationEnabled, isS
       "Type in your full address to get kidnapped!",
     ],
     Phone: [
-      "text",
+      "string",
       "Phone Number",
       "Please enter your phone number, so we can call you in the midnight!",
     ],

@@ -91,7 +91,7 @@ const PortfolioCard = ({
             ...prevState,
             FormData: {
               ...initialState.FormData,
-              [e.target.name]: e.target.value,
+              [e.target.name]: e.target.name === "Phone" ? e.target.value.replace(/\D/g, '').substring(0, 10) : e.target.value,  // to allow only numbers in phone number
             },
             PreviewMode: false,
           };
