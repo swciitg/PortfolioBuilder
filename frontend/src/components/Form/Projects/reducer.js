@@ -1,6 +1,6 @@
-import { CREATE_PROJECT, REMOVE_PROJECT } from "./action";
+import { CREATE_PROJECT, REMOVE_PROJECT,CHANGE_DESIGN } from "./action";
 
-const projects = (state = [], action) => {
+const projects = (state = { selectedDesign: "design1", items: [] }, action) => {
   const { type, payload } = action;
 
   switch (type) {
@@ -9,12 +9,26 @@ const projects = (state = [], action) => {
       const newProject = {
         project,
       };
-      return state.concat(newProject);
+      return {
+        ...state,
+        items: [...state.items, newProject],
+      };
     }
     case REMOVE_PROJECT: {
       const { project } = payload;
-      return state.filter((obj) => obj.project.project.name !== project.project.name);
+      return {
+        ...state,
+        items: state.items.filter((obj) => obj.project.project.name !== project.project.name),
+      };
     }
+    case CHANGE_DESIGN: {
+      const { projectDesign } = payload;
+      return {
+        ...state,
+        selectedDesign: projectDesign,
+      };
+    }
+
     default:
       return state;
   }

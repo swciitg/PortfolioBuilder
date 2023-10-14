@@ -281,19 +281,149 @@ const PortfolioCard = ({
   let projectSection;
 
   if (isProjectEnabled) {
-    {
-      console.log(selectedDesign);
-    }
-    projectSection = `
+    if (selectedDesign === "design1") {
+      projectSection = `
+          <!-- Projects -->
+          <section class="resume-section" id="projects">
+            <div class="container-fluid p-0">
+              <h2 class="mb-5 text-black">${projectsTitle}</h2>
+              ${projects
+                .map(
+                  (project) => `
+                <div class="project-card mb-5">
+                  <div class="project-top">
+                    <img src="${project.project.image}" alt="${
+                    project.project.name
+                  }" class="img-fluid">
+                  </div>
+                  <div class="project-bottom bg-primary">
+                    <div class="project-details">
+                      <h3 class="text-white">${project.project.name}</h3>
+                      <p class="tech-stack text-white"><strong>Technology Stack: </strong>${
+                        project.project.techStack
+                      }</p>
+                      <p class="description text-white">${
+                        project.project.description
+                      }</p>
+                      <div class="project-info">
+                        <div class="mb-3 text-white"><strong>Guided by Professor: </strong>${
+                          project.project.guidedByProfessor ? "Yes" : "No"
+                        }</div>
+                        ${
+                          project.project.professorName
+                            ? `
+                          <div class="mb-3 text-white"><strong>Professor's Name: </strong>${project.project.professorName}</div>
+                        `
+                            : ""
+                        }
+                        <div class="mb-3 text-white"><strong>Club Project: </strong>${
+                          project.project.isClubProject ? "Yes" : "No"
+                        }</div>
+                        ${
+                          project.project.clubName
+                            ? `
+                          <div class="mb-3 text-white"><strong>Club Name: </strong>${project.project.clubName}</div>
+                        `
+                            : ""
+                        }
+                        <div class="mb-3 text-white"><strong>Self-Project: </strong>${
+                          project.project.isSelfProject ? "Yes" : "No"
+                        }</div>
+                        <div class="date text-white"><strong>Date: </strong>${
+                          project.project.timeline
+                        }</div>
+                        <div class="dropdown dropup text-white">
+                          <button class="btn btn-secondary dropdown-toggle" type="button" id="projectLinks" data-bs-toggle="dropdown" data-bs-placement="top" aria-expanded="false">
+                            Links
+                          </button>
+                          <ul class="dropdown-menu" aria-labelledby="projectLinks">
+                            ${
+                              project.project.websiteLink
+                                ? `
+                              <li><a class="dropdown-item" href="${project.project.websiteLink}" target="_blank">Visit Website</a></li>
+                            `
+                                : ""
+                            }
+                            ${
+                              project.project.githubLink
+                                ? `
+                              <li><a class="dropdown-item" href="${project.project.githubLink}" target="_blank">GitHub Repository</a></li>
+                            `
+                                : ""
+                            }
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              `
+                )
+                .join("\n")}
+            </div>
+          </section>
+          <hr class="m-0" />
+        `;
+
+      const customStyles2 = `
+          <style>
+            /* Add this CSS to style the project cards */
+            .project-card {
+              border: 1px solid #ddd;
+              border-radius: 5px;
+              overflow: hidden;
+              display: flex;
+              flex-direction: column;
+            }
+      
+            .project-top img {
+              max-width: 100%;
+              max-height: 50vh;
+              object-fit: contain;
+              margin: 10px 0;
+            }
+      
+            .project-bottom {
+              background-color: #0074d9; /* Blue background */
+              color: #fff; /* White text color */
+              padding: 20px;
+              position: relative;
+            }
+      
+            .project-bottom h3 {
+              font-size: 1.8rem; /* Bigger font size for project name */
+              margin: 0 0 10px;
+            }
+      
+            .project-bottom .tech-stack,
+            .project-bottom .description,
+            .project-info {
+              margin: 10px 0;
+            }
+      
+            .date {
+              /* Adjust this for desired position */
+              position: absolute;
+              bottom: 10px;
+              right: 10px;
+            }
+      
+            /* Add more CSS for styling links, headers, and other elements as desired */
+          </style>
+        `;
+
+      // Add the custom styles to the HTML
+      projectSection += customStyles2;
+    } else if (selectedDesign == "design2") {
+      projectSection = `
     <!-- Projects -->
     <section class="resume-section" id="projects">
-      <div class="container">
+      <div class="container-fluid p-0">
         <h2 class="mb-5 text-black">${projectsTitle}</h2>
         <div class="row">
           ${projects
             .map(
               (project) => `
-          ${console.log(project.pt)}
             <div class="col-lg-6 mb-5">
               <div class="project-card">
                 <div class="project-image">
@@ -301,7 +431,7 @@ const PortfolioCard = ({
                 project.project.name
               }" class="img-fluid">
                 </div>
-                <div class="project-details">
+                <div class="project-details bg-primary">
                   <h3 class="text-white">${project.project.name}</h3>
                   <p class="tech-stack text-white"><strong>Technology Stack: </strong>${
                     project.project.techStack
@@ -369,7 +499,7 @@ const PortfolioCard = ({
     </section>
     <hr class="m-0" />`;
 
-    const customStyles2 = `
+      const customStyles2 = `
     <style>
     /* Add this CSS to style the project cards */
     .project-card {
@@ -438,10 +568,11 @@ const PortfolioCard = ({
     </style>
     `;
 
-    // Add the custom styles to the HTML
-    projectSection += customStyles2;
-  } else {
-    projectSection = "";
+      // Add the custom styles to the HTML
+      projectSection += customStyles2;
+    } else {
+      projectSection = "";
+    }
   }
 
   const buttonStyle = {
@@ -460,6 +591,8 @@ const PortfolioCard = ({
 
   return (
     <div className="App w-full overflow-y-scroll  dark:bg-black dark:text-white">
+      {console.log("hi" + selectedDesign)}
+
       <Header
         className={` bg-${
           initialState.Dark ? "white border-b-2" : "black"
@@ -534,7 +667,6 @@ const PortfolioCard = ({
           Navbar 4
         </button>
       </div>
-
       <div className="w-full pl-12 my-1">
         <div className="flex flex-row">
           <div className="p-3 w-1/2">
@@ -656,6 +788,7 @@ const PortfolioCard = ({
                 isInterestEnabled={isInterestEnabled}
                 isProjectEnabled={isProjectEnabled}
                 Navbar={selectedNavbarDesign}
+                Projectdesign={projectSection}
               />
             )}
           </div>
@@ -677,7 +810,6 @@ const mapStateToProps = (state) => ({
   educationTitle: state.title.educationTitle,
   projectsTitle: state.title.projectsTitle,
   selectedDesign: state.projects.selectedDesign,
-  projects: state.projects.map((projectObj) => projectObj.project),
-});
+  projects: state.projects.items.map((projectObj) => projectObj.project)});
 
 export default connect(mapStateToProps)(PortfolioCard);
