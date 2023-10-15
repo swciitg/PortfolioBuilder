@@ -381,6 +381,7 @@ const PortfolioCard = ({
               max-height: 50vh;
               object-fit: contain;
               margin: 10px 0;
+              min-height:150px;
             }
       
             .project-bottom {
@@ -414,17 +415,18 @@ const PortfolioCard = ({
 
       // Add the custom styles to the HTML
       projectSection += customStyles2;
-    } else if (selectedDesign == "design2") {
+    } 
+    else if (selectedDesign == "design2") {
       projectSection = `
     <!-- Projects -->
     <section class="resume-section" id="projects">
       <div class="container-fluid p-0">
         <h2 class="mb-5 text-black">${projectsTitle}</h2>
-        <div class="row">
+        <div class="col-lg-12 mb-5">
           ${projects
             .map(
               (project) => `
-            <div class="col-lg-6 mb-5">
+            <div class="col-lg-12 mb-5">
               <div class="project-card">
                 <div class="project-image">
                   <img src="${project.project.image}" alt="${
@@ -502,12 +504,14 @@ const PortfolioCard = ({
       const customStyles2 = `
     <style>
     /* Add this CSS to style the project cards */
+   
     .project-card {
       display: flex;
       border: 1px solid #ddd;
       border-radius: 5px;
       overflow: hidden;
       position: relative;
+      margin-bottom: 20px; /* Added margin for spacing between project cards */
     }
     
     .project-image {
@@ -517,6 +521,7 @@ const PortfolioCard = ({
       align-items: center;
       justify-content: center;
       position: relative;
+      min-width:220px
     }
     
     .project-image img {
@@ -532,21 +537,29 @@ const PortfolioCard = ({
     }
     
     .project-details {
-      flex: 1;
-      background-color: #0074d9; /* Black background */
-      color: #fff; /* White text color */
+      background-color: #0074d9;
+      color: #fff;
       padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      max-height: 1000px; /* Adjust the maximum height as needed */
+      max-width: 300px;
+      overflow: hidden;
     }
     
     .project-details h3 {
       font-size: 1.8rem; /* Bigger font size for project name */
       margin: 0 0 10px;
+      word-wrap: break-word;
     }
     
     .project-details .tech-stack,
     .project-details .description,
     .project-info {
       margin: 10px 0;
+      word-wrap: break-word;
+     
     }
     
     .link-button {
@@ -562,7 +575,26 @@ const PortfolioCard = ({
       background-color: #007BFF; /* Blue on hover */
       color: #fff;
     }
-    
+    /* Center the projects */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+@media screen and (min-width: 768px) {
+  .project-card{
+    max-height: 500px; /* Adjusted max-height for larger screens */
+  }
+  .project-details
+  {
+    max-width:600px;
+  }
+  @media screen and (min-width: 1024px) {
+    .project-card {
+      max-width: 10000px; /* Adjusted max-width for larger screens */
+    }
+  }
+}
     /* Add more CSS for styling links, headers, and other elements as desired */
     
     </style>
