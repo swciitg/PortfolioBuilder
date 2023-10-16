@@ -12,7 +12,7 @@ const SkillsList = ({ skills = {}, onRemovePressed }) => {
   return (
     <div>
       <NewSkillForm />
-      <div className="d-flex flex-wrap">
+      <div className="d-flex flex-wrap" style={{display: 'inline-flex'}}>
         
         {selectedSkills.map((skill) => (
           <Skill key={skill.name} skill={skill} onRemovePressed={onRemovePressed} />

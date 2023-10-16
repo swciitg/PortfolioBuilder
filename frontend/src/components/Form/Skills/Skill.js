@@ -18,11 +18,11 @@ const Skill = ({ skill, onRemovePressed }) => {
       >
         {skill.image && (
           <div>
-            <img
+            {/*<img
               src={skill.url}
               alt={skill.name}
               style={{ width: "50px", height: "50px",marginBottom: "10px"}}
-            />
+        />*/}
             <span
               style={{ fontSize: "14px", fontWeight: "bold", textAlign: "center",color: "#333" }}
             >

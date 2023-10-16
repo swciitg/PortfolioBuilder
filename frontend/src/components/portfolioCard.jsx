@@ -431,9 +431,10 @@ const PortfolioCard = ({
     .link-button:hover {
       background-color: #007BFF; /* Blue on hover */
       color: #fff;
-    }
+    } 
     
-    /* Add more CSS for styling links, headers, and other elements as desired */
+    /*Add more CSS for styling links, headers, and other elements as needed*/
+  
     
     </style>
     `;
