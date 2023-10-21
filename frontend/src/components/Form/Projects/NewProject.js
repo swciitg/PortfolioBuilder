@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { createProject } from "./action";
+import { createProject, changeDesign } from "./action";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
-const NewProjectForm = ({ onCreatePressed }) => {
+const NewProjectForm = ({ onCreatePressed,onChangeDesign }) => {
   const [projectData, setProjectData] = useState({
     name: "",
     description: "",
@@ -18,7 +18,15 @@ const NewProjectForm = ({ onCreatePressed }) => {
     isClubProject: false, // New field for club project
     clubName: "", // New field for club name
     isSelfProject: false,
+    selectedDesign:"design1"
   });
+  const [selectedDesign, setSelectedDesign] = useState("design1"); 
+
+  const handleDesignSelection = (design) => {
+    setSelectedDesign(design);
+    onChangeDesign(design);
+    console.log(design);
+  };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -47,11 +55,28 @@ const NewProjectForm = ({ onCreatePressed }) => {
       isClubProject: false, // New field for club project
       clubName: "", // New field for club name
       isSelfProject: false,
+      selectedDesign:""
     });
   };
 
   return (
     <div className="border rounded p-3 m-2">
+      <div className="row">
+        <div className="col-12 text-center">
+          <button
+            className={`btn ${selectedDesign === "design1" ? "btn-primary" : "btn-secondary"}`}
+            onClick={() => handleDesignSelection("design1")}
+          >
+            Design 1
+          </button>
+          <button
+            className={`btn ${selectedDesign === "design2" ? "btn-primary" : "btn-secondary"}`}
+            onClick={() => handleDesignSelection("design2")}
+          >
+            Design 2
+          </button>
+        </div>
+      </div>
       <input
         type="text"
         className="form-control mb-2"
@@ -183,6 +208,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onCreatePressed: (project) => dispatch(createProject(project)),
+  onChangeDesign:(projectDesign)=>dispatch(changeDesign(projectDesign))
 });
-
 export default connect(mapStateToProps, mapDispatchToProps)(NewProjectForm);

@@ -11,7 +11,7 @@ const ProjectList = ({ projects = [], onRemovePressed }) => {
     <div>
       <NewProject/>
       <div className="container mb-3">
-        {projects.map((project) => (
+        {projects.items.map((project) => (
           <Project
             project={project.project}
             onRemovePressed={onRemovePressed}
