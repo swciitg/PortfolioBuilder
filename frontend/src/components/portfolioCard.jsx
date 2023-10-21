@@ -1,8 +1,7 @@
-
 import React, { useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
-import { toast } from "react-toastify"
+import { toast } from "react-toastify";
 import he from "he";
 import Form from "./Form";
 import Header from "./Bootstrap/Header";
@@ -14,7 +13,7 @@ import NavbarDesign1 from "./NavbarDesign1";
 import NavbarDesign2 from "./NavbarDesign2";
 import NavbarDesign3 from "./NavbarDesign3";
 import NavbarDesign4 from "./NavbarDesign4";
-import ReactDOMServer from 'react-dom/server';
+import ReactDOMServer from "react-dom/server";
 import portfolioCard from "./navigateCard";
 import { connect } from "react-redux";
 
@@ -25,9 +24,10 @@ const PortfolioCard = ({
   awardsTitle,
   educationTitle,
   projectsTitle,
+  selectedDesign,
+  projects,
 }) => {
   const Navigate = useNavigate();
-  
 
   const data = {
     Dark: true,
@@ -54,7 +54,6 @@ const PortfolioCard = ({
     },
     fileDownloadUrl: null,
     PreviewMode: false,
-    
   };
   const [initialState, setInitialState] = useState(data);
   const toggleHeader = () => {
@@ -68,49 +67,48 @@ const PortfolioCard = ({
 
   // to store previous theme on refresh
   useEffect(() => {
-    if (localStorage.theme === 'dark') {
-      document.documentElement.classList.add('dark');
+    if (localStorage.theme === "dark") {
+      document.documentElement.classList.add("dark");
       toggleHeader();
-    } 
-  }, [])
+    }
+  }, []);
 
   // toggle theme by adding/removing dark as class on page
-  useEffect(()=>{
-    if(!initialState.Dark) {
-      document.documentElement.classList.add('dark');
-      localStorage.theme = 'dark';
+  useEffect(() => {
+    if (!initialState.Dark) {
+      document.documentElement.classList.add("dark");
+      localStorage.theme = "dark";
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.theme = "light";
     }
-    else {
-      document.documentElement.classList.remove('dark');
-      localStorage.theme = 'light';
-    }
-  }, [initialState.Dark])
+  }, [initialState.Dark]);
 
   const handleChange = (e) => {
-    Object.keys(data.FormData).includes(e.target.name) ?
-    (setInitialState((prevState) => {
-      return {
-        ...prevState,
-        FormData: {
-          ...initialState.FormData,
-          [e.target.name]: e.target.value,
-        },
-        PreviewMode: false,
-      };
-   })) 
-    : (setInitialState((prevState) => {
-      return {
-        ...prevState,
-        FormData: {
-          ...initialState.FormData,
-          Socials: {
-            ...initialState.FormData.Socials,
-            [e.target.name]: e.target.value,
-          },
-        },
-        PreviewMode: false,
-      };
-    }))
+    Object.keys(data.FormData).includes(e.target.name)
+      ? setInitialState((prevState) => {
+          return {
+            ...prevState,
+            FormData: {
+              ...initialState.FormData,
+              [e.target.name]: e.target.value,
+            },
+            PreviewMode: false,
+          };
+        })
+      : setInitialState((prevState) => {
+          return {
+            ...prevState,
+            FormData: {
+              ...initialState.FormData,
+              Socials: {
+                ...initialState.FormData.Socials,
+                [e.target.name]: e.target.value,
+              },
+            },
+            PreviewMode: false,
+          };
+        });
   };
 
   const clickHandler = async () => {
@@ -132,7 +130,9 @@ const PortfolioCard = ({
         };
       });
 
-      const resolveAfter3Sec = new Promise(resolve => setTimeout(resolve, 3000));
+      const resolveAfter3Sec = new Promise((resolve) =>
+        setTimeout(resolve, 3000)
+      );
       // Show a success toast and wait for it to close
       await toast.promise(resolveAfter3Sec, {
         pending: "Downloading...",
@@ -154,7 +154,6 @@ const PortfolioCard = ({
   const [isAwardsEnabled, setisAwardsEnabled] = useState(true);
   const [isProjectEnabled, setisProjectEnabled] = useState(true);
 
-
   const toggleExperience = () => {
     setIsExperienceEnabled(!isExperienceEnabled);
   };
@@ -163,114 +162,122 @@ const PortfolioCard = ({
     setIsEducationEnabled(!isEducationEnabled);
   };
   const toggleSkill = () => {
-    setIsSkillEnabled(!isSkillEnabled)  
+    setIsSkillEnabled(!isSkillEnabled);
   };
   const toggleInterest = () => {
-    setisInterestEnabled(!isInterestEnabled)  
+    setisInterestEnabled(!isInterestEnabled);
   };
   const toggleAward = () => {
-    setisAwardsEnabled(!isAwardsEnabled)  
+    setisAwardsEnabled(!isAwardsEnabled);
   };
   const toggleProject = () => {
-    setisProjectEnabled(!isProjectEnabled)  
+    setisProjectEnabled(!isProjectEnabled);
   };
 
-const [navbarDesign, setNavbarDesign] = useState('NavbarDesign1');
+  const [navbarDesign, setNavbarDesign] = useState("NavbarDesign1");
 
-const handleDesignChange = (design) => {
-  setNavbarDesign(design);
-};
+  const handleDesignChange = (design) => {
+    setNavbarDesign(design);
+  };
 
   let selectedNavbarDesign;
   switch (navbarDesign) {
-    case 'NavbarDesign1':
-      selectedNavbarDesign =ReactDOMServer.renderToString(<NavbarDesign1
-        FullName={`${initialState.FormData.FirstName} ${initialState.FormData.LastName}`}
-        isEducationEnabled={isEducationEnabled}
-        isExperienceEnabled={isExperienceEnabled}
-        isSkillEnabled={isSkillEnabled}
-        isAwardsEnabled={isAwardsEnabled}
-        isInterestEnabled={isInterestEnabled}
-        isProjectEnabled={isProjectEnabled}
-        experienceTitle={experienceTitle}
-        educationTitle={educationTitle}
-        skillsTitle={skillsTitle}
-        interestsTitle={interestsTitle}
-        awardsTitle={awardsTitle}
-        projectsTitle={projectsTitle}
-        />)
-  ;
+    case "NavbarDesign1":
+      selectedNavbarDesign = ReactDOMServer.renderToString(
+        <NavbarDesign1
+          FullName={`${initialState.FormData.FirstName} ${initialState.FormData.LastName}`}
+          isEducationEnabled={isEducationEnabled}
+          isExperienceEnabled={isExperienceEnabled}
+          isSkillEnabled={isSkillEnabled}
+          isAwardsEnabled={isAwardsEnabled}
+          isInterestEnabled={isInterestEnabled}
+          isProjectEnabled={isProjectEnabled}
+          experienceTitle={experienceTitle}
+          educationTitle={educationTitle}
+          skillsTitle={skillsTitle}
+          interestsTitle={interestsTitle}
+          awardsTitle={awardsTitle}
+          projectsTitle={projectsTitle}
+        />
+      );
       break;
-    case 'NavbarDesign2':
-      selectedNavbarDesign =ReactDOMServer.renderToString(<NavbarDesign2
-        FullName={`${initialState.FormData.FirstName} ${initialState.FormData.LastName}`}
-        isEducationEnabled={isEducationEnabled}
-        isExperienceEnabled={isExperienceEnabled}
-        isSkillEnabled={isSkillEnabled}
-        isAwardsEnabled={isAwardsEnabled}
-        isInterestEnabled={isInterestEnabled}
-        isProjectEnabled={isProjectEnabled}
-        experienceTitle={experienceTitle}
-        educationTitle={educationTitle}
-        skillsTitle={skillsTitle}
-        interestsTitle={interestsTitle}
-        awardsTitle={awardsTitle}
-        projectsTitle={projectsTitle}
-        />)
+    case "NavbarDesign2":
+      selectedNavbarDesign = ReactDOMServer.renderToString(
+        <NavbarDesign2
+          FullName={`${initialState.FormData.FirstName} ${initialState.FormData.LastName}`}
+          isEducationEnabled={isEducationEnabled}
+          isExperienceEnabled={isExperienceEnabled}
+          isSkillEnabled={isSkillEnabled}
+          isAwardsEnabled={isAwardsEnabled}
+          isInterestEnabled={isInterestEnabled}
+          isProjectEnabled={isProjectEnabled}
+          experienceTitle={experienceTitle}
+          educationTitle={educationTitle}
+          skillsTitle={skillsTitle}
+          interestsTitle={interestsTitle}
+          awardsTitle={awardsTitle}
+          projectsTitle={projectsTitle}
+        />
+      );
       break;
-    case 'NavbarDesign3':
-      selectedNavbarDesign =ReactDOMServer.renderToString(<NavbarDesign3
-        FullName={`${initialState.FormData.FirstName} ${initialState.FormData.LastName}`}
-        isEducationEnabled={isEducationEnabled}
-        isExperienceEnabled={isExperienceEnabled}
-        isSkillEnabled={isSkillEnabled}
-        isAwardsEnabled={isAwardsEnabled}
-        isInterestEnabled={isInterestEnabled}
-        isProjectEnabled={isProjectEnabled}
-        experienceTitle={experienceTitle}
-        educationTitle={educationTitle}
-        skillsTitle={skillsTitle}
-        interestsTitle={interestsTitle}
-        awardsTitle={awardsTitle}
-        projectsTitle={projectsTitle}
-        />)
+    case "NavbarDesign3":
+      selectedNavbarDesign = ReactDOMServer.renderToString(
+        <NavbarDesign3
+          FullName={`${initialState.FormData.FirstName} ${initialState.FormData.LastName}`}
+          isEducationEnabled={isEducationEnabled}
+          isExperienceEnabled={isExperienceEnabled}
+          isSkillEnabled={isSkillEnabled}
+          isAwardsEnabled={isAwardsEnabled}
+          isInterestEnabled={isInterestEnabled}
+          isProjectEnabled={isProjectEnabled}
+          experienceTitle={experienceTitle}
+          educationTitle={educationTitle}
+          skillsTitle={skillsTitle}
+          interestsTitle={interestsTitle}
+          awardsTitle={awardsTitle}
+          projectsTitle={projectsTitle}
+        />
+      );
       break;
-    case 'NavbarDesign4':
-      selectedNavbarDesign =ReactDOMServer.renderToString(<NavbarDesign4
-        FullName={`${initialState.FormData.FirstName} ${initialState.FormData.LastName}`}
-        isEducationEnabled={isEducationEnabled}
-        isExperienceEnabled={isExperienceEnabled}
-        isSkillEnabled={isSkillEnabled}
-        isAwardsEnabled={isAwardsEnabled}
-        isInterestEnabled={isInterestEnabled}
-        isProjectEnabled={isProjectEnabled}
-        experienceTitle={experienceTitle}
-        educationTitle={educationTitle}
-        skillsTitle={skillsTitle}
-        interestsTitle={interestsTitle}
-        awardsTitle={awardsTitle}
-        projectsTitle={projectsTitle}
-        />)
+    case "NavbarDesign4":
+      selectedNavbarDesign = ReactDOMServer.renderToString(
+        <NavbarDesign4
+          FullName={`${initialState.FormData.FirstName} ${initialState.FormData.LastName}`}
+          isEducationEnabled={isEducationEnabled}
+          isExperienceEnabled={isExperienceEnabled}
+          isSkillEnabled={isSkillEnabled}
+          isAwardsEnabled={isAwardsEnabled}
+          isInterestEnabled={isInterestEnabled}
+          isProjectEnabled={isProjectEnabled}
+          experienceTitle={experienceTitle}
+          educationTitle={educationTitle}
+          skillsTitle={skillsTitle}
+          interestsTitle={interestsTitle}
+          awardsTitle={awardsTitle}
+          projectsTitle={projectsTitle}
+        />
+      );
       break;
     default:
-      selectedNavbarDesign =ReactDOMServer.renderToString(<NavbarDesign1
-        FullName={`${initialState.FormData.FirstName} ${initialState.FormData.LastName}`}
-        isEducationEnabled={isEducationEnabled}
-        isExperienceEnabled={isExperienceEnabled}
-        isSkillEnabled={isSkillEnabled}
-        isAwardsEnabled={isAwardsEnabled}
-        isInterestEnabled={isInterestEnabled}
-        isProjectEnabled={isProjectEnabled}
-        experienceTitle={experienceTitle}
-        educationTitle={educationTitle}
-        skillsTitle={skillsTitle}
-        interestsTitle={interestsTitle}
-        awardsTitle={awardsTitle}
-        />)
+      selectedNavbarDesign = ReactDOMServer.renderToString(
+        <NavbarDesign1
+          FullName={`${initialState.FormData.FirstName} ${initialState.FormData.LastName}`}
+          isEducationEnabled={isEducationEnabled}
+          isExperienceEnabled={isExperienceEnabled}
+          isSkillEnabled={isSkillEnabled}
+          isAwardsEnabled={isAwardsEnabled}
+          isInterestEnabled={isInterestEnabled}
+          isProjectEnabled={isProjectEnabled}
+          experienceTitle={experienceTitle}
+          educationTitle={educationTitle}
+          skillsTitle={skillsTitle}
+          interestsTitle={interestsTitle}
+          awardsTitle={awardsTitle}
+        />
+      );
       break;
   }
 
-<<<<<<< HEAD
   let projectSection;
 
   if (isProjectEnabled) {
@@ -618,48 +625,77 @@ const handleDesignChange = (design) => {
     <div className="App w-full overflow-y-scroll  dark:bg-black dark:text-white">
       {console.log("hi" + selectedDesign)}
 
-=======
-  return (
-      <div className="App w-full  dark:bg-black dark:text-white">
->>>>>>> parent of 49e7338 (Merge branch 'main' of https://github.com/DebidYadav/PortfolioBuilder)
       <Header
-        className={` bg-${initialState.Dark ? "white border-b-2" : "black"
-          } text-${initialState.Dark ? "black" : "white"
-          } flex justify-center h-12 fixed top-0 w-full items-center mb-8`}
+        className={` bg-${
+          initialState.Dark ? "white border-b-2" : "black"
+        } text-${
+          initialState.Dark ? "black" : "white"
+        } flex justify-center h-12 items-center mb-8`}
       >
         <h1 className="text-2xl text-center inline mx-6 my-0">
           Portfolio Generator
         </h1>
         <button
-          className={`btn btn-sm btn-outline-${initialState.Dark ? "primary" : "secondary"
-            } rounded-full`}
+          className={`btn btn-sm btn-outline-${
+            initialState.Dark ? "primary" : "secondary"
+          } rounded-full`}
           onClick={toggleHeader}
         >
           <i
-            className={`fa fa-${initialState.Dark ? "sun" : "moon"
-              }-o text-xl m-0`}
+            className={`fa fa-${
+              initialState.Dark ? "sun" : "moon"
+            }-o text-xl m-0`}
           ></i>
         </button>
       </Header>
-      <div className="pt-16">
-        <Link
-          className="pl-4 text-xl font-medium text-blue-500 cursor-pointer"
-          to={"/"}
+      <Link
+        className="pl-4 text-xl font-medium text-blue-500 cursor-pointer"
+        to={"/"}
+      >
+        Home
+      </Link>
+      <div style={containerStyle}>
+        <button
+          style={{
+            ...buttonStyle,
+            background:
+              navbarDesign === "NavbarDesign1" ? "lightblue" : "white",
+            color: navbarDesign === "NavbarDesign1" ? "black" : "black",
+          }}
+          onClick={() => handleDesignChange("NavbarDesign1")}
         >
-          Home
-        </Link>
-        </div>
-      <div className="d-flex justify-content-center mt-4">
-        <button className="btn me-2" onClick={() => handleDesignChange('NavbarDesign1')}>
           Navbar 1
         </button>
-        <button className="btn btn-secondary me-2" onClick={() => handleDesignChange('NavbarDesign2')}>
+        <button
+          style={{
+            ...buttonStyle,
+            background:
+              navbarDesign === "NavbarDesign2" ? "lightgray" : "white",
+            color: navbarDesign === "NavbarDesign2" ? "white" : "black",
+          }}
+          onClick={() => handleDesignChange("NavbarDesign2")}
+        >
           Navbar 2
         </button>
-        <button className="btn btn-success me-2" onClick={() => handleDesignChange('NavbarDesign3')}>
+        <button
+          style={{
+            ...buttonStyle,
+            background:
+              navbarDesign === "NavbarDesign3" ? "lightgreen" : "white",
+            color: navbarDesign === "NavbarDesign3" ? "white" : "black",
+          }}
+          onClick={() => handleDesignChange("NavbarDesign3")}
+        >
           Navbar 3
         </button>
-        <button className="btn btn-danger" onClick={() => handleDesignChange('NavbarDesign4')}>
+        <button
+          style={{
+            ...buttonStyle,
+            background: navbarDesign === "NavbarDesign4" ? "red" : "white",
+            color: navbarDesign === "NavbarDesign4" ? "white" : "black",
+          }}
+          onClick={() => handleDesignChange("NavbarDesign4")}
+        >
           Navbar 4
         </button>
       </div>
@@ -678,7 +714,6 @@ const handleDesignChange = (design) => {
               isInterestEnabled={isInterestEnabled}
               isAwardsEnabled={isAwardsEnabled}
               isProjectEnabled={isProjectEnabled}
-
               toggleExperience={toggleExperience}
               toggleEducation={toggleEducation}
               toggleSkill={toggleSkill}
@@ -692,8 +727,9 @@ const handleDesignChange = (design) => {
               href={initialState.fileDownloadUrl}
             >
               <button
-                className={`btn btn-${initialState.Dark ? "success" : "primary"
-                  } hover:bg-green-700 bg-green-500 text-white rounded inline-flex items-center mt-2 mx-2 p-3`}
+                className={`btn btn-${
+                  initialState.Dark ? "success" : "primary"
+                } bg-green-700 text-white mx-2 p-3`}
                 onClick={() => {
                   download();
                 }}
@@ -702,9 +738,7 @@ const handleDesignChange = (design) => {
                 disabled={initialState.PreviewMode}
                 title="Go to the Code View to download."
               >
-                 <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
-
-                <span>Download</span>
+                Download
               </button>
               <ToastContainer
                 position="top-right"
@@ -720,14 +754,15 @@ const handleDesignChange = (design) => {
               />
             </a>
           </div>
-          <div className="fixed top-12 right-0 h-screen p-3 w-1/2">
+          <div className="p-3 w-1/2">
             <ul className="flex">
               <li className="mr-2">
                 <span
-                  className={`cursor-pointer px-4 py-2 rounded-t-lg ${!initialState.PreviewMode
-                    ? "bg-blue-500 text-white"
-                    : "bg-gray-300 text-black"
-                    }`}
+                  className={`cursor-pointer px-4 py-2 rounded-t-lg ${
+                    !initialState.PreviewMode
+                      ? "bg-blue-500 text-white"
+                      : "bg-gray-300 text-black"
+                  }`}
                   onClick={(e) => {
                     e.preventDefault();
                     setInitialState((prevState) => {
@@ -743,10 +778,11 @@ const handleDesignChange = (design) => {
               </li>
               <li>
                 <span
-                  className={`cursor-pointer px-4 py-2 rounded-t-lg ${initialState.PreviewMode
-                    ? "bg-blue-500 text-white"
-                    : "bg-gray-300 text-black"
-                    }`}
+                  className={`cursor-pointer px-4 py-2 rounded-t-lg ${
+                    initialState.PreviewMode
+                      ? "bg-blue-500 text-white"
+                      : "bg-gray-300 text-black"
+                  }`}
                   onClick={(e) => {
                     e.preventDefault();
                     setInitialState((prevState) => {
@@ -770,8 +806,8 @@ const handleDesignChange = (design) => {
                 isSkillEnabled={isSkillEnabled}
                 isAwardsEnabled={isAwardsEnabled}
                 isInterestEnabled={isInterestEnabled}
-                isProjectEnabled={isProjectEnabled}
                 Navbar={selectedNavbarDesign}
+                Projectdesign={projectSection}
               />
             ) : (
               <Code
@@ -805,11 +841,7 @@ const mapStateToProps = (state) => ({
   awardsTitle: state.title.awardsTitle,
   educationTitle: state.title.educationTitle,
   projectsTitle: state.title.projectsTitle,
-<<<<<<< HEAD
   selectedDesign: state.projects.selectedDesign,
   projects: state.projects.items.map((projectObj) => projectObj.project)});
-=======
-  projects: state.projects.map((projectObj) => projectObj.project)});
->>>>>>> parent of 49e7338 (Merge branch 'main' of https://github.com/DebidYadav/PortfolioBuilder)
 
 export default connect(mapStateToProps)(PortfolioCard);
