@@ -12,3 +12,11 @@ export const removeProject = (project) => ({
   type: REMOVE_PROJECT,
   payload: { project },
 });
+
+export const CHANGE_DESIGN = 'CHANGE_DESIGN';
+
+
+export const changeDesign = (projectDesign) => ({
+  type: CHANGE_DESIGN,
+  payload: { projectDesign },
+});
