@@ -178,6 +178,7 @@ const Preview = ({
         .mb-4 {
           margin-bottom: 20px; /* You can adjust this value to control the spacing */
         }
+
       </style>
     `;
   

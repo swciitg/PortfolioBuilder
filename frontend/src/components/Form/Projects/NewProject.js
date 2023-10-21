@@ -162,12 +162,15 @@ const NewProjectForm = ({ onCreatePressed }) => {
         <label className="form-check-label">Self-Project</label>
       </div>
       <div className="text-right">
-        <button
-          className="btn btn-success btn-sm rounded-circle"
+      <button class="btn btn-success btn-sm rounded-circle rounded-full w-7 h-7 bg-green-400 text-white" disabled="">
+      <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" class="svg-inline--fa fa-plus " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        ::before
+        <path fill="currentColor" d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path>
+          //className="btn btn-success btn-sm rounded-circle"
           onClick={handleSubmit}
           disabled={!projectData.name || !projectData.description}
-        >
           <FontAwesomeIcon icon={faPlus} />
+          </svg>
         </button>
       </div>
     </div>
