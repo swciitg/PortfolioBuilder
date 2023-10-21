@@ -139,31 +139,12 @@
     margin-top: 5.5vw;
 }
 
-
-/* Style the button */
-.button-home {
-    background-color: #0072c6;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 15px;
-    cursor: pointer;
-    font-size: 27px;
-  }
-  
-  .button-home:hover {
-    background-color: #005b9f;
-  }
-  
-  /* Style the image within the button */
-  .img-btn {
-    width: 43px; 
-    height: 43px; 
-    margin-right: 10px; 
-    vertical-align: middle; 
-  }
-  
-
+.img-btn
+{
+    width: 2.2vw;
+    height: 2.4vh;
+    
+}
 @media screen and (max-width: 1030px) {
     .img-two {
        margin-top: 2.5vw;

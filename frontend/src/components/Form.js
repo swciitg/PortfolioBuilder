@@ -7,7 +7,6 @@ import InterestList from "./Form/Interests/InterestList";
 import ProjectList from "./Form/Projects/ProjectList";
 import SkillsList from "./Form/Skills/SkillsList";
 import { SectionTitle } from "./sectionTitle/sectionTitle";
-import "./Form.css";
 
 const Form = ({ FormData, onChange, isExperienceEnabled, isEducationEnabled, isSkillEnabled, isInterestEnabled, isAwardsEnabled,
   isProjectEnabled,toggleProject,toggleExperience,toggleEducation,toggleSkill,toggleInterest,toggleAward }) => {
@@ -45,7 +44,7 @@ const Form = ({ FormData, onChange, isExperienceEnabled, isEducationEnabled, isS
       "Type in your full address to get kidnapped!",
     ],
     Phone: [
-      "string",
+      "text",
       "Phone Number",
       "Please enter your phone number, so we can call you in the midnight!",
     ],
@@ -139,7 +138,7 @@ const Form = ({ FormData, onChange, isExperienceEnabled, isEducationEnabled, isS
           <p>Experience section is disabled.</p>
         )}
         
-        <button className="add-remove" onClick={toggleExperience}>
+        <button onClick={toggleExperience}>
           {isExperienceEnabled ? 'Remove' : 'Add'} Experience
         </button>
       </div>
@@ -153,7 +152,7 @@ const Form = ({ FormData, onChange, isExperienceEnabled, isEducationEnabled, isS
         ) : (
           <p>Education section is disabled.</p>
         )}
-        <button className="add-remove" onClick={toggleEducation}>
+        <button onClick={toggleEducation}>
           {isEducationEnabled ? 'Remove' : 'Add'} Education
         </button>
       </div>
@@ -167,7 +166,7 @@ const Form = ({ FormData, onChange, isExperienceEnabled, isEducationEnabled, isS
         ) : (
           <p>Skills section is disabled.</p>
         )}
-        <button className="add-remove" onClick={toggleSkill}>
+        <button onClick={toggleSkill}>
           {isSkillEnabled ? 'Remove' : 'Add'} Skills
         </button>
       </div>
@@ -181,7 +180,7 @@ const Form = ({ FormData, onChange, isExperienceEnabled, isEducationEnabled, isS
         ) : (
           <p>Interest section is disabled.</p>
         )}
-        <button className="add-remove" onClick={toggleInterest}>
+        <button onClick={toggleInterest}>
           {isInterestEnabled ? 'Remove' : 'Add'} Interest
         </button>
       </div>
@@ -195,7 +194,7 @@ const Form = ({ FormData, onChange, isExperienceEnabled, isEducationEnabled, isS
         ) : (
           <p>Awards section is disabled.</p>
         )}
-        <button className="add-remove" onClick={toggleAward}>
+        <button onClick={toggleAward}>
           {isAwardsEnabled ? 'Remove' : 'Add'} Awards
         </button>
       </div>
@@ -208,7 +207,7 @@ const Form = ({ FormData, onChange, isExperienceEnabled, isEducationEnabled, isS
         ) : (
           <p>Projects section is disabled.</p>
         )}
-        <button className="add-remove" onClick={toggleProject}>
+        <button onClick={toggleProject}>
           {isProjectEnabled ? 'Remove' : 'Add'} Projects
         </button>
       </div>
@@ -217,5 +216,3 @@ const Form = ({ FormData, onChange, isExperienceEnabled, isEducationEnabled, isS
 };
 
 export default Form;
-
-//
