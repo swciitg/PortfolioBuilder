@@ -190,21 +190,81 @@ const Code = ({
   let interestSection;
 
   if (isInterestEnabled) {
-    interestSection = ` 
-    <!-- Interests-->
-    <section class="resume-section" id="interests">
+    interestSection = ` <section class="resume-section interests" id="interests">
     <div class="resume-section-content">
-      <h2 class="mb-5">${interestsTitle}</h2>
-      ${interests.map(
-        (interest) => `
-      <p>${interest.interest.interest}</p>
-      `
-      ).join(`
-`)}
+        <h2 class="section-title">${interestsTitle}</h2>
+        <div class="interest-cards">
+            ${interests.map((interest, index) => `
+                <div class="interest-card">
+                    <div class="card-content">
+                        <p class="interest-text">${interest.interest.interest}</p>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
     </div>
-  </section>
-  <hr class="m-0" />
-              `;
+</section>  
+  `;
+  const customStyles=`
+  <style>
+    .interests {
+        background-color: #f7f7f7;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-title {
+        color: #333;
+        font-size: 28px;
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+    .section-title::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        width: 50px;
+        height: 2px;
+        background-color: #007BFF; /* Blue underline */
+    }
+
+    .interest-cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .interest-card {
+        background-color: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        overflow: hidden;
+    }
+
+    .interest-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card-content {
+        padding: 20px;
+    }
+
+    .interest-text {
+        color: #555;
+        font-size: 18px;
+        margin: 0;
+        line-height: 1.6;
+    }
+</style>
+
+  `
+  interestSection+=customStyles;
   } else {
     interestSection = "";
   }
@@ -212,29 +272,94 @@ const Code = ({
   let awardSection;
 
   if (isAwardsEnabled) {
-    awardSection = `  
-    <!-- Awards-->
-    <section class="resume-section" id="awards">
+    awardSection = ` 
+    
+    <section class="resume-section awards mr-2" id="awards">
     <div class="resume-section-content">
-      <h2 class="mb-5">${awardsTitle}</h2>
-      <ul class="fa-ul mb-0">
-        ${awards.map(
-          (award) => `
-        <li>
-          <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-          ${award.award.award}
-        </li>
-        `
-        ).join(`
-`)}
-      </ul>
+        <h2 class="section-title">${awardsTitle}</h2>
+        <div class="award-cards">
+            ${awards.map((award, index) => `
+                <div class="award-card">
+                    <div class="card-content">
+                    <p class="award-text"><span class="bullet-point">&#8226;</span> ${award.award.award}</p>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
     </div>
-  </section>
-</div>
-              `;
+</section>
+    
+  `;
+  const customStyles=`
+  <style>
+    .awards {
+      margin-top: 10px;
+        background-color: #f7f7f7;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-title {
+        color: #333;
+        font-size: 28px;
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+    .section-title::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        width: 50px;
+        height: 2px;
+        background-color: #007BFF; /* Blue underline */
+    }
+
+    .award-cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .award-card {
+        background-color: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .award-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card-content {
+        padding: 20px;
+    }
+
+    .award-text {
+        color: #555;
+        font-size: 18px;
+        margin: 0;
+        line-height: 1.6;
+    }
+    .bullet-point {
+      color: #000000; /* Blue bullet point */
+      font-size: 24px;
+      margin-right: 10px;
+  }
+</style>
+`
+ awardSection+=customStyles;
   } else {
     awardSection = "";
   }
+ 
 
 
 
