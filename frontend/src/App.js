@@ -13,8 +13,8 @@ function App() {
     <AuthState>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage/>}/>
-            <Route path="/main" element={<MainPage />} />
+          <Route path="/home" element={<HomePage/>}/>
+            <Route path="/" element={<MainPage />} />
             <Route path="/portfolio" element={<PortfolioCard/>}/>
         </Routes>
       </BrowserRouter>

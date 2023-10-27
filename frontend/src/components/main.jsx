@@ -40,16 +40,20 @@ const HomePage = () => {
     return (
         <div>
             <div className='w-full'>
-                <div className='w-full h-48 bg-black text-white'>
-                    <div className='text-end'>
-                        <button className='bg-gray-700 text-white p-2 rounded-md hover:bg-gray-800 my-2 mr-5' onClick={logOutHandler}>Log Out
-                        </button>
-                    </div>
-                    <div className='p-2 m-4'>
-                        <div className='text-3xl font-bold p-1'>Welcome {studInfo.name} 👋</div>
-                        <div className='text-2xl font-semibold px-1 pt-1 pb-2'>{studInfo.roll}</div>
-                    </div>
-                </div>
+            <div className='w-full bg-black text-white'>
+  <div className='flex justify-between items-center p-4'>
+    <div>
+      <div className='text-3xl font-bold p-1'>Welcome {"Aryan"} 👋</div>
+      <div className='text-2xl font-semibold px-1'>{"220101018"}</div>
+    </div>
+    <div className='text-right'>
+      <button className='bg-gray-700 text-white p-2 rounded-md hover:bg-gray-800' onClick={logOutHandler}>
+        Log Out
+      </button>
+    </div>
+  </div>
+</div>
+
                 <div className='my-12 mx-12 '>
                     <div onClick={clickHandler}>
                     <Card />
