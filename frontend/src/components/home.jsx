@@ -6,7 +6,6 @@ import img2 from './images/two.png'
 import img3 from './images/three.png'
 import img4 from './images/four.png'
 import img5 from './images/swc.png'
-import img6 from './images/Microsoft.png'
 const HomePage = () => {
 
     const { userLogin } = useContext(AuthContext);
@@ -20,19 +19,23 @@ const HomePage = () => {
         <div className=" main_part">
             <div className="header">
                 <div className='swc-img'> <img src={img5}></img></div>
-                 <div className="heading">
-            <p>Student web commitee - IIT Guwahati</p>
-                 </div>
+                <div className="heading">
+                    <p>Student web commitee - IIT Guwahati</p>
+                </div>
                 
             </div>
             <div className='bottom-part'>
                 <div className="landing_page" >
                     <p className="head-one" >PortFolio Builder</p>
                     <p className="head-two">Build portfolio with ease</p>
+                    <div
+                        class = "w-full h-12 mt-4 px-2 text-white flex justify-center items-center rounded-md cursor-pointer font-medium"
+                        style={{"background-color": "#3b5998"}}
+                        onClick={clickHandler}>
+                        <i class="fa-brands fa-windows text-2xl p-2 my-auto mx-2"></i>
+                        Continue with Microsoft
+                    </div>
                 </div>
-                {/* <button id='btn-login' className='btn-primary'><img src={img6} /><p>Click Me</p>  </button> */}
-                <button className="button-home" onClick={clickHandler}>
-                <img className='img-btn' src={img6} />Login With Microsoft</button>
                  
             </div>
         </div>
