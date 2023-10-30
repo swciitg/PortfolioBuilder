@@ -29,11 +29,11 @@ const NewSkillForm = ({ onCreatePressed, onSelectSkill,availableSkills}) => {
   return (
     <div className={`border rounded p-3 m-2`}>
       <select
-        className={`form-select form-select-sm mb-2 w-24 p-1 border`}
+        className={`form-select form-select-sm mb-2 w-24 p-1 border dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200`}
         value={selectedSkillName}
         onChange={handleSkillChange}
       >
-        <option value="">Select a Skill</option>
+        <option value="" className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200">Select a Skill</option>
         {availableSkills.map((skill) => (
           <option key={skill.name} value={skill.name}>
             {skill.name}

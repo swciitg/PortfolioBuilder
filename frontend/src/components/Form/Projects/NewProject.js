@@ -79,14 +79,14 @@ const NewProjectForm = ({ onCreatePressed,onChangeDesign }) => {
       </div>
       <input
         type="text"
-        className="form-control mb-2"
+        className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
         name="name"
         placeholder="Project Name"
         value={projectData.name}
         onChange={handleChange}
       />
       <textarea
-        className="form-control mb-2"
+        className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
         name="description"
         placeholder="Project Description"
         value={projectData.description}
@@ -94,7 +94,7 @@ const NewProjectForm = ({ onCreatePressed,onChangeDesign }) => {
       />
       <input
         type="text"
-        className="form-control mb-2"
+        className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
         name="image"
         placeholder="Project Image URL"
         value={projectData.image}
@@ -102,7 +102,7 @@ const NewProjectForm = ({ onCreatePressed,onChangeDesign }) => {
       />
       <input
         type="text"
-        className="form-control mb-2"
+        className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
         name="techStack"
         placeholder="Tech Stack"
         value={projectData.techStack}
@@ -110,7 +110,7 @@ const NewProjectForm = ({ onCreatePressed,onChangeDesign }) => {
       />
       <input
         type="text"
-        className="form-control mb-2"
+        className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
         name="websiteLink"
         placeholder="Website Link"
         value={projectData.websiteLink}
@@ -118,7 +118,7 @@ const NewProjectForm = ({ onCreatePressed,onChangeDesign }) => {
       />
       <input
         type="text"
-        className="form-control mb-2"
+        className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
         name="githubLink"
         placeholder="GitHub Link"
         value={projectData.githubLink}
@@ -126,7 +126,7 @@ const NewProjectForm = ({ onCreatePressed,onChangeDesign }) => {
       />
       <input
         type="text"
-        className="form-control mb-2"
+        className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
         name="timeline"
         placeholder="Project Timeline"
         value={projectData.timeline}
@@ -135,7 +135,7 @@ const NewProjectForm = ({ onCreatePressed,onChangeDesign }) => {
       <div className="form-check mb-2">
         <input
           type="checkbox"
-          className="form-check-input"
+          className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
           name="guidedByProfessor"
           checked={projectData.guidedByProfessor}
           onChange={handleChange}
@@ -145,7 +145,7 @@ const NewProjectForm = ({ onCreatePressed,onChangeDesign }) => {
       {projectData.guidedByProfessor && (
        <input
        type="text"
-       className="form-control mb-2"
+       className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
        name="professorName"
        placeholder="Professor's Name"
        value={projectData.professorName}
@@ -157,7 +157,7 @@ const NewProjectForm = ({ onCreatePressed,onChangeDesign }) => {
       <div className="form-check mb-2">
         <input
           type="checkbox"
-          className="form-check-input"
+          className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
           name="isClubProject"
           checked={projectData.isClubProject}
           onChange={handleChange}
@@ -168,7 +168,7 @@ const NewProjectForm = ({ onCreatePressed,onChangeDesign }) => {
       {projectData.isClubProject && (
         <input
           type="text"
-          className="form-control mb-2"
+          className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
           name="clubName"
           placeholder="Club Name"
           value={projectData.clubName}
@@ -179,7 +179,7 @@ const NewProjectForm = ({ onCreatePressed,onChangeDesign }) => {
       <div className="form-check mb-2">
         <input
           type="checkbox"
-          className="form-check-input"
+          className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
           name="isSelfProject"
           checked={projectData.isSelfProject}
           onChange={handleChange}
