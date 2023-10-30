@@ -79,7 +79,27 @@ const PortfolioSchema = new mongoose.Schema({
             type: String,
             required: true,
         },
+
       },
+      Experience:{
+        type: String,
+      },
+      Education: {
+        type: String,
+
+      },
+      Skills: {
+        type: String
+      },
+      Interests : {
+        type : String,
+      },
+      Awards : {
+        type: String,
+      },
+      Projects :  {
+        type: String,
+      }
 
     },
     Code: {type: String, required: true},
