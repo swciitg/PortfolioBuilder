@@ -3,7 +3,7 @@ import AuthContext from './AuthContext';
 
 const AuthState = (props) => {
     const [studInfo,setStudInfo] = useState({ name : "" , email : "", roll : ""});
-    const url = "http://localhost:5001";
+    const url = "http://localhost:4000";
 
     const userLogin = async()=>{
         window.location.href = `${url}/auth/microsoft`;
