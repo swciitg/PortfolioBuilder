@@ -431,7 +431,7 @@ const PortfolioCard = ({
             .map(
               (project) => `
             <div class="col-lg-12 mb-5">
-              <div class="project-card flex border-[1px] border-solid border-[#ddd] rounded-[5px] mb-[20px] relative overflow-hidden">
+              <div class="project-card lg:max-w-[10000px] md:max-h-[500px] flex border-[1px] border-solid border-[#ddd] rounded-[5px] mb-[20px] relative overflow-hidden">
                 <div class="project-image mh-[100%] object-contain max-w-[100%] grow shrink basis-0 items-center justify-center relative min-w-[220px] ">
 
 
@@ -442,7 +442,7 @@ const PortfolioCard = ({
                 project.project.name
               }" class="img-fluid">
                 </div>
-                <div class="project-details mt-[10px] mb-0 mx-0 break-words bg-[#0074d9] text-[1.8rem]  text-white p-[20px] flex flex-col justify-between max-h-[1000px] max-w-[300px] overflow-hidden">
+                <div class="project-details md:max-w-[600px] mt-[10px] mb-0 mx-0 break-words bg-[#0074d9] text-[1.8rem]  text-white p-[20px] flex flex-col justify-between max-h-[1000px] max-w-[300px] overflow-hidden">
                   <h3 class="text-white break-words mt-0 mb-[10px] mx-0 text-[1.8rem] ">${project.project.name}</h3>
                   <p class="tech-stack mt-[10px] mb-0 break-words text-white"><strong>Technology Stack: </strong>${
                     project.project.techStack
