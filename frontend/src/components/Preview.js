@@ -1,4 +1,9 @@
 import { connect } from "react-redux";
+import Form from "./Form";
+import React, { useEffect } from "react";
+import { useState } from "react"
+import HomePage from "./home";
+
 
 const Preview = ({
   FullName,
@@ -17,7 +22,19 @@ const Preview = ({
   skills,
   interests,
   awards,
-  Colour
+  Projectdesign,
+  Colour,
+  experienceTitle,
+  skillsTitle,
+  interestsTitle,
+  awardsTitle,
+  educationTitle,
+  isExperienceEnabled,
+  isEducationEnabled,
+  isSkillEnabled,
+  isInterestEnabled,
+  isAwardsEnabled,
+  Navbar
 }) => {
   const Meta = {
     Facebook: ["facebook-f", "https://fb.me/"],
@@ -25,26 +42,199 @@ const Preview = ({
     Instagram: ["instagram", "https://instagr.am/"],
     Twitter: ["twitter", "https://twitter.com/"],
     LinkedIn: ["linkedin-in", "https://linkedin.com/in/"],
-    GitHub: ["github", "https://github.com"],
-    StackOverflow: ["stack-overflow", "https://stackoverflow.com/u/"]
+    GitHub: ["github", "https://github.com/"],
+    StackOverflow: ["stack-overflow", "https://stackoverflow.com/u/"],
   };
-  const navbar= `<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-                <a class="navbar-brand js-scroll-trigger" href="#page-top">
-                  <span class="d-block d-lg-none">${FullName}</span>
-                  <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="${Thubmnail}" alt="${FullName}" /></span>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                  <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Experience</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Interests</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Awards</a></li>
-                  </ul>
-                </div>
-              </nav>`
+
+  let experienceSection;
+
+  if (isExperienceEnabled) {
+    experienceSection = `<section class="resume-section" id="experience">
+    <div class="resume-section-content">
+      <h2 class="mb-5">${experienceTitle}</h2>
+      ${experiences.map(
+        (experience) => `
+      <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+        <div class="flex-grow-1">
+          <h3 class="mb-0">${experience.experience.position}</h3>
+          <div class="subheading mb-3">${
+            experience.experience.company
+          }</div>
+          <p>${experience.experience.desc}</p>
+        </div>
+        <div class="flex-shrink-0"><span class="text-primary">${
+          experience.experience.start
+        } - ${
+          experience.experience.end
+            ? experience.experience.end
+            : experience.experience.presentJob
+            ? "Present"
+            : ""
+        }</span></div>
+      </div>
+      `
+      ).join(`
+`)}
+    </div>
+  </section>
+  <hr class="m-0" />
+  `;
+  } else {
+    experienceSection = "";
+  }
+
+  
+  let educationSection;
+  if (isEducationEnabled) {
+    educationSection = `
+    <section class="resume-section" id="education">
+      <div class="resume-section-content">
+        <h2 class="mb-5">${educationTitle}</h2>
+        ${educations.map(
+          (education) => `
+        <div class="d-flex flex-column flex-md-row justify-content-between">
+          <div class="flex-grow-1">
+            <h3 class="mb-0">${education.education.university}</h3>
+            <div class="subheading mb-3">${
+              education.education.degree
+            }</div>
+            <p>GPA: ${education.education.gpa}</p>
+          </div>
+          <div class="flex-shrink-0"><span class="text-primary">${
+            education.education.start
+          } - ${
+            education.education.end
+              ? education.education.end
+              : education.education.presentJob
+              ? "Present"
+              : ""
+          }</span></div>
+        </div>
+        `
+        ).join(`
+`)}
+      </div>
+    </section>
+    <hr class="m-0" />
+  `;
+  } else {
+    educationSection = "";
+  }
+
+  let skillsSection;
+
+  if (isSkillEnabled) {
+    skillsSection = `
+      <section class="resume-section" id="skills">
+        <div class="resume-section-content">
+          <h2 class="mb-5">${skillsTitle}</h2>
+          <div class="subheading mb-3">Programming Languages & Tools</div>
+          <ul class="skills-list d-flex flex-wrap p-0">
+            ${skills
+              .map((skill) => `
+                <li class="mr-4 mb-4">
+                  <div class="skill-item text-center p-3">
+                    ${skill.image ? `<img src="${skill.url}" class="skill-image" />` : ''}
+                    <span class="skill-name">${skill.name}</span>
+                  </div>
+                </li>
+              `)
+              .join('')}
+          </ul>
+        </div>
+      </section>
+      <hr class="m-0" />
+    `;
+  
+    // Add CSS for styling
+    const customStyles = `
+      <style>
+        .skills-list {
+          list-style: none;
+        }
+  
+        .skill-item {
+          background-color: #ffffff;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          padding: 10px;
+          width: 150px;
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+  
+        .skill-image {
+          width: 50px;
+          height: 50px;
+          margin-bottom: 10px;
+        }
+  
+        .skill-name {
+          font-weight: bold;
+        }
+        .mr-4 {
+          margin-right: 20px; /* You can adjust this value to control the spacing */
+        }
+  
+        .mb-4 {
+          margin-bottom: 20px; /* You can adjust this value to control the spacing */
+        }
+      </style>
+    `;
+  
+    // Add the custom styles to the HTML
+    skillsSection += customStyles;
+  } else {
+    skillsSection = '';
+  }
+  
+  
+  let interestSection;
+
+  if (isInterestEnabled) {
+    interestSection = ` <section class="resume-section" id="interests">
+    <div class="resume-section-content">
+      <h2 class="mb-5">${interestsTitle}</h2>
+      ${interests.map(
+        (interest) => `
+      <p>${interest.interest.interest}</p>
+      `
+      ).join(`
+`)}
+    </div>
+  </section>
+  <hr class="m-0" />
+    
+  `;
+  } else {
+    interestSection = "";
+  }
+
+  let awardSection;
+
+  if (isAwardsEnabled) {
+    awardSection = ` <section class="resume-section" id="awards">
+    <div class="resume-section-content">
+      <h2 class="mb-5">${awardsTitle}</h2>
+      <ul class="fa-ul mb-0">
+        ${awards.map(
+          (award) => `
+        <li>
+          <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+          ${award.award.award}
+        </li>
+        `
+        ).join(`
+`)}
+      </ul>
+    </div>
+  </section>
+</div>
+    
+  `;
+  } else {
+    awardSection = "";
+  }
+ 
   const finalHTML = `<!DOCTYPE html>
           <html lang="en">
             <head>
@@ -86,7 +276,7 @@ const Preview = ({
             </head>
             <body id="page-top">
               <!-- Navigation-->
-           ${navbar}
+              ${Navbar}
               <!-- Page Content-->
               <div class="container-fluid p-0">
                 <!-- About-->
@@ -101,124 +291,41 @@ const Preview = ({
                       <a href="mailto:${Email}">${Email}</a>
                     </div>
                     <p class="lead mb-5">${Description}</p>
+                    ${
+                      Object.keys(Socials).some(
+                        (soc) => Socials[soc].length > 0
+                      )
+                        ? `
                     <div class="social-icons">
-          ${Object.keys(Socials).map(
-            soc =>
-              `            <a class="social-icon" href="${Meta[soc][1]}${Socials[soc]}"><i class="fab fa-${Meta[soc][0]}"></i></a>`
-          ).join(`
-          `)}
-                    </div>
+                      ${Object.keys(Socials)
+                        .filter((soc) => Socials[soc].length > 0)
+                        .map(
+                          (soc) => `
+                          <a class="social-icon" href="${Meta[soc][1]}${Socials[soc]}">
+                            <i class="fab fa-${Meta[soc][0]}"></i>
+                          </a>
+                        `
+                        )
+                        .join("\n")}
+                    </div>`
+                        : ""
+                    }
+                    
                   </div>
                 </section>
                 <hr class="m-0" />
                 <!-- Experience-->
-                <section class="resume-section" id="experience">
-                  <div class="resume-section-content">
-                    <h2 class="mb-5">Experience</h2>
-                    ${experiences.map(
-                      experience => `
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                      <div class="flex-grow-1">
-                        <h3 class="mb-0">${experience.experience.position}</h3>
-                        <div class="subheading mb-3">${
-                          experience.experience.company
-                        }</div>
-                        <p>${experience.experience.desc}</p>
-                      </div>
-                      <div class="flex-shrink-0"><span class="text-primary">${
-                        experience.experience.start
-                      } - ${
-                        experience.experience.end
-                          ? experience.experience.end
-                          : experience.experience.presentJob
-                          ? "Present"
-                          : ""
-                      }</span></div>
-                    </div>
-                    `
-                    ).join(`
-          `)}
-                  </div>
-                </section>
-                <hr class="m-0" />
+                ${experienceSection}
                 <!-- Education-->
-                <section class="resume-section" id="education">
-                  <div class="resume-section-content">
-                    <h2 class="mb-5">Education</h2>
-                    ${educations.map(
-                      education => `
-                    <div class="d-flex flex-column flex-md-row justify-content-between">
-                      <div class="flex-grow-1">
-                        <h3 class="mb-0">${education.education.university}</h3>
-                        <div class="subheading mb-3">${education.education.degree}</div>
-                        <p>GPA: ${education.education.gpa}</p>
-                      </div>
-                      <div class="flex-shrink-0"><span class="text-primary">${
-                        education.education.start
-                      } - ${
-                        education.education.end
-                          ? education.education.end
-                          : education.education.presentJob
-                          ? "Present"
-                          : ""
-                      }</span></div>
-                    </div>
-                    `
-                    ).join(`
-          `)}
-                  </div>
-                </section>
-                <hr class="m-0" />
+                ${educationSection}
                 <!-- Skills-->
-                <section class="resume-section" id="skills">
-                  <div class="resume-section-content">
-                    <h2 class="mb-5">Skills</h2>
-                    <div class="subheading mb-3">Programming Languages & Tools</div>
-                    <ul class="fa-ul mb-0">
-                      ${skills.map(
-                        skill => `
-                      <li>
-                        <span class="fa-li"><i class="fas fa-check"></i></span>
-                        ${skill.skill.skill}
-                      </li>
-                      `
-                      ).join(`
-          `)}
-                    </ul>
-                  </div>
-                </section>
-                <hr class="m-0" />
+                ${skillsSection}
                 <!-- Interests-->
-                <section class="resume-section" id="interests">
-                  <div class="resume-section-content">
-                    <h2 class="mb-5">Interests</h2>
-                    ${interests.map(
-                      interest => `
-                    <p>${interest.interest.interest}</p>
-                    `
-                    ).join(`
-          `)}
-                  </div>
-                </section>
-                <hr class="m-0" />
+               ${interestSection}
                 <!-- Awards-->
-                <section class="resume-section" id="awards">
-                  <div class="resume-section-content">
-                    <h2 class="mb-5">Awards & Certifications</h2>
-                    <ul class="fa-ul mb-0">
-                      ${awards.map(
-                        award => `
-                      <li>
-                        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                        ${award.award.award}
-                      </li>
-                      `
-                      ).join(`
-          `)}
-                    </ul>
-                  </div>
-                </section>
-              </div>
+                ${awardSection}
+                <!--Projects-->
+                ${Projectdesign}
               <!-- Bootstrap core JS-->
               <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
               <!-- Core theme JS-->
@@ -227,10 +334,10 @@ const Preview = ({
           </html>
 `;
   return (
-    <div className="Preview w-full">
-      <br/>
+    <div className="Preview h-screen w-full">
+      <br />
       <iframe
-        className="w-full h-96 border rounded-md"
+        className="w-full h-[85vh] border rounded-md"
         src={`data:text/html,${encodeURIComponent(finalHTML)}`}
         frameborder="0"
         title="Preview"
@@ -239,12 +346,16 @@ const Preview = ({
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   experiences: state.experiences,
   educations: state.educations,
   awards: state.awards,
   interests: state.interests,
-  skills: state.skills
-});
-
+  skills: state.skills.selectedSkills,
+  experienceTitle: state.title.experienceTitle,
+  skillsTitle: state.title.skillsTitle,
+  interestsTitle: state.title.interestsTitle,
+  awardsTitle: state.title.awardsTitle,
+  educationTitle: state.title.educationTitle,
+})
 export default connect(mapStateToProps)(Preview);

@@ -11,3 +11,10 @@ export const removeAward = award => ({
     type: REMOVE_AWARD,
     payload: {award}
 });
+
+export const EDIT_AWARD = 'EDIT_AWARD';
+
+export const editAward = (oldAward, newAward) => ({
+    type: EDIT_AWARD,
+    payload: {oldAward, newAward}
+});

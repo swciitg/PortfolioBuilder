@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Poppins&family=Smooch+Sans:wght@500&display=swap');
+.main_part
+{
+    margin-left:0px;
+    display: flex;
+    flex-direction: column;
+    gap: 16vh;
+    width: 25vw;
+    padding-left: 2vw;
+    margin-top: 2vh;
+}
+.landing_page
+{
+    display: flex;
+    flex-direction: column;
+    gap: -4vh;
+    margin-left: 25px;
+}
+.head-one
+{
+    font-family: 'Smooch Sans', sans-serif;
+    font-weight: 700;
+    font-size: 5.2vw;
+    width: max-content;
+
+}
+.head-two
+{
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1vw;
+    line-height: 21px;
+    font-weight: 400;
+    margin-left: 5vw;
+    margin-top: -1vh;
+    width: max-content;
+}
+.swc-img
+{
+    width: 4.4vw;
+}
+.heading
+{
+    width: max-content;
+    font-size: 1.38vw;
+    line-height: 1.70vw;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    
+    height: 4.5vh;
+    
+    margin-left: 5.5vw;
+    /* margin-top: 0.05rem; */
+
+    margin-top: -5.5vh;
+}
+.part1
+{
+    display: flex;
+    flex-direction: column;
+}
+.bottom-part
+{
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+}
+  .button-home
+  {
+    background-color: #c9cecb;
+    border-radius: 25px;
+    width: 23vw;
+    height: 8vh;
+    text-align: center;
+    font-size: 1.2vw;
+    position: relative;
+    left: 1.5rem;
+    margin: 4px 2px;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: row;
+    padding-top: 2.5vh;
+    padding-left: 5vw;
+    gap: 0.85vw;
+  }
+ 
+.header
+{
+    gap: 10px;
+    margin-left: 0px;
+    margin-top: 5px;
+    
+}
+.anot
+{
+    display: flex;
+    flex-direction: row;
+    margin-top: 2vh;
+}
+.main
+{
+    display: flex;
+    flex-direction: row;
+    gap: 21vw;
+}
+.part2
+{
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 16%;
+    position: relative;
+    right: 8vw;
+}
+.img-one
+{
+    width: 26vw;
+    height: 25vh;
+    z-index: 1;
+}
+.img-two
+{
+    width: 26vw;
+    height: 25vh;
+    z-index: 2;
+    position: relative;
+     margin-top: 9.5vw;
+}
+.img-three
+{
+    width: 26vw;
+    height: 25vh;
+    z-index: 1;
+}
+.img-four
+{
+    width: 26vw;
+    height: 25vh;
+    z-index: 2;
+    margin-top: 5.5vw;
+}
+
+.img-btn
+{
+    width: 2.2vw;
+    height: 2.4vh;
+    
+}
+@media screen and (max-width: 1030px) {
+    .img-two {
+       margin-top: 2.5vw;
+    }
+    .heading
+    {
+        margin-top: -3.5vw;
+    }
+  }
+  @media screen and (max-width: 844px) {
+    .anot{
+       margin-top: 7vh;
+    }
+    .img-two {
+        margin-top: 1.8vw;
+     }
+     .heading
+     {
+         margin-top: -3.5vw;
+     }
+  }
+
+  @media screen and (max-width: 808px) {
+    .anot{
+       margin-top: 7vh;
+    }
+    .img-two {
+        margin-top: 1.5vw;
+     }
+     .img-four
+     {
+        margin-top: 6.5vw;
+     }
+     .heading
+     {
+         margin-top: -3.5vw;
+     }
+  }
+  @media screen and (max-width: 790px) {
+    .anot{
+       margin-top: 7vh;
+    }
+    .img-two {
+        margin-top: 5px;
+     }
+     .img-four
+     {
+        margin-top: 4.5vw;
+     }
+  }
+  @media screen and (max-width: 790px) {
+    .anot{
+       margin-top: 9.5vh;
+    }
+    .part1
+    {
+        gap: 12vh;
+    }
+    .part2
+    {
+        gap: 7.4vh;
+        margin-top: 33%;
+    }
+    .heading
+    {
+        margin-top: -3.5vw;
+    }
+    
+
+  }
+  @media screen and (max-width: 720px) {
+   
+    .part1
+    {
+        gap: 13.50vh;
+    }
+    .part2
+    {
+        gap: 7.4vh;
+        margin-top: 36%;
+    }
+    .heading
+    {
+        margin-top: -2.5vw;
+    }
+  .button-home
+  {
+    height: 5.4vh;
+  }
+  .img-btn
+  {
+    padding-bottom: 10px;
+  }
+  }
+  @media screen and (max-width: 567px) {
+   
+    .part1
+    {
+        gap: 13.50vh;
+    }
+    .part2
+    {
+        gap: 4.0vh;
+        margin-top: 36%;
+    }
+   
+
+  }
+  @media screen and (max-width: 504px) {
+   
+    .part1
+    {
+        gap: 13.50vh;
+    }
+    .part2
+    {
+       
+        margin-top: 40%;
+    }
+   
+
+    .img-two
+    {
+       margin-top: -10px;
+    }
+     
+  }
+ 
