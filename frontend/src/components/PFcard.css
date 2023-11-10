@@ -1,0 +1,84 @@
+.portfolio-card {
+  height: 16vw;
+  width: 16vw;
+  border: 0.3vw solid whitesmoke;
+  margin: 2vw;
+  padding: 1vw;
+
+  background-color: black;
+}
+.card-details h2 {
+  font-size: 2vw;
+  margin-bottom: 1vw;
+}
+.card {
+  padding: 0.5vw;
+  color: white;
+}
+.portfolio-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5vw;
+}
+.portfolio-actions button {
+  color: black;
+  background-color: white;
+  padding: 0.2vw;
+}
+.Date {
+  margin-top: 2vw;
+}
+@media (max-width: 1320px) {
+  .portfolio-card {
+    height: 30vw;
+    width: 30vw;
+    border: 0.3vw solid whitesmoke;
+    margin: 2vw;
+    padding: 2vw;
+  }
+  .card {
+    padding: 0.5vw;
+  }
+  .portfolio-actions {
+    gap: 0.5vw;
+  }
+  .Date {
+    margin-top: 2vw;
+  }
+}
+@media (max-width: 760px) {
+  .portfolio-card {
+    height: 70vw;
+    width: 70vw;
+    border: 0.3vw solid whitesmoke;
+    margin: 2vw;
+    padding: 2vw;
+  }
+  .card {
+    padding: 0.5vw;
+  }
+  .portfolio-actions {
+    gap: 0.5vw;
+  }
+  .Date {
+    margin-top: 2vw;
+  }
+}
+@media (max-width: 320px) {
+  .portfolio-card {
+    height: 80vw;
+    width: 80vw;
+    border: 0.3vw solid whitesmoke;
+    margin: 2vw;
+    padding: 2vw;
+  }
+  .card {
+    padding: 0.5vw;
+  }
+  .portfolio-actions {
+    gap: 0.5vw;
+  }
+  .Date {
+    margin-top: 2vw;
+  }
+}

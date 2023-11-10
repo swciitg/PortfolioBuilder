@@ -1,0 +1,125 @@
+.portfolio-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.new-portfolio-button {
+  height: 16vw;
+  width: 16vw;
+  border: 0.3vw dashed black;
+  background-color: black;
+  margin: 2vw;
+  padding: 1vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.plus {
+  font-size: 4vw;
+  margin: 0.5vw;
+}
+.new-btn {
+  border: 0.3vw dashed grey;
+  height: 13vw;
+  width: 13vw;
+  cursor: pointer;
+  color: white;
+}
+
+.new-portfolio-form input {
+  margin-bottom: 1vw;
+}
+
+.new-portfolio-form textarea {
+  margin-bottom: 1vw;
+}
+
+.new-portfolio-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 20vw;
+  width: 20vw;
+  background-color: white;
+  padding: 2vw;
+  border: 0.1vw solid #ccc;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.overlay textarea {
+  height: 8vw;
+  margin-bottom: 1.5vw;
+}
+@media (max-width: 1320px) {
+  .new-portfolio-button {
+    height: 30vw;
+    width: 30vw;
+    margin: 2vw;
+    padding: 1vw;
+  }
+  .new-btn {
+    height: 25vw;
+    width: 25vw;
+    border: 1vw dashed grey;
+  }
+  .new-portfolio-modal {
+    height: 40vw;
+    width: 40vw;
+    padding: 2vw;
+    gap: 1vw;
+  }
+  .overlay textarea {
+    height: 15vw;
+    margin-bottom: 2vw;
+  }
+}
+@media (max-width: 760px) {
+  .new-portfolio-button {
+    height: 70vw;
+    width: 70vw;
+    margin: 2vw;
+    padding: 1vw;
+  }
+  .new-btn {
+    height: 65vw;
+    width: 65vw;
+    border: 1vw dashed grey;
+  }
+  .new-portfolio-modal {
+    height: 70vw;
+    width: 70vw;
+    padding: 2vw;
+    gap: 1vw;
+  }
+  .overlay textarea {
+    height: 15vw;
+    margin-bottom: 2vw;
+  }
+}
+@media (max-width: 320px) {
+  .new-portfolio-modal {
+    height: 90vw;
+    width: 90vw;
+    padding: 2vw;
+    gap: 1vw;
+  }
+}
