@@ -290,19 +290,23 @@ const PortfolioCard = ({
               ${projects
                 .map(
                   (project) => `
-                <div class="project-card mb-5">
-                  <div class="project-top">
-                    <img src="${project.project.image}" alt="${
+
+
+             
+
+                <div class="project-card mb-5 border-[1px] borer-solid overflow-hidden flex flex-col">
+                  <div class="project-top max-w-[100%] object-contain m-[10px] min-h-[150px] ">
+                    <img class="max-w-[100%] object-contain m-[10px] min-h-[150px]" src="${project.project.image}" alt="${
                     project.project.name
                   }" class="img-fluid">
                   </div>
-                  <div class="project-bottom bg-primary">
+                  <div class="project-bottom  mt-[10px] mb-[10px] text-[1.8rem] bg-primary bg-[#0074d9] text-white p-[20px] relative ">
                     <div class="project-details">
-                      <h3 class="text-white">${project.project.name}</h3>
-                      <p class="tech-stack text-white"><strong>Technology Stack: </strong>${
+                      <h3 class="text-white mx-0 mt-[10px] text-[1.8rem]">${project.project.name}</h3>
+                      <p class="tech-stack mt-[10px] mb-0 text-white"><strong>Technology Stack: </strong>${
                         project.project.techStack
                       }</p>
-                      <p class="description text-white">${
+                      <p class="description mt-10px mb-0 text-white">${
                         project.project.description
                       }</p>
                       <div class="project-info">
@@ -329,7 +333,7 @@ const PortfolioCard = ({
                         <div class="mb-3 text-white"><strong>Self-Project: </strong>${
                           project.project.isSelfProject ? "Yes" : "No"
                         }</div>
-                        <div class="date text-white"><strong>Date: </strong>${
+                        <div class="date mb-10 mr-10 absolute text-white"><strong>Date: </strong>${
                           project.project.timeline
                         }</div>
                         <div class="dropdown dropup text-white">
@@ -427,18 +431,23 @@ const PortfolioCard = ({
             .map(
               (project) => `
             <div class="col-lg-12 mb-5">
-              <div class="project-card">
-                <div class="project-image">
+              <div class="project-card lg:max-w-[10000px] md:max-h-[500px] flex border-[1px] border-solid border-[#ddd] rounded-[5px] mb-[20px] relative overflow-hidden">
+                <div class="project-image mh-[100%] object-contain max-w-[100%] grow shrink basis-0 items-center justify-center relative min-w-[220px] ">
+
+
+               
+
+
                   <img src="${project.project.image}" alt="${
                 project.project.name
               }" class="img-fluid">
                 </div>
-                <div class="project-details bg-primary">
-                  <h3 class="text-white">${project.project.name}</h3>
-                  <p class="tech-stack text-white"><strong>Technology Stack: </strong>${
+                <div class="project-details md:max-w-[600px] mt-[10px] mb-0 mx-0 break-words bg-[#0074d9] text-[1.8rem]  text-white p-[20px] flex flex-col justify-between max-h-[1000px] max-w-[300px] overflow-hidden">
+                  <h3 class="text-white break-words mt-0 mb-[10px] mx-0 text-[1.8rem] ">${project.project.name}</h3>
+                  <p class="tech-stack mt-[10px] mb-0 break-words text-white"><strong>Technology Stack: </strong>${
                     project.project.techStack
                   }</p>
-                  <p class="description text-white">${
+                  <p class="description break-words mt-[10px] mb-0  text-white">${
                     project.project.description
                   }</p>
                   <div class="project-info">
@@ -521,7 +530,7 @@ const PortfolioCard = ({
       align-items: center;
       justify-content: center;
       position: relative;
-      min-width:220px
+      min-width:220px;
     }
     
     .project-image img {
