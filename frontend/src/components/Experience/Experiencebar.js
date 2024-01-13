@@ -26,11 +26,11 @@ function Experience(props) {
                 
                 </div>
                 <div>
-                <img src="star.png" className='relative left-[5px] bottom-[10px] h-[104px] w-[104px]'/>
-                <img src="small.png" className='relative left-[70px] bottom-[130px] h-[50px] w-[50px]'/>
+                <img src="images/star.png" className='relative left-[5px] bottom-[10px] h-[104px] w-[104px]'/>
+                <img src="images/small.png" className='relative left-[70px] bottom-[130px] h-[50px] w-[50px]'/>
                 </div>
             </div>
-            <img src="Halfstar.png" className='relative top-[-135px]'/>
+            <img src="images/Halfstar.png" className='relative top-[-135px]'/>
             </div>
     );
 }
