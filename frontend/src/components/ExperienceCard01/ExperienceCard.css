@@ -1,0 +1,19 @@
+.button_slide {
+   
+   
+    /* border-radius: 0px; */
+    /* padding: 18px 36px; */
+    /* display: inline-block; */
+    /* font-family: "Lucida Console", Monaco, monospace; */
+    /* font-size: 14px; */
+    /* letter-spacing: 1px; */
+    cursor: pointer;
+    box-shadow: inset 0 0 0 0 #ffffff;
+    -webkit-transition: ease-out 0.4s;
+    -moz-transition: ease-out 0.4s;
+    transition: ease-out 0.7s;
+  }
+
+  .slide_right:hover {
+    box-shadow: inset 1900px 0 0 0 #dd8ebf;
+  }
