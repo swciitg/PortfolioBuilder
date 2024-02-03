@@ -21,27 +21,27 @@ const AwardCard = ({ award, onRemovePressed, onEditPressed }) => {
     };
 
     return (
-        <div className="flex-col rounded-lg shadow-lg p-6 relative w-1/2 row">
+        <div className="flex-col rounded-sm border bg-gray-100 shadow-sm p-4 relative w-3/4">
             {
                 isEditing ? (
                     <>
                         <input
                             type="text"
-                            className={`py-2 px-3 w-1/2 ${isEditing ? 'border border-gray-400' : 'border-none'} rounded-lg`}
+                            className={`py-2 px-3 w-3/4 ${isEditing ? 'border border-gray-400' : 'border-none'} rounded-sm`}
                             value={editedAward}
                             onChange={(e) => setEditedAward(e.target.value)}
                         />
                     </>
                 ) : (
-                    <div className="col">{award.award}</div>
+                    <div className="my-2">{award.award}</div>
                 )
             }
             {isEditing ? (
                 <div className='pt-4 items-center'>
-                    <button className="bg-black hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-2" onClick={handleSaveClick}>
+                    <button className="bg-gray-800 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded mr-2" onClick={handleSaveClick}>
                         Save
                     </button>
-                    <button className="bg-black hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-2" onClick={handleCancelClick}>Cancel</button>
+                    <button className="bg-gray-800 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded mr-2" onClick={handleCancelClick}>Cancel</button>
                 </div>
             ) : (
                 <>

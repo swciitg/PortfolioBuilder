@@ -11,7 +11,7 @@ const EducationList = ({ educations = [], onRemovePressed, onEditPressed }) => {
     return (
         <div>
             <NewEducationForm />
-            <div className="container mb-3">
+            <div className="my-6">
                 {educations.map(education => <EducationCard education={education.education} onRemovePressed={onRemovePressed} onEditPressed={onEditPressed}/>)}
             </div>
         </div>

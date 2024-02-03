@@ -11,7 +11,7 @@ const InterestList = ({ interests = [], onRemovePressed, onEditPressed }) => {
     return(
     <div>
         <NewInterestForm />
-        <div className="container mb-3">
+        <div className="container my-3">
             {interests.map(interest => <InterestCard interest={interest.interest} onRemovePressed={onRemovePressed} onEditPressed={onEditPressed}/>)}
         </div>
     </div>

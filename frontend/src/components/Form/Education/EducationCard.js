@@ -21,16 +21,16 @@ const EducationCard = ({ education, onRemovePressed, onEditPressed}) => {
     setEditedEducation(education);
   };
   return (
-    <div className="flex-col rounded-lg shadow-lg p-6 relative w-[60%] row">
+    <div className="flex-col rounded-sm shadow-sm border bg-gray-100 p-4 my-4 relative w-3/4">
       {
          <EducationInfo education={education} isEditing={isEditing} setEditedEducation={setEditedEducation}/>
       }
       {isEditing ? (
-        <div className='pt-4 items-center'>
-          <button className="bg-black hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-2" onClick={handleSaveClick}>
+        <div className='pt-3 items-center'>
+          <button className="bg-gray-800 hover:bg-gray-900 text-white font-bold py-1 px-4 rounded mr-2" onClick={handleSaveClick}>
             Save
           </button>
-          <button className="bg-black hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-2" onClick={handleCancelClick}>Cancel</button>
+          <button className="bg-gray-800 hover:bg-gray-900 text-white font-bold py-1 px-4 rounded mr-2" onClick={handleCancelClick}>Cancel</button>
         </div>
       ) : (
         <>

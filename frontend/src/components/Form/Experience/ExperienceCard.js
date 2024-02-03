@@ -22,16 +22,16 @@ const ExperienceCard = ({ experience, onRemovePressed, onEditPressed}) => {
     setEditedExperience(experience);
   };
   return (
-    <div className="flex-col rounded-lg shadow-lg p-6 relative w-[60%] row">
+    <div className="w-3/4 flex-col rounded-sm border bg-gray-100 shadow-sm p-4 relative row">
       {
          <ExperienceInfo experience={experience} isEditing={isEditing} setEditedExperience={setEditedExperience}/>
       }
       {isEditing ? (
-        <div className='pt-4 items-center'>
-          <button className="bg-black hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-2" onClick={handleSaveClick}>
+        <div className='pt-3 items-center'>
+          <button className="bg-gray-800 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded mr-2" onClick={handleSaveClick}>
             Save
           </button>
-          <button className="bg-black hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-2" onClick={handleCancelClick}>Cancel</button>
+          <button className="bg-gray-800 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded mr-2" onClick={handleCancelClick}>Cancel</button>
         </div>
       ) : (
         <>

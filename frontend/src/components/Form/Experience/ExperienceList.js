@@ -11,7 +11,7 @@ const ExperienceList = ({ experiences = [], onRemovePressed, onEditPressed }) =>
   return (
     <div>
       <NewExperienceForm />
-      <div className="container mb-3">
+      <div className="my-4">
         {experiences.map((experience) => (
 
           // <Experience

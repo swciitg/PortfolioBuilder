@@ -28,16 +28,16 @@ const NewInterestForm = ({ interests = [], onCreatePressed }) => {
   }, [interest]);
   return (
     <div
-      className={`border rounded ${
+      className={`border ${
         isInterestFilled
           ? "border-green-500"
           : isTyping
           ? "border-yellow-500"
           : ""
-      } p-3 m-2`}
+      } p-3`}
     >
       <input
-        className="dark:bg-zinc-800 form-control form-control-sm mb-2 w-96 border outline-gray-200 p-1"
+        className="dark:bg-zinc-800 form-control form-control-sm mb-2 w-96 border outline-none p-1 capitalize"
         type="text"
         placeholder="Describe your interests in a few words..."
         value={interest}
@@ -49,11 +49,20 @@ const NewInterestForm = ({ interests = [], onCreatePressed }) => {
       />
       <div className="text-right">
         <button
-          className="btn btn-success btn-sm rounded-circle rounded-full w-7 h-7 bg-green-400 text-white"
-          disabled={interest === ""}
+          className="btn btn-success btn-sm rounded-circle cursor-pointer rounded-full w-7 h-7 bg-green-400 hover:bg-green-600 text-white"
+        
           onClick={() => {
+            if(interest === "")
+            {
+              toast.warning("Interest section is empty!", {
+                position: toast.POSITION.BOTTOM_RIGHT,
+              });
+              return;
+            }
+
             onCreatePressed({ interest });
             setInterest("");
+            
           }}
         >
           <FontAwesomeIcon icon={faPlus} />

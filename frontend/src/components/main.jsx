@@ -3,19 +3,20 @@ import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from '../context/auth/AuthContext';
 import { useSearchParams } from 'react-router-dom';
 import Card from './navigateCard';
+import NewCard from './newCard';
 
 const HomePage = () => {
     const { getToken , logOut ,studInfo ,setStudInfo} = useContext(AuthContext);
     const [ searchParams,setSearchParams ] = useSearchParams();
     
-    const Navigate = useNavigate();
+    
 
 
     const getItem = async () => {
-        const code = searchParams.get('code');  
+        // const code = searchParams.get('code');  
 
-        if(localStorage.getItem('studName') === null && code)
-          await getToken(code);
+        // if(localStorage.getItem('studName') === null && code)
+        //   await getToken(code);
 
     }
 
@@ -24,11 +25,9 @@ const HomePage = () => {
         document.body.classList.add("disable-scrolling");
     },[]);
 
-    setStudInfo({...studInfo, name : localStorage.getItem('studName'), roll : localStorage.getItem('studRoll') , email : localStorage.getItem('studId')});
+    // setStudInfo({...studInfo, name : localStorage.getItem('studName'), roll : localStorage.getItem('studRoll') , email : localStorage.getItem('studId')});
 
-    const clickHandler = async () => {
-        Navigate('/portfolio')
-    }
+    
 
     
 
@@ -38,24 +37,43 @@ const HomePage = () => {
     }
 
     return (
-        <div>
-            <div className='w-full'>
-                <div className='w-full h-48 bg-black text-white'>
-                    <div className='text-end'>
-                        <button className='bg-gray-700 text-white p-2 rounded-md hover:bg-gray-800 my-2 mr-5' onClick={logOutHandler}>Log Out
+        <div className='h-full'>
+            <div className='w-full h-fit'>
+                <div className='w-full h-fit bg-gray-900 text-white'>
+                    <div className='flex justify-end items-center mr-4'>
+                        <Link className='mx-3 text-lg flex items-center' to="">
+                            <span class="material-symbols-outlined">
+                            info
+                            </span>
+                            <span className='ml-1 hover:underline '>Feedback</span>
+                        </Link>
+                        <button className='cursor-pointer text-white py-2 rounded-md my-2 mx-3 text-lg ' onClick={logOutHandler}>
+                            <div className='flex items-center'>
+                            <span class="material-symbols-outlined">
+                            person
+                            </span>
+                            <span className='hover:underline ml-1'>Log Out</span>
+                            </div>
                         </button>
                     </div>
-                    <div className='p-2 m-4'>
-                        <div className='text-3xl font-bold p-1'>Welcome {studInfo.name} 👋</div>
-                        <div className='text-2xl font-semibold px-1 pt-1 pb-2'>{studInfo.roll}</div>
+                    <div className='py-6 px-8' style={{"fontFamily":"Raleway"}}>
+                        <div className='text-3xl font-extrabold p-1'>Welcome Ankit Gurwan 👋</div>
+                        {/* <div className='text-2xl font-medium px-1 pt-1'>Mechanical Engineering</div> */}
+                        <div className='text-2xl font-medium px-1 pb-2'>210103016</div>
                     </div>
                 </div>
-                <div className='my-12 mx-12 '>
-                    <div onClick={clickHandler}>
+            </div>
+            <div className='w-full px-10 pt-10 pb-28 bg-gray-200'>
+                <div className='text-xl font-medium text-gray-800 mb-8 flex items-center'>
+                    <span class="material-symbols-outlined">
+                    history
+                    </span>
+                    <span className='ml-1 text-xl'>Previous Activity :</span>
+                </div>
+                <div className='flex gap-4' >
                     <Card />
-                    </div>
+                    <NewCard />
                 </div>
-                
             </div>
         </div>
     )

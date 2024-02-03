@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { createProject, changeDesign } from "./action";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const NewProjectForm = ({ onCreatePressed,onChangeDesign }) => {
   const [projectData, setProjectData] = useState({
@@ -37,6 +39,36 @@ const NewProjectForm = ({ onCreatePressed,onChangeDesign }) => {
   };
 
   const handleSubmit = () => {
+
+    if(!projectData.name)
+    {
+      toast.warning("Projct Namw in Projects section not filled!", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+      return;
+    }
+    else if(!projectData.description)
+    {
+      toast.warning("Project description in Projects section not filled!", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+      return;
+    }
+    else if(!projectData.techStack)
+    {
+      toast.warning("Tech Stacks in Projects section not filled!", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+      return;
+    }
+    else if(!projectData.githubLink)
+    {
+      toast.warning("Github Link in Projects section missing!", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+      return;
+    }
+
     // Create a new project object and dispatch the action
     const newProject = { project: projectData };
     onCreatePressed(newProject);
@@ -60,17 +92,17 @@ const NewProjectForm = ({ onCreatePressed,onChangeDesign }) => {
   };
 
   return (
-    <div className="border rounded p-3 m-2">
-      <div className="row">
+    <div className="border rounded p-4">
+      <div className="flex">
         <div className="col-12 text-center">
           <button
-            className={`btn ${selectedDesign === "design1" ? "btn-primary" : "btn-secondary"}`}
+            className={`btn bg-blue-400 text-white p-1 rounded-sm mx-1 font-medium ${selectedDesign === "design1" ? "btn-primary" : "btn-secondary"}`}
             onClick={() => handleDesignSelection("design1")}
           >
             Design 1
           </button>
           <button
-            className={`btn ${selectedDesign === "design2" ? "btn-primary" : "btn-secondary"}`}
+            className={`btn bg-yellow-400 text-white p-1 rounded-sm mx-1 font-medium ${selectedDesign === "design2" ? "btn-primary" : "btn-secondary"}`}
             onClick={() => handleDesignSelection("design2")}
           >
             Design 2
@@ -79,30 +111,31 @@ const NewProjectForm = ({ onCreatePressed,onChangeDesign }) => {
       </div>
       <input
         type="text"
-        className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
+        className="mt-4 w-1/2 dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-l-sm text-sm capitalize outline-none"
         name="name"
         placeholder="Project Name"
         value={projectData.name}
         onChange={handleChange}
       />
-      <textarea
-        className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
-        name="description"
-        placeholder="Project Description"
-        value={projectData.description}
-        onChange={handleChange}
-      />
       <input
         type="text"
-        className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
+        className="w-1/2 dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-r-sm text-sm capitalize outline-gray-200"
         name="image"
         placeholder="Project Image URL"
         value={projectData.image}
         onChange={handleChange}
       />
+      <textarea
+        className="w-full dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-none"
+        name="description"
+        placeholder="Project Description"
+        value={projectData.description}
+        onChange={handleChange}
+      />
+      
       <input
         type="text"
-        className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
+        className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-l-sm text-sm capitalize outline-none"
         name="techStack"
         placeholder="Tech Stack"
         value={projectData.techStack}
@@ -110,7 +143,7 @@ const NewProjectForm = ({ onCreatePressed,onChangeDesign }) => {
       />
       <input
         type="text"
-        className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
+        className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 text-sm capitalize outline-none"
         name="websiteLink"
         placeholder="Website Link"
         value={projectData.websiteLink}
@@ -118,7 +151,7 @@ const NewProjectForm = ({ onCreatePressed,onChangeDesign }) => {
       />
       <input
         type="text"
-        className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
+        className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-r-sm text-sm capitalize outline-none"
         name="githubLink"
         placeholder="GitHub Link"
         value={projectData.githubLink}
@@ -126,26 +159,26 @@ const NewProjectForm = ({ onCreatePressed,onChangeDesign }) => {
       />
       <input
         type="text"
-        className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
+        className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-none"
         name="timeline"
         placeholder="Project Timeline"
         value={projectData.timeline}
         onChange={handleChange}
       />
-      <div className="form-check mb-2">
+      <div className="form-check mb-2 flex items-center">
         <input
           type="checkbox"
-          className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
+          className="dark:bg-zinc-800 form-control form-control-sm border py-1 px-2 rounded-sm text-sm capitalize outline-none"
           name="guidedByProfessor"
           checked={projectData.guidedByProfessor}
           onChange={handleChange}
         />
-        <label className="form-check-label">Guided by Professor</label>
+        <label className="form-check-label mx-1">Guided by Professor</label>
       </div>
       {projectData.guidedByProfessor && (
        <input
        type="text"
-       className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
+       className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-none"
        name="professorName"
        placeholder="Professor's Name"
        value={projectData.professorName}
@@ -154,15 +187,15 @@ const NewProjectForm = ({ onCreatePressed,onChangeDesign }) => {
       )}
       
       {/* Club Project Checkbox */}
-      <div className="form-check mb-2">
+      <div className="form-check flex items-center mb-2">
         <input
           type="checkbox"
-          className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
+          className="dark:bg-zinc-800 form-control form-control-sm border px-2 rounded-sm text-sm capitalize outline-gray-200"
           name="isClubProject"
           checked={projectData.isClubProject}
           onChange={handleChange}
         />
-        <label className="form-check-label">Club Project</label>
+        <label className="form-check-label mx-1">Club Project</label>
       </div>
       {/* Club Name */}
       {projectData.isClubProject && (
@@ -176,21 +209,21 @@ const NewProjectForm = ({ onCreatePressed,onChangeDesign }) => {
         />
       )}
       {/* Self-Project Checkbox */}
-      <div className="form-check mb-2">
+      <div className="form-check flex items-center mb-2">
         <input
           type="checkbox"
-          className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
+          className="dark:bg-zinc-800 form-control form-control-sm border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
           name="isSelfProject"
           checked={projectData.isSelfProject}
           onChange={handleChange}
         />
-        <label className="form-check-label">Self-Project</label>
+        <label className="form-check-label mx-1">Self-Project</label>
       </div>
       <div className="text-right">
         <button
-          className="btn btn-success btn-sm rounded-circle"
+          className="btn btn-success btn-sm rounded-circle cursor-pointer rounded-full w-7 h-7 bg-green-400 hover:bg-green-600 text-white"
           onClick={handleSubmit}
-          disabled={!projectData.name || !projectData.description}
+          
         >
           <FontAwesomeIcon icon={faPlus} />
         </button>

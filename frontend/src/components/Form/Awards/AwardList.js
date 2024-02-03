@@ -11,7 +11,7 @@ const AwardList = ({ awards = [], onRemovePressed, onEditPressed }) => {
     return(
     <div>
         <NewAwardForm />
-        <div className="container mb-3">
+        <div className="my-4">
             {awards.map(award => <AwardCard award={award.award} onRemovePressed={onRemovePressed} onEditPressed={onEditPressed}/>)}
         </div>
     </div>

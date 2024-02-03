@@ -41,16 +41,16 @@ const NewExperienceForm = ({ experiences = [], onCreatePressed }) => {
 
   return (
     <div
-      className={`border rounded ${
+      className={`border flex flex-col ${
         allFieldsFilled === 5
           ? "border-green-500"
           : allFieldsFilled === 0
           ? ""
           : "border-yellow-500"
-      } p-3 m-2`}
+      } p-3`}
     >
       <input       
-        className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
+        className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 w-1/2 rounded-sm text-sm capitalize outline-none"
         type="text"
         placeholder="Position"
         value={position}
@@ -61,7 +61,7 @@ const NewExperienceForm = ({ experiences = [], onCreatePressed }) => {
         onBlur={handleBlur}
       />
       <input
-        className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
+        className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 w-1/2 rounded-sm text-sm capitalize outline-none"
         type="text"
         placeholder="Company"
         value={company}
@@ -72,7 +72,7 @@ const NewExperienceForm = ({ experiences = [], onCreatePressed }) => {
         onBlur={handleBlur}
       />
       <textarea
-        className="dark:bg-zinc-800 w-4/5 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
+        className="dark:bg-zinc-800 w-4/5 form-control form-control-sm mb-2 border py-1 px-2 rounded-sm text-sm capitalize outline-none"
         placeholder="Role description"
         rows="4"
         value={desc}
@@ -82,8 +82,8 @@ const NewExperienceForm = ({ experiences = [], onCreatePressed }) => {
         }}
         onBlur={handleBlur}
       />
-      <div className="row mb-2">
-        <div className="dark:bg-zinc-800 col mb-2 p-1 text-sm flex items-center justify-center border w-40">
+      <div className="flex gap-2 items-center">
+        <div className="dark:bg-zinc-800 col p-1 text-sm flex items-center justify-center border w-40 rounded-sm">
           <input
             type="date"
             className="dark:bg-zinc-800 outline-none p-1"
@@ -93,7 +93,7 @@ const NewExperienceForm = ({ experiences = [], onCreatePressed }) => {
             }
           />
         </div>
-        <div className="dark:bg-zinc-800 col mb-2 p-1 text-sm flex items-center justify-center border w-40">
+        <div className="dark:bg-zinc-800 col p-1 text-sm flex items-center justify-center border w-40 rounded-sm">
           <input
             type="date"
             className="dark:bg-zinc-800 outline-none p-1"
@@ -105,7 +105,7 @@ const NewExperienceForm = ({ experiences = [], onCreatePressed }) => {
           />
         </div>
         <div className="col">
-          <div className="form-check border p-1 flex justify-center items-center w-24">
+          <div className="form-check border p-1 flex justify-center items-center w-24 rounded-sm">
             <input
               className="dark:bg-zinc-800"
               type="checkbox"
@@ -129,18 +129,21 @@ const NewExperienceForm = ({ experiences = [], onCreatePressed }) => {
 
       <div className="text-right">
         <button
-          className="btn btn-success btn-sm rounded-circle cursor-pointer rounded-full w-7 h-7 bg-green-400 text-white"
-          disabled={
-            position === "" ||
+          className="btn btn-success btn-sm rounded-circle cursor-pointer rounded-full w-7 h-7 bg-green-400 hover:bg-green-600 text-white"
+          
+          onClick={() => {
+            if(position === "" ||
             company === "" ||
             desc === "" ||
             start === "" ||
-            (end === "" && !presentJob)
-          }
-          onClick={() => {
+            (end === "" && !presentJob))
             {
-              console.log("hello");
+              toast.warning("All fields in Experience section not filled!", {
+                position: toast.POSITION.BOTTOM_RIGHT,
+              });
+              return;
             }
+            
             onCreatePressed({
               position,
               company,
@@ -153,6 +156,11 @@ const NewExperienceForm = ({ experiences = [], onCreatePressed }) => {
             setCompany("");
             setDesc("");
             setPresentJob(false);
+
+            toast.success("Success", {
+              position: toast.POSITION.BOTTOM_RIGHT,
+            });
+        
           }}
         >
           <FontAwesomeIcon icon={faPlus} />

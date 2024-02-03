@@ -30,16 +30,16 @@ const NewAwardForm = ({ awards = [], onCreatePressed }) => {
 
   return (
     <div
-      className={`border rounded ${
+      className={`border ${
         isAwardsFilled
           ? "border-green-500"
           : isTyping
           ? "border-yellow-500"
           : ""
-      } p-3 m-2`}
+      } p-3`}
     >
       <input
-        className="dark:bg-zinc-800 form-control form-control-sm mb-2 w-96 border p-1 outline-gray-200"
+        className="dark:bg-zinc-800 form-control form-control-sm mb-2 w-96 border p-1 outline-none"
         type="text"
         placeholder="Award/Achievement/Certification"
         value={award}
@@ -51,9 +51,17 @@ const NewAwardForm = ({ awards = [], onCreatePressed }) => {
       />
       <div className="text-right">
         <button
-          className="btn btn-success btn-sm rounded-circle rounded-full w-7 h-7 bg-green-400 text-white"
-          disabled={award === ""}
+          className="btn btn-success btn-sm rounded-circle cursor-pointer rounded-full w-7 h-7 bg-green-400 hover:bg-green-600 text-white"
+        
           onClick={() => {
+            if(award === "")
+            {
+              toast.warning("Awards section can't be empty!", {
+                position: toast.POSITION.BOTTOM_RIGHT,
+              });
+              return;
+            }
+
             onCreatePressed({ award });
             setAward("");
           }}

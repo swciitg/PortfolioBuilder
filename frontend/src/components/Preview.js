@@ -98,6 +98,9 @@ const Preview = ({
             <div class="subheading mb-3">${
               education.education.degree
             }</div>
+            <div class="subheading mb-3">${
+              education.education.branch
+            }</div>
             <p>GPA: ${education.education.gpa}</p>
           </div>
           <div class="flex-shrink-0"><span class="text-primary">${
@@ -334,10 +337,10 @@ const Preview = ({
           </html>
 `;
   return (
-    <div className="Preview h-screen w-full">
+    <div className="Preview w-full">
       <br />
       <iframe
-        className="w-full h-[85vh] border rounded-md"
+        className="w-full h-[59.3vh] border rounded-sm"
         src={`data:text/html,${encodeURIComponent(finalHTML)}`}
         frameborder="0"
         title="Preview"

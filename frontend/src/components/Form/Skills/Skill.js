@@ -4,39 +4,34 @@ import { faMinus } from "@fortawesome/free-solid-svg-icons";
 
 const Skill = ({ skill, onRemovePressed }) => {
   return (
-    <div className=" d-inline-block mr-4 mb-4">
+    <div className="w-fit flex items-center px-1 m-2 bg-gray-100 border">
       <div
-        className="skill-item text-center p-3"
-        style={{
-          backgroundColor: "#ffffff",
-          border: "1px solid #ddd",
-          borderRadius: "5px",
-          padding: "10px",
-          width: "150px",
-          boxShadow: "0 0 5px rgba(0, 0, 0, 0.2)",
-        }}
+        className="py-2 pl-1 pr-3"
       >
         {skill.image && (
-          <div>
+          <div className="flex items-center gap-1">
             <img
+            className="w-8 h-8"
               src={skill.url}
               alt={skill.name}
-              style={{ width: "50px", height: "50px",marginBottom: "10px"}}
             />
-            <span
-              style={{ fontSize: "14px", fontWeight: "bold", textAlign: "center",color: "#333" }}
-            >
-              {skill.name}
-            </span>
+            
+          <span className="text-sm px-1">
+            {skill.name}
+          </span>
+          
           </div>
         )}
       </div>
-      <button
-        className="btn btn-danger btn-sm"
-        onClick={() => onRemovePressed(skill)}
-      >
+      <div className="flex justify-end">
+        <button
+          className="bg-gray-700 text-white rounded-full w-5 h-5 flex items-center justify-center"
+          onClick={() => onRemovePressed(skill)}
+        >
+      
         <FontAwesomeIcon icon={faMinus} />
       </button>
+      </div>
     </div>
   );
 };

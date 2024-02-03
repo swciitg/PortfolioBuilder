@@ -5,16 +5,14 @@ import { toast } from "react-toastify";
 import he from "he";
 import Form from "./Form";
 import Header from "./Bootstrap/Header";
-import Split from "react-split";
 import Code from "./Code";
 import Preview from "./Preview";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import NavbarDesign1 from "./NavbarDesign1";
 import NavbarDesign2 from "./NavbarDesign2";
 import NavbarDesign3 from "./NavbarDesign3";
 import NavbarDesign4 from "./NavbarDesign4";
 import ReactDOMServer from "react-dom/server";
-import portfolioCard from "./navigateCard";
 import { connect } from "react-redux";
 
 const PortfolioCard = ({
@@ -30,7 +28,6 @@ const PortfolioCard = ({
   const Navigate = useNavigate();
 
   const data = {
-    Dark: true,
     FormData: {
       FirstName: "",
       LastName: "",
@@ -616,57 +613,25 @@ const PortfolioCard = ({
     }
   }
 
-  const buttonStyle = {
-    margin: "0 10px",
-    padding: "10px 20px",
-    border: "none",
-    borderRadius: "5px",
-    cursor: "pointer",
-  };
+  // const buttonStyle = {
+  //   margin: "0 10px",
+  //   padding: "10px 20px",
+  //   border: "none",
+  //   borderRadius: "5px",
+  //   cursor: "pointer",
+  // };
 
-  const containerStyle = {
-    display: "flex",
-    justifyContent: 'flex-start',
-    marginTop: "20px",
-  };
 
   return (
-    <div className="App w-full overflow-y-scroll  dark:bg-black dark:text-white">
-      {console.log("hi" + selectedDesign)}
+    <div className="w-full h-screen overflow-y-hidden">
+      <Header/>
+      
 
-      <Header
-        className={` bg-${
-          initialState.Dark ? "white border-b-2" : "black"
-        } text-${
-          initialState.Dark ? "black" : "white"
-        } flex justify-center h-12 items-center mb-8`}
-      >
-        <h1 className="text-2xl text-center inline mx-6 my-0">
-          Portfolio Generator
-        </h1>
+      {/* navbar edit/options */}
+      <div className="w-full fixed z-10 top-[4.2rem] flex gap-4 pl-4 py-2 bg-gray-200">
         <button
-          className={`btn btn-sm btn-outline-${
-            initialState.Dark ? "primary" : "secondary"
-          } rounded-full`}
-          onClick={toggleHeader}
-        >
-          <i
-            className={`fa fa-${
-              initialState.Dark ? "sun" : "moon"
-            }-o text-xl m-0`}
-          ></i>
-        </button>
-      </Header>
-      <Link
-        className="pl-4 text-xl font-medium text-blue-500 cursor-pointer"
-        to={"/"}
-      >
-        Home
-      </Link>
-      <div style={containerStyle}>
-        <button
+        className="cursor-pointer px-4 py-2 rounded-sm"
           style={{
-            ...buttonStyle,
             background:
               navbarDesign === "NavbarDesign1" ? "lightblue" : "white",
             color: navbarDesign === "NavbarDesign1" ? "black" : "black",
@@ -676,10 +641,10 @@ const PortfolioCard = ({
           Navbar 1
         </button>
         <button
+          className="cursor-pointer px-4 py-2 rounded-sm"
           style={{
-            ...buttonStyle,
             background:
-              navbarDesign === "NavbarDesign2" ? "lightgray" : "white",
+              navbarDesign === "NavbarDesign2" ? "lightgreen" : "white",
             color: navbarDesign === "NavbarDesign2" ? "white" : "black",
           }}
           onClick={() => handleDesignChange("NavbarDesign2")}
@@ -687,10 +652,10 @@ const PortfolioCard = ({
           Navbar 2
         </button>
         <button
+        className="cursor-pointer px-4 py-2 rounded-sm"
           style={{
-            ...buttonStyle,
             background:
-              navbarDesign === "NavbarDesign3" ? "lightgreen" : "white",
+              navbarDesign === "NavbarDesign3" ? "lightblue" : "white",
             color: navbarDesign === "NavbarDesign3" ? "white" : "black",
           }}
           onClick={() => handleDesignChange("NavbarDesign3")}
@@ -698,8 +663,8 @@ const PortfolioCard = ({
           Navbar 3
         </button>
         <button
+          className="cursor-pointer px-4 py-2 rounded-sm"
           style={{
-            ...buttonStyle,
             background: navbarDesign === "NavbarDesign4" ? "red" : "white",
             color: navbarDesign === "NavbarDesign4" ? "white" : "black",
           }}
@@ -708,9 +673,10 @@ const PortfolioCard = ({
           Navbar 4
         </button>
       </div>
-      <div className="w-full pl-12 my-1">
-        <div className="flex flex-row">
-          <div className="p-3 w-1/2">
+
+      <div className="w-full px-4 absolute top-36 overflow-y-hidden">
+        <div className="flex flex-row border py-2 px-4 rounded-lg">
+          <div className="w-1/2 h-[26.8rem] overflow-y-scroll px-2">
             <Form
               FormData={{
                 FullName: `${initialState.FormData.FirstName} ${initialState.FormData.LastName}`,
@@ -738,7 +704,7 @@ const PortfolioCard = ({
               <button
                 className={`btn btn-${
                   initialState.Dark ? "success" : "primary"
-                } bg-green-700 text-white mx-2 p-3`}
+                } bg-green-700 hover:bg-green-800 text-white mb-2 p-2 w-1/2 rounded-sm font-medium cursor-pointer`}
                 onClick={() => {
                   download();
                 }}
@@ -763,7 +729,7 @@ const PortfolioCard = ({
               />
             </a>
           </div>
-          <div className="p-3 w-1/2">
+          <div className="p-3 w-1/2 h-[26.8rem] overflow-y-scroll">
             <ul className="flex">
               <li className="mr-2">
                 <span

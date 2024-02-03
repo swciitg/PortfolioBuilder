@@ -19,6 +19,10 @@ const Education = ({ education, onRemovePressed }) => {
                     <div className="col-4">{education.end ? education.end : education.presentUniversity ? "Present" : ""}</div>
                 </div>
                 <div className="row">
+                    <div className="col-sm-2">Department:</div>
+                    <div className="col-sm-10">{education.branch}</div>
+                </div>
+                <div className="row">
                     <div className="col-sm-2">GPA:</div>
                     <div className="col-sm-10">{education.gpa}</div>
                 </div>

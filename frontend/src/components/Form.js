@@ -128,22 +128,22 @@ const Form = ({ FormData, onChange, isExperienceEnabled, isEducationEnabled, isS
           />
         )
       )}
-       <div>
+       <div className={isExperienceEnabled ?"bg-white my-8" : "bg-gray-200"}>
         {isExperienceEnabled ? (
           <>
             <SectionTitle initialTitle="Experience" titleType="experience"/>
             <ExperienceList />
           </>
         ) : (
-          <p>Experience section is disabled.</p>
+          <p className="">Experience section is disabled.</p>
         )}
         
-        <button onClick={toggleExperience}>
-          {isExperienceEnabled ? 'Remove' : 'Add'} Experience
+        <button className="bg-red-100 hover:bg-red-300 text-white rounded-b-lg w-full py-1" onClick={toggleExperience}>
+          {isExperienceEnabled ? 'Remove' : 'Add'} Experience Section
         </button>
       </div>
 
-      <div>
+      <div className={isEducationEnabled ?"bg-white my-8" : "bg-gray-200"}>
         {isEducationEnabled ? (
           <>
             <SectionTitle initialTitle="Education" titleType='education'/>
@@ -152,12 +152,12 @@ const Form = ({ FormData, onChange, isExperienceEnabled, isEducationEnabled, isS
         ) : (
           <p>Education section is disabled.</p>
         )}
-        <button onClick={toggleEducation}>
-          {isEducationEnabled ? 'Remove' : 'Add'} Education
+        <button className="bg-red-100 hover:bg-red-300 text-white rounded-b-lg w-full py-1" onClick={toggleEducation}>
+          {isEducationEnabled ? 'Remove' : 'Add'} Education Section
         </button>
       </div>
       
-      <div>
+      <div className={isSkillEnabled ?"bg-white my-8" : "bg-gray-200"}>
       {isSkillEnabled ? (
           <>
             <SectionTitle initialTitle="Skills" titleType="skills"/>
@@ -166,12 +166,12 @@ const Form = ({ FormData, onChange, isExperienceEnabled, isEducationEnabled, isS
         ) : (
           <p>Skills section is disabled.</p>
         )}
-        <button onClick={toggleSkill}>
-          {isSkillEnabled ? 'Remove' : 'Add'} Skills
+        <button className="bg-red-100 hover:bg-red-300 text-white rounded-b-lg w-full py-1" onClick={toggleSkill}>
+          {isSkillEnabled ? 'Remove' : 'Add'} Skills Section
         </button>
       </div>
 
-      <div>
+      <div className={isInterestEnabled ?"bg-white my-8" : "bg-gray-200"}>
       {isInterestEnabled ? (
           <>
            <SectionTitle initialTitle="Interests" titleType="interests"/>
@@ -180,12 +180,12 @@ const Form = ({ FormData, onChange, isExperienceEnabled, isEducationEnabled, isS
         ) : (
           <p>Interest section is disabled.</p>
         )}
-        <button onClick={toggleInterest}>
-          {isInterestEnabled ? 'Remove' : 'Add'} Interest
+        <button className="bg-red-100 hover:bg-red-300 text-white rounded-b-lg w-full py-1" onClick={toggleInterest}>
+          {isInterestEnabled ? 'Remove' : 'Add'} Interest Section
         </button>
       </div>
 
-      <div>
+      <div className={isAwardsEnabled ?"bg-white my-8" : "bg-gray-200"}>
       {isAwardsEnabled ? (
           <>
            <SectionTitle initialTitle="Awards" titleType="awards"/>
@@ -194,11 +194,12 @@ const Form = ({ FormData, onChange, isExperienceEnabled, isEducationEnabled, isS
         ) : (
           <p>Awards section is disabled.</p>
         )}
-        <button onClick={toggleAward}>
-          {isAwardsEnabled ? 'Remove' : 'Add'} Awards
+        <button className="bg-red-100 hover:bg-red-300 text-white rounded-b-lg w-full py-1" onClick={toggleAward}>
+          {isAwardsEnabled ? 'Remove' : 'Add'} Awards Section
         </button>
       </div>
-      <div>
+      
+      <div className={isProjectEnabled ?"bg-white my-8" : "bg-gray-200 my-4 p-2 rounded-lg flex flex-col gap-y-3"}>
       {isProjectEnabled ? (
           <>
            <SectionTitle initialTitle="Projects" titleType="projects"/>
@@ -207,8 +208,8 @@ const Form = ({ FormData, onChange, isExperienceEnabled, isEducationEnabled, isS
         ) : (
           <p>Projects section is disabled.</p>
         )}
-        <button onClick={toggleProject}>
-          {isProjectEnabled ? 'Remove' : 'Add'} Projects
+        <button className={"text-white  w-full py-1 " + (isProjectEnabled ? "bg-red-100 hover:bg-red-300 rounded-b-lg":"bg-green-600 hover:bg-green-500 rounded-sm")} onClick={toggleProject}>
+          {isProjectEnabled ? 'Remove' : 'Add'} Projects Section
         </button>
       </div>
     </div>
