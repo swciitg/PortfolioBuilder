@@ -58,7 +58,7 @@ const HomePage = () => {
                     </div>
                     <div className='py-6 px-8' style={{"fontFamily":"Raleway"}}>
                         <div className='text-3xl font-extrabold p-1'>Welcome Ankit Gurwan 👋</div>
-                        {/* <div className='text-2xl font-medium px-1 pt-1'>Mechanical Engineering</div> */}
+                        <div className='text-2xl font-medium px-1 pt-1'>Mechanical Engineering</div>
                         <div className='text-2xl font-medium px-1 pb-2'>210103016</div>
                     </div>
                 </div>

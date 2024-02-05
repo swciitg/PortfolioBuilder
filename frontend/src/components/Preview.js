@@ -3,6 +3,15 @@ import Form from "./Form";
 import React, { useEffect } from "react";
 import { useState } from "react"
 import HomePage from "./home";
+import flowerImage from "./images/Vector.png"
+import flowerImage2 from "./images/Vector2.png"
+import flowerImage3 from "./images/Vector3.png"
+import HalfStar from "./images/half_star.png"
+import BlueStar from "./images/bluestar.jpg"
+import Scratch from "./images/sratch.png"
+import Arrow from "./images/arrow.png"
+import FullStarExperience from "./images/fullStarExperience.png"
+import HalfStarExperience from "./images/halfSttarExperience.png"
 
 
 const Preview = ({
@@ -49,32 +58,39 @@ const Preview = ({
   let experienceSection;
 
   if (isExperienceEnabled) {
-    experienceSection = `<section class="resume-section" id="experience">
-    <div class="resume-section-content">
-      <h2 class="mb-5">${experienceTitle}</h2>
-      ${experiences.map(
-        (experience) => `
-      <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-        <div class="flex-grow-1">
-          <h3 class="mb-0">${experience.experience.position}</h3>
-          <div class="subheading mb-3">${
-            experience.experience.company
-          }</div>
-          <p>${experience.experience.desc}</p>
-        </div>
-        <div class="flex-shrink-0"><span class="text-primary">${
-          experience.experience.start
-        } - ${
-          experience.experience.end
-            ? experience.experience.end
-            : experience.experience.presentJob
-            ? "Present"
-            : ""
-        }</span></div>
+    experienceSection = `
+    <section class="w-full h-screen" id="experience" style="font-family:sans-serif">
+    <div class="w-full p-24">
+      <div><img class="absolute right-16 top-16 h-12 w-12" src=${FullStarExperience} alt="star"/></div>
+      <div><img class="absolute right-24 top-24 h-24 w-24" src=${FullStarExperience} alt="star"/></div>
+      <div><img class="absolute left-0 bottom-0 h-32 w-32 rotate-90" src=${HalfStarExperience} alt="star"/></div>
+      <div class="mt-8 mx-12 text-xl tracking-tight" style="color:rgba(255, 214, 53, 1)">Worked before at</div>
+      <div class="mx-12 mt-2 mb-6 text-4xl" style="color:rgba(22, 22, 22, 1)">${experienceTitle}</div>
+      <div class="mx-12 mt-16 flex gap-6">
+          ${experiences.map(
+            (experience) => `
+            <div class="w-48 p-3 rounded-lg border" >
+              <div class="flex flex-col items-center">
+                <img src=${experience.experience.url} class="h-16 w-16 mb-2"/>
+                <div class="text-[1.05rem] capitalize"  style="color:rgba(22, 22, 22, 1)">${
+                  experience.experience.company
+                }</div>
+                <div class="mb-1 text-sm capitalize"  style="color:rgba(22, 22, 22, 0.5)">${experience.experience.position}</div>
+              </div>
+              <div class="text-sm text-gray-400 flex justify-center"><span class="">${
+                experience.experience.start
+              } - ${
+                experience.experience.end
+                  ? experience.experience.end
+                  : experience.experience.presentJob
+                  ? "Present"
+                  : ""
+              }</span></div>
+            </div>
+            `
+            ).join(`
+      `)}
       </div>
-      `
-      ).join(`
-`)}
     </div>
   </section>
   <hr class="m-0" />
@@ -87,23 +103,27 @@ const Preview = ({
   let educationSection;
   if (isEducationEnabled) {
     educationSection = `
-    <section class="resume-section" id="education">
-      <div class="resume-section-content">
-        <h2 class="mb-5">${educationTitle}</h2>
+    <section class="w-full h-screen" id="education" style="font-family:sans-serif" >
+    <div class="w-full px-32 pt-24">
+        <div class="w-full mt-2 mb-4 text-4xl" style="font-family:roboto;color:rgba(255, 247, 233, 1)">${educationTitle}</div>
+        <span class="absolute right-16 bottom-20"><img class="h-16 w-16" src=${flowerImage2} /></span>
+        <span class="absolute right-4 bottom-36"><img class="h-10 w-10" src=${flowerImage2} /></span>
+        <div class="w-full mt-8 flex flex-col gap-3" style="font-family:roboto;color:rgba(255, 247, 233, 0.8)">
         ${educations.map(
           (education) => `
-        <div class="d-flex flex-column flex-md-row justify-content-between">
-          <div class="flex-grow-1">
-            <h3 class="mb-0">${education.education.university}</h3>
-            <div class="subheading mb-3">${
-              education.education.degree
-            }</div>
-            <div class="subheading mb-3">${
+        <div class="relative w-[70vw] py-2 pr-2 pl-8 rounded-lg border">
+          <div class="">
+            <li class="capitalize text-lg my-1 tracking-wide">${education.education.university}</li>
+            <div class="flex justify-between text-sm pl-6">
+              <div>${education.education.degree}</div>
+              <div class="pr-2" style="font-family:roboto;color:rgba(255, 247, 233, 0.6)">CGPA: ${education.education.gpa}</div>
+            </div>
+            <div class="text-sm capitalize pl-6">${
               education.education.branch
             }</div>
-            <p>GPA: ${education.education.gpa}</p>
+            
           </div>
-          <div class="flex-shrink-0"><span class="text-primary">${
+          <div class="absolute top-0 right-0 p-3 text-sm flex justify-center" style="font-family:roboto;color:rgba(255, 247, 233, 0.6)"><span class="">${
             education.education.start
           } - ${
             education.education.end
@@ -112,10 +132,10 @@ const Preview = ({
               ? "Present"
               : ""
           }</span></div>
-        </div>
-        `
+              </div>
+              `
         ).join(`
-`)}
+      `)}
       </div>
     </section>
     <hr class="m-0" />
@@ -128,25 +148,25 @@ const Preview = ({
 
   if (isSkillEnabled) {
     skillsSection = `
-      <section class="resume-section" id="skills">
-        <div class="resume-section-content">
-          <h2 class="mb-5">${skillsTitle}</h2>
-          <div class="subheading mb-3">Programming Languages & Tools</div>
-          <ul class="skills-list d-flex flex-wrap p-0">
+    <section class="w-full h-screen" id="skills" style="font-family:sans-serif" >
+    <div class="w-full px-32 pt-28">
+          <div class="w-full mt-3 mb-2 text-4xl" style="font-family:roboto;color:rgba(22, 22, 22, 1)">${skillsTitle}</div>
+          <div><img class="absolute right-24 top-24 h-24 w-24" src=${FullStarExperience} alt="star"/></div>
+          <div class="capitalize mb-3">Programming Languages & Tools</div>
+          <div class="mt-20 flex">
             ${skills
-              .map((skill) => `
-                <li class="mr-4 mb-4">
-                  <div class="skill-item text-center p-3">
-                    ${skill.image ? `<img src="${skill.url}" class="skill-image" />` : ''}
-                    <span class="skill-name">${skill.name}</span>
+              .map((skill) => 
+                `<div class="w-32 h-24">
+                  <div class="h-full pt-2 pb-1 px-2 flex flex-col items-center justify-between">
+                    <div class="h-1/2 flex items-center pb-4"><img src="${skill.url}" class="h-16 w-16" /></div>
+                    <div class="h-1/2 flex items-center text-sm text-center leading-3">${skill.name}</div>
                   </div>
-                </li>
+                </div>
               `)
               .join('')}
-          </ul>
+          </div>
         </div>
       </section>
-      <hr class="m-0" />
     `;
   
     // Add CSS for styling
@@ -194,15 +214,23 @@ const Preview = ({
   let interestSection;
 
   if (isInterestEnabled) {
-    interestSection = ` <section class="resume-section" id="interests">
-    <div class="resume-section-content">
-      <h2 class="mb-5">${interestsTitle}</h2>
-      ${interests.map(
-        (interest) => `
-      <p>${interest.interest.interest}</p>
-      `
-      ).join(`
-`)}
+    interestSection = ` 
+    <section class="w-full h-screen" id="interests" style="font-family:roboto" >
+      <div class="w-full px-32 pt-24">
+      
+          <div class="mt-12 flex flex-col gap-5">
+            ${interests.map(
+              (interest) => `
+              <div class="relative w-[70vw] py-2 pr-2 pl-8 rounded-lg border normal-case min-h-16 flex items-center">
+              <li>
+                ${interest.interest.interest}
+              </li>
+              <div class="text-lg absolute px-2 -top-4 w-fit tracking-wider" style="color:rgba(255, 247, 233, 1);background:black">${interestsTitle}</div>
+              </div>
+            `
+            ).join(`
+      `)}
+        </div>
     </div>
   </section>
   <hr class="m-0" />
@@ -215,20 +243,26 @@ const Preview = ({
   let awardSection;
 
   if (isAwardsEnabled) {
-    awardSection = ` <section class="resume-section" id="awards">
-    <div class="resume-section-content">
-      <h2 class="mb-5">${awardsTitle}</h2>
-      <ul class="fa-ul mb-0">
+    awardSection = ` 
+    <section class="w-full h-screen" id="awards" style="font-family:Poppins" >
+      <div class="w-full px-32 pt-24">
+      <i class="fas fa-trophy text-warning text-5xl"></i>
+      <div class="ml-0 fa-ul mt-12 flex flex-col gap-4">
         ${awards.map(
           (award) => `
+          <div class="relative w-[70vw] py-2 pr-2 pl-8 rounded-lg border normal-case min-h-16 flex items-center">
+              <li>
+              ${award.award.award}
+              </li>
+              <div class="text-lg absolute px-2 -top-4 w-fit tracking-wide" style="color:rgba(222, 95, 59, 1);background:rgba(255, 247, 233, 1);border:rgba(150, 147, 127, 0.2)">Achievements</div>
+          </div>
         <li>
-          <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-          ${award.award.award}
+          
         </li>
         `
         ).join(`
 `)}
-      </ul>
+      </div>
     </div>
   </section>
 </div>
@@ -263,13 +297,19 @@ const Preview = ({
 
               <!-- Font Awesome icons (free version)-->
               <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+
               <!-- Google fonts-->
               <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap" rel="stylesheet"
-    type="text/css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet"
-    type="text/css">
+                type="text/css">
+              <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet"
+                type="text/css">
               <!-- Core theme CSS (includes Bootstrap)-->
               <link href="https://startbootstrap.github.io/startbootstrap-resume/css/styles.css" rel="stylesheet" />
+
+              <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Catamaran&family=Familjen+Grotesk&family=Manrope&family=Montserrat:wght@100&family=Poppins&family=Raleway&family=Roboto:wght@100&family=Rubik&family=Ubuntu&display=swap" rel="stylesheet">
+              
               <style>.bg-primary {--bs-bg-opacity: 1; background-color: ${Colour} !important;}
                     .social-icon:hover {background-color: ${Colour} !important;}
                     .text-primary {--bs-text-opacity: 1; color: ${Colour} !important;}
@@ -277,23 +317,88 @@ const Preview = ({
                     a:hover {color: ${Colour};}
               </style>
             </head>
-            <body id="page-top">
+            <body class="bg-black relative" id="page-top">
               <!-- Navigation-->
               ${Navbar}
               <!-- Page Content-->
-              <div class="container-fluid p-0">
+              <div class="h-screen absolute left-0 top-0">
+
+                
+                <span class="absolute -right-[1050px] bottom-24"><img class="h-16 w-16" src=${flowerImage2} /></span>
+                <span class="absolute -right-[1100px] bottom-36"><img class="h-8 w-8" src=${flowerImage2} /></span>
+                <div class="h-[100vh] absolute top-40 left-0 mx-36" >
+                <div class="text-4xl font-semibold flex gap-3 items-center" style="font-family:roboto;color:rgba(255, 247, 233, 0.6)">
+                  <span>Hi, I am</span>
+                  <span><img class="h-9 w-9" src=${flowerImage} /></span>
+                </div>
+                  <div class="text-9xl mt-1 flex gap-6" style="font-family:roboto;color:rgba(255, 247, 233, 1)">
+                    <span class="font-bold uppercase tracking-tight" >${FirstName}</span>
+                    <span class="font-bold uppercase tracking-tight" >${LastName}</span>
+                  </div>
+                  <p class="text-end text-2xl font-semibold capitalize" style="font-family:roboto;color:rgba(255, 247, 233, 0.6)">${Keywords}</p>
+                    
+                    
+                  </div>
+                </div>
+
                 <!-- About-->
-                <section class="resume-section" id="about">
-                  <div class="resume-section-content">
-                    <h1 class="mb-0">
-                      ${FirstName}
-                      <span class="text-primary">${LastName}</span>
-                    </h1>
-                    <div class="subheading mb-5">
+                <div class="absolute top-[100vh] left-0 w-full text-xl h-screen p-40 flex justify-start" id="about">
+                  <div class="w-1/2 pt-8 px-10 flex flex-col" ">
+                    <div class="mb-3 font-semibold text-2xl" style="font-family:
+                    Familjen Grotesk;color:rgba(255, 247, 233, 1)">About</div>
+                    <div class="my-2 font-extralight text-[1.05rem] leading-6 tracking-wide" style="font-family:
+                    Familjen Grotesk;color:rgba(255, 247, 233, 0.9)">${Description}</div>
+
+                    <div class="absolute left-0 bottom-36 h-20 w-20"><img src=${HalfStar} /></div>
+                    
+                    
+                   
+                  </div> 
+                
+                  <div class="relative h-fit my-auto p-4 border border-red-700 ml-16 rounded-xl flex items-center">
+                    <img class="h-72 w-72" src=${Thubmnail}/>
+                    <div class="absolute -left-28 -bottom-32 h-40 w-40"><img src=${Arrow} /></div>
+                    <div class="absolute -left-[8.5rem] -bottom-20 h-40 w-40 -rotate-[33deg] text-2xl" style="font-family:
+                    Roboto;color:rgba(255, 247, 233, 1)">ME</div>
+                    <div class="absolute -left-44 -bottom-[6.3rem] h-32 w-32 -rotate-6"><img src=${Scratch} /></div>
+                  </div>
+                </div>
+
+                <!-- Experience-->
+                <div class="absolute h-screen top-[200vh] left-0 w-full" style="background:rgba(255, 247, 233, 1)">
+                  ${experienceSection}
+                </div
+
+                <!-- Education-->
+                <div class="absolute h-screen top-[300vh] left-0 w-full">
+                  ${educationSection}
+                </div>
+
+                <!-- Skills-->
+                <div class="absolute h-screen top-[400vh] left-0 w-full" style="background:rgba(255, 247, 233, 1)">
+                  ${skillsSection}
+                </div>
+
+                <!-- Interests-->
+               <div class="absolute h-screen top-[500vh] left-0 w-full">
+                  ${interestSection}
+                </div>
+
+                <!-- Awards-->
+                <div class="absolute h-screen top-[600vh] left-0 w-full" style="background:rgba(255, 247, 233, 1)">
+                  ${awardSection}
+                </div>
+
+                <!--Projects-->
+                <div class="absolute h-screen top-[700vh] left-0 w-full">
+                  ${Projectdesign}
+                </div>
+
+                <div class="absolute h-screen top-[800vh] mb-5" id="touch">
                       ${Address} &bull; ${Phone} &bull;
                       <a href="mailto:${Email}">${Email}</a>
                     </div>
-                    <p class="lead mb-5">${Description}</p>
+                    
                     ${
                       Object.keys(Socials).some(
                         (soc) => Socials[soc].length > 0
@@ -305,7 +410,7 @@ const Preview = ({
                         .map(
                           (soc) => `
                           <a class="social-icon" href="${Meta[soc][1]}${Socials[soc]}">
-                            <i class="fab fa-${Meta[soc][0]}"></i>
+                            <i class="fab fa-${Meta[soc][0]} class="text-lg "></i>
                           </a>
                         `
                         )
@@ -313,26 +418,7 @@ const Preview = ({
                     </div>`
                         : ""
                     }
-                    
-                  </div>
-                </section>
-                <hr class="m-0" />
-                <!-- Experience-->
-                ${experienceSection}
-                <!-- Education-->
-                ${educationSection}
-                <!-- Skills-->
-                ${skillsSection}
-                <!-- Interests-->
-               ${interestSection}
-                <!-- Awards-->
-                ${awardSection}
-                <!--Projects-->
-                ${Projectdesign}
-              <!-- Bootstrap core JS-->
-              <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-              <!-- Core theme JS-->
-              <script src="https://startbootstrap.github.io/startbootstrap-resume/js/scripts.js"></script>
+              <script src="https://cdn.tailwindcss.com"></script>
             </body>
           </html>
 `;
@@ -340,7 +426,7 @@ const Preview = ({
     <div className="Preview w-full">
       <br />
       <iframe
-        className="w-full h-[59.3vh] border rounded-sm"
+        className="w-full h-[100vh] border rounded-sm"
         src={`data:text/html,${encodeURIComponent(finalHTML)}`}
         frameborder="0"
         title="Preview"

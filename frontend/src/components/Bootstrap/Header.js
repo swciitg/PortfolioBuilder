@@ -12,7 +12,7 @@ const Header = () => {
     }
 
     return(
-        <div className="fixed w-full z-10 bg-gray-200 text-gray-800 py-1 flex items-center justify-between px-4">
+        <div className=" w-full z-10 bg-gray-200 text-gray-800 py-1 flex items-center justify-between px-4">
             <div className="flex items-center">
                 <div className=''> <img className='h-10 w-10 mr-2' src={img5} alt='swc-logo'></img></div>
                 <div className="text-2xl mr-1 tracking-tight font-semibold">Portfolio Builder</div>

@@ -117,6 +117,7 @@ const PortfolioCard = ({
       let output = he.decode(
         document.getElementsByClassName("codefile")[0].innerHTML
       );
+      
       const blob = new Blob([output]);
       const fileDownloadUrl2 = URL.createObjectURL(blob);
 
@@ -628,7 +629,7 @@ const PortfolioCard = ({
       
 
       {/* navbar edit/options */}
-      <div className="w-full fixed z-10 top-[4.2rem] flex gap-4 pl-4 py-2 bg-gray-200">
+      <div className="w-full  z-10 top-[4.2rem] flex gap-4 pl-4 py-2 bg-gray-200">
         <button
         className="cursor-pointer px-4 py-2 rounded-sm"
           style={{
@@ -675,8 +676,8 @@ const PortfolioCard = ({
       </div>
 
       <div className="w-full px-4 absolute top-36 overflow-y-hidden">
-        <div className="flex flex-row border py-2 px-4 rounded-lg">
-          <div className="w-1/2 h-[26.8rem] overflow-y-scroll px-2">
+        <div className="flex flex-col border py-2 px-4 rounded-lg">
+          <div className="w-full h-[26.8rem] overflow-y-scroll px-2">
             <Form
               FormData={{
                 FullName: `${initialState.FormData.FirstName} ${initialState.FormData.LastName}`,
@@ -729,7 +730,7 @@ const PortfolioCard = ({
               />
             </a>
           </div>
-          <div className="p-3 w-1/2 h-[26.8rem] overflow-y-scroll">
+          <div className="p-3 w-full h-[6200px] overflow-y-scroll">
             <ul className="flex">
               <li className="mr-2">
                 <span

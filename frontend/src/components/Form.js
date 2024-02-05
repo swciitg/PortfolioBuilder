@@ -32,12 +32,13 @@ const Form = ({ FormData, onChange, isExperienceEnabled, isEducationEnabled, isS
       "Website link",
       "Please enter the URL of your website, where this page is going to be hosted",
     ],
-    Description: ["text", "About you", "Write something nice about you."],
     Keywords: [
       "text",
-      "Keywords",
+      "Keywords i.e. frontend developer",
       "If someone wants to search for you, what keywords should they use?",
     ],
+    Description: ["text", "About you", "Write something nice about you."],
+    
     Address: [
       "text",
       "Where are you?",
