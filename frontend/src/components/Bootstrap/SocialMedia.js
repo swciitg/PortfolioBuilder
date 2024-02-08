@@ -39,7 +39,7 @@ const SocialMedia = ({
           </label>
           <input
             type={MediaData[md][0]}
-            className="dark:bg-zinc-800 form-control block w-96 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
+            className="dark:bg-zinc-800 form-control block w-full md:w-96 border py-1 px-2 rounded-sm text-sm capitalize outline-gray-200"
             id={md}
             name={md}
             onChange={onChange}

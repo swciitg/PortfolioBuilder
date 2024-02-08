@@ -39,7 +39,7 @@ const NewSkillForm = ({ onCreatePressed, onSelectSkill,availableSkills}) => {
     <div className={`border p-4`}>
       
       <select
-        className={`form-select form-select-sm mb-2 w-60 p-1 border dark:bg-zinc-800 form-control form-control-sm py-1 px-2 rounded-sm text-sm capitalize outline-none`}
+        className={`form-select form-select-sm mb-2 w-full md:w-60 p-1 border dark:bg-zinc-800 form-control form-control-sm py-1 px-2 rounded-sm text-sm capitalize outline-none`}
         value={selectedSkillName}
         onChange={handleSkillChange}
       >

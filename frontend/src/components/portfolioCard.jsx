@@ -282,81 +282,71 @@ const PortfolioCard = ({
     if (selectedDesign === "design1") {
       projectSection = `
           <!-- Projects -->
-          <section class="resume-section" id="projects">
-            <div class="container-fluid p-0">
-              <h2 class="mb-5 text-black">${projectsTitle}</h2>
+          <section class="w-full h-screen" id="projects" style="font-family:Poppins" >
+            <div class="w-full px-4 md:px-32 pt-12 md:pt-24">
+            <div class="w-full mt-10 md:mt-2 md:pl-24 mb-4 text-3xl" style="font-family:roboto;color:rgba(255, 247, 233, 1)">${projectsTitle}</div>
+            <div class="w-full mt-4 md:pl-24 flex flex-col gap-y-2" style="font-family:roboto;color:rgba(255, 247, 233, 0.8)">
               ${projects
                 .map(
                   (project) => `
 
-
-             
-
-                <div class="project-card mb-5 border-[1px] borer-solid overflow-hidden flex flex-col">
-                  <div class="project-top max-w-[100%] object-contain m-[10px] min-h-[150px] ">
-                    <img class="max-w-[100%] object-contain m-[10px] min-h-[150px]" src="${project.project.image}" alt="${
-                    project.project.name
-                  }" class="img-fluid">
-                  </div>
-                  <div class="project-bottom  mt-[10px] mb-[10px] text-[1.8rem] bg-primary bg-[#0074d9] text-white p-[20px] relative ">
-                    <div class="project-details">
-                      <h3 class="text-white mx-0 mt-[10px] text-[1.8rem]">${project.project.name}</h3>
-                      <p class="tech-stack mt-[10px] mb-0 text-white"><strong>Technology Stack: </strong>${
-                        project.project.techStack
-                      }</p>
-                      <p class="description mt-10px mb-0 text-white">${
-                        project.project.description
-                      }</p>
-                      <div class="project-info">
-                        <div class="mb-3 text-white"><strong>Guided by Professor: </strong>${
-                          project.project.guidedByProfessor ? "Yes" : "No"
-                        }</div>
-                        ${
-                          project.project.professorName
-                            ? `
-                          <div class="mb-3 text-white"><strong>Professor's Name: </strong>${project.project.professorName}</div>
-                        `
-                            : ""
-                        }
-                        <div class="mb-3 text-white"><strong>Club Project: </strong>${
-                          project.project.isClubProject ? "Yes" : "No"
-                        }</div>
-                        ${
-                          project.project.clubName
-                            ? `
-                          <div class="mb-3 text-white"><strong>Club Name: </strong>${project.project.clubName}</div>
-                        `
-                            : ""
-                        }
-                        <div class="mb-3 text-white"><strong>Self-Project: </strong>${
-                          project.project.isSelfProject ? "Yes" : "No"
-                        }</div>
-                        <div class="date mb-10 mr-10 absolute text-white"><strong>Date: </strong>${
-                          project.project.timeline
-                        }</div>
-                        <div class="dropdown dropup text-white">
-                          <button class="btn btn-secondary dropdown-toggle" type="button" id="projectLinks" data-bs-toggle="dropdown" data-bs-placement="top" aria-expanded="false">
-                            Links
-                          </button>
-                          <ul class="dropdown-menu" aria-labelledby="projectLinks">
-                            ${
-                              project.project.websiteLink
-                                ? `
-                              <li><a class="dropdown-item" href="${project.project.websiteLink}" target="_blank">Visit Website</a></li>
-                            `
-                                : ""
+                  <div class="project-card border flex flex-col gap-y-1 p-2 md:p-3">
+                    
+                        <div class="flex justify-between items-center" style="font-family:roboto;color:rgba(255, 247, 233, 0.9)">
+                          <div class="text-lg">${project.project.name}</div>
+                          <div class="text-sm">
+                            ${project.project.timeline}
+                          </div>  
+                        </div>
+                        <div class="text-sm flex justify-between items-center" style="font-family:roboto;color:rgba(255, 247, 233, 0.9)">
+                          <div>
+                            ${project.project.guidedByProfessor 
+                              ? 
+                              `<div class=""><i>${project.project.professorName}</i></div>`
+                              :
+                              ""
                             }
+
+                            ${project.project.isClubProject
+                              ?
+                              `<div class="">${project.project.clubName}</div>`
+                              :
+                              ""
+                            }
+                            ${project.project.isSelfProject 
+                              ?
+                              `<div class=""><i>Self Project</i></div>`
+                              :
+                              ""
+                            }
+                          </div>
+                          <div class="flex">
                             ${
                               project.project.githubLink
-                                ? `
-                              <li><a class="dropdown-item" href="${project.project.githubLink}" target="_blank">GitHub Repository</a></li>
-                            `
+                                ? 
+                                `<a class="hover:text-gray-400" href=${project.project.githubLink} target="_blank">Github</a>`
                                 : ""
                             }
-                          </ul>
+                            <span class="mx-1">|</span>
+                            ${
+                              project.project.websiteLink
+                              ?
+                              `<a class="hover:text-gray-400" href=${project.project.websiteLink} target="_blank">Website</a>`
+                              : ""
+                            }
+                          </div>
                         </div>
-                      </div>
+                        
+                        <div class="text-sm leading-5 tracking-wide">
+                          <div class="flex ">${project.project.description.slice(0,200)} <span class="text-blue-200 hover:text-blue-300  cursor-pointer">read more...</span></div>
+                          
+                        </div>
+                        <div class="text-sm">Technology Stack : ${
+                          project.project.techStack
+                        }</div>
+                        
                     </div>
+                  </div>
                   </div>
                 </div>
               `
@@ -629,9 +619,9 @@ const PortfolioCard = ({
       
 
       {/* navbar edit/options */}
-      <div className="w-full  z-10 top-[4.2rem] flex gap-4 pl-4 py-2 bg-gray-200">
+      <div className="w-full text-sm md:text-lg z-10 top-[4.2rem] flex gap-4 px-2 md:px-4 py-2 bg-gray-200">
         <button
-        className="cursor-pointer px-4 py-2 rounded-sm"
+        className="cursor-pointer px-2 md:px-4 py-1 md:py-2 rounded-sm"
           style={{
             background:
               navbarDesign === "NavbarDesign1" ? "lightblue" : "white",
@@ -642,7 +632,7 @@ const PortfolioCard = ({
           Navbar 1
         </button>
         <button
-          className="cursor-pointer px-4 py-2 rounded-sm"
+          className="cursor-pointer px-2 md:px-4 py-2 rounded-sm"
           style={{
             background:
               navbarDesign === "NavbarDesign2" ? "lightgreen" : "white",
@@ -653,7 +643,7 @@ const PortfolioCard = ({
           Navbar 2
         </button>
         <button
-        className="cursor-pointer px-4 py-2 rounded-sm"
+        className="cursor-pointer px-2 md:px-4 py-2 rounded-sm"
           style={{
             background:
               navbarDesign === "NavbarDesign3" ? "lightblue" : "white",
@@ -664,7 +654,7 @@ const PortfolioCard = ({
           Navbar 3
         </button>
         <button
-          className="cursor-pointer px-4 py-2 rounded-sm"
+          className="cursor-pointer px-2 md:px-4 py-2 rounded-sm"
           style={{
             background: navbarDesign === "NavbarDesign4" ? "red" : "white",
             color: navbarDesign === "NavbarDesign4" ? "white" : "black",
@@ -675,9 +665,9 @@ const PortfolioCard = ({
         </button>
       </div>
 
-      <div className="w-full px-4 absolute top-36 overflow-y-hidden">
-        <div className="flex flex-col border py-2 px-4 rounded-lg">
-          <div className="w-full h-[26.8rem] overflow-y-scroll px-2">
+      <div className="w-full px-2 md:px-4 absolute top-36 overflow-y-hidden">
+        <div className="flex flex-crow border py-2 px-2 md:px-4 mt-2 rounded-lg">
+          <div className="w-1/2 h-[26.8rem] overflow-y-scroll px-1 md:px-2">
             <Form
               FormData={{
                 FullName: `${initialState.FormData.FirstName} ${initialState.FormData.LastName}`,
@@ -702,20 +692,22 @@ const PortfolioCard = ({
               download={"portfolio.html"}
               href={initialState.fileDownloadUrl}
             >
-              <button
-                className={`btn btn-${
-                  initialState.Dark ? "success" : "primary"
-                } bg-green-700 hover:bg-green-800 text-white mb-2 p-2 w-1/2 rounded-sm font-medium cursor-pointer`}
-                onClick={() => {
-                  download();
-                }}
-                download={"portfolio.html"}
-                href={initialState.fileDownloadUrl}
-                disabled={initialState.PreviewMode}
-                title="Go to the Code View to download."
-              >
-                Download
-              </button>
+              <div className="flex justify-center">
+                <button
+                  className={`btn btn-${
+                    initialState.Dark ? "success" : "primary"
+                  } bg-green-700 hover:bg-green-800 text-white mb-2 p-2 w-1/2 mx-auto rounded-md font-medium cursor-pointer`}
+                  onClick={() => {
+                    download();
+                  }}
+                  download={"portfolio.html"}
+                  href={initialState.fileDownloadUrl}
+                  disabled={initialState.PreviewMode}
+                  title="Go to the Code View to download."
+                >
+                  Download
+                </button>
+              </div>
               <ToastContainer
                 position="top-right"
                 autoClose={5000}
@@ -730,11 +722,11 @@ const PortfolioCard = ({
               />
             </a>
           </div>
-          <div className="p-3 w-full h-[6200px] overflow-y-scroll">
+          <div className="p-3 w-1/2 h-[26.8rem] overflow-y-scroll border border-gray-400 rounded-md">
             <ul className="flex">
               <li className="mr-2">
                 <span
-                  className={`cursor-pointer px-4 py-2 rounded-t-lg ${
+                  className={`cursor-pointer px-2 md:px-4 py-2 rounded-t-lg ${
                     !initialState.PreviewMode
                       ? "bg-blue-500 text-white"
                       : "bg-gray-300 text-black"
@@ -754,7 +746,7 @@ const PortfolioCard = ({
               </li>
               <li>
                 <span
-                  className={`cursor-pointer px-4 py-2 rounded-t-lg ${
+                  className={`cursor-pointer px-2 md:px-4 py-2 rounded-t-lg ${
                     initialState.PreviewMode
                       ? "bg-blue-500 text-white"
                       : "bg-gray-300 text-black"

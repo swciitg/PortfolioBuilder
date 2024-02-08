@@ -18,31 +18,31 @@ const NavbarDesign1 = ({
 }) => {
   return (
     <div className='fixed top-0 left-0 z-10 w-full rounded-full flex justify-center font-Manrope' >
-      <div className='w-full md:w-2/3 flex justify-between items-center mt-4 mx-8 rounded-full p-3 md:p-6' style={{"backgroundColor":"rgba(29, 29, 29, 1)"}}> 
+      <div className='w-full md:w-2/3 flex justify-between items-center mt-4 mx-2 md:mx-8 rounded-full p-2 md:p-3 text-sm md:text-lg text-white' style={{"backgroundColor":"rgba(29, 29, 29, 1)"}}> 
 
-        <a href="#about"  className='hover:text-blue mx-2 md:mx-6'> 
-          <li className='inline-block text-white hover:text-blue-500 text-center hover:scale-[1.03]'>About</li>
+        <a href="#about"  className='mx-2 md:mx-4  '> 
+          <li className='inline-block  hover:text-blue-400 text-center hover:scale-[1.03]'>About</li>
         </a>
-        {isExperienceEnabled && (<a href="#experience" className='hover:text-blue mx-2 md:mx-4'>   
-            <li className='inline-block text-white hover:text-blue-500  text-center hover:scale-[1.03]'>Experience</li>
+        {isExperienceEnabled && (<a href="#experience" className='mx-2 md:mx-4'>   
+            <li className='inline-block hover:text-blue-400 text-center hover:scale-[1.03]'>Experience</li>
         </a>)}
-        {isEducationEnabled && (<a href="#education" className='hover:text-blue mx-2 md:mx-4'>  
-            <li className='inline-block text-white hover:text-blue-500  text-center hover:scale-[1.03]'>Education</li>
+        {isEducationEnabled && (<a href="#education" className='hidden md:block mx-2 md:mx-4'>  
+            <li className='inline-block hover:text-blue-400  text-center hover:scale-[1.03]'>Education</li>
         </a>)}
-        {isSkillEnabled && (<a href="#skills" className='hover:text-blue mx-2 md:mx-4'>  
-            <li className='inline-block text-white hover:text-blue-500  text-center hover:scale-[1.03]'>Skills</li>
+        {isSkillEnabled && (<a href="#skills" className='hidden md:block hover:text-blue-500 mx-1 md:mx-4'>  
+            <li className='inline-block hover:text-blue-400  text-center hover:scale-[1.03]'>Skills</li>
         </a>)}
-        {isInterestEnabled && (<a href="#interests" className='hover:text-blue mx-2 md:mx-4'>  
-            <li className='inline-block text-white hover:text-blue-500  text-center hover:scale-[1.03]'>Interests</li>
+        {isInterestEnabled && (<a href="#interests" className='hidden md:block mx-2 md:mx-4'>  
+            <li className='inline-block hover:text-blue-400  text-center hover:scale-[1.03]'>Interests</li>
         </a>)}
-        {isAwardsEnabled && (<a href="#awards" className='rounded-2xl mx-2 md:mx-4'>  
-            <li className='inline-block text-white hover:text-blue-500  text-center hover:scale-[1.03]'>Awards</li>
+        {isAwardsEnabled && (<a href="#awards" className='hidden md:block mx-2 md:mx-4'>  
+            <li className='inline-block hover:text-blue-400  text-center hover:scale-[1.03]'>Awards</li>
         </a>)}
         {isProjectEnabled && (<a href="#projects" className='rounded-2xl mx-2 md:mx-4'>  
-            <li className='inline-block text-white hover:text-blue-500  text-center hover:scale-[1.03]'>Projects</li>
+            <li className='inline-block hover:text-blue-400  text-center hover:scale-[1.03]'>Projects</li>
         </a>)}
-        <a href="#touch" className='rounded-2xl mx-2 md:mx-4'>  
-            <li className='inline-block text-white hover:text-blue-500  text-center hover:scale-[1.03] border border-white rounded-md p-1'>Get In Touch</li>
+        <a href="#touch" className='rounded-2xl mx-2 md:mx-4 hover:text-blue-400'>  
+            <li className='inline-block text-center hover:scale-[1.03] border border-white rounded-md p-1'>Get In Touch</li>
         </a>
         
 

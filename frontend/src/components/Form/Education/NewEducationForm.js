@@ -85,7 +85,7 @@ const NewEducationForm = ({ educations = [], onCreatePressed }) => {
           value={branch}
           onChange={(e) => setBranch(e.target.value)}
         />
-      <div className="flex items-center gap-3">
+      <div className="flex flex-col md:flex-row md:items-center gap-3">
         <div className="dark:bg-zinc-800 col my-2 p-1 border rounded-sm w-40 text-sm">
           <input
             type="date"
