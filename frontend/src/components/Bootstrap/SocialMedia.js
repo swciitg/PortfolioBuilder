@@ -31,7 +31,15 @@ const SocialMedia = ({
         ? ""
         : "border-yellow-500"
     } p-3 my-2`}>
-      <h1 className=" text-[1rem] block py-1 font-medium">Social Media</h1>
+      <div className="flex justify-between">
+        <h1 className=" text-[1rem] block py-1 font-medium">Social Media</h1>
+        <div className="flex gap-2 text-white text-sm items-center">
+          <div className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02]">Option 1</div>
+          <div className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02]">Option 2</div>
+          <div className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02]">Option 3</div>
+        </div>
+      </div>
+      
       {Object.keys(MediaData).map((md) => (
         <div>
           <label htmlFor={md} className="dark:text-gray-200 text-xs block py-1 font-medium">

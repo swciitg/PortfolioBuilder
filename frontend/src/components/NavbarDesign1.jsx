@@ -18,7 +18,7 @@ const NavbarDesign1 = ({
 }) => {
   return (
     <div className='fixed top-0 left-0 z-10 w-full rounded-full flex justify-center font-Manrope' >
-      <div className='w-full md:w-2/3 flex justify-between items-center mt-4 mx-2 md:mx-8 rounded-full p-2 md:p-3 text-sm md:text-lg text-white' style={{"backgroundColor":"rgba(29, 29, 29, 1)"}}> 
+      <div className='w-full md:w-2/3 flex justify-between items-center mt-4 mx-4 md:mx-8 font-medium rounded-full p-2 md:p-3 text-sm md:text-lg text-white' style={{"backgroundColor":"rgba(29, 29, 29, 1)"}}> 
 
         <a href="#about"  className='mx-2 md:mx-4  '> 
           <li className='inline-block  hover:text-blue-400 text-center hover:scale-[1.03]'>About</li>

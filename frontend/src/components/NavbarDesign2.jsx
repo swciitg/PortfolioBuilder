@@ -1,69 +1,54 @@
 import React from 'react';
 
-const NavbarDesign2 = ({
+const NavbarDesign1 = ({
   FullName,
   Thubmnail,
-  isExperienceEnabled,
-  isEducationEnabled,
-  isSkillEnabled,
-  isInterestEnabled,
-  isAwardsEnabled,
-  isProjectEnabled,
   experienceTitle,
   educationTitle,
   skillsTitle,
   interestsTitle,
   awardsTitle,
   projectsTitle,
+  isExperienceEnabled,
+  isEducationEnabled,
+  isSkillEnabled,
+  isInterestEnabled,
+  isAwardsEnabled,
+  isProjectEnabled,
 }) => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-      <a className="navbar-brand js-scroll-trigger" href="#page-top">
-        <span className="d-block d-lg-none">{FullName}</span>
-        <span className="d-none d-lg-block">
-          <img className="img-fluid img-profile rounded-circle mx-auto mb-2" src={Thubmnail} alt={FullName} />
-        </span>
-      </a>
-      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
-      </button>
-      <div className="collapse navbar-collapse" id="navbarResponsive">
-        <ul className="navbar-nav">
-          <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#about">About</a></li>
-          {isExperienceEnabled ? (
-            <li className="nav-item">
-              <a className="nav-link js-scroll-trigger" href="#experience">{experienceTitle}</a>
-            </li>
-          ) : null}
-          {isEducationEnabled ? (
-            <li className="nav-item">
-              <a className="nav-link js-scroll-trigger" href="#education">{educationTitle}</a>
-            </li>
-          ) : null}
-          {isSkillEnabled ? (
-            <li className="nav-item">
-              <a className="nav-link js-scroll-trigger" href="#skills">{skillsTitle}</a>
-            </li>
-          ) : null}
-          {isInterestEnabled ? (
-            <li className="nav-item">
-              <a className="nav-link js-scroll-trigger" href="#interests">{interestsTitle}</a>
-            </li>
-          ) : null}
-          {isAwardsEnabled ? (
-            <li className="nav-item">
-              <a className="nav-link js-scroll-trigger" href="#awards">{awardsTitle}</a>
-            </li>
-          ) : null}
-          {isProjectEnabled ? (
-            <li className="nav-item">
-              <a className="nav-link js-scroll-trigger" href="#projects">{projectsTitle}</a>
-            </li>
-          ) : null}
-        </ul>
-      </div>
-    </nav>
-  );
-}
+    <div className='fixed top-0 left-0 z-10 w-full rounded-full flex justify-center font-Manrope' >
+      <div className='w-full md:w-2/3 flex justify-between items-center mt-4 mx-4 md:mx-8 rounded-md p-2 md:p-3 text-sm md:text-lg text-white bg-purple-600 font-medium'> 
 
-export default NavbarDesign2;
+        <a href="#about"  className='mx-2 md:mx-4  '> 
+          <li className='inline-block  hover:text-blue-400 text-center hover:scale-[1.03]'>About</li>
+        </a>
+        {isExperienceEnabled && (<a href="#experience" className='mx-2 md:mx-4'>   
+            <li className='inline-block hover:text-blue-400 text-center hover:scale-[1.03]'>Experience</li>
+        </a>)}
+        {isEducationEnabled && (<a href="#education" className='hidden md:block mx-2 md:mx-4'>  
+            <li className='inline-block hover:text-blue-400  text-center hover:scale-[1.03]'>Education</li>
+        </a>)}
+        {isSkillEnabled && (<a href="#skills" className='hidden md:block hover:text-blue-500 mx-1 md:mx-4'>  
+            <li className='inline-block hover:text-blue-400  text-center hover:scale-[1.03]'>Skills</li>
+        </a>)}
+        {isInterestEnabled && (<a href="#interests" className='hidden md:block mx-2 md:mx-4'>  
+            <li className='inline-block hover:text-blue-400  text-center hover:scale-[1.03]'>Interests</li>
+        </a>)}
+        {isAwardsEnabled && (<a href="#awards" className='hidden md:block mx-2 md:mx-4'>  
+            <li className='inline-block hover:text-blue-400  text-center hover:scale-[1.03]'>Awards</li>
+        </a>)}
+        {isProjectEnabled && (<a href="#projects" className='rounded-2xl mx-2 md:mx-4'>  
+            <li className='inline-block hover:text-blue-400  text-center hover:scale-[1.03]'>Projects</li>
+        </a>)}
+        <a href="#touch" className='rounded-2xl mx-2 md:mx-4 hover:text-blue-400'>  
+            <li className='inline-block text-center hover:scale-[1.03] border border-white rounded-md p-1'>Get In Touch</li>
+        </a>
+        
+
+      </div>
+    </div>
+  );
+};
+
+export default NavbarDesign1;

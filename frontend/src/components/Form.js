@@ -104,7 +104,14 @@ const Form = ({ FormData, onChange, isExperienceEnabled, isEducationEnabled, isS
   };
   return (
     <div className="Form">
-      <h1 className="text-xl mb-2 font-bold">Basic Info</h1>
+      <div className="flex justify-between">
+        <h1 className="text-xl mb-2 font-bold">Basic Info</h1>
+        <div className="flex gap-2 text-white text-sm items-center">
+          <div className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02]">Option 1</div>
+          <div className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02]">Option 2</div>
+          <div className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02]">Option 3</div>
+        </div>
+      </div>
       {Object.keys(FormData).map((fd) =>
         fd !== "Socials" ? (
           Object.keys(Desc).includes(fd) && (

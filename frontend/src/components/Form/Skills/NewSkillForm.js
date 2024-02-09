@@ -37,6 +37,13 @@ const NewSkillForm = ({ onCreatePressed, onSelectSkill,availableSkills}) => {
 
   return (
     <div className={`border p-4`}>
+      <div className="flex justify-between mb-3">
+        <div className="flex gap-2 text-white text-sm items-center">
+          <div className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02]">Option 1</div>
+          <div className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02]">Option 2</div>
+          <div className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02]">Option 3</div>
+        </div>
+      </div>
       
       <select
         className={`form-select form-select-sm mb-2 w-full md:w-60 p-1 border dark:bg-zinc-800 form-control form-control-sm py-1 px-2 rounded-sm text-sm capitalize outline-none`}
