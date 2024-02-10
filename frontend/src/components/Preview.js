@@ -3,16 +3,9 @@ import Form from "./Form";
 import React, { useEffect } from "react";
 import { useState } from "react"
 import HomePage from "./home";
-import flowerImage from "./images/Vector.png"
 import flowerImage2 from "./images/Vector2.png"
-import flowerImage3 from "./images/Vector3.png"
-import HalfStar from "./images/half_star.png"
-import BlueStar from "./images/bluestar.jpg"
-import Scratch from "./images/sratch.png"
-import Arrow from "./images/arrow.png"
 import FullStarExperience from "./images/fullStarExperience.png"
 import HalfStarExperience from "./images/halfSttarExperience.png"
-
 
 const Preview = ({
   FullName,
@@ -43,7 +36,8 @@ const Preview = ({
   isSkillEnabled,
   isInterestEnabled,
   isAwardsEnabled,
-  Navbar
+  Navbar,
+  TopPortion
 }) => {
   const Meta = {
     Facebook: ["facebook-f", "https://fb.me/"],
@@ -308,7 +302,7 @@ const Preview = ({
               <link rel="preconnect" href="https://fonts.googleapis.com">
               <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
               <link href="https://fonts.googleapis.com/css2?family=Catamaran&family=Familjen+Grotesk&family=Manrope&family=Montserrat:wght@100&family=Poppins&family=Raleway&family=Roboto:wght@100&family=Rubik&family=Ubuntu&display=swap" rel="stylesheet">
-              
+              <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
               <style>.bg-primary {--bs-bg-opacity: 1; background-color: ${Colour} !important;}
                     .social-icon:hover {background-color: ${Colour} !important;}
                     .text-primary {--bs-text-opacity: 1; color: ${Colour} !important;}
@@ -316,45 +310,12 @@ const Preview = ({
                     a:hover {color: ${Colour};}
               </style>
             </head>
-            <body class="bg-black relative w-full" id="page-top">
+            <body class="relative w-full" id="page-top">
             <!-- Navigation-->
             ${Navbar}
-            <!-- Page Content-->
-            <div class="h-screen w-full absolute left-0 top-0">
-              <span class="absolute right-16 md:right-16 bottom-24"><img class="h-16 w-16" src=${flowerImage2} /></span>
-              <span class="absolute right-4 md:right-4 bottom-40 md:bottom-36"><img class="h-8 w-8" src=${flowerImage2} /></span>
-              <div class="h-[100vh] absolute top-48 md:top-40 left-0 w-full pl-4 md:pl-32" >
-                  <div class="text-4xl font-semibold flex gap-3 my-2 md:my-0 items-center" 
-                  style="font-family:roboto;color:rgba(255, 247, 233, 0.6)">
-                    <span class="">Hi, I am</span>
-                    <span><img class="h-9 w-9" src=${flowerImage} /></span>
-                  </div>
-                  <div class="text-[5rem] md:text-9xl mt-1 flex flex-col md:flex-row md:gap-6 leading-none" style="font-family:roboto;color:rgba(255, 247, 233, 1)">
-                    <span class="font-semibold md:font-bold uppercase tracking-tight" >${FirstName}</span>
-                    <span class="font-semibold md:font-bold uppercase tracking-tight" >${LastName}</span>
-                  </div>
-                  <p class="text-end text-2xl font-semibold capitalize md:mr-32" style="font-family:roboto;color:rgba(255, 247, 233, 0.6)">${Keywords}</p>                
-              </div>
-            </div>
 
-              <!-- About-->
-              <div class="absolute top-[100vh] left-0 w-full text-xl h-screen p-4 md:p-80 flex flex-col md:flex-row justify-start" id="about">
-                <div class="w-full md:w-1/2 pt-16 md:pt-20 md:px-24 flex flex-col">
-                  <div class="mb-1 md:mb-3 font-semibold text-2xl" style="font-family:
-                  Familjen Grotesk;color:rgba(255, 247, 233, 1)">About</div>
-                  <div class="my-2 font-extralight text-[1.05rem] leading-6 tracking-wide" style="font-family:
-                  Familjen Grotesk;color:rgba(255, 247, 233, 0.9)">${Description.slice(0,300)}</div>
-                  <div class="absolute left-0 bottom-60 md:bottom-36 h-16 md:h-20 w-16 md:w-20"><img src=${HalfStar} /></div>
-                </div> 
-              
-                <div class="relative h-fit my-auto p-2 md:p-4 border border-red-700 ml-32 md:ml-20 rounded-xl flex items-center">
-                  <img class="h-72 w-80 md:w-72" src=${Thubmnail} alt=${FirstName}/>
-                  <div class="absolute -left-16 -bottom-24 md:-bottom-32 h-40 w-36 md:w-40"><img src=${Arrow} /></div>
-                  <div class="absolute -left-[5.3rem] md:-left-[5.5rem] -bottom-[3.5rem] md:-bottom-20 h-36 md:h-40 w-36 md:w-40 -rotate-[33deg] text-2xl" style="font-family:
-                  Roboto;color:rgba(255, 247, 233, 1)">ME</div>
-                  <div class="absolute -left-32 md:-left-32 -bottom-[4.5rem] md:-bottom-[6.3rem] h-32 w-32 -rotate-6"><img src=${Scratch} /></div>
-                </div>
-              </div>
+            <!-- Home + about-->
+              ${TopPortion}
 
               <!-- Experience-->
               <div class="absolute h-screen top-[200vh] left-0 w-full" style="background:rgba(255, 247, 233, 1)">
@@ -362,7 +323,7 @@ const Preview = ({
               </div
 
               <!-- Education-->
-              <div class="absolute h-screen top-[300vh] left-0 w-full">
+              <div class="bg-black absolute h-screen top-[300vh] left-0 w-full">
                 ${educationSection}
               </div>
 
@@ -372,7 +333,7 @@ const Preview = ({
               </div>
 
               <!-- Interests-->
-             <div class="absolute h-screen top-[500vh] left-0 w-full">
+             <div class="bg-black absolute h-screen top-[500vh] left-0 w-full">
                 ${interestSection}
               </div>
 
@@ -387,7 +348,7 @@ const Preview = ({
               </div>
 
               <div class="absolute h-screen top-[800vh] left-0 w-full" id="touch" style="background:rgba(222, 95, 59, 1)">
-                <section class="w-full h-screen" id="awards" style="font-family:Poppins" >
+                <section class="w-full h-screen" style="font-family:Poppins" >
                   <div class="w-full h-full px-4 md:px-32 pt-28" style="color:rgba(255, 247, 233, 1)">
                     <div class="h-1/3 text-4xl font-bold md:pl-24">Get in touch!</div>
                     <div class="flex flex-col md:flex-row gap-4 h-2/3 py-16 md:px-24 md:py-24">

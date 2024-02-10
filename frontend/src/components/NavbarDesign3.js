@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NavbarDesign3 = ({
+const NavbarDesign1 = ({
   FullName,
   Thubmnail,
   experienceTitle,
@@ -17,49 +17,38 @@ const NavbarDesign3 = ({
   isProjectEnabled,
 }) => {
   return (
-    <nav className="navbar navbar-light bg-light fixed-top">
-      <div className="container d-flex justify-content-between align-items-center">
-        <a className="navbar-brand" href="#">
-          {FullName}
+    <div className='fixed top-0 left-0 z-20 w-full rounded-full flex justify-center font-Manrope' >
+      <div className='w-full md:w-[68%] flex justify-between items-center mt-4 mx-4 md:mx-8 font-normal rounded-full p-2 md:p-3 text-sm text-white' style={{"backgroundColor":"rgba(29, 29, 29, 1)"}}> 
+
+        <a href="#about"  className='mx-2 md:mx-3'> 
+          <li className='inline-block  hover:text-blue-400 text-center hover:scale-[1.03]'>// about</li>
         </a>
-        <div className="d-flex">
-          <a className="nav-link me-3" href="#about">
-            About
-          </a>
-          {isExperienceEnabled && (
-            <a className="nav-link me-3" href="#experience">
-              {experienceTitle}
-            </a>
-          )}
-          {isEducationEnabled && (
-            <a className="nav-link me-3" href="#education">
-              {educationTitle}
-            </a>
-          )}
-          {isSkillEnabled && (
-            <a className="nav-link me-3" href="#skills">
-              {skillsTitle}
-            </a>
-          )}
-          {isInterestEnabled && (
-            <a className="nav-link me-3" href="#interests">
-              {interestsTitle}
-            </a>
-          )}
-          {isAwardsEnabled && (
-            <a className="nav-link me-3" href="#awards">
-              {awardsTitle}
-            </a>
-          )}
-          {isProjectEnabled && (
-            <a className="nav-link me-3" href="#projects">
-              {projectsTitle}
-            </a>
-          )}
-        </div>
+        {isExperienceEnabled && (<a href="#experience" className='mx-2 md:mx-3'>   
+            <li className='inline-block hover:text-blue-400 text-center hover:scale-[1.03]'>// experience</li>
+        </a>)}
+        {isEducationEnabled && (<a href="#education" className='hidden md:block mx-2 md:mx-3'>  
+            <li className='inline-block hover:text-blue-400  text-center hover:scale-[1.03]'>// education</li>
+        </a>)}
+        {isSkillEnabled && (<a href="#skills" className='hidden md:block hover:text-blue-500 mx-1 md:mx-3'>  
+            <li className='inline-block hover:text-blue-400  text-center hover:scale-[1.03]'>// skills</li>
+        </a>)}
+        {isInterestEnabled && (<a href="#interests" className='hidden md:block mx-2 md:mx-3'>  
+            <li className='inline-block hover:text-blue-400  text-center hover:scale-[1.03]'>// interests</li>
+        </a>)}
+        {isAwardsEnabled && (<a href="#awards" className='hidden md:block mx-2 md:mx-3'>  
+            <li className='inline-block hover:text-blue-400  text-center hover:scale-[1.03]'>// awards</li>
+        </a>)}
+        {isProjectEnabled && (<a href="#projects" className='rounded-2xl mx-2 md:mx-3'>  
+            <li className='inline-block hover:text-blue-400  text-center hover:scale-[1.03]'>// projects</li>
+        </a>)}
+        <a href="#touch" className='rounded-2xl mx-2 md:mx-3 hover:text-blue-400'>  
+            <li className='inline-block text-center hover:scale-[1.03] border border-white rounded-md p-1'>// get in touch</li>
+        </a>
+        
+
       </div>
-    </nav>
+    </div>
   );
 };
 
-export default NavbarDesign3;
+export default NavbarDesign1;

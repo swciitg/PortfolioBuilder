@@ -14,6 +14,10 @@ import NavbarDesign3 from "./NavbarDesign3";
 import NavbarDesign4 from "./NavbarDesign4";
 import ReactDOMServer from "react-dom/server";
 import { connect } from "react-redux";
+import TopPortion1 from './options/about/option1';
+import TopPortion2 from './options/about/option2';
+import TopPortion3 from './options/about/option3';
+import TopPortion4 from './options/about/option4';
 
 const PortfolioCard = ({
   experienceTitle,
@@ -177,6 +181,44 @@ const PortfolioCard = ({
   const handleDesignChange = (design) => {
     setNavbarDesign(design);
   };
+
+
+  const [topPortion, setTopPortion] = useState("Option1");
+    const handleTopPortionChange = (design) => {
+      setTopPortion(design);
+    };
+  let selectedTopPortionDesign;
+
+  switch(topPortion) {
+    case "Option1":
+      selectedTopPortionDesign = ReactDOMServer.renderToString(
+        <TopPortion1
+          {...initialState.FormData}
+        />
+      );
+      break;
+    case "Option2":
+      selectedTopPortionDesign = ReactDOMServer.renderToString(
+        <TopPortion2 
+          {...initialState.FormData}
+        />
+      );
+      break;
+    case "Option3":
+      selectedTopPortionDesign = ReactDOMServer.renderToString(
+        <TopPortion3 
+          {...initialState.FormData}
+        />
+      );
+      break;
+    case "Option4":
+      selectedTopPortionDesign = ReactDOMServer.renderToString(
+        <TopPortion4 
+          {...initialState.FormData}
+        />
+      );
+      break;
+  }
 
   let selectedNavbarDesign;
   switch (navbarDesign) {
@@ -666,8 +708,46 @@ const PortfolioCard = ({
       </div>
 
       <div className="w-full px-2 md:px-4 absolute top-36 overflow-y-hidden">
-        <div className="flex flex-crow border py-2 px-2 md:px-4 mt-2 rounded-lg">
+        <div className="flex flex-col border py-2 px-2 md:px-4 mt-2 rounded-lg">
           <div className="w-1/2 h-[26.8rem] overflow-y-scroll px-1 md:px-2">
+          <div className="flex gap-2 text-white text-sm items-center my-2">
+            <div 
+              className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02]" 
+              onClick={() => handleTopPortionChange("Option1")}
+              style={{
+                background:
+                  topPortion === "Option1" ? "lightblue" : "white",
+                  color: topPortion === "Option1" ? "white" : "black",
+              }}  
+            >About Deisgn 1</div>
+            <div 
+              className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02]" 
+              onClick={() => handleTopPortionChange("Option2")}
+              style={{
+                background:
+                  topPortion === "Option2" ? "lightblue" : "white",
+                  color: topPortion === "Option2" ? "white" : "black",
+              }} 
+            >About Deisgn 2</div>
+            <div 
+              className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02]" 
+              onClick={() => handleTopPortionChange("Option3")}
+              style={{
+                background:
+                  topPortion === "Option3" ? "lightblue" : "white",
+                  color: topPortion === "Option3" ? "white" : "black",
+              }} 
+            >About Design 3</div>
+            <div 
+              className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02]" 
+              onClick={() => handleTopPortionChange("Option4")}
+              style={{
+                background:
+                  topPortion === "Option4" ? "lightblue" : "white",
+                  color: topPortion === "Option4" ? "white" : "black",
+              }} 
+            >About Design 4</div>
+          </div>
             <Form
               FormData={{
                 FullName: `${initialState.FormData.FirstName} ${initialState.FormData.LastName}`,
@@ -722,7 +802,7 @@ const PortfolioCard = ({
               />
             </a>
           </div>
-          <div className="p-3 w-1/2 h-[26.8rem] overflow-y-scroll border border-gray-400 rounded-md">
+          <div className="p-3 w-full h-full overflow-y-scroll border border-gray-400 rounded-md">
             <ul className="flex">
               <li className="mr-2">
                 <span
@@ -775,6 +855,7 @@ const PortfolioCard = ({
                 isAwardsEnabled={isAwardsEnabled}
                 isInterestEnabled={isInterestEnabled}
                 Navbar={selectedNavbarDesign}
+                TopPortion={selectedTopPortionDesign}
                 Projectdesign={projectSection}
               />
             ) : (
