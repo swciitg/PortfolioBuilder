@@ -26,18 +26,16 @@ const Preview = ({
   awards,
   Projectdesign,
   Colour,
-  experienceTitle,
   skillsTitle,
   interestsTitle,
   awardsTitle,
-  educationTitle,
-  isExperienceEnabled,
-  isEducationEnabled,
   isSkillEnabled,
   isInterestEnabled,
   isAwardsEnabled,
   Navbar,
-  TopPortion
+  TopPortion,
+  EducationDesign,
+  ExperienceDesign
 }) => {
   const Meta = {
     Facebook: ["facebook-f", "https://fb.me/"],
@@ -48,94 +46,6 @@ const Preview = ({
     GitHub: ["github", "https://github.com/"],
     StackOverflow: ["stack-overflow", "https://stackoverflow.com/u/"],
   };
-
-  let experienceSection;
-
-  if (isExperienceEnabled) {
-    experienceSection = `
-      <section class="w-full h-screen" id="experience" style="font-family:sans-serif">
-        <div class="w-full px-0 md:px-32 pt-12 md:pt-24">
-          <div><img class="hidden md:block absolute right-4 md:right-12 top-4 md:top-12 h-8 md:h-12 w-8 md:w-12" src=${FullStarExperience} alt="star"/></div>
-          <div><img class=" absolute right-8 md:right-24 top-20 md:top-20 h-20 w-20" src=${FullStarExperience} alt="star"/></div>
-          <div><img class="absolute left-0 bottom-0 h-32 w-32 rotate-90" src=${HalfStarExperience} alt="star"/></div>
-          <div class="mt-10 md:mt-4 ml-4 md:ml-28 text-xl tracking-tight" style="color:rgba(255, 214, 53, 1)">Worked before at</div>
-          <div class="ml-4 md:ml-28 mt-1 md:mt-2 mb-6 text-4xl" style="color:rgba(22, 22, 22, 1)">${experienceTitle}</div>
-          <div class="w-full px-4 md:px-28 mt-12 md:mt-16 flex gap-3 md:gap-6">
-              ${experiences.map(
-                (experience) => `
-                <div class="w-28 md:w-48 p-3 rounded-lg border" >
-                  <div class="flex flex-col items-center">
-                    <img src=${experience.experience.url} class="h-12 md:h-16 w-12 m:w-16 mb-2"/>
-                    <div class="text-[1rem] md:text-[1.05rem] capitalize text-center"  style="color:rgba(22, 22, 22, 1)">${
-                      experience.experience.company
-                    }</div>
-                    <div class="mb-1 text-xs md:text-sm capitalize text-center"  style="color:rgba(22, 22, 22, 0.5)">${experience.experience.position}</div>
-                  </div>
-                  <div class="text-xs md:text-sm text-gray-400 flex justify-center text-center"><span class="">${
-                    experience.experience.start
-                  } - ${
-                    experience.experience.end
-                      ? experience.experience.end
-                      : experience.experience.presentJob
-                      ? "Present"
-                      : ""
-                  }</span></div>
-                </div>
-                `
-                ).join(`
-          `)}
-          </div>
-        </div>
-    </section>
-  `;
-  } else {
-    experienceSection = "";
-  }
-
-  
-  let educationSection;
-  if (isEducationEnabled) {
-    educationSection = `
-    <section class="w-full h-screen" id="education" style="font-family:sans-serif" >
-      <div class="w-full px-4 md:px-32 pt-12 md:pt-24">
-        <div class="w-full mt-10 md:mt-4 md:pl-24 mb-2 md:mb-4 text-4xl" style="font-family:roboto;color:rgba(255, 247, 233, 1)">${educationTitle}</div>
-        <span class="absolute right-16 bottom-12 md:bottom-20"><img class="h-16 w-16" src=${flowerImage2} /></span>
-        <span class="absolute right-2 bottom-28 md:bottom-36"><img class="h-10 w-10" src=${flowerImage2} /></span>
-        <div class="w-full mt-10 md:px-24 md:mt-8 flex flex-col gap-3" style="font-family:roboto;color:rgba(255, 247, 233, 0.8)">
-          ${educations.map(
-            (education) => `
-          <div class="relative w-[90vw] md:w-[70vw] py-2 pr-2 pl-2 md:pl-8 rounded-lg border">
-            <div class="">
-              <div class="max-w-3/4 capitalize text-lg mt-3 md:mt-1 md:mb-1 tracking-wide">${education.education.university}</div>
-                <div class="flex justify-between items-center text-sm pl-4 md:pl-6">
-                  <div class="leading-5 capitalize">${education.education.degree}</div>
-                  <div class="pr-2 capitalize" style="font-family:roboto;color:rgba(255, 247, 233, 0.6)">CGPA: ${education.education.gpa}</div>
-              </div>
-              <div class="text-xs md:text-sm capitalize pl-2 md:pl-6">${
-                education.education.branch
-              }</div>
-              
-            </div>
-            <div class="absolute top-0 right-0 p-2 md:p-3 text-xs md:text-sm flex justify-center" style="font-family:roboto;color:rgba(255, 247, 233, 0.6)"><span class="">${
-              education.education.start
-            } - ${
-              education.education.end
-                ? education.education.end
-                : education.education.presentJob
-                ? "Present"
-                : ""
-            }</span></div>
-                </div>
-                `
-          ).join(`
-        `)}
-      </div>
-    </section>
-    <hr class="m-0" />
-  `;
-  } else {
-    educationSection = "";
-  }
 
   let skillsSection;
 
@@ -319,12 +229,12 @@ const Preview = ({
 
               <!-- Experience-->
               <div class="absolute h-screen top-[200vh] left-0 w-full" style="background:rgba(255, 247, 233, 1)">
-                ${experienceSection}
+                ${ExperienceDesign}
               </div
 
               <!-- Education-->
               <div class="bg-black absolute h-screen top-[300vh] left-0 w-full">
-                ${educationSection}
+                ${EducationDesign}
               </div>
 
               <!-- Skills-->

@@ -8,18 +8,26 @@ import Header from "./Bootstrap/Header";
 import Code from "./Code";
 import Preview from "./Preview";
 import { useNavigate } from "react-router-dom";
-import NavbarDesign1 from "./NavbarDesign1";
-import NavbarDesign2 from "./NavbarDesign2";
-import NavbarDesign3 from "./NavbarDesign3";
-import NavbarDesign4 from "./NavbarDesign4";
+import NavbarDesign1 from ".././components/options/navbar/NavbarDesign1";
+import NavbarDesign2 from ".././components/options/navbar/NavbarDesign2";
+import NavbarDesign3 from ".././components/options/navbar/NavbarDesign3";
+import NavbarDesign4 from ".././components/options/navbar/NavbarDesign4";
 import ReactDOMServer from "react-dom/server";
 import { connect } from "react-redux";
 import TopPortion1 from './options/about/option1';
 import TopPortion2 from './options/about/option2';
 import TopPortion3 from './options/about/option3';
 import TopPortion4 from './options/about/option4';
+import Experience1 from "./options/experience/option1";
+import Experience2 from "./options/experience/option2";
+import Experience3 from "./options/experience/option3";
+import Experience4 from "./options/experience/option4";
+import EducationDesign1 from './options/education/option1'
+import EducationDesign2 from './options/education/option2'
+import EducationDesign3 from './options/education/option3'
+import EducationDesign4 from './options/education/option4'
 
-const PortfolioCard = ({
+const PortfolioCard = (state,{
   experienceTitle,
   skillsTitle,
   interestsTitle,
@@ -27,7 +35,7 @@ const PortfolioCard = ({
   educationTitle,
   projectsTitle,
   selectedDesign,
-  projects,
+  projects
 }) => {
   const Navigate = useNavigate();
 
@@ -57,33 +65,7 @@ const PortfolioCard = ({
     PreviewMode: false,
   };
   const [initialState, setInitialState] = useState(data);
-  const toggleHeader = () => {
-    setInitialState((prevState) => {
-      return {
-        ...prevState,
-        Dark: !initialState.Dark,
-      };
-    });
-  };
-
-  // to store previous theme on refresh
-  useEffect(() => {
-    if (localStorage.theme === "dark") {
-      document.documentElement.classList.add("dark");
-      toggleHeader();
-    }
-  }, []);
-
-  // toggle theme by adding/removing dark as class on page
-  useEffect(() => {
-    if (!initialState.Dark) {
-      document.documentElement.classList.add("dark");
-      localStorage.theme = "dark";
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.theme = "light";
-    }
-  }, [initialState.Dark]);
+  
 
   const handleChange = (e) => {
     Object.keys(data.FormData).includes(e.target.name)
@@ -219,6 +201,90 @@ const PortfolioCard = ({
       );
       break;
   }
+
+  const [experienceSection, setExperienceSection] = useState("Option1");
+    const handleExperienceChange = (design) => {
+      setExperienceSection(design);
+    };
+  let selectedExperienceDesign;
+
+  switch(experienceSection) {
+    case "Option1":
+      selectedExperienceDesign = ReactDOMServer.renderToString(
+        <Experience1 
+          experienceTitle = {state.experienceTitle}
+          experience = {state.experiences}
+        />
+      );
+      break;
+    case "Option2":
+      selectedExperienceDesign = ReactDOMServer.renderToString(
+        <Experience2 
+          experienceTitle = {state.experienceTitle}
+          experience = {state.experiences}
+        />
+      );
+      break;
+    case "Option3":
+      selectedExperienceDesign = ReactDOMServer.renderToString(
+        <Experience3 
+          experienceTitle = {state.experienceTitle}
+          experience = {state.experiences}
+        />
+      );
+      break;
+    case "Option4":
+      selectedExperienceDesign = ReactDOMServer.renderToString(
+        <Experience4 
+          experienceTitle = {state.experienceTitle}
+          experience = {state.experiences}
+        />
+      );
+      break;
+  }
+
+  const [educationSection, setEducationSection] = useState("Option1");
+    const handleEducationChange = (design) => {
+      setEducationSection(design);
+    };
+
+  let selectedEducationDesign;
+  switch(educationSection) {
+    case "Option1":
+      selectedEducationDesign = ReactDOMServer.renderToString(
+        <EducationDesign1
+        educationTitle = {state.educationTitle}
+        education = {state.educations}
+        />
+      );
+      break;
+    case "Option2":
+      selectedEducationDesign = ReactDOMServer.renderToString(
+        <EducationDesign2 
+        educationTitle = {state.educationTitle}
+        education = {state.educations}
+        />
+      );
+      break;
+    case "Option3":
+      selectedEducationDesign = ReactDOMServer.renderToString(
+        <EducationDesign3 
+        educationTitle = {state.educationTitle}
+        education = {state.educations}
+        />
+      );
+      break;
+    case "Option4":
+      selectedEducationDesign = ReactDOMServer.renderToString(
+        <EducationDesign4 
+          educationTitle = {state.educationTitle}
+          education = {state.educations}
+        />
+      );
+      break;
+  }
+
+  
 
   let selectedNavbarDesign;
   switch (navbarDesign) {
@@ -710,9 +776,9 @@ const PortfolioCard = ({
       <div className="w-full px-2 md:px-4 absolute top-36 overflow-y-hidden">
         <div className="flex flex-col border py-2 px-2 md:px-4 mt-2 rounded-lg">
           <div className="w-1/2 h-[26.8rem] overflow-y-scroll px-1 md:px-2">
-          <div className="flex gap-2 text-white text-sm items-center my-2">
+          <div className="flex justify-between2 gap-1 border p-1 rounded-md text-white text-sm items-center my-2">
             <div 
-              className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02]" 
+              className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border" 
               onClick={() => handleTopPortionChange("Option1")}
               style={{
                 background:
@@ -721,7 +787,7 @@ const PortfolioCard = ({
               }}  
             >About Deisgn 1</div>
             <div 
-              className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02]" 
+              className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border" 
               onClick={() => handleTopPortionChange("Option2")}
               style={{
                 background:
@@ -730,7 +796,7 @@ const PortfolioCard = ({
               }} 
             >About Deisgn 2</div>
             <div 
-              className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02]" 
+              className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border" 
               onClick={() => handleTopPortionChange("Option3")}
               style={{
                 background:
@@ -739,7 +805,7 @@ const PortfolioCard = ({
               }} 
             >About Design 3</div>
             <div 
-              className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02]" 
+              className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border" 
               onClick={() => handleTopPortionChange("Option4")}
               style={{
                 background:
@@ -748,6 +814,85 @@ const PortfolioCard = ({
               }} 
             >About Design 4</div>
           </div>
+
+          <div className="flex gap-1 border p-1 rounded-md text-white text-sm items-center my-2">
+            <div 
+              className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border" 
+              onClick={() => handleExperienceChange("Option1")}
+              style={{
+                background:
+                  experienceSection === "Option1" ? "lightblue" : "white",
+                  color: experienceSection === "Option1" ? "white" : "black",
+              }}  
+            >Experience Deisgn 1</div>
+            <div 
+              className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border" 
+              onClick={() => handleExperienceChange("Option2")}
+              style={{
+                background:
+                  experienceSection === "Option2" ? "lightblue" : "white",
+                  color: experienceSection === "Option2" ? "white" : "black",
+              }} 
+            >Experience Deisgn 2</div>
+            <div 
+              className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border" 
+              onClick={() => handleExperienceChange("Option3")}
+              style={{
+                background:
+                  experienceSection === "Option3" ? "lightblue" : "white",
+                  color: experienceSection === "Option3" ? "white" : "black",
+              }} 
+            >Experience Design 3</div>
+            <div 
+              className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border" 
+              onClick={() => handleExperienceChange("Option4")}
+              style={{
+                background:
+                  experienceSection === "Option4" ? "lightblue" : "white",
+                  color: experienceSection === "Option4" ? "white" : "black",
+              }} 
+            >Experience Design 4</div>
+          </div>
+
+          <div className="flex gap-1 border p-1 rounded-md justify-between text-white text-sm items-center my-2">
+            <div 
+              className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border" 
+              onClick={() => handleEducationChange("Option1")}
+              style={{
+                background:
+                  educationSection === "Option1" ? "lightblue" : "white",
+                  color: educationSection === "Option1" ? "white" : "black",
+              }}  
+            >Education Deisgn 1</div>
+            <div 
+              className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border" 
+              onClick={() => handleEducationChange("Option2")}
+              style={{
+                background:
+                  educationSection === "Option2" ? "lightblue" : "white",
+                  color: educationSection === "Option2" ? "white" : "black",
+              }} 
+            >Education Deisgn 2</div>
+            <div 
+              className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border" 
+              onClick={() => handleEducationChange("Option3")}
+              style={{
+                background:
+                  educationSection === "Option3" ? "lightblue" : "white",
+                  color: educationSection === "Option3" ? "white" : "black",
+              }} 
+            >Education Design 3</div>
+            <div 
+              className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border" 
+              onClick={() => handleEducationChange("Option4")}
+              style={{
+                background:
+                  educationSection === "Option4" ? "lightblue" : "white",
+                  color: educationSection === "Option4" ? "white" : "black",
+              }} 
+            >Education Design 4</div>
+          </div>
+
             <Form
               FormData={{
                 FullName: `${initialState.FormData.FirstName} ${initialState.FormData.LastName}`,
@@ -849,8 +994,8 @@ const PortfolioCard = ({
               <Preview
                 {...initialState.FormData}
                 FullName={`${initialState.FormData.FirstName} ${initialState.FormData.LastName}`}
-                isEducationEnabled={isEducationEnabled}
-                isExperienceEnabled={isExperienceEnabled}
+                EducationDesign={selectedEducationDesign}
+                ExperienceDesign={selectedExperienceDesign}
                 isSkillEnabled={isSkillEnabled}
                 isAwardsEnabled={isAwardsEnabled}
                 isInterestEnabled={isInterestEnabled}

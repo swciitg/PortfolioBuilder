@@ -3,7 +3,7 @@ import flowerImage from "../../images/Vector.png"
 import flowerImage2 from "../../images/Vector2.png"
 import HalfStar from "../../images/half_star.png"
 
-const option1 = (props) => {
+const option3 = (props) => {
     const { FirstName, LastName, Thubmnail, Keywords, Description, Email, Colour, Address} = props;
     console.log(props)
   return (
@@ -41,4 +41,4 @@ const option1 = (props) => {
   )
 }
 
-export default option1
+export default option3;

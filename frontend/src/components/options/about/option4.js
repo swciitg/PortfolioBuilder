@@ -5,7 +5,7 @@ import HalfStar from "../../images/half_star.png"
 import { Link } from 'react-router-dom';
 
 
-const option1 = (props) => {
+const option4 = (props) => {
     const { FirstName, LastName, Thubmnail, Keywords, Description, Email, Colour, Address} = props;
     console.log(props)
   return (
@@ -80,7 +80,7 @@ const option1 = (props) => {
             </div>
 
             {/* About */}
-            <div className="absolute top-[100vh] left-0 w-full text-xl h-screen p-4 md:p-80 flex flex-col md:flex-row justify-start" id="about" style={{"backgroundColor":"rgba(255, 255, 255, 1)", "color":"rgba(5, 15, 40, 1)"}}>
+            <div className="absolute top-[100vh] left-0 w-full text-xl h-screen p-4 md:p-80 flex flex-col md:flex-row justify-start" id="about" style={{"backgroundColor":"rgba(5, 15, 40, 1)", "color":"rgba(255, 255, 255, 1)"}}>
                 <div className="w-full pt-16 md:pt-24 md:px-24 flex flex-col">
                     <div className="mb-3 md:mb-6 font-medium text-2xl md:text-4xl" style={{"fontFamily":
                     "Manrope"}}>About</div>
@@ -95,4 +95,4 @@ const option1 = (props) => {
   )
 }
 
-export default option1
+export default option4;

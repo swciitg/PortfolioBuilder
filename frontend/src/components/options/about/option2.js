@@ -5,7 +5,7 @@ import HalfStar from "../../images/half_star.png"
 import { Link } from 'react-router-dom';
 
 
-const option1 = (props) => {
+const Option2 = (props) => {
     const { FirstName, LastName, Thubmnail, Keywords, Description, Email, Colour, Address} = props;
     console.log(props)
   return (
@@ -48,4 +48,4 @@ const option1 = (props) => {
   )
 }
 
-export default option1
+export default Option2;

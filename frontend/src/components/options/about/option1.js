@@ -7,7 +7,7 @@ import Arrow from "../../images/arrow.png"
 import FullStarExperience from "../../images/fullStarExperience.png"
 import HalfStarExperience from "../../images/halfSttarExperience.png"
 
-const option1 = (props) => {
+const Option1 = (props) => {
     const { FirstName, LastName, Thubmnail, Keywords, Description, Email, Colour, Address} = props;
     console.log(props)
   return (
@@ -29,7 +29,7 @@ const option1 = (props) => {
               </div>
             </div>
 
-              <div className="absolute top-[100vh] left-0 w-full text-xl h-screen p-4 md:p-80 flex flex-col md:flex-row justify-start" id="about">
+              <div className="absolute top-[100vh] bg-black left-0 w-full text-xl h-screen p-4 md:p-80 flex flex-col md:flex-row justify-start" id="about">
                 <div className="w-full md:w-1/2 pt-16 md:pt-20 md:px-24 flex flex-col">
                   <div className="mb-1 md:mb-3 font-semibold text-2xl" style={{"fontFamily":
                   "Familjen Grotesk","color":"rgba(255, 247, 233, 1)"}}>About</div>
@@ -50,4 +50,4 @@ const option1 = (props) => {
   )
 }
 
-export default option1
+export default Option1
