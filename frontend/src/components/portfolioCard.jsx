@@ -773,9 +773,9 @@ const PortfolioCard = (state,{
         </button>
       </div>
 
-      <div className="w-full px-2 md:px-4 absolute top-36 overflow-y-hidden">
-        <div className="flex flex-col border py-2 px-2 md:px-4 mt-2 rounded-lg">
-          <div className="w-1/2 h-[26.8rem] overflow-y-scroll px-1 md:px-2">
+      <div className="w-full px-2 md:px-4 absolute top-32 overflow-y-hidden">
+        <div className="flex flex-col md:flex-row border py-2 px-2 md:px-4 mt-2 rounded-lg">
+          <div className="w-1/2 h-[26.6rem] overflow-y-scroll px-1 md:px-2">
           <div className="flex justify-between2 gap-1 border p-1 rounded-md text-white text-sm items-center my-2">
             <div 
               className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border" 
@@ -947,7 +947,7 @@ const PortfolioCard = (state,{
               />
             </a>
           </div>
-          <div className="p-3 w-full h-full overflow-y-scroll border border-gray-400 rounded-md">
+          <div className="p-3 w-1/2 h-[26.8rem] overflow-y-scroll border border-gray-400 rounded-md">
             <ul className="flex">
               <li className="mr-2">
                 <span
@@ -1007,13 +1007,13 @@ const PortfolioCard = (state,{
               <Code
                 {...initialState.FormData}
                 FullName={`${initialState.FormData.FirstName} ${initialState.FormData.LastName}`}
-                isEducationEnabled={isEducationEnabled}
-                isExperienceEnabled={isExperienceEnabled}
+                EducationDesign={selectedEducationDesign}
+                ExperienceDesign={selectedExperienceDesign}
                 isSkillEnabled={isSkillEnabled}
                 isAwardsEnabled={isAwardsEnabled}
                 isInterestEnabled={isInterestEnabled}
-                isProjectEnabled={isProjectEnabled}
                 Navbar={selectedNavbarDesign}
+                TopPortion={selectedTopPortionDesign}
                 Projectdesign={projectSection}
               />
             )}

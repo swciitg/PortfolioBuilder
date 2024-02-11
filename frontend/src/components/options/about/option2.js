@@ -10,25 +10,25 @@ const Option2 = (props) => {
     console.log(props)
   return (
         <div>
-            <div className="h-screen w-full absolute left-0 top-0 flex">
-              <div className="h-[100vh] w-1/2 pl-28 pt-40 flex flex-col" >
-                <div className="text-[3rem] md:text-6xl mt-1 flex flex-col leading-none mb-4" style={{"fontFamily":"roboto"}}>
+            <div className="h-screen w-full absolute left-0 top-0 flex flex-col md:flex-row">
+              <div className="md:h-[100vh] w-full md:w-1/2 pl-8 md:pl-28 pt-28 md:pt-40 flex flex-col" >
+                <div className="text-[2.5rem] md:text-6xl mt-1 flex flex-col leading-none mb-2 md:mb-4" style={{"fontFamily":"roboto"}}>
                 <span className="font-medium uppercase tracking-tight" style={{"color":"rgba(57, 57, 57, 1)"}}>{FirstName}</span>
                 <span className="font-medium uppercase tracking-tight" style={{"color":"rgba(147, 147, 147, 1)"}}>{LastName}</span>
                 </div>
-                <p className="text-start text-xl font-medium capitalize tracking-wide " style={{"fontFamily":"Manrope","color":"rgba(57, 57, 57, 1)"}}>{Keywords}</p>                
+                <p className="text-start text-lg md:text-xl font-medium capitalize tracking-wide " style={{"fontFamily":"Manrope","color":"rgba(57, 57, 57, 1)"}}>{Keywords}</p>                
                 <p className="text-start text-sm font-medium capitalize tracking-wide flex items-center" style={{"fontFamily":"Manrope","color":"rgba(57, 57, 57, 1)"}}>
-                    <span class="material-symbols-outlined text-lg">location_on</span> 
+                    <span class="material-symbols-outlined text-sm md:text-lg mr-1">location_on</span> 
                     <span>{Address}</span>
                 </p>  
-                <div className="mt-10 flex">
-                        <a href="#touch" className='px-5 py-2 rounded-xl mr-2 cursor-pointer hover:opacity-80' style={{"color":"rgba(255, 255, 255, 1)","backgroundColor":"rgba(57, 57, 57, 1)"}}>Contact</a>
-                        <div className='px-5 py-2 rounded-xl border ml-2 cursor-pointer hover:opacity-80' style={{"backgroundColor":"rgba(255, 255, 255, 1)","color":"rgba(57, 57, 57, 1)"}}>Resume</div>
+                <div className="mt-4 md:mt-10 flex gap-2">
+                        <a href="#touch" className='w-fit px-5 py-2 rounded-xl mr-2 cursor-pointer hover:opacity-80' style={{"color":"rgba(255, 255, 255, 1)","backgroundColor":"rgba(57, 57, 57, 1)"}}>Contact</a>
+                        <div className='w-fit px-5 py-2 rounded-xl border ml-0 md:ml-2 cursor-pointer hover:opacity-80' style={{"backgroundColor":"rgba(255, 255, 255, 1)","color":"rgba(57, 57, 57, 1)"}}>Resume</div>
                 </div>              
               </div>
-              <div className="w-1/2 flex items-center justify-start pl-16 relative">
-                    <img className="z-10 h-72 w-72 border p-2 rounded-xl bg-white" src={Thubmnail} alt={FirstName}/>
-                    <div className="z-0 absolute top-[9.5rem] right-[13.6rem] h-72 w-72 rounded-xl" style={{"backgroundColor":"rgba(57, 57, 57, 1)"}}></div>
+              <div className="md:w-1/2 mt-6 md:mt-0 flex items-center justify-center md:justify-start pl-0 md:pl-16 relative">
+                    <img className="z-10 h-60 md:h-72 w-60 md:w-72 border p-2 rounded-xl md:bg-white" src={Thubmnail} alt={FirstName}/>
+                    <div className="hidden md:block z-0 absolute top-[9.5rem] right-[13.6rem] h-72 w-72 rounded-xl" style={{"backgroundColor":"rgba(57, 57, 57, 1)"}}></div>
                 </div>
             </div>
 
@@ -39,7 +39,7 @@ const Option2 = (props) => {
                     "Manrope","color":"rgba(255, 247, 233, 1)"}}>About</div>
                     <div className="my-2 font-light text-[1rem] leading-6 tracking-wide" style={{"fontFamily":
                     "Manrope","color":"rgba(255, 247, 233, 0.9)"}}>{Description.slice(0,300)}</div>
-                    <div className="absolute left-0 bottom-60 md:bottom-36 h-16 w-16"><img src={HalfStar} /></div>
+                    <div className="hidden md:block absolute left-0 bottom-60 md:bottom-36 h-16 w-16"><img src={HalfStar} /></div>
                 </div> 
                 
                 

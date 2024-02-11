@@ -15,30 +15,25 @@ const Code = ({
   URL,
   Description,
   Keywords,
-  FirstName,
-  LastName,
   Address,
   Phone,
   Email,
   Socials,
-  experiences,
-  educations,
   skills,
   interests,
   awards,
   Projectdesign,
   Colour,
-  experienceTitle,
   skillsTitle,
   interestsTitle,
   awardsTitle,
-  educationTitle,
-  isExperienceEnabled,
-  isEducationEnabled,
   isSkillEnabled,
   isInterestEnabled,
   isAwardsEnabled,
-  Navbar
+  Navbar,
+  TopPortion,
+  EducationDesign,
+  ExperienceDesign
   
 }) => {
   const Meta = {
@@ -50,93 +45,6 @@ const Code = ({
     GitHub: ["github", "https://github.com/"],
     StackOverflow: ["stack-overflow", "https://stackoverflow.com/u/"],
   };
-  let experienceSection;
-
-  if (isExperienceEnabled) {
-    experienceSection = `
-      <section class="w-full h-screen" id="experience" style="font-family:sans-serif">
-        <div class="w-full px-0 md:px-32 pt-12 md:pt-24">
-          <div><img class="hidden md:block absolute right-4 md:right-12 top-4 md:top-12 h-8 md:h-12 w-8 md:w-12" src=${FullStarExperience} alt="star"/></div>
-          <div><img class=" absolute right-8 md:right-24 top-20 md:top-20 h-20 w-20" src=${FullStarExperience} alt="star"/></div>
-          <div><img class="absolute left-0 bottom-0 h-32 w-32 rotate-90" src=${HalfStarExperience} alt="star"/></div>
-          <div class="mt-10 md:mt-4 ml-4 md:ml-28 text-xl tracking-tight" style="color:rgba(255, 214, 53, 1)">Worked before at</div>
-          <div class="ml-4 md:ml-28 mt-1 md:mt-2 mb-6 text-4xl" style="color:rgba(22, 22, 22, 1)">${experienceTitle}</div>
-          <div class="w-full px-4 md:px-28 mt-12 md:mt-16 flex gap-3 md:gap-6">
-              ${experiences.map(
-                (experience) => `
-                <div class="w-28 md:w-48 p-3 rounded-lg border" >
-                  <div class="flex flex-col items-center">
-                    <img src=${experience.experience.url} class="h-12 md:h-16 w-12 m:w-16 mb-2"/>
-                    <div class="text-[1rem] md:text-[1.05rem] capitalize text-center"  style="color:rgba(22, 22, 22, 1)">${
-                      experience.experience.company
-                    }</div>
-                    <div class="mb-1 text-xs md:text-sm capitalize text-center"  style="color:rgba(22, 22, 22, 0.5)">${experience.experience.position}</div>
-                  </div>
-                  <div class="text-xs md:text-sm text-gray-400 flex justify-center text-center"><span class="">${
-                    experience.experience.start
-                  } - ${
-                    experience.experience.end
-                      ? experience.experience.end
-                      : experience.experience.presentJob
-                      ? "Present"
-                      : ""
-                  }</span></div>
-                </div>
-                `
-                ).join(`
-          `)}
-          </div>
-        </div>
-    </section>
-  `;
-  } else {
-    experienceSection = "";
-  }
-
-  
-  let educationSection;
-  if (isEducationEnabled) {
-    educationSection = `
-    <section class="w-full h-screen" id="education" style="font-family:sans-serif" >
-      <div class="w-full px-4 md:px-32 pt-12 md:pt-24">
-        <div class="w-full mt-10 md:mt-4 md:pl-24 mb-2 md:mb-4 text-4xl" style="font-family:roboto;color:rgba(255, 247, 233, 1)">${educationTitle}</div>
-        <span class="absolute right-16 bottom-12 md:bottom-20"><img class="h-16 w-16" src=${flowerImage2} /></span>
-        <span class="absolute right-2 bottom-28 md:bottom-36"><img class="h-10 w-10" src=${flowerImage2} /></span>
-        <div class="w-full mt-10 md:px-24 md:mt-8 flex flex-col gap-3" style="font-family:roboto;color:rgba(255, 247, 233, 0.8)">
-          ${educations.map(
-            (education) => `
-          <div class="relative w-[90vw] md:w-[70vw] py-2 pr-2 pl-2 md:pl-8 rounded-lg border">
-            <div class="">
-              <div class="max-w-3/4 capitalize text-lg mt-3 md:mt-1 md:mb-1 tracking-wide">${education.education.university}</div>
-                <div class="flex justify-between items-center text-sm pl-4 md:pl-6">
-                  <div class="leading-5 capitalize">${education.education.degree}</div>
-                  <div class="pr-2 capitalize" style="font-family:roboto;color:rgba(255, 247, 233, 0.6)">CGPA: ${education.education.gpa}</div>
-              </div>
-              <div class="text-xs md:text-sm capitalize pl-2 md:pl-6">${
-                education.education.branch
-              }</div>
-              
-            </div>
-            <div class="absolute top-0 right-0 p-2 md:p-3 text-xs md:text-sm flex justify-center" style="font-family:roboto;color:rgba(255, 247, 233, 0.6)"><span class="">${
-              education.education.start
-            } - ${
-              education.education.end
-                ? education.education.end
-                : education.education.presentJob
-                ? "Present"
-                : ""
-            }</span></div>
-                </div>
-                `
-          ).join(`
-        `)}
-      </div>
-    </section>
-    <hr class="m-0" />
-  `;
-  } else {
-    educationSection = "";
-  }
 
   let skillsSection;
 
@@ -318,51 +226,17 @@ const Code = ({
             <body class="bg-black relative w-full" id="page-top">
             <!-- Navigation-->
             ${Navbar}
-            <!-- Page Content-->
-            <div class="h-screen w-full absolute left-0 top-0">
-              <span class="absolute right-16 md:right-16 bottom-24"><img class="h-16 w-16" src=${flowerImage2} /></span>
-              <span class="absolute right-4 md:right-4 bottom-40 md:bottom-36"><img class="h-8 w-8" src=${flowerImage2} /></span>
-              <div class="h-[100vh] absolute top-48 md:top-40 left-0 w-full pl-4 md:pl-32" >
-                  <div class="text-4xl font-semibold flex gap-3 my-2 md:my-0 items-center" 
-                  style="font-family:roboto;color:rgba(255, 247, 233, 0.6)">
-                    <span class="">Hi, I am</span>
-                    <span><img class="h-9 w-9" src=${flowerImage} /></span>
-                  </div>
-                  <div class="text-[5rem] md:text-9xl mt-1 flex flex-col md:flex-row md:gap-6 leading-none" style="font-family:roboto;color:rgba(255, 247, 233, 1)">
-                    <span class="font-semibold md:font-bold uppercase tracking-tight" >${FirstName}</span>
-                    <span class="font-semibold md:font-bold uppercase tracking-tight" >${LastName}</span>
-                  </div>
-                  <p class="text-end text-2xl font-semibold capitalize md:mr-32" style="font-family:roboto;color:rgba(255, 247, 233, 0.6)">${Keywords}</p>                
-              </div>
-            </div>
-
-              <!-- About-->
-              <div class="absolute top-[100vh] left-0 w-full text-xl h-screen p-4 md:p-80 flex flex-col md:flex-row justify-start" id="about">
-                <div class="w-full md:w-1/2 pt-16 md:pt-20 md:px-24 flex flex-col">
-                  <div class="mb-1 md:mb-3 font-semibold text-2xl" style="font-family:
-                  Familjen Grotesk;color:rgba(255, 247, 233, 1)">About</div>
-                  <div class="my-2 font-extralight text-[1.05rem] leading-6 tracking-wide" style="font-family:
-                  Familjen Grotesk;color:rgba(255, 247, 233, 0.9)">${Description.slice(0,300)}</div>
-                  <div class="absolute left-0 bottom-60 md:bottom-36 h-16 md:h-20 w-16 md:w-20"><img src=${HalfStar} /></div>
-                </div> 
-              
-                <div class="relative h-fit my-auto p-2 md:p-4 border border-red-700 ml-32 md:ml-20 rounded-xl flex items-center">
-                  <img class="h-72 w-80 md:w-72" src=${Thubmnail} alt=${FirstName}/>
-                  <div class="absolute -left-16 -bottom-24 md:-bottom-32 h-40 w-36 md:w-40"><img src=${Arrow} /></div>
-                  <div class="absolute -left-[5.3rem] md:-left-[5.5rem] -bottom-[3.5rem] md:-bottom-20 h-36 md:h-40 w-36 md:w-40 -rotate-[33deg] text-2xl" style="font-family:
-                  Roboto;color:rgba(255, 247, 233, 1)">ME</div>
-                  <div class="absolute -left-32 md:-left-32 -bottom-[4.5rem] md:-bottom-[6.3rem] h-32 w-32 -rotate-6"><img src=${Scratch} /></div>
-                </div>
-              </div>
+             <!-- Home + about-->
+              ${TopPortion}
 
               <!-- Experience-->
               <div class="absolute h-screen top-[200vh] left-0 w-full" style="background:rgba(255, 247, 233, 1)">
-                ${experienceSection}
+                ${ExperienceDesign}
               </div
 
               <!-- Education-->
-              <div class="absolute h-screen top-[300vh] left-0 w-full">
-                ${educationSection}
+              <div class="bg-black absolute h-screen top-[300vh] left-0 w-full">
+                ${EducationDesign}
               </div>
 
               <!-- Skills-->
