@@ -1,11 +1,9 @@
 import React, { useContext } from 'react';
 import AuthContext from '../context/auth/AuthContext';
 import './home.css'
-// import img1 from './images/imagefinal1.jpg'
 import img2 from './images/imagefinal2.jpg'
-import img3 from './images/three.png'
-import img4 from './images/four.png'
 import img5 from './images/swc.png'
+
 const HomePage = () => {
 
     const { userLogin } = useContext(AuthContext);
@@ -29,7 +27,7 @@ const HomePage = () => {
                         <p className="text-2xl font-semibold uppercase py-2 text-gray-900">PortFolio Builder</p>
                         <p className="py-2 text-lg text-gray-800 leading-5">Welcome to PortfolioProBuilder, where your professional journey takes center stage. </p>
                         <div
-                            class = "w-3/4 md:w-2/3 h-12 mt-8 text-white hover:brightness-95  flex justify-center items-center rounded-md cursor-pointer font-medium"
+                            class = "w-3/4 md:w-2/3 h-12 mt-8 text-white hover:opacity-80  flex justify-center items-center rounded-md cursor-pointer font-medium"
                             style={{"background-color": "#3b5998"}}
                             onClick={clickHandler}>
                             <i class="fa-brands fa-windows text-2xl my-auto mx-3"></i>
@@ -39,10 +37,9 @@ const HomePage = () => {
                 </div>
             </div>
             <div className='mx-auto md:mx-8 my-16 md:my-8 md:relative'>
-                <img className='md:absolute top-[19.4rem] left-0 md:left-80 object-cover w-60 h-60 border md:border-none rounded-xl rotate-12 md:rotate-0 ' src="https://crediblesoft.com/wp-content/uploads/2018/09/portfolio-banner.jpg" alt='image4'/>
-                <img className='z-10 rounded-xl border  md:absolute top-[12.5rem] left-0 object-fill md:-rotate-12 w-60 md:w-[21rem] h-60 md:h-[21rem]' src={img2} alt='image3'/>
-                <img className='z-0 rounded-xl border md:bg-transparent md:absolute top-[8rem] md:top-[4.5rem] left-0 md:left-[22rem] object-cover w-60 md:w-52 h-60 md:h-52 -rotate-12 md:rotate-12' src={img3} alt='image2'/>
-                <img className='ml-0 md:ml-28 object-cover w-60 md:w-[18rem] h-60 md:h-[18rem] z-10 border md:border-none border-violet-400 rounded-xl' src="https://thumbs.dreamstime.com/z/portfolio-management-businessman-hologram-concept-futuristic-portfolio-management-businessman-hologram-concept-177205308.jpg" alt='image1'/>
+                <img className='md:absolute top-[19rem] left-0 md:left-80 object-cover w-52 h-52 border md:border-none rounded-xl rotate-12 md:rotate-0 ' src="https://crediblesoft.com/wp-content/uploads/2018/09/portfolio-banner.jpg" alt='image4'/>
+                <img className='z-10 rounded-xl border  md:absolute top-[12.5rem] left-8 object-fill md:-rotate-12 w-60 md:w-[18rem] h-60 md:h-[18rem]' src={img2} alt='image3'/>
+                <img className='ml-0 md:ml-48 object-cover w-60 md:w-[17rem] h-60 md:h-[17rem] z-10 border md:border-none border-violet-400 rounded-xl' src="https://thumbs.dreamstime.com/z/portfolio-management-businessman-hologram-concept-futuristic-portfolio-management-businessman-hologram-concept-177205308.jpg" alt='image1'/>
             </div>
         </div>
     )

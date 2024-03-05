@@ -727,23 +727,23 @@ const PortfolioCard = (state,{
       
 
       {/* navbar edit/options */}
-      <div className="w-full text-sm md:text-lg z-10 top-[4.2rem] flex gap-4 px-2 md:px-4 py-2 bg-gray-200">
+      <div className="w-full text-sm md:text-lg z-10 top-[4.2rem] flex gap-4 px-2 md:px-10 py-2 bg-gray-200">
         <button
-        className="cursor-pointer px-2 md:px-4 py-1 md:py-2 rounded-sm"
+        className="cursor-pointer px-2 md:px-3 py-1 rounded-sm"
           style={{
             background:
               navbarDesign === "NavbarDesign1" ? "lightblue" : "white",
-            color: navbarDesign === "NavbarDesign1" ? "black" : "black",
+            color: navbarDesign === "NavbarDesign1" ? "white" : "black",
           }}
           onClick={() => handleDesignChange("NavbarDesign1")}
         >
           Navbar 1
         </button>
         <button
-          className="cursor-pointer px-2 md:px-4 py-2 rounded-sm"
+          className="cursor-pointer px-2 md:px-3 py-1 rounded-sm"
           style={{
             background:
-              navbarDesign === "NavbarDesign2" ? "lightgreen" : "white",
+              navbarDesign === "NavbarDesign2" ? "violet" : "white",
             color: navbarDesign === "NavbarDesign2" ? "white" : "black",
           }}
           onClick={() => handleDesignChange("NavbarDesign2")}
@@ -751,10 +751,10 @@ const PortfolioCard = (state,{
           Navbar 2
         </button>
         <button
-        className="cursor-pointer px-2 md:px-4 py-2 rounded-sm"
+        className="cursor-pointer px-2 md:px-3 py-1 rounded-sm"
           style={{
             background:
-              navbarDesign === "NavbarDesign3" ? "lightblue" : "white",
+              navbarDesign === "NavbarDesign3" ? "lightgray" : "white",
             color: navbarDesign === "NavbarDesign3" ? "white" : "black",
           }}
           onClick={() => handleDesignChange("NavbarDesign3")}
@@ -762,7 +762,7 @@ const PortfolioCard = (state,{
           Navbar 3
         </button>
         <button
-          className="cursor-pointer px-2 md:px-4 py-2 rounded-sm"
+          className="cursor-pointer px-2 md:px-3 py-1 rounded-sm"
           style={{
             background: navbarDesign === "NavbarDesign4" ? "red" : "white",
             color: navbarDesign === "NavbarDesign4" ? "white" : "black",

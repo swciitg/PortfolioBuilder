@@ -1,0 +1,20 @@
+version: "3.3"
+
+services:
+        portfoliobuilderbackend:
+                build:
+                        context: .
+                        dockerfile: Dockerfile
+                extra_hosts:
+                        - "host.docker.internal:host-gateway"
+                # volumes:
+                #         - placement22public:/home/node/app/public
+                #         - placement22images:/home/node/app/image_save_folder
+                ports:
+                        - "9011:3000"
+                # env_file:
+                #         - .env.production
+
+# volumes:
+#         placement22public:
+#         placement22images:

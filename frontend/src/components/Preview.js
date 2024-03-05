@@ -249,7 +249,7 @@ const Preview = ({
               </div>
 
               <!--Projects-->
-              <div class="absolute h-screen top-[700vh] left-0 w-full">
+              <div id="projects" class="absolute h-screen top-[700vh] left-0 w-full">
                 ${Projectdesign}
               </div>
 

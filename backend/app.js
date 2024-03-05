@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(authRouter);
 
 
-app.listen(process.env.PORT||5001,(req,res,err)=>{
+app.listen(process.env.PORT || 5001, (req,res,err) => {
     if(err){
         console.log(err);
     }
