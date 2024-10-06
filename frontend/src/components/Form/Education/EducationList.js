@@ -1,6 +1,5 @@
 import React from 'react';
 import NewEducationForm from './NewEducationForm';
-import Education from './Education';
 import { connect } from 'react-redux';
 import { editEducation, removeEducation } from './actions';
 import { toast } from "react-toastify";

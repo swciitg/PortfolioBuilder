@@ -36,13 +36,6 @@ const NewInterestForm = ({ interests = [], onCreatePressed }) => {
           : ""
       } p-3`}
     >
-      <div className="flex justify-between mb-3">
-        <div className="flex gap-2 text-white text-sm items-center">
-          <div className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02]">Option 1</div>
-          <div className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02]">Option 2</div>
-          <div className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02]">Option 3</div>
-        </div>
-      </div>
       <input
         className="dark:bg-zinc-800 form-control form-control-sm mb-2 w-full md:w-96 border outline-none p-1 capitalize"
         type="text"

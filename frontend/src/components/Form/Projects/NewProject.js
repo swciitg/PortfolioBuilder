@@ -6,7 +6,7 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const NewProjectForm = ({ onCreatePressed,onChangeDesign }) => {
+const NewProjectForm = ({ onCreatePressed, onChangeDesign }) => {
   const [projectData, setProjectData] = useState({
     name: "",
     description: "",
@@ -24,11 +24,6 @@ const NewProjectForm = ({ onCreatePressed,onChangeDesign }) => {
   });
   const [selectedDesign, setSelectedDesign] = useState("design1"); 
 
-  const handleDesignSelection = (design) => {
-    setSelectedDesign(design);
-    onChangeDesign(design);
-    console.log(design);
-  };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -42,28 +37,28 @@ const NewProjectForm = ({ onCreatePressed,onChangeDesign }) => {
 
     if(!projectData.name)
     {
-      toast.warning("Projct Namw in Projects section not filled!", {
+      toast.warning("Project name not filled!", {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
       return;
     }
     else if(!projectData.description)
     {
-      toast.warning("Project description in Projects section not filled!", {
+      toast.warning("Project description not filled!", {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
       return;
     }
     else if(!projectData.techStack)
     {
-      toast.warning("Tech Stacks in Projects section not filled!", {
+      toast.warning("Tech Stacks not filled!", {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
       return;
     }
     else if(!projectData.githubLink)
     {
-      toast.warning("Github Link in Projects section missing!", {
+      toast.warning("Github link in project is missing!", {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
       return;
@@ -93,25 +88,9 @@ const NewProjectForm = ({ onCreatePressed,onChangeDesign }) => {
 
   return (
     <div className="border rounded p-4">
-      <div className="flex">
-        <div className="col-12 text-center">
-          <button
-            className={`btn bg-blue-400 text-white p-1 rounded-sm mx-1 font-medium ${selectedDesign === "design1" ? "btn-primary" : "btn-secondary"}`}
-            onClick={() => handleDesignSelection("design1")}
-          >
-            Design 1
-          </button>
-          <button
-            className={`btn bg-yellow-400 text-white p-1 rounded-sm mx-1 font-medium ${selectedDesign === "design2" ? "btn-primary" : "btn-secondary"}`}
-            onClick={() => handleDesignSelection("design2")}
-          >
-            Design 2
-          </button>
-        </div>
-      </div>
       <input
         type="text"
-        className="mt-4 w-1/2 dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-l-sm text-sm capitalize outline-none"
+        className="mt-4 w-1/3 dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-l-sm text-sm capitalize outline-none"
         name="name"
         placeholder="Project Name"
         value={projectData.name}
@@ -119,7 +98,7 @@ const NewProjectForm = ({ onCreatePressed,onChangeDesign }) => {
       />
       <input
         type="text"
-        className="w-1/2 dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-r-sm text-sm capitalize outline-gray-200"
+        className="ml-1 w-1/2 dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-r-sm text-sm capitalize outline-gray-200"
         name="image"
         placeholder="Project Image URL"
         value={projectData.image}
@@ -135,7 +114,7 @@ const NewProjectForm = ({ onCreatePressed,onChangeDesign }) => {
       
       <input
         type="text"
-        className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 rounded-l-sm text-sm capitalize outline-none"
+        className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 mr-1 rounded-l-sm text-sm capitalize outline-none"
         name="techStack"
         placeholder="Tech Stack"
         value={projectData.techStack}
@@ -143,7 +122,7 @@ const NewProjectForm = ({ onCreatePressed,onChangeDesign }) => {
       />
       <input
         type="text"
-        className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 text-sm capitalize outline-none"
+        className="dark:bg-zinc-800 form-control form-control-sm mb-2 border py-1 px-2 mr-1 text-sm capitalize outline-none"
         name="websiteLink"
         placeholder="Website Link"
         value={projectData.websiteLink}

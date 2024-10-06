@@ -1,16 +1,7 @@
 import React from 'react';
 
 const NavbarDesign1 = ({
-  FullName,
-  Thubmnail,
-  experienceTitle,
-  educationTitle,
-  skillsTitle,
-  interestsTitle,
-  awardsTitle,
-  projectsTitle,
   isExperienceEnabled,
-  isEducationEnabled,
   isSkillEnabled,
   isInterestEnabled,
   isAwardsEnabled,

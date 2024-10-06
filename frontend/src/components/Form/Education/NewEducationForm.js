@@ -54,13 +54,6 @@ const NewEducationForm = ({ educations = [], onCreatePressed }) => {
           : "border-yellow-500"
       } p-4`}
     >
-      <div className="flex justify-between mb-4">
-        <div className="flex gap-2 text-white text-sm items-center">
-          <div className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02]">Option 1</div>
-          <div className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02]">Option 2</div>
-          <div className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02]">Option 3</div>
-        </div>
-      </div>
      
       <input
         className="w-3/4 dark:bg-zinc-800 form-control form-control-sm mb-2 border p-1 rounded-sm text-sm capitalize outline-none"

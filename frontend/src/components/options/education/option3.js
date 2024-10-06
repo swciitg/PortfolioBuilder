@@ -1,41 +1,39 @@
+import React from 'react';
+import flowerImage2 from "../../images/Vector2.png";
 
-import React, { useState } from 'react'
-import { BsChevronDown ,  BsChevronUp ,BsChevronRight } from 'react-icons/bs'
-import { Link } from 'react-router-dom';
-
-const ServicesListCard = (props) => {
-  const [dropDown,setDropDown] = useState(true);
-  
+const Option1 = (props) => {
+  const { educationTitle, education } = props;
 
   return (
-    <div id='education' className="rounded-lg md:rounded-xl py-4 md:py-5 my-6 md:my-8 mx-[10%]" style={{"box-shadow" : "rgba(0, 0, 0, 0.24) 0px 3px 8px","backgroundColor":"rgba(252, 252, 253, 1)"}}>
-        <div className='flex justify-between items-center mx-8 md:mx-12 font-semibold tracking-wide text-[16px]'>
-            <div className='mt-20 mb-2 md:mb-0 text-lg md:text-2xl text-center'></div>
-            <div>{props.header}</div>
-            <div className='cursor-pointer p-2' onClick={()=>{setDropDown(!dropDown)}}>
-              {dropDown
-              ?
-              <BsChevronDown/>
-              :
-              <BsChevronUp/>
-              }
-            </div>
+    <section className="w-full h-screen bg-gray-900 text-white" id="education" style={{ fontFamily: 'sans-serif' }}>
+      <div className="w-full px-4 md:px-32 pt-24 md:pt-32 relative">
+        <div className="w-full text-center mb-8">
+          <h1 className="text-4xl md:text-5xl font-bold mb-2" style={{ fontFamily: 'roboto', color: '#FFF7E9' }}>
+            {educationTitle}
+          </h1>
+          <p className="text-lg md:text-xl text-gray-400">Explore My Educational Journey</p>
         </div>
-        {!dropDown && props.subHeader?
-        <div className='mx-8 md:mx-12 text-sm mt-2 text-darkblue'>
-          {props.subHeader.map((subheader) => (
-            <Link key={subheader.id} href={subheader.URL} className='my-2 md:my-3 flex items-center cursor-pointer'>
-              <div className='mr-2 md:mr-3 capitalize font-normal tracking-wide'>{subheader.Sub_Header}</div>
-              <BsChevronRight/>
-            </Link>
-          ))}
-
         
+        <div className="absolute right-10 bottom-20">
+          <img className="h-20 w-20 opacity-50" src={flowerImage2} alt="flower" />
         </div>
-        :
-        ""}
-    </div>
-  )
-}
 
-export default ServicesListCard
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+          {education && education.map((item, index) => (
+            <div key={index} className="bg-gray-400 rounded-lg shadow-lg p-3 md:p-4">
+              <h2 className="text-2xl font-semibold mb-2">{item.education.university}</h2>
+              <p className="text-lg mb-2 md:mb-3">{item.education.degree}</p>
+              <p className="text-sm text-gray-400">CGPA: {item.education.gpa}</p>
+              <p className="text-sm text-gray-400 mb-2">{item.education.branch}</p>
+              <p className="text-sm text-gray-500">
+                {`${item.education.start} - ${item.education.end ? item.education.end : item.education.presentJob ? 'Present' : ''}`}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Option1;

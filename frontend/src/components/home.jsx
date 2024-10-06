@@ -1,15 +1,11 @@
-import React, { useContext } from 'react';
-import AuthContext from '../context/auth/AuthContext';
+import React from 'react';
 import './home.css'
 import img2 from './images/imagefinal2.jpg'
-import img5 from './images/swc.png'
+import img5 from './images/portfolio_logo.png'
 
 const HomePage = () => {
 
-    const { userLogin } = useContext(AuthContext);
-
     const clickHandler = async () => {
-        await userLogin();
     }
 
     return (

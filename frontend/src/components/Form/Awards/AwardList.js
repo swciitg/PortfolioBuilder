@@ -1,6 +1,5 @@
 import React from 'react';
 import NewAwardForm from './NewAwardForm';
-import Award from './Award';
 import { connect } from 'react-redux';
 import { editAward, removeAward } from './actions';
 import { toast } from "react-toastify";

@@ -1,13 +1,9 @@
 import React from 'react';
-import flowerImage from "../../images/Vector.png"
-import flowerImage2 from "../../images/Vector2.png"
-import HalfStar from "../../images/half_star.png"
-import { Link } from 'react-router-dom';
+import HalfStar from "../../images/half_star.png";
 
 
 const option4 = (props) => {
-    const { FirstName, LastName, Thubmnail, Keywords, Description, Email, Colour, Address} = props;
-    console.log(props)
+    const { FirstName, LastName, Thubmnail, Keywords, Description, Address, URL} = props;
   return (
         <div className=''>
             <div className="bg-white h-screen w-full absolute left-0 top-0 flex flex-col md:flex-row" style={{"fontFamily":"Manrope","color":"rgba(5, 15, 40, 1)"}}>
@@ -56,7 +52,7 @@ const option4 = (props) => {
                                 </text>
                             </svg>
                         </a>
-                        <div className='z-10 absolute -left-16 md:-left-20 top-40 md:top-44 h-32 md:h-40 w-32 md:w-40 flex justify-center items-center cursor-pointer'>
+                        <a href={URL}  target="_blank" className='z-10 absolute -left-16 md:-left-20 top-40 md:top-44 h-32 md:h-40 w-32 md:w-40 flex justify-center items-center cursor-pointer'>
                             <svg
                                 viewBox="0 0 100 100"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -76,7 +72,7 @@ const option4 = (props) => {
                                     </textPath>
                                 </text>
                             </svg>
-                        </div>
+                        </a>
                     </div>
                     
                 </div>
@@ -88,7 +84,7 @@ const option4 = (props) => {
                     <div className="mb-3 md:mb-6 font-medium text-2xl md:text-4xl" style={{"fontFamily":
                     "Manrope"}}>About</div>
                     <div className="my-3 font-light text-[1rem] leading-6 tracking-wide" style={{"fontFamily":
-                    "Manrope"}}>{Description.slice(0,300)}</div>
+                    "Manrope"}}>{Description.slice(0,500)}</div>
                     <div className="absolute left-0 bottom-60 md:bottom-36 h-16 w-16"><img src={HalfStar} /></div>
                 </div> 
                 
