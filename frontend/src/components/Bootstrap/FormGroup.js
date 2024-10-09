@@ -21,7 +21,7 @@ const FormGroup = ({
       </label>
       <input
         type={Type}
-        className="dark:bg-zinc-800 form-control block w-full md:w-96 border py-1 px-2 rounded-sm text-sm outline-gray-200"
+        className="dark:bg-zinc-800 form-control block w-full md:w-90 border py-1 px-2 rounded-sm text-sm outline-gray-200"
         id={Id}
         name={Id}
         onChange={onChange}
