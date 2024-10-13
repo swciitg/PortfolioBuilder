@@ -37,7 +37,7 @@ const NewInterestForm = ({ interests = [], onCreatePressed }) => {
       } p-3`}
     >
       <input
-        className="dark:bg-zinc-800 form-control form-control-sm mb-2 w-full md:w-96 border outline-none p-1 capitalize"
+        className="dark:bg-zinc-800 form-control form-control-sm mb-2 w-full md:w-90 border outline-none p-1 capitalize"
         type="text"
         placeholder="Describe your interests in a few words..."
         value={interest}

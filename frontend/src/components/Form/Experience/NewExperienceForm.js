@@ -83,7 +83,7 @@ const NewExperienceForm = ({ experiences = [], onCreatePressed }) => {
         }}
         onBlur={handleBlur}
       />
-      <div className="flex flex-col md:flex-row gap-2 md:items-center">
+      <div className="flex flex-col flex-wrap md:flex-row gap-2 md:items-center">
         <div className="dark:bg-zinc-800 col p-1 text-sm flex items-center justify-center border w-40 rounded-sm">
           <input
             type="date"
