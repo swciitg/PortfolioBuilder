@@ -14,7 +14,7 @@ const Option4 = ({ educationTitle, education }) => {
           {educationTitle}
         </div>
 
-        {/* Border styling adjustment (for hiding behind the heading) */}
+        {/* Border styling adjustment*/}
         <div className="border-t-0 pt-6"></div>
 
         {/* Education List */}
