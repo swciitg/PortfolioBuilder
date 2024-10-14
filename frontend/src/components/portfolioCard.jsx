@@ -21,6 +21,7 @@ import Experience2 from "./options/experience/option2";
 import EducationDesign1 from './options/education/option1'
 import EducationDesign2 from './options/education/option2'
 import EducationDesign3 from './options/education/option3'
+import EducationDesign4 from './options/education/option4'
 import GetInTouch from './options/getInTouch/option1'
 import Code from "./Code";
 
@@ -249,6 +250,14 @@ const PortfolioCard = (state, {
     case "Option3":
       selectedEducationDesign = ReactDOMServer.renderToString(
         <EducationDesign3 
+        educationTitle = {state.educationTitle}
+        education = {state.educations}
+        />
+      );
+      break;
+      case "Option4":
+      selectedEducationDesign = ReactDOMServer.renderToString(
+        <EducationDesign4 
         educationTitle = {state.educationTitle}
         education = {state.educations}
         />
@@ -505,7 +514,17 @@ const PortfolioCard = (state, {
                   color: educationSection === "Option3" ? "white" : "black",
               }} 
             >Education Design 3</div>
+            <div 
+              className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border" 
+              onClick={() => handleEducationChange("Option4")}
+              style={{
+                background:
+                  educationSection === "Option4" ? "lightblue" : "white",
+                  color: educationSection === "Option4" ? "white" : "black",
+              }} 
+            >Education Design 4</div>
           </div>
+          
 
             <Form
               FormData={{
@@ -664,3 +683,4 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(PortfolioCard);
+
