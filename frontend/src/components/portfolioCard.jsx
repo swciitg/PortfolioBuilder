@@ -24,6 +24,7 @@ import EducationDesign3 from './options/education/option3'
 import EducationDesign4 from './options/education/option4'
 import GetInTouch from './options/getInTouch/option1'
 import Code from "./Code";
+import DropdownCard from "./ExperienceDropDown";
 
 const PortfolioCard = (state, {
   experienceTitle,
@@ -375,7 +376,6 @@ const PortfolioCard = (state, {
     <div className="w-full h-full overflow-y-hidden">
       <Header/>
       
-
       {/* navbar edit/options */}
       <div className="w-full text-sm md:text-lg z-10 flex gap-4 px-2 md:px-10 py-3 bg-gray-200">
         <button
@@ -664,6 +664,7 @@ const PortfolioCard = (state, {
           </div>
         </div>
       </div>
+      
     </div>
   );
 };
