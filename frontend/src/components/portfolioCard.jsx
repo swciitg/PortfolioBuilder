@@ -18,7 +18,8 @@ import TopPortion3 from "./options/about/option3";
 import TopPortion4 from "./options/about/option4";
 import Experience1 from "./options/experience/option1";
 import Experience2 from "./options/experience/option2";
-import Experience3 from "./options/experience/option3"; // Add this line
+import Experience3 from "./options/experience/option3"; 
+import Experience4 from "./options/experience/option4";
 import EducationDesign1 from "./options/education/option1";
 import EducationDesign2 from "./options/education/option2";
 import EducationDesign3 from "./options/education/option3";
@@ -222,6 +223,14 @@ const PortfolioCard = (
     case "Option3": 
       selectedExperienceDesign = ReactDOMServer.renderToString(
         <Experience3
+          experienceTitle={state.experienceTitle}
+          experience={state.experiences}
+        />
+      );
+      break;
+      case "Option4": 
+      selectedExperienceDesign = ReactDOMServer.renderToString(
+        <Experience4
           experienceTitle={state.experienceTitle}
           experience={state.experiences}
         />
@@ -509,6 +518,17 @@ const PortfolioCard = (
                 }}
               >
                 Experience Design 3
+              </div>
+              <div
+                className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border"
+                onClick={() => handleExperienceChange("Option4")}
+                style={{
+                  background:
+                    experienceSection === "Option4" ? "lightblue" : "white",
+                  color: experienceSection === "Option4" ? "white" : "black",
+                }}
+              >
+                Experience Design 4
               </div>
             </div>
 
