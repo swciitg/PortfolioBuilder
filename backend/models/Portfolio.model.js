@@ -4,7 +4,8 @@ const portfolioSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: true
+        required: true,
+        unique: true
     },
     designSelection: {
         navbarSectionDesign: {
@@ -168,14 +169,14 @@ const portfolioSchema = new mongoose.Schema({
             'Computational Fluid Dynamics (CFD)',
             'Figma']
     }],
-    intrest: {
+    interest: {
         type: String,
         default: ''
     },
-    awards: [{
-        type: String,
-        default: ''
-    }],
+    awards: {
+        type: [String],
+        default: []
+    },
     projects: [{
         projectname: {
             type: String,

@@ -7,7 +7,7 @@ export const createPortfolio = async (req, res) => {
 
         const userId = req.user._id;
 
-        //thinking that we are only createing one portfolio for one user 
+        //thinking that we are only creating one portfolio for one user 
         const existing = await Portfolio.findOne({ userId });
         if (existing) {
             return res.status(400).json({
@@ -30,17 +30,18 @@ export const createPortfolio = async (req, res) => {
                 message: "Error saving portfolio",
             });
         }
-        res.status(201).json({
+        return res.status(201).json({
             success: true,
             message: "Portfolio created successfully",
             data: savedPortfolio,
         });
     } catch (error) {
-        res.status(400).json(
+        console.error("error while creating portfolio", error);
+        return res.status(500).json(
             {
                 success: false,
                 message: "Error creating portfolio",
-                error: error.message,
+    
             }
         );
     }
@@ -51,9 +52,11 @@ export  const updatePortfolio = async (req, res) => {
     try {
         
         const  userId  = req.user._id;
+
+        const {userId: ignoredUserId, ...restBody} = req.body;
         const updatedPortfolio = await Portfolio.findOneAndUpdate(
             { userId },
-            { $set: req.body },
+            { $set: restBody },
             { new: true, runValidators: true }
         );
         if (!updatedPortfolio) {
@@ -62,16 +65,17 @@ export  const updatePortfolio = async (req, res) => {
                 message: "Portfolio not found",
             });
         }
-        res.status(200).json({
+        return res.status(200).json({
             success: true,
             message: "Portfolio updated successfully",
             data: updatedPortfolio,
         });
     } catch (error) {
-        res.status(400).json({
+        console.error("error while updating portfolio", error);
+        return res.status(500).json({
             success: false,
             message: "Error updating portfolio",
-            error: error.message,
+            
         });
     }
 };
