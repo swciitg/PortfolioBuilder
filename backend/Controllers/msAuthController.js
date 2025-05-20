@@ -76,7 +76,9 @@ export const getToken = async (req,res) => {
     
     if (response2.ok) {
       const data = await response2.json();
-      
+
+      // Store user info in session
+      req.session.user = data;
 
       res.status(200).json({ studInformation: data });
     } else {
