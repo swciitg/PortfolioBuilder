@@ -41,13 +41,13 @@ const Option1 = (props) => {
         >
           {experienceTitle}
         </div>
-        <div className="w-full px-4 md:px-12 mt-12 md:mt-16 flex flex-col md:flex-row gap-4 md:gap-8 ml-4 md:ml-28">
+        <div className="w-full px-4 md:px-12 mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 ml-4 md:ml-28">
           {experience && experience.map((item, index) => (
-            <div key={index} className="w-72 md:w-80 p-3 md:p-4 rounded-lg border">
+            <div key={index} className="p-3 md:p-4 rounded-lg border">
               <div className="flex flex-col items-center">
                 <img
                   src=
-                  {index%2 == 0 
+                  {index%2 === 0 
                     ? 
                     'https://economictimes.indiatimes.com/thumb/msid-69278826,width-1200,height-900,resizemode-4,imgsize-82628/internship2-getty.jpg?from=mdr'
                     :

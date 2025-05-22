@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, getToken } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import NewCard from './newCard';
 

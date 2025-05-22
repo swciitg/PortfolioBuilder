@@ -33,8 +33,8 @@ const NavbarDesign1 = ({
         {isProjectEnabled && (<a href="#projects" className='rounded-2xl mx-2 md:mx-4'>  
             <li className='inline-block hover:text-blue-400  text-center hover:scale-[1.03]'>Projects</li>
         </a>)}
-        <a href="#touch" className='rounded-2xl mx-2 md:mx-4 hover:text-blue-400'>  
-            <li className='inline-block text-center hover:scale-[1.03] border border-white rounded-md p-1'>Get In Touch</li>
+        <a href="#touch" className='mx-2 md:mx-4 hover:text-blue-400'>  
+            <li className='inline-block text-center hover:scale-[1.03]'>Get In Touch</li>
         </a>
         
 

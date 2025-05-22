@@ -8,8 +8,7 @@ import ProjectList from "./Form/Projects/ProjectList";
 import SkillsList from "./Form/Skills/SkillsList";
 import { SectionTitle } from "./sectionTitle/sectionTitle";
 
-const Form = ({ FormData, onChange, isExperienceEnabled, isEducationEnabled, isSkillEnabled, isInterestEnabled, isAwardsEnabled,
-  isProjectEnabled, toggleProject, toggleExperience, toggleEducation, toggleSkill, toggleInterest, toggleAward }) => {
+const Form = ({ FormData, onChange, isExperienceEnabled, isEducationEnabled, isSkillEnabled, isInterestEnabled, isAwardsEnabled, isProjectEnabled }) => {
   const Desc = {
     FullName: [
       "text",

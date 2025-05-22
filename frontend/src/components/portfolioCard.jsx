@@ -394,54 +394,54 @@ const PortfolioCard = (
       <Header />
 
       {/* navbar edit/options */}
-      <div className="w-full text-sm md:text-lg z-10 flex gap-4 px-2 md:px-10 py-3 bg-gray-200">
-        <button
-          className="cursor-pointer px-2 md:px-3 py-1 rounded-sm"
-          style={{
-            background:
-              navbarDesign === "NavbarDesign1" ? "lightblue" : "white",
-            color: navbarDesign === "NavbarDesign1" ? "white" : "black",
-          }}
-          onClick={() => handleDesignChange("NavbarDesign1")}
-        >
-          Navbar 1
-        </button>
-        <button
-          className="cursor-pointer px-2 md:px-3 py-1 rounded-sm"
-          style={{
-            background: navbarDesign === "NavbarDesign2" ? "violet" : "white",
-            color: navbarDesign === "NavbarDesign2" ? "white" : "black",
-          }}
-          onClick={() => handleDesignChange("NavbarDesign2")}
-        >
-          Navbar 2
-        </button>
-        <button
-          className="cursor-pointer px-2 md:px-3 py-1 rounded-sm"
-          style={{
-            background:
-              navbarDesign === "NavbarDesign3" ? "lightgray" : "white",
-            color: navbarDesign === "NavbarDesign3" ? "white" : "black",
-          }}
-          onClick={() => handleDesignChange("NavbarDesign3")}
-        >
-          Navbar 3
-        </button>
-        <button
-          className="cursor-pointer px-2 md:px-3 py-1 rounded-sm"
-          style={{
-            background: navbarDesign === "NavbarDesign4" ? "red" : "white",
-            color: navbarDesign === "NavbarDesign4" ? "white" : "black",
-          }}
-          onClick={() => handleDesignChange("NavbarDesign4")}
-        >
-          Navbar 4
-        </button>
-      </div>
 
       <div className="w-full h-full px-2 absolute top-36 overflow-y-hidden py-2 md:py-3">
         <div className="w-full h-full flex flex-col md:flex-row">
           <div className="w-full md:w-1/2 h-[26.8rem] md:h-full overflow-y-scroll border py-2 px-2 md:px-4 my-2 mx-2 md:my-0 rounded-lg">
+            <div className="flex justify-between2 gap-1 border p-1 rounded-md text-white text-sm items-center my-2">
+              <button
+                className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border"
+                style={{
+                  background:
+                    navbarDesign === "NavbarDesign1" ? "lightblue" : "white",
+                  color: navbarDesign === "NavbarDesign1" ? "white" : "black",
+                }}
+                onClick={() => handleDesignChange("NavbarDesign1")}
+              >
+                Navbar 1
+              </button>
+              <button
+                className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border"
+                style={{
+                  background: navbarDesign === "NavbarDesign2" ? "lightblue" : "white",
+                  color: navbarDesign === "NavbarDesign2" ? "white" : "black",
+                }}
+                onClick={() => handleDesignChange("NavbarDesign2")}
+              >
+                Navbar 2
+              </button>
+              <button
+                className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border"
+                style={{
+                  background:
+                    navbarDesign === "NavbarDesign3" ? "lightblue" : "white",
+                  color: navbarDesign === "NavbarDesign3" ? "white" : "black",
+                }}
+                onClick={() => handleDesignChange("NavbarDesign3")}
+              >
+                Navbar 3
+              </button>
+              <button
+                className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border"
+                style={{
+                  background: navbarDesign === "NavbarDesign4" ? "lightblue" : "white",
+                  color: navbarDesign === "NavbarDesign4" ? "white" : "black",
+                }}
+                onClick={() => handleDesignChange("NavbarDesign4")}
+              >
+                Navbar 4
+              </button>
+            </div>  
             <div className="flex justify-between2 gap-1 border p-1 rounded-md text-white text-sm items-center my-2">
               <div
                 className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border"
