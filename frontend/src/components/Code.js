@@ -103,7 +103,7 @@ const Code = ({
     interestSection = ` 
     <section class="w-full h-screen" id="interests" style="font-family:sans-serif" >
         <div class="w-full px-4 md:px-32 pt-12 md:pt-28">
-      
+          <div class="w-full mt-12 md:mt-3 md:pl-24 mb-2 text-4xl" style="font-family:roboto;color:rgba(255, 247, 233, 0.9)">${interestsTitle}</div>
           <div class="w-full mt-10 md:px-24 md:mt-8 flex flex-col gap-5">
             ${interests.map(
               (interest) => `
@@ -241,7 +241,7 @@ const Code = ({
     <section class="w-full h-screen" id="awards" style="font-family:sans-serif">
       <div class="w-full px-4 md:px-32 pt-12 md:pt-28">
           <div class="w-full mt-12 md:mt-3 md:pl-24 mb-2 text-4xl" style="font-family:roboto;color:rgba(22, 22, 22, 1)">
-              Awards 🏆🏆
+              Awards
           </div>
           <div class="w-full mt-10 md:px-24 md:mt-8 flex flex-col gap-3 md:gap-4">
               <ul>

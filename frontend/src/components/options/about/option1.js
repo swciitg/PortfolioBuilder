@@ -34,7 +34,7 @@ const Option1 = (props) => {
           >
             <span>Hi, I am</span>
             <span>
-              <img className="h-9 w-9" src={flowerImage} />
+              {/* <img className="h-9 w-9" src={flowerImage} /> */}
             </span>
           </div>
           <div
