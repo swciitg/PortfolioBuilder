@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PortfolioCard from "./components/portfolioCard";
 import store from './redux/store';
-
+//checking commit
 function App() {
   return (
     <Provider store={store}>
