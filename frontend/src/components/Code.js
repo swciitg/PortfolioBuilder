@@ -1,4 +1,3 @@
-import { connect } from "react-redux";
 import React, { useState } from "react";
 import FullStarExperience from "./images/fullStarExperience.png";
 
@@ -361,16 +360,4 @@ const Code = ({
   );
 };
 
-const mapStateToProps = (state) => ({
-  experiences: state.experiences,
-  educations: state.educations,
-  awards: state.awards,
-  interests: state.interests,
-  skills: state.skills.selectedSkills,
-  experienceTitle: state.title.experienceTitle,
-  skillsTitle: state.title.skillsTitle,
-  interestsTitle: state.title.interestsTitle,
-  awardsTitle: state.title.awardsTitle,
-  educationTitle: state.title.educationTitle,
-})
-export default connect(mapStateToProps)(Code);
+export default Code;

@@ -27,21 +27,24 @@ import EducationDesign4 from "./options/education/option4";
 import GetInTouch from "./options/getInTouch/option1";
 import Code from "./Code";
 
-const PortfolioCard = (
-  state,
-  {
-    experienceTitle,
-    skillsTitle,
-    interestsTitle,
-    awardsTitle,
-    educationTitle,
-    projectsTitle,
-  }
-) => {
+const PortfolioCard = ({
+  experiences,
+  educations,
+  awards,
+  interests,
+  skills,
+  experienceTitle,
+  skillsTitle,
+  interestsTitle,
+  awardsTitle,
+  educationTitle,
+  projectsTitle,
+  projects: projectsFromRedux,
+}) => {
   const projects =
-    state.projects &&
-    state.projects.length > 0 &&
-    state.projects.map((projectObj) => projectObj.project);
+    projectsFromRedux &&
+    projectsFromRedux.length > 0 &&
+    projectsFromRedux.map((projectObj) => projectObj.project);
 
   const data = {
     FormData: {
@@ -207,40 +210,40 @@ const PortfolioCard = (
     case "Option1":
       selectedExperienceDesign = ReactDOMServer.renderToString(
         <Experience1
-          experienceTitle={state.experienceTitle}
-          experience={state.experiences}
+          experienceTitle={experienceTitle}
+          experience={experiences}
         />
       );
       break;
     case "Option2":
       selectedExperienceDesign = ReactDOMServer.renderToString(
         <Experience2
-          experienceTitle={state.experienceTitle}
-          experience={state.experiences}
+          experienceTitle={experienceTitle}
+          experience={experiences}
         />
       );
       break;
     case "Option3": 
       selectedExperienceDesign = ReactDOMServer.renderToString(
         <Experience3
-          experienceTitle={state.experienceTitle}
-          experience={state.experiences}
+          experienceTitle={experienceTitle}
+          experience={experiences}
         />
       );
       break;
       case "Option4": 
       selectedExperienceDesign = ReactDOMServer.renderToString(
         <Experience4
-          experienceTitle={state.experienceTitle}
-          experience={state.experiences}
+          experienceTitle={experienceTitle}
+          experience={experiences}
         />
       );
       break;
     default:
       selectedExperienceDesign = ReactDOMServer.renderToString(
         <Experience1
-          experienceTitle={state.experienceTitle}
-          experience={state.experiences}
+          experienceTitle={experienceTitle}
+          experience={experiences}
         />
       );
       break;
@@ -256,32 +259,32 @@ const PortfolioCard = (
     case "Option1":
       selectedEducationDesign = ReactDOMServer.renderToString(
         <EducationDesign1
-          educationTitle={state.educationTitle}
-          education={state.educations}
+          educationTitle={educationTitle}
+          education={educations}
         />
       );
       break;
     case "Option2":
       selectedEducationDesign = ReactDOMServer.renderToString(
         <EducationDesign2
-          educationTitle={state.educationTitle}
-          education={state.educations}
+          educationTitle={educationTitle}
+          education={educations}
         />
       );
       break;
     case "Option3":
       selectedEducationDesign = ReactDOMServer.renderToString(
         <EducationDesign3
-          educationTitle={state.educationTitle}
-          education={state.educations}
+          educationTitle={educationTitle}
+          education={educations}
         />
       );
       break;
     case "Option4":
       selectedEducationDesign = ReactDOMServer.renderToString(
         <EducationDesign4
-          educationTitle={state.educationTitle}
-          education={state.educations}
+          educationTitle={educationTitle}
+          education={educations}
         />
       );
       break;
@@ -681,19 +684,24 @@ const PortfolioCard = (
               <Preview
                 {...initialState.FormData}
                 FullName={`${initialState.FormData.FirstName} ${initialState.FormData.LastName}`}
-                EducationDesign={selectedEducationDesign}
-                ExperienceDesign={selectedExperienceDesign}
+                experiences={experiences}
+                educations={educations}
                 isEducationEnabled={isEducationEnabled}
                 isExperienceEnabled={isExperienceEnabled}
                 isSkillEnabled={isSkillEnabled}
                 isInterestEnabled={isInterestEnabled}
                 isAwardsEnabled={isAwardsEnabled}
                 isProjectEnabled={isProjectEnabled}
-                Navbar={selectedNavbarDesign}
-                getInTouch={getInTouchDesign}
-                TopPortion={selectedTopPortionDesign}
-                projectsTitle="Projects"
+                projectsTitle={projectsTitle}
                 projects={projects}
+                skills={skills}
+                awards={awards}
+                interests={interests}
+                skillsTitle={skillsTitle}
+                interestsTitle={interestsTitle}
+                experienceTitle={experienceTitle}
+                educationTitle={educationTitle}
+                awardsTitle={awardsTitle}
               />
             ) : (
               <Code
@@ -710,8 +718,13 @@ const PortfolioCard = (
                 Navbar={selectedNavbarDesign}
                 getInTouch={getInTouchDesign}
                 TopPortion={selectedTopPortionDesign}
-                projectsTitle="Projects"
+                projectsTitle={projectsTitle}
                 projects={projects}
+                skills={skills}
+                awards={awards}
+                interests={interests}
+                skillsTitle={skillsTitle}
+                interestsTitle={interestsTitle}
               />
             )}
           </div>
