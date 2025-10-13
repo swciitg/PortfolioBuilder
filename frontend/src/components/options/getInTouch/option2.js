@@ -1,152 +1,107 @@
-import React, { useState } from "react";
+// Option2.js
+import { Mail, Phone, Linkedin, Github, MapPin, Clock } from "lucide-react";
 
-const Option1 = (props) => {
-  const { Address, Phone, Email, Socials } = props;
-
-  const Meta = {
-    Facebook: ["facebook-f", "https://fb.me/"],
-    WhatsApp: ["whatsapp", "https://wa.me/"],
-    Instagram: ["instagram", "https://instagr.am/"],
-    Twitter: ["twitter", "https://twitter.com/"],
-    LinkedIn: ["linkedin-in", "https://linkedin.com/in/"],
-    GitHub: ["github", "https://github.com/"],
-    StackOverflow: ["stack-overflow", "https://stackoverflow.com/u/"],
-  };
-
-  const [feedback, setFeedback] = useState({
-    email: "",
-    header: "",
-    body: "",
-  });
-
-  const detectChanges = (e) => {
-    const { name, value } = e.target;
-    setFeedback((prevFeedback) => ({
-      ...prevFeedback,
-      [name]: value,
-    }));
-  };
-
-  const sendFeedback = async (email, recieverEmail, header, body) => {
-
-    console.log(232)
-
-    const response = await fetch("https://api.restful-api.dev/objects", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, recieverEmail, header, body }),
-    });
-
-    alert(response.status);
-    console.log(response);
-    return response.status;
-  };
-
-  const submit = async (event) => {
-    event.preventDefault();
-
-    const recieverEmail = document.getElementById('mailId').textContent;
-
-    const status = await sendFeedback(feedback.email, recieverEmail, feedback.header, feedback.body);
-
-    if (status === 200) {
-      alert("Feedback sent successfully");
-    } else {
-      alert("Failed to send feedback");
-    }
-  };
+const Option2 = (props) => {
+  const contactDetails = [
+    {
+      icon: Mail,
+      title: "Email",
+      value: "contact@example.com",
+      description: "Send me an email anytime",
+      href: "mailto:contact@example.com",
+      color: "text-blue-600 dark:text-blue-400",
+      bg: "bg-blue-50",
+    },
+    {
+      icon: Phone,
+      title: "Phone",
+      value: "+1 (555) 123-4567",
+      description: "Mon-Fri from 9am to 6pm",
+      href: "tel:+15551234567",
+      color: "text-green-600 dark:text-green-400",
+      bg: "bg-green-50",
+    },
+    {
+      icon: Linkedin,
+      title: "LinkedIn",
+      value: "linkedin.com/in/yourname",
+      description: "Let's connect professionally",
+      href: "https://linkedin.com/in/yourname",
+      color: "text-cyan-600 dark:text-cyan-400",
+      bg: "bg-cyan-50 ",
+    },
+    {
+      icon: Github,
+      title: "GitHub",
+      value: "github.com/yourusername",
+      description: "Check out my projects",
+      href: "https://github.com/yourusername",
+      color: "text-purple-600 dark:text-purple-400",
+      bg: "bg-purple-50",
+    },
+    {
+      icon: MapPin,
+      title: "Location",
+      value: "San Francisco, CA",
+      description: "Available for remote work",
+      href: "#",
+      color: "text-red-600 dark:text-red-400",
+      bg: "bg-red-50",
+    },
+    {
+      icon: Clock,
+      title: "Response Time",
+      value: "Within 24 hours",
+      description: "Usually much faster",
+      href: "#",
+      color: "text-orange-600 dark:text-orange-400",
+      bg: "bg-orange-50 ",
+    },
+  ];
 
   return (
-    <section className="w-full h-screen" id="awards" style={{ fontFamily: "Poppins" }}>
-      <div className="w-full h-full px-4 md:px-32 pt-24 md:pt-28" style={{ color: "rgba(255, 247, 233, 1)" }}>
-        <div className="h-24 md:h-40 text-4xl font-bold md:pl-24">Get in touch!</div>
-        <div className="flex flex-col md:flex-row gap-2 md:gap-4 h-auto pb-2 md:px-24 md:pb-6 w-full items-center justify-center">
-          <div className="border p-3 rounded-md w-4/5 md:w-1/2 h-2/3 md:h-full">
-            <form onSubmit={submit} className="space-y-2 md:space-y-6 pt-2 md:pt-4">
-              <div className="mb-2">
-                <label htmlFor="email" className="mb-2 md:mb-3 text-sm flex font-medium text-white-300">
-                  <div>Your Email</div>
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  className="shadow-md bg-gray-50 border border-gray-300 text-white text-sm rounded-lg block w-full p-2 md:p-3 placeholder-white bg-transparent"
-                  name="email"
-                  value={feedback.email}
-                  autoFocus
-                  onChange={detectChanges}
-                  placeholder="name@gmail.com"
-                  required
-                />
-              </div>
-              <div className="mb-2">
-                <label htmlFor="header" className="mb-2 md:mb-3 text-sm font-medium flex text-white-300">
-                  <div>Subject</div>
-                </label>
-                <input
-                  type="text"
-                  id="header"
-                  className="shadow-md bg-gray-50 border border-gray-300 text-white text-sm rounded-lg block w-full p-2 md:p-3 placeholder-white bg-transparent"
-                  name="header"
-                  value={feedback.header}
-                  onChange={detectChanges}
-                  placeholder="Let us know how we can help you"
-                  required
-                />
-              </div>
-              <div className="sm:col-span-2 mb-2">
-                <label htmlFor="body" className="mb-2 md:mb-3 text-sm font-medium flex text-white-300">
-                  <div>Your Message</div>
-                </label>
-                <textarea
-                  id="body"
-                  rows="4"
-                  className="shadow-md bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2 md:p-3 placeholder-white dark:border-white bg-transparent"
-                  name="body"
-                  value={feedback.body}
-                  onChange={detectChanges}
-                  placeholder="Leave a comment..."
-                  required
-                ></textarea>
-              </div>
-              <button
-                type="submit"
-                className="py-2 px-3 text-md font-medium text-center text-black rounded-lg sm:w-fit dark:bg-primary-600 dark:hover:bg-primary-700"
-                style={{ "backgroundColor" : "rgba(255, 252, 218, 1)" }}
-              >
-                Send message
-              </button>
-            </form>
-          </div>
+    <section className="min-h-screen bg-gradient-to-br from-background via-accent/5 to-background py-20 px-4">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-5xl font-bold text-foreground mb-4">Get In Touch</h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+          </p>
+        </div>
 
-          <div className="flex flex-col h-1/2 md:h-full w-full gap-y-4 px-0 md:px-16 pt-8 md:pt-0 items-center justify-end md:justify-center">
-            <div className="flex flex-col gap-y-2 h-full md:h-1/2 justify-center items-start">
-            <p className="text-start text-sm font-medium capitalize tracking-wide flex items-center" style={{ fontFamily: "Manrope", color: "rgba(57, 57, 57, 1)" }}>
-                <span className="material-symbols-outlined text-sm md:text-lg mr-1">location_on</span>
-                <span>{Address}</span>
-            </p>
-              <div>+91 {Phone}</div>
-              <a className="hover:opacity-80" id="mailId" href={`mailto:${Email}`}>
-                {Email}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {contactDetails.map((detail) => (
+            <div
+              key={detail.title}
+              className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-muted rounded-2xl"
+            >
+              <a
+                href={detail.href}
+                target={detail.href.startsWith("http") ? "_blank" : undefined}
+                rel={detail.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                className="block p-8"
+              >
+                <div
+                  className={`w-14 h-14 rounded-2xl ${detail.bg} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}
+                >
+                  <detail.icon className={`h-7 w-7 ${detail.color}`} />
+                </div>
+                <h3 className="text-xl font-semibold text-foreground mb-2">{detail.title}</h3>
+                <p className="text-base font-medium text-foreground/90 mb-2">{detail.value}</p>
+                <p className="text-sm text-muted-foreground">{detail.description}</p>
               </a>
             </div>
+          ))}
+        </div>
 
-            <div className="flex h-1/2 md:h-full justify-between md:justify-center items-end">
-              {Object.keys(Socials).some((soc) => Socials[soc].length > 0) ? (
-                <div>
-                  {Object.keys(Socials)
-                    .filter((soc) => Socials[soc].length > 0)
-                    .map((soc) => (
-                      <a key={soc} className="mx-2 hover:text-white" href={`${Meta[soc][1]}${Socials[soc]}`}>
-                        <i className={`fab fa-${Meta[soc][0]} text-3xl md:text-4xl`}></i>
-                      </a>
-                    ))}
-                </div>
-              ) : (
-                ""
-              )}
+        <div className="mt-16 text-center">
+          <div className="max-w-3xl mx-auto bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 border border-primary/20 rounded-2xl">
+            <div className="p-10">
+              <h3 className="text-2xl font-bold text-foreground mb-3">Ready to Start a Conversation?</h3>
+              <p className="text-muted-foreground text-lg">
+                Whether you have a question, a project idea, or just want to say hello, 
+                I'd love to hear from you. Choose any method above to reach out!
+              </p>
             </div>
           </div>
         </div>
@@ -155,4 +110,4 @@ const Option1 = (props) => {
   );
 };
 
-export default Option1;
+export default Option2;

@@ -34,7 +34,7 @@ const NavbarDesign1 = ({
             <li className='inline-block hover:text-blue-400  text-center hover:scale-[1.03]'>Projects</li>
         </a>)}
         <a href="#touch" className='rounded-2xl mx-2 md:mx-4 hover:text-blue-400'>  
-            <li className='inline-block text-center hover:scale-[1.03] border border-white rounded-md p-1'>Get In Touch</li>
+            <li className='inline-block text-center hover:scale-[1.03] rounded-md p-1'>Get In Touch</li>
         </a>
         
 

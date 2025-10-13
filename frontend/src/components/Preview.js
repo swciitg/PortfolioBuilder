@@ -24,7 +24,8 @@ const Preview = ({
   TopPortion,
   EducationDesign,
   ExperienceDesign,
-  getInTouch
+  getInTouch,
+  
 }) => {
   
 
@@ -318,38 +319,41 @@ const Preview = ({
               ${TopPortion}
 
               <!-- Experience-->
-              <div class="absolute h-screen top-[200vh] left-0 w-full" style="background:rgba(255, 247, 233, 1)">
+              <div class="absolute min-h-screen top-[200vh] left-0 w-full" style="background:rgba(255, 247, 233, 1)">
                 ${ExperienceDesign}
               </div
 
               <!-- Education-->
-              <div class="bg-black absolute h-screen top-[300vh] left-0 w-full overflow-x-hidden">
+              <div class="bg-black absolute min-h-screen top-[300vh] left-0 w-full overflow-x-hidden">
                 ${EducationDesign}
               </div>
 
               <!-- Skills-->
-              <div class="absolute h-screen top-[400vh] left-0 w-full" style="background:rgba(255, 247, 233, 1)">
+              <div class="absolute min-h-screen  top-[400vh] left-0 w-full" style="background:rgba(255, 247, 233, 1)">
                 ${skillsSection}
               </div>
 
               <!-- Interests-->
-             <div class="bg-black absolute h-screen top-[500vh] left-0 w-full">
+             <div class="bg-black absolute min-h-screen top-[500vh] left-0 w-full">
                 ${interestSection}
               </div>
 
               <!-- Awards-->
-              <div class="absolute h-screen top-[600vh] left-0 w-full" style="background:rgba(255, 247, 233, 1)">
+              <div class="absolute min-h-screen top-[600vh] left-0 w-full" style="background:rgba(255, 247, 233, 1)">
                 ${awardSection}
               </div>
 
               <!--Projects-->
-              <div id="projects" class="bg-black absolute h-screen top-[700vh] left-0 w-full">
+              <div id="projects" class="bg-black absolute min-h-screen top-[700vh] left-0 w-full">
                 ${projectSection}
               </div>
 
-              <div class="absolute h-screen top-[800vh] left-0 w-full" id="touch" style="background:rgba(222, 95, 59, 1)">
-                  ${getInTouch}
-              </div>
+              <!-- Get In Touch section -->
+             <div class="absolute min-h-screen top-[800vh] left-0 w-full" id="touch" style="background:RGB(255, 250, 240)
+">
+             ${getInTouch}
+            </div>
+      
             <script src="https://cdn.tailwindcss.com"></script>
           </body>
         </html>

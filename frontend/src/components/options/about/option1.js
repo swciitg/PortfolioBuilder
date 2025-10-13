@@ -18,7 +18,7 @@ const Option1 = (props) => {
 
   return (
     <div>
-      <div className="h-screen w-full absolute left-0 top-0 bg-black">
+      <div className="h-screen w-full absolute left-0 top-3 bg-black">
         <span className="absolute right-20 md:right-24 bottom-24">
           <img className="h-20 w-20" src={flowerImage2} alt="flower" />
         </span>
@@ -63,7 +63,7 @@ const Option1 = (props) => {
       </div>
 
       <div
-        className="absolute top-[100vh] bg-black left-0 w-full text-xl h-screen p-4 md:p-80 flex flex-col md:flex-row justify-start"
+        className="absolute top-[100vh] bg-black left-0 w-full text-xl h-screen p-4 md:p-80 flex flex-col md:flex-row justify-start mt-5"
         id="about"
       >
         <div className="w-full md:w-1/2 pt-16 md:pt-20 md:px-24 flex flex-col">

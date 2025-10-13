@@ -18,13 +18,15 @@ import TopPortion3 from "./options/about/option3";
 import TopPortion4 from "./options/about/option4";
 import Experience1 from "./options/experience/option1";
 import Experience2 from "./options/experience/option2";
-import Experience3 from "./options/experience/option3"; 
+import Experience3 from "./options/experience/option3";
 import Experience4 from "./options/experience/option4";
 import EducationDesign1 from "./options/education/option1";
 import EducationDesign2 from "./options/education/option2";
 import EducationDesign3 from "./options/education/option3";
 import EducationDesign4 from "./options/education/option4";
-import GetInTouch from "./options/getInTouch/option1";
+import GetInTouch1 from "./options/getInTouch/option1";
+import GetInTouch2 from "./options/getInTouch/option2";
+import GetInTouch3 from "./options/getInTouch/option3";
 import Code from "./Code";
 
 const PortfolioCard = (
@@ -220,7 +222,7 @@ const PortfolioCard = (
         />
       );
       break;
-    case "Option3": 
+    case "Option3":
       selectedExperienceDesign = ReactDOMServer.renderToString(
         <Experience3
           experienceTitle={state.experienceTitle}
@@ -228,7 +230,7 @@ const PortfolioCard = (
         />
       );
       break;
-      case "Option4": 
+    case "Option4":
       selectedExperienceDesign = ReactDOMServer.renderToString(
         <Experience4
           experienceTitle={state.experienceTitle}
@@ -286,6 +288,40 @@ const PortfolioCard = (
       );
       break;
   }
+
+      // State to track selected Get In Touch design
+     const [getInTouchSection, setGetInTouchSection] = useState("Option1");
+
+     // Handler to change design
+     const handleGetInTouchChange = (design) => {
+     setGetInTouchSection(design);
+    };
+
+   // Render selected Get In Touch design
+   let selectedGetInTouchDesign;
+  switch (getInTouchSection) {
+  case "Option1":
+    selectedGetInTouchDesign = ReactDOMServer.renderToString(
+      <GetInTouch1 {...initialState.FormData} />
+    );
+    break;
+  case "Option2":
+    selectedGetInTouchDesign = ReactDOMServer.renderToString(
+      <GetInTouch2 {...initialState.FormData} />
+    );
+    break;
+  case "Option3":
+    selectedGetInTouchDesign = ReactDOMServer.renderToString(
+      <GetInTouch3 {...initialState.FormData} />
+    );
+    break;
+  default:
+    selectedGetInTouchDesign = ReactDOMServer.renderToString(
+      <GetInTouch1 {...initialState.FormData} />
+    );
+    break;
+}
+
 
   let selectedNavbarDesign;
   switch (navbarDesign) {
@@ -385,9 +421,7 @@ const PortfolioCard = (
       break;
   }
 
-  let getInTouchDesign = ReactDOMServer.renderToString(
-    <GetInTouch {...initialState.FormData} />
-  );
+  
 
   return (
     <div className="w-full h-full overflow-y-hidden">
@@ -399,7 +433,7 @@ const PortfolioCard = (
           className="cursor-pointer px-2 md:px-3 py-1 rounded-sm"
           style={{
             background:
-              navbarDesign === "NavbarDesign1" ? "lightblue" : "white",
+              navbarDesign === "NavbarDesign1" ? "RGB(59, 130, 246)" : "white",
             color: navbarDesign === "NavbarDesign1" ? "white" : "black",
           }}
           onClick={() => handleDesignChange("NavbarDesign1")}
@@ -447,7 +481,7 @@ const PortfolioCard = (
                 className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border"
                 onClick={() => handleTopPortionChange("Option1")}
                 style={{
-                  background: topPortion === "Option1" ? "lightblue" : "white",
+                  background: topPortion === "Option1" ? "rgb(59, 130, 246)" : "white",
                   color: topPortion === "Option1" ? "white" : "black",
                 }}
               >
@@ -457,7 +491,7 @@ const PortfolioCard = (
                 className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border"
                 onClick={() => handleTopPortionChange("Option2")}
                 style={{
-                  background: topPortion === "Option2" ? "lightblue" : "white",
+                  background: topPortion === "Option2" ? "rgb(59, 130, 246)" : "white",
                   color: topPortion === "Option2" ? "white" : "black",
                 }}
               >
@@ -467,7 +501,7 @@ const PortfolioCard = (
                 className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border"
                 onClick={() => handleTopPortionChange("Option3")}
                 style={{
-                  background: topPortion === "Option3" ? "lightblue" : "white",
+                  background: topPortion === "Option3" ? "RGB(59, 130, 246)" : "white",
                   color: topPortion === "Option3" ? "white" : "black",
                 }}
               >
@@ -477,7 +511,7 @@ const PortfolioCard = (
                 className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border"
                 onClick={() => handleTopPortionChange("Option4")}
                 style={{
-                  background: topPortion === "Option4" ? "lightblue" : "white",
+                  background: topPortion === "Option4" ? "RGB(59, 130, 246)" : "white",
                   color: topPortion === "Option4" ? "white" : "black",
                 }}
               >
@@ -491,7 +525,7 @@ const PortfolioCard = (
                 onClick={() => handleExperienceChange("Option1")}
                 style={{
                   background:
-                    experienceSection === "Option1" ? "lightblue" : "white",
+                    experienceSection === "Option1" ? "RGB(59, 130, 246)" : "white",
                   color: experienceSection === "Option1" ? "white" : "black",
                 }}
               >
@@ -502,7 +536,7 @@ const PortfolioCard = (
                 onClick={() => handleExperienceChange("Option2")}
                 style={{
                   background:
-                    experienceSection === "Option2" ? "lightblue" : "white",
+                    experienceSection === "Option2" ? "RGB(59, 130, 246)" : "white",
                   color: experienceSection === "Option2" ? "white" : "black",
                 }}
               >
@@ -513,7 +547,7 @@ const PortfolioCard = (
                 onClick={() => handleExperienceChange("Option3")}
                 style={{
                   background:
-                    experienceSection === "Option3" ? "lightblue" : "white",
+                    experienceSection === "Option3" ? "RGB(59, 130, 246)" : "white",
                   color: experienceSection === "Option3" ? "white" : "black",
                 }}
               >
@@ -524,7 +558,7 @@ const PortfolioCard = (
                 onClick={() => handleExperienceChange("Option4")}
                 style={{
                   background:
-                    experienceSection === "Option4" ? "lightblue" : "white",
+                    experienceSection === "Option4" ? "RGB(59, 130, 246)" : "white",
                   color: experienceSection === "Option4" ? "white" : "black",
                 }}
               >
@@ -538,7 +572,7 @@ const PortfolioCard = (
                 onClick={() => handleEducationChange("Option1")}
                 style={{
                   background:
-                    educationSection === "Option1" ? "lightblue" : "white",
+                    educationSection === "Option1" ? "RGB(59, 130, 246)" : "white",
                   color: educationSection === "Option1" ? "white" : "black",
                 }}
               >
@@ -549,7 +583,7 @@ const PortfolioCard = (
                 onClick={() => handleEducationChange("Option2")}
                 style={{
                   background:
-                    educationSection === "Option2" ? "lightblue" : "white",
+                    educationSection === "Option2" ? "RGB(59, 130, 246)" : "white",
                   color: educationSection === "Option2" ? "white" : "black",
                 }}
               >
@@ -560,7 +594,7 @@ const PortfolioCard = (
                 onClick={() => handleEducationChange("Option3")}
                 style={{
                   background:
-                    educationSection === "Option3" ? "lightblue" : "white",
+                    educationSection === "Option3" ? "RGB(59, 130, 246)" : "white",
                   color: educationSection === "Option3" ? "white" : "black",
                 }}
               >
@@ -571,13 +605,51 @@ const PortfolioCard = (
                 onClick={() => handleEducationChange("Option4")}
                 style={{
                   background:
-                    educationSection === "Option4" ? "lightblue" : "white",
+                    educationSection === "Option4" ? "RGB(59, 130, 246)" : "white",
                   color: educationSection === "Option4" ? "white" : "black",
                 }}
               >
                 Education Design 4
               </div>
             </div>
+
+
+            <div className="flex gap-1 border p-1 rounded-md justify-start text-white text-sm items-center my-2">
+             <div
+             className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border"
+              onClick={() => handleGetInTouchChange("Option1")}
+               style={{
+                background: getInTouchSection === "Option1" ? "RGB(59, 130, 246)" : "white",
+                color: getInTouchSection === "Option1" ? "white" : "black",
+                 }}
+                >
+               Get In Touch Design 1
+                </div>
+
+                <div
+                className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border "
+                 onClick={() => handleGetInTouchChange("Option2")}
+                 style={{
+                 background: getInTouchSection === "Option2" ? "RGB(59, 130, 246)" : "white",
+                 color: getInTouchSection === "Option2" ? "white" : "black",
+                  }}
+                    >
+               Get In Touch Design 2
+                </div>
+
+                <div
+                className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border"
+                onClick={() => handleGetInTouchChange("Option3")}
+                style={{
+                background: getInTouchSection === "Option3" ? "RGB(59, 130, 246)" : "white",
+                color: getInTouchSection === "Option3" ? "white" : "black",
+                }}
+                >
+               Get In Touch Design 3
+              </div>
+              </div>
+
+            
 
             <Form
               FormData={{
@@ -637,7 +709,7 @@ const PortfolioCard = (
             <ul className="flex mb-1">
               <li className="mr-2">
                 <span
-                  className={`cursor-pointer px-2 md:px-4 py-2 rounded-t-lg ${
+                  className={`cursor-pointer px-2 md:px-4 py-2 rounded-lg ${
                     !initialState.PreviewMode
                       ? "bg-blue-500 text-white"
                       : "bg-gray-300 text-black"
@@ -657,7 +729,7 @@ const PortfolioCard = (
               </li>
               <li className="mr-2">
                 <span
-                  className={`cursor-pointer px-2 md:px-4 py-2 rounded-t-lg ${
+                  className={`cursor-pointer px-2 md:px-4 py-2 rounded-lg ${
                     initialState.PreviewMode
                       ? "bg-blue-500 text-white"
                       : "bg-gray-300 text-black"
@@ -690,7 +762,7 @@ const PortfolioCard = (
                 isAwardsEnabled={isAwardsEnabled}
                 isProjectEnabled={isProjectEnabled}
                 Navbar={selectedNavbarDesign}
-                getInTouch={getInTouchDesign}
+                getInTouch={selectedGetInTouchDesign}
                 TopPortion={selectedTopPortionDesign}
                 projectsTitle="Projects"
                 projects={projects}
@@ -708,7 +780,7 @@ const PortfolioCard = (
                 isAwardsEnabled={isAwardsEnabled}
                 isProjectEnabled={isProjectEnabled}
                 Navbar={selectedNavbarDesign}
-                getInTouch={getInTouchDesign}
+                getInTouch={selectedGetInTouchDesign}
                 TopPortion={selectedTopPortionDesign}
                 projectsTitle="Projects"
                 projects={projects}
@@ -717,7 +789,7 @@ const PortfolioCard = (
           </div>
         </div>
       </div>
-    </div>
+      </div>
   );
 };
 const mapStateToProps = (state) => ({
