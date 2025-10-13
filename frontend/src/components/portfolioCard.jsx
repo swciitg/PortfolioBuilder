@@ -171,6 +171,30 @@ const PortfolioCard = ({
     setNavbarDesign(design);
   };
 
+  // Theme selection state
+  // 'default' reflects the app's existing color palette without overrides
+  const [selectedTheme, setSelectedTheme] = useState("default");
+  // Neon accent color state
+  const [neonAccentColor, setNeonAccentColor] = useState("#39ff14");
+  const [showNeonDropdown, setShowNeonDropdown] = useState(false);
+
+  const handleThemeChange = (theme) => {
+    setSelectedTheme(theme);
+    if (theme !== "neon") setShowNeonDropdown(false);
+  };
+
+  const neonColors = [
+    { name: "Green", value: "#39ff14" },
+    { name: "Red", value: "#ff1744" },
+    { name: "Blue", value: "#00e6ff" },
+    { name: "Yellow", value: "#ffe600" },
+    { name: "Pink", value: "#ff00c8" },
+    { name: "Orange", value: "#ff9100" },
+    { name: "Purple", value: "#a259ff" },
+    { name: "Cyan", value: "#00ffd0" },
+    { name: "White", value: "#ffffff" },
+  ];
+
   const [topPortion, setTopPortion] = useState("Option1");
   const handleTopPortionChange = (design) => {
     setTopPortion(design);
@@ -440,6 +464,91 @@ const PortfolioCard = ({
         >
           Navbar 4
         </button>
+        
+        {/* Theme Selection Boxes (always visible) */}
+        <div className="flex gap-2 ml-4 border-l-2 border-gray-400 pl-4 flex-wrap">
+          <div
+            className="cursor-pointer px-3 py-1 rounded-sm border hover:scale-[1.02] transition-transform"
+            style={{
+              background: selectedTheme === "default" ? "#ffffff" : "white",
+              color: selectedTheme === "default" ? "#111" : "black",
+              border: selectedTheme === "default" ? "2px solid #111" : "1px solid #dee2e6",
+            }}
+            onClick={() => handleThemeChange("default")}
+          >
+            Default
+          </div>
+          <div
+            className="cursor-pointer px-3 py-1 rounded-sm border hover:scale-[1.02] transition-transform"
+            style={{
+              background: selectedTheme === "minimalist" ? "#f8f9fa" : "white",
+              color: selectedTheme === "minimalist" ? "#495057" : "black",
+              border: selectedTheme === "minimalist" ? "2px solid #6c757d" : "1px solid #dee2e6",
+            }}
+            onClick={() => handleThemeChange("minimalist")}
+          >
+            Minimalist
+          </div>
+          <div
+            className="cursor-pointer px-3 py-1 rounded-sm border hover:scale-[1.02] transition-transform"
+            style={{
+              background: selectedTheme === "dark" ? "#212529" : "white",
+              color: selectedTheme === "dark" ? "white" : "black",
+              border: selectedTheme === "dark" ? "2px solid #495057" : "1px solid #dee2e6",
+            }}
+            onClick={() => handleThemeChange("dark")}
+          >
+            Dark
+          </div>
+           <div style={{ position: "relative" }}>
+             <div
+               className="cursor-pointer px-3 py-1 rounded-sm border hover:scale-[1.02] transition-transform"
+               style={{
+                 background: selectedTheme === "neon" ? neonAccentColor : "white",
+                 color: selectedTheme === "neon" ? "#000" : "black",
+                 border: selectedTheme === "neon" ? `2px solid ${neonAccentColor}` : "1px solid #dee2e6",
+                 boxShadow: selectedTheme === "neon" ? `0 0 8px ${neonAccentColor}` : "none",
+               }}
+               onClick={() => {
+                 handleThemeChange("neon");
+                 setShowNeonDropdown((prev) => !prev);
+               }}
+             >
+               Neon
+               <span style={{ marginLeft: 8, fontSize: 12, color: selectedTheme === "neon" ? neonAccentColor : "#888" }}>
+                 ▼
+               </span>
+             </div>
+             {selectedTheme === "neon" && showNeonDropdown && (
+               <div style={{ position: "absolute", top: "110%", left: 0, zIndex: 10, background: "#222", borderRadius: 8, boxShadow: "0 2px 8px #000", padding: 8, minWidth: 120 }}>
+                 {neonColors.map((c) => (
+                   <div
+                     key={c.value}
+                     className="cursor-pointer px-2 py-1 rounded-sm mb-1"
+                     style={{ background: c.value, color: c.value === "#ffffff" ? "#222" : "#fff", border: neonAccentColor === c.value ? "2px solid #fff" : "1px solid #333" }}
+                     onClick={() => {
+                       setNeonAccentColor(c.value);
+                       setShowNeonDropdown(false);
+                     }}
+                   >
+                     {c.name}
+                   </div>
+                 ))}
+               </div>
+             )}
+           </div>
+          <div
+            className="cursor-pointer px-3 py-1 rounded-sm border hover:scale-[1.02] transition-transform"
+            style={{
+              background: selectedTheme === "gradient" ? "linear-gradient(45deg, #667eea 0%, #764ba2 100%)" : "white",
+              color: selectedTheme === "gradient" ? "white" : "black",
+              border: selectedTheme === "gradient" ? "2px solid #667eea" : "1px solid #dee2e6",
+            }}
+            onClick={() => handleThemeChange("gradient")}
+          >
+            Gradient
+          </div>
+        </div>
       </div>
 
       <div className="w-full h-full px-2 absolute top-36 overflow-y-hidden py-2 md:py-3">
@@ -686,6 +795,8 @@ const PortfolioCard = ({
                 FullName={`${initialState.FormData.FirstName} ${initialState.FormData.LastName}`}
                 experiences={experiences}
                 educations={educations}
+                theme={selectedTheme}
+                neonAccentColor={neonAccentColor}
                 isEducationEnabled={isEducationEnabled}
                 isExperienceEnabled={isExperienceEnabled}
                 isSkillEnabled={isSkillEnabled}
@@ -709,6 +820,8 @@ const PortfolioCard = ({
                 FullName={`${initialState.FormData.FirstName} ${initialState.FormData.LastName}`}
                 EducationDesign={selectedEducationDesign}
                 ExperienceDesign={selectedExperienceDesign}
+                theme={selectedTheme}
+                neonAccentColor={neonAccentColor}
                 isEducationEnabled={isEducationEnabled}
                 isExperienceEnabled={isExperienceEnabled}
                 isSkillEnabled={isSkillEnabled}

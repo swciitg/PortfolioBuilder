@@ -15,6 +15,7 @@ const Code = ({
   Colour,
   skillsTitle,
   interestsTitle,
+  theme = "default",
   isProjectEnabled,
   isSkillEnabled,
   isInterestEnabled,
@@ -24,6 +25,7 @@ const Code = ({
   EducationDesign,
   ExperienceDesign,
   getInTouch
+  , neonAccentColor = "#39ff14"
 }) => {
   
 
@@ -305,11 +307,41 @@ const Code = ({
               <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
               <link href="https://fonts.googleapis.com/css2?family=Catamaran&family=Familjen+Grotesk&family=Manrope&family=Montserrat:wght@100&family=Poppins&family=Raleway&family=Roboto:wght@100&family=Rubik&family=Ubuntu&display=swap" rel="stylesheet">
               
-              <style>.bg-primary {--bs-bg-opacity: 1; background-color: ${Colour} !important;}
+      <style>
+        .bg-primary {--bs-bg-opacity: 1; background-color: ${Colour} !important;}
                     .social-icon:hover {background-color: ${Colour} !important;}
                     .text-primary {--bs-text-opacity: 1; color: ${Colour} !important;}
                     a {color: ${Colour};}
                     a:hover {color: ${Colour};}
+                    ${theme === 'minimalist' ? `
+                      /* Minimalist (Black & White) Overrides */
+                      body { background:#ffffff !important; color:#000000 !important; }
+                      .bg-black, .bg-dark { background:#000000 !important; color:#ffffff !important; }
+                      .text-gray-800, .text-gray-700, .text-gray-600, .text-purple-600, .text-indigo-600 { color:#000000 !important; }
+                      .bg-white\/20, .bg-gradient-to-r, .bg-gradient-to-br, .bg-indigo-50, .bg-purple-50, .bg-yellow-50, .bg-orange-50, .bg-green-50 { background:#ffffff !important; }
+                      .border, .border-gray-100, .border-purple-100, .border-yellow-200, .border-pink-200, .hover\:border-indigo-200, .hover\:border-green-200 { border-color: #00000022 !important; }
+                      .rounded-full, .rounded-xl, .rounded-lg { border-radius: 8px !important; }
+                    ` : ''}
+                    ${theme === 'neon' ? `
+                      :root { --neon-color: ${neonAccentColor}; }
+                      /* Neon Theme Overrides */
+                      body { background:#000000 !important; color:${neonAccentColor} !important; }
+                      .bg-black, .bg-dark { background:#000000 !important; color:${neonAccentColor} !important; }
+                      .text-gray-800, .text-gray-700, .text-gray-600, .text-purple-600, .text-indigo-600 { color:${neonAccentColor} !important; }
+                      .bg-white\/20, .bg-gradient-to-r, .bg-gradient-to-br, .bg-indigo-50, .bg-purple-50, .bg-yellow-50, .bg-orange-50, .bg-green-50 { background:#000000 !important; }
+                      .border, .border-gray-100, .border-purple-100, .border-yellow-200, .border-pink-200, .hover\:border-indigo-200, .hover\:border-green-200 { border-color: ${neonAccentColor} !important; }
+                      .rounded-full, .rounded-xl, .rounded-lg { border-radius: 8px !important; }
+                      .neon-glow { text-shadow: 0 0 8px var(--neon-color, #39ff14), 0 0 16px var(--neon-color, #39ff14); }
+                      .neon-hero { box-shadow: 0 0 40px var(--neon-color, #39ff14); }
+                      .animate-neon { animation: neon-flicker 1.2s infinite alternate; }
+                      svg { fill: ${neonAccentColor} !important; }
+                      @keyframes neon-flicker {
+                        0% { opacity: 1; text-shadow: 0 0 8px var(--neon-color, #39ff14), 0 0 16px var(--neon-color, #39ff14); }
+                        40% { opacity: 0.85; text-shadow: 0 0 12px var(--neon-color, #39ff14), 0 0 24px var(--neon-color, #39ff14); }
+                        60% { opacity: 1; text-shadow: 0 0 8px var(--neon-color, #39ff14), 0 0 16px var(--neon-color, #39ff14); }
+                        100% { opacity: 0.95; text-shadow: 0 0 20px var(--neon-color, #39ff14), 0 0 40px var(--neon-color, #39ff14); }
+                      }
+                    ` : ''}
               </style>
             </head>
             <body class="relative w-full overflow-x-hidden" id="page-top">
@@ -319,32 +351,32 @@ const Code = ({
               ${TopPortion}
 
               <!-- Experience-->
-              <div class="absolute h-screen top-[200vh] left-0 w-full overflow-x-hidden" style="background:rgba(255, 247, 233, 1)">
+              <div class="absolute h-screen top-[200vh] left-0 w-full overflow-x-hidden" style="background:${theme === 'minimalist' ? '#ffffff' : 'rgba(255, 247, 233, 1)'}">
                 ${ExperienceDesign}
               </div
 
               <!-- Education-->
-              <div class="bg-black absolute h-screen top-[300vh] left-0 w-full">
+              <div class="${theme === 'minimalist' ? 'bg-black' : 'bg-black'} absolute h-screen top-[300vh] left-0 w-full">
                 ${EducationDesign}
               </div>
 
               <!-- Skills-->
-              <div class="absolute h-screen top-[400vh] left-0 w-full" style="background:rgba(255, 247, 233, 1)">
+              <div class="absolute h-screen top-[400vh] left-0 w-full" style="background:${theme === 'minimalist' ? '#ffffff' : 'rgba(255, 247, 233, 1)'}">
                 ${skillsSection}
               </div>
 
               <!-- Interests-->
-             <div class="bg-black absolute h-screen top-[500vh] left-0 w-full">
+             <div class="${theme === 'minimalist' ? 'bg-black' : 'bg-black'} absolute h-screen top-[500vh] left-0 w-full">
                 ${interestSection}
               </div>
 
               <!-- Awards-->
-              <div class="absolute h-screen top-[600vh] left-0 w-full" style="background:rgba(255, 247, 233, 1)">
+              <div class="absolute h-screen top-[600vh] left-0 w-full" style="background:${theme === 'minimalist' ? '#ffffff' : 'rgba(255, 247, 233, 1)'}">
                 ${awardSection}
               </div>
 
               <!--Projects-->
-              <div id="projects" class="bg-black absolute h-screen top-[700vh] left-0 w-full">
+              <div id="projects" class="${theme === 'minimalist' ? 'bg-black' : 'bg-black'} absolute h-screen top-[700vh] left-0 w-full">
                 ${projectSection}
               </div>
 
