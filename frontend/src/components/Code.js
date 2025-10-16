@@ -12,6 +12,8 @@ const Code = ({
   projectsTitle,
   interests,
   awards,
+  experiences,
+  educations,
   Colour,
   skillsTitle,
   interestsTitle,
@@ -20,6 +22,8 @@ const Code = ({
   isSkillEnabled,
   isInterestEnabled,
   isAwardsEnabled,
+  isExperienceEnabled,
+  isEducationEnabled,
   Navbar,
   TopPortion,
   EducationDesign,
@@ -31,7 +35,7 @@ const Code = ({
 
   let skillsSection;
 
-  if (isSkillEnabled) {
+  if (isSkillEnabled && skills && skills.length > 0) {
     skillsSection = `
     <section class="w-full h-screen" id="skills" style="font-family:sans-serif" >
     <div class="w-full px-4 md:px-32 pt-12 md:pt-28">
@@ -100,7 +104,7 @@ const Code = ({
   
   let interestSection;
 
-  if (isInterestEnabled) {
+  if (isInterestEnabled && interests && interests.length > 0) {
     interestSection = ` 
     <section class="w-full h-screen" id="interests" style="font-family:sans-serif" >
         <div class="w-full px-4 md:px-32 pt-12 md:pt-28">
@@ -129,7 +133,7 @@ const Code = ({
 
   let projectSection;
 
-  if (isProjectEnabled) {
+  if (isProjectEnabled && projects && projects.length > 0) {
     projectSection = `
       <!-- Projects -->
       <section class="w-full h-screen" id="projects" style="font-family:sans-serif" >
@@ -237,7 +241,7 @@ const Code = ({
 
   let awardSection;
 
-  if (isAwardsEnabled) {
+  if (isAwardsEnabled && awards && awards.length > 0) {
     awardSection = ` 
     <section class="w-full h-screen" id="awards" style="font-family:sans-serif">
       <div class="w-full px-4 md:px-32 pt-12 md:pt-28">
@@ -266,130 +270,128 @@ const Code = ({
     awardSection = "";
   }
 
-  return (
-    <div className="Code dark:text-gray-100 overflow-y-scroll">
-      <pre className="border rounded bg-light p-3 codefile overflow-x-scroll">
-        {`<!DOCTYPE html>
-            <html lang="en">
-              <head>
-                <meta charset="utf-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-                <meta name="author" content="${FullName}" />
-                <link rel="icon" type="image/x-icon" href="${Thubmnail}" />
-                <meta property="og:title" content="${FullName}" />
-                <meta property="og:site_name" content="${FullName}'s Portfolio" />
-                <meta property="og:url" content="${URL}" />
-                <meta property="og:description" content="${Description}" />
-                <meta property="og:type" content="website" />
-                <meta property="og:image" content="${Thubmnail}" />
-                <meta name="title" content="${FullName}'s Portfolio" />
-                <meta name="description" content="${Description}" />
-                <meta name="keywords" content="${Keywords}" />
-                <meta property="twitter:card" content="summary_large_image" />
-                <meta property="twitter:url" content="${URL}" />
-                <meta property="twitter:title" content="${FullName}'s Portfolio" />
-                <meta property="twitter:description" content="${Description}" />
-                <meta property="twitter:image" content="${Thubmnail}" />
-                <title>${FullName}'s Portfolio</title>
+ return (
+  <div className="Code dark:text-gray-100 overflow-y-scroll">
+    <pre className="border rounded bg-light p-3 codefile overflow-x-scroll">
+      {`<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="author" content="${FullName}" />
+    <link rel="icon" type="image/x-icon" href="${Thubmnail}" />
+    <meta property="og:title" content="${FullName}" />
+    <meta property="og:site_name" content="${FullName}'s Portfolio" />
+    <meta property="og:url" content="${URL}" />
+    <meta property="og:description" content="${Description}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="${Thubmnail}" />
+    <meta name="title" content="${FullName}'s Portfolio" />
+    <meta name="description" content="${Description}" />
+    <meta name="keywords" content="${Keywords}" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="${URL}" />
+    <meta property="twitter:title" content="${FullName}'s Portfolio" />
+    <meta property="twitter:description" content="${Description}" />
+    <meta property="twitter:image" content="${Thubmnail}" />
+    <title>${FullName}'s Portfolio</title>
 
-              <!-- Font Awesome icons (free version)-->
-              <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
 
-              <!-- Google fonts-->
-              <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap" rel="stylesheet"
-                type="text/css">
-              <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet"
-                type="text/css">
-              <!-- Core theme CSS (includes Bootstrap)-->
-              <link href="https://startbootstrap.github.io/startbootstrap-resume/css/styles.css" rel="stylesheet" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" type="text/css">
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="https://startbootstrap.github.io/startbootstrap-resume/css/styles.css" rel="stylesheet" />
 
-              <link rel="preconnect" href="https://fonts.googleapis.com">
-              <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-              <link href="https://fonts.googleapis.com/css2?family=Catamaran&family=Familjen+Grotesk&family=Manrope&family=Montserrat:wght@100&family=Poppins&family=Raleway&family=Roboto:wght@100&family=Rubik&family=Ubuntu&display=swap" rel="stylesheet">
-              
-      <style>
-        .bg-primary {--bs-bg-opacity: 1; background-color: ${Colour} !important;}
-                    .social-icon:hover {background-color: ${Colour} !important;}
-                    .text-primary {--bs-text-opacity: 1; color: ${Colour} !important;}
-                    a {color: ${Colour};}
-                    a:hover {color: ${Colour};}
-                    ${theme === 'minimalist' ? `
-                      /* Minimalist (Black & White) Overrides */
-                      body { background:#ffffff !important; color:#000000 !important; }
-                      .bg-black, .bg-dark { background:#000000 !important; color:#ffffff !important; }
-                      .text-gray-800, .text-gray-700, .text-gray-600, .text-purple-600, .text-indigo-600 { color:#000000 !important; }
-                      .bg-white\/20, .bg-gradient-to-r, .bg-gradient-to-br, .bg-indigo-50, .bg-purple-50, .bg-yellow-50, .bg-orange-50, .bg-green-50 { background:#ffffff !important; }
-                      .border, .border-gray-100, .border-purple-100, .border-yellow-200, .border-pink-200, .hover\:border-indigo-200, .hover\:border-green-200 { border-color: #00000022 !important; }
-                      .rounded-full, .rounded-xl, .rounded-lg { border-radius: 8px !important; }
-                    ` : ''}
-                    ${theme === 'neon' ? `
-                      :root { --neon-color: ${neonAccentColor}; }
-                      /* Neon Theme Overrides */
-                      body { background:#000000 !important; color:${neonAccentColor} !important; }
-                      .bg-black, .bg-dark { background:#000000 !important; color:${neonAccentColor} !important; }
-                      .text-gray-800, .text-gray-700, .text-gray-600, .text-purple-600, .text-indigo-600 { color:${neonAccentColor} !important; }
-                      .bg-white\/20, .bg-gradient-to-r, .bg-gradient-to-br, .bg-indigo-50, .bg-purple-50, .bg-yellow-50, .bg-orange-50, .bg-green-50 { background:#000000 !important; }
-                      .border, .border-gray-100, .border-purple-100, .border-yellow-200, .border-pink-200, .hover\:border-indigo-200, .hover\:border-green-200 { border-color: ${neonAccentColor} !important; }
-                      .rounded-full, .rounded-xl, .rounded-lg { border-radius: 8px !important; }
-                      .neon-glow { text-shadow: 0 0 8px var(--neon-color, #39ff14), 0 0 16px var(--neon-color, #39ff14); }
-                      .neon-hero { box-shadow: 0 0 40px var(--neon-color, #39ff14); }
-                      .animate-neon { animation: neon-flicker 1.2s infinite alternate; }
-                      svg { fill: ${neonAccentColor} !important; }
-                      @keyframes neon-flicker {
-                        0% { opacity: 1; text-shadow: 0 0 8px var(--neon-color, #39ff14), 0 0 16px var(--neon-color, #39ff14); }
-                        40% { opacity: 0.85; text-shadow: 0 0 12px var(--neon-color, #39ff14), 0 0 24px var(--neon-color, #39ff14); }
-                        60% { opacity: 1; text-shadow: 0 0 8px var(--neon-color, #39ff14), 0 0 16px var(--neon-color, #39ff14); }
-                        100% { opacity: 0.95; text-shadow: 0 0 20px var(--neon-color, #39ff14), 0 0 40px var(--neon-color, #39ff14); }
-                      }
-                    ` : ''}
-              </style>
-            </head>
-            <body class="relative w-full overflow-x-hidden" id="page-top">
-            <!-- Navigation-->
-            ${Navbar}
-             <!-- Home + about-->
-              ${TopPortion}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Catamaran&family=Familjen+Grotesk&family=Manrope&family=Montserrat:wght@100&family=Poppins&family=Raleway&family=Roboto:wght@100&family=Rubik&family=Ubuntu&display=swap" rel="stylesheet">
 
-              <!-- Experience-->
-              <div class="absolute h-screen top-[200vh] left-0 w-full overflow-x-hidden" style="background:${theme === 'minimalist' ? '#ffffff' : 'rgba(255, 247, 233, 1)'}">
-                ${ExperienceDesign}
-              </div
+    <style>
+      .bg-primary {--bs-bg-opacity: 1; background-color: ${Colour} !important;}
+      .social-icon:hover {background-color: ${Colour} !important;}
+      .text-primary {--bs-text-opacity: 1; color: ${Colour} !important;}
+      a {color: ${Colour};}
+      a:hover {color: ${Colour};}
+      ${theme === 'minimalist' ? `
+        body { background:#ffffff !important; color:#000000 !important; }
+        .bg-black, .bg-dark { background:#000000 !important; color:#ffffff !important; }
+        .text-gray-800, .text-gray-700, .text-gray-600, .text-purple-600, .text-indigo-600 { color:#000000 !important; }
+        .bg-white\\/20, .bg-gradient-to-r, .bg-gradient-to-br, .bg-indigo-50, .bg-purple-50, .bg-yellow-50, .bg-orange-50, .bg-green-50 { background:#ffffff !important; }
+        .border, .border-gray-100, .border-purple-100, .border-yellow-200, .border-pink-200, .hover\\:border-indigo-200, .hover\\:border-green-200 { border-color: #00000022 !important; }
+        .rounded-full, .rounded-xl, .rounded-lg { border-radius: 8px !important; }
+      ` : ''}
+      ${theme === 'neon' ? `
+        :root { --neon-color: ${neonAccentColor}; }
+        body { background:#000000 !important; color:${neonAccentColor} !important; }
+        .bg-black, .bg-dark { background:#000000 !important; color:${neonAccentColor} !important; }
+        .text-gray-800, .text-gray-700, .text-gray-600, .text-purple-600, .text-indigo-600 { color:${neonAccentColor} !important; }
+        .bg-white\\/20, .bg-gradient-to-r, .bg-gradient-to-br, .bg-indigo-50, .bg-purple-50, .bg-yellow-50, .bg-orange-50, .bg-green-50 { background:#000000 !important; }
+        .border, .border-gray-100, .border-purple-100, .border-yellow-200, .border-pink-200, .border-pink-200, .hover\\:border-indigo-200, .hover\\:border-green-200 { border-color: ${neonAccentColor} !important; }
+        .rounded-full, .rounded-xl, .rounded-lg { border-radius: 8px !important; }
+        .neon-glow { text-shadow: 0 0 8px var(--neon-color, #39ff14), 0 0 16px var(--neon-color, #39ff14); }
+        .neon-hero { box-shadow: 0 0 40px var(--neon-color, #39ff14); }
+        .animate-neon { animation: neon-flicker 1.2s infinite alternate; }
+        svg { fill: ${neonAccentColor} !important; }
+        @keyframes neon-flicker {
+          0% { opacity: 1; text-shadow: 0 0 8px var(--neon-color, #39ff14), 0 0 16px var(--neon-color, #39ff14); }
+          40% { opacity: 0.85; text-shadow: 0 0 12px var(--neon-color, #39ff14), 0 0 24px var(--neon-color, #39ff14); }
+          60% { opacity: 1; text-shadow: 0 0 8px var(--neon-color, #39ff14), 0 0 16px var(--neon-color, #39ff14); }
+          100% { opacity: 0.95; text-shadow: 0 0 20px var(--neon-color, #39ff14), 0 0 40px var(--neon-color, #39ff14); }
+        }
+      ` : ''}
+    </style>
+  </head>
+  <body class="relative w-full overflow-x-hidden" id="page-top">
+    <!-- Navigation -->
+    ${Navbar}
 
-              <!-- Education-->
-              <div class="${theme === 'minimalist' ? 'bg-black' : 'bg-black'} absolute h-screen top-[300vh] left-0 w-full">
-                ${EducationDesign}
-              </div>
+    <!-- Top + About -->
+    ${TopPortion}
 
-              <!-- Skills-->
-              <div class="absolute h-screen top-[400vh] left-0 w-full" style="background:${theme === 'minimalist' ? '#ffffff' : 'rgba(255, 247, 233, 1)'}">
-                ${skillsSection}
-              </div>
+    ${isExperienceEnabled && experiences && experiences.length > 0 ? `
+      <section style="background:${theme === 'minimalist' ? '#ffffff' : 'rgba(255, 247, 233, 1)'}">
+        ${ExperienceDesign}
+      </section>` : ''}
 
-              <!-- Interests-->
-             <div class="${theme === 'minimalist' ? 'bg-black' : 'bg-black'} absolute h-screen top-[500vh] left-0 w-full">
-                ${interestSection}
-              </div>
+    ${isEducationEnabled && educations && educations.length > 0 ? `
+      <section class="bg-black">
+        ${EducationDesign}
+      </section>` : ''}
 
-              <!-- Awards-->
-              <div class="absolute h-screen top-[600vh] left-0 w-full" style="background:${theme === 'minimalist' ? '#ffffff' : 'rgba(255, 247, 233, 1)'}">
-                ${awardSection}
-              </div>
+    ${skillsSection ? `
+      <section style="background:${theme === 'minimalist' ? '#ffffff' : 'rgba(255, 247, 233, 1)'}">
+        ${skillsSection}
+      </section>` : ''}
 
-              <!--Projects-->
-              <div id="projects" class="${theme === 'minimalist' ? 'bg-black' : 'bg-black'} absolute h-screen top-[700vh] left-0 w-full">
-                ${projectSection}
-              </div>
+    ${interestSection ? `
+      <section class="bg-black">
+        ${interestSection}
+      </section>` : ''}
 
-               <div class="absolute h-screen top-[800vh] left-0 w-full" id="touch" style="background:rgba(222, 95, 59, 1)">
-                  ${getInTouch}
-              </div>
-            <script src="https://cdn.tailwindcss.com"></script>
-          </body>
-        </html>
-`}
-      </pre>
-    </div>
-  );
+    ${awardSection ? `
+      <section style="background:${theme === 'minimalist' ? '#ffffff' : 'rgba(255, 247, 233, 1)'}">
+        ${awardSection}
+      </section>` : ''}
+
+    ${projectSection ? `
+      <section class="bg-black">
+        ${projectSection}
+      </section>` : ''}
+
+    <section id="touch" style="background:rgba(222, 95, 59, 1)">
+      ${getInTouch}
+    </section>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </body>
+</html>`}
+    </pre>
+  </div>
+);
+
 };
 
 export default Code;

@@ -253,7 +253,7 @@ const Preview = ({
       <div className="max-w-6xl mx-auto px-4 py-6 space-y-8">
         
         {/* Experience Section */}
-        {isExperienceEnabled && (
+        {isExperienceEnabled && Array.isArray(experiences) && experiences.length > 0 && (
           <section className="animate-slide-up section-hover-animation">
             <h2 className={
               isMinimal ? "text-2xl font-bold text-black mb-4" :
@@ -323,7 +323,7 @@ const Preview = ({
         )}
 
         {/* Education Section */}
-        {isEducationEnabled && (
+        {isEducationEnabled && Array.isArray(educations) && educations.length > 0 && (
           <section className="animate-slide-up section-hover-animation">
             <h2 className={
               isMinimal ? "text-2xl font-bold text-black mb-4" :
@@ -401,7 +401,7 @@ const Preview = ({
         )}
 
         {/* Skills Section */}
-        {isSkillEnabled && (
+        {isSkillEnabled && Array.isArray(skills) && skills.length > 0 && (
           <section className="animate-slide-up section-hover-animation">
             <h2 className={
               isMinimal ? "text-2xl font-bold text-black mb-4" :
@@ -446,7 +446,7 @@ const Preview = ({
         )}
 
         {/* Projects Section */}
-        {isProjectEnabled && (
+        {isProjectEnabled && projects && projects.length > 0 && (
           <section className="animate-slide-up section-hover-animation">
             <h2 className={
               isMinimal ? "text-2xl font-bold text-black mb-4" :
@@ -517,7 +517,7 @@ const Preview = ({
         )}
 
         {/* Awards Section */}
-        {isAwardsEnabled && (
+        {isAwardsEnabled && awards && awards.length > 0 && (
           <section className="animate-slide-up section-hover-animation">
             <h2 className={
               isMinimal ? "text-2xl font-bold text-black mb-4" :
@@ -560,7 +560,7 @@ const Preview = ({
         )}
 
         {/* Interests Section */}
-        {isInterestEnabled && (
+        {isInterestEnabled && interests && interests.length > 0 && (
           <section className="animate-slide-up section-hover-animation">
             <h2 className={
               isMinimal ? "text-2xl font-bold text-black mb-4" :
