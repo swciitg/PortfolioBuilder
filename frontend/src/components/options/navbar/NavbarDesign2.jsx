@@ -21,7 +21,7 @@ const NavbarDesign1 = ({
         <a href="#about"  className='mx-2 md:mx-4  '> 
           <li className='inline-block  hover:text-blue-400 text-center hover:scale-[1.03]'>About</li>
         </a>
-        {isExperienceEnabled && experiences && experiences.length > 0 && (<a href="#experience" className='mx-2 md:mx-4'>   
+        {isExperienceEnabled && experiences?.length > 0 && (<a href="#experience" className='mx-2 md:mx-4'>   
             <li className='inline-block hover:text-blue-400 text-center hover:scale-[1.03]'>Experience</li>
         </a>)}
         {isEducationEnabled && educations && educations.length > 0 && (<a href="#education" className='hidden md:block mx-2 md:mx-4'>  
