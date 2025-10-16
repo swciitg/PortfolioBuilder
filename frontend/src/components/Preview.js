@@ -323,7 +323,7 @@ const Preview = ({
         )}
 
         {/* Education Section */}
-        {isEducationEnabled && educations && educations.length > 0 && (
+        {isEducationEnabled && Array.isArray(educations) && educations.length > 0 && (
           <section className="animate-slide-up section-hover-animation">
             <h2 className={
               isMinimal ? "text-2xl font-bold text-black mb-4" :
