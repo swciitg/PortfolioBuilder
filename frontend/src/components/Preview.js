@@ -401,7 +401,7 @@ const Preview = ({
         )}
 
         {/* Skills Section */}
-        {isSkillEnabled && skills && skills.length > 0 && (
+        {isSkillEnabled && Array.isArray(skills) && skills.length > 0 && (
           <section className="animate-slide-up section-hover-animation">
             <h2 className={
               isMinimal ? "text-2xl font-bold text-black mb-4" :
