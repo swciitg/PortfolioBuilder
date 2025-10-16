@@ -7,6 +7,12 @@ const NavbarDesign1 = ({
   isInterestEnabled,
   isAwardsEnabled,
   isProjectEnabled,
+  experiences,
+  educations,
+  skills,
+  interests,
+  awards,
+  projects,
 }) => {
   return (
     <div className='fixed top-0 left-0 z-20 w-full rounded-full flex justify-center font-Manrope' >
@@ -15,22 +21,22 @@ const NavbarDesign1 = ({
         <a href="#about"  className='mx-2 md:mx-3'> 
           <li className='inline-block  hover:text-blue-400 text-center hover:scale-[1.03]'>// about</li>
         </a>
-        {isExperienceEnabled && (<a href="#experience" className='mx-2 md:mx-3'>   
+        {isExperienceEnabled && experiences && experiences.length > 0 && (<a href="#experience" className='mx-2 md:mx-3'>   
             <li className='inline-block hover:text-blue-400 text-center hover:scale-[1.03]'>// experience</li>
         </a>)}
-        {isEducationEnabled && (<a href="#education" className='hidden md:block mx-2 md:mx-3'>  
+        {isEducationEnabled && educations && educations.length > 0 && (<a href="#education" className='hidden md:block mx-2 md:mx-3'>  
             <li className='inline-block hover:text-blue-400  text-center hover:scale-[1.03]'>// education</li>
         </a>)}
-        {isSkillEnabled && (<a href="#skills" className='hidden md:block hover:text-blue-500 mx-1 md:mx-3'>  
+        {isSkillEnabled && skills && skills.length > 0 && (<a href="#skills" className='hidden md:block hover:text-blue-500 mx-1 md:mx-3'>  
             <li className='inline-block hover:text-blue-400  text-center hover:scale-[1.03]'>// skills</li>
         </a>)}
-        {isInterestEnabled && (<a href="#interests" className='hidden md:block mx-2 md:mx-3'>  
+        {isInterestEnabled && interests && interests.length > 0 && (<a href="#interests" className='hidden md:block mx-2 md:mx-3'>  
             <li className='inline-block hover:text-blue-400  text-center hover:scale-[1.03]'>// interests</li>
         </a>)}
-        {isAwardsEnabled && (<a href="#awards" className='hidden md:block mx-2 md:mx-3'>  
+        {isAwardsEnabled && awards && awards.length > 0 && (<a href="#awards" className='hidden md:block mx-2 md:mx-3'>  
             <li className='inline-block hover:text-blue-400  text-center hover:scale-[1.03]'>// awards</li>
         </a>)}
-        {isProjectEnabled && (<a href="#projects" className='rounded-2xl mx-2 md:mx-3'>  
+        {isProjectEnabled && projects && projects.length > 0 && (<a href="#projects" className='rounded-2xl mx-2 md:mx-3'>  
             <li className='inline-block hover:text-blue-400  text-center hover:scale-[1.03]'>// projects</li>
         </a>)}
         <a href="#touch" className='rounded-2xl mx-2 md:mx-3 hover:text-blue-400'>  

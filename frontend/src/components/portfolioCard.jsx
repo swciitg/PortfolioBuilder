@@ -332,6 +332,12 @@ const PortfolioCard = ({
           interestsTitle={interestsTitle}
           awardsTitle={awardsTitle}
           projectsTitle={projectsTitle}
+          experiences={experiences}
+          educations={educations}
+          skills={skills}
+          awards={awards}
+          interests={interests}
+          projects={projects}
         />
       );
       break;
@@ -351,6 +357,12 @@ const PortfolioCard = ({
           interestsTitle={interestsTitle}
           awardsTitle={awardsTitle}
           projectsTitle={projectsTitle}
+          experiences={experiences}
+          educations={educations}
+          skills={skills}
+          awards={awards}
+          interests={interests}
+          projects={projects}
         />
       );
       break;
@@ -370,6 +382,12 @@ const PortfolioCard = ({
           interestsTitle={interestsTitle}
           awardsTitle={awardsTitle}
           projectsTitle={projectsTitle}
+          experiences={experiences}
+          educations={educations}
+          skills={skills}
+          awards={awards}
+          interests={interests}
+          projects={projects}
         />
       );
       break;
@@ -389,6 +407,12 @@ const PortfolioCard = ({
           interestsTitle={interestsTitle}
           awardsTitle={awardsTitle}
           projectsTitle={projectsTitle}
+          experiences={experiences}
+          educations={educations}
+          skills={skills}
+          awards={awards}
+          interests={interests}
+          projects={projects}
         />
       );
       break;
@@ -407,6 +431,12 @@ const PortfolioCard = ({
           skillsTitle={skillsTitle}
           interestsTitle={interestsTitle}
           awardsTitle={awardsTitle}
+          experiences={experiences}
+          educations={educations}
+          skills={skills}
+          awards={awards}
+          interests={interests}
+          projects={projects}
         />
       );
       break;
@@ -836,6 +866,8 @@ const PortfolioCard = ({
                 skills={skills}
                 awards={awards}
                 interests={interests}
+                experiences={experiences}
+                educations={educations}
                 skillsTitle={skillsTitle}
                 interestsTitle={interestsTitle}
               />
