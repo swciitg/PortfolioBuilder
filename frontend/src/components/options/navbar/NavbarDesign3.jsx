@@ -7,12 +7,12 @@ const NavbarDesign1 = ({
   isInterestEnabled,
   isAwardsEnabled,
   isProjectEnabled,
-  experiences,
-  educations,
-  skills,
-  interests,
-  awards,
-  projects,
+  experiences = [],
+  educations = [],
+  skills = [],
+  interests = [],
+  awards = [],
+  projects = [],
 }) => {
   return (
     <div className='fixed top-0 left-0 z-20 w-full rounded-full flex justify-center font-Manrope' >
