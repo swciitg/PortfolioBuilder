@@ -27,7 +27,7 @@ const NavbarDesign1 = ({
         {isEducationEnabled && educations && educations.length > 0 && (<a href="#education" className='hidden md:block mx-2 md:mx-4'>  
             <li className='inline-block hover:text-blue-400  text-center hover:scale-[1.03]'>Education</li>
         </a>)}
-        {isSkillEnabled && skills && skills.length > 0 && (<a href="#skills" className='hidden md:block hover:text-blue-500 mx-1 md:mx-4'>  
+        {isSkillEnabled && skills?.length > 0 && (<a href="#skills" className='hidden md:block hover:text-blue-400 mx-1 md:mx-4'>  
             <li className='inline-block hover:text-blue-400  text-center hover:scale-[1.03]'>Skills</li>
         </a>)}
         {isInterestEnabled && interests && interests.length > 0 && (<a href="#interests" className='hidden md:block mx-2 md:mx-4'>  
