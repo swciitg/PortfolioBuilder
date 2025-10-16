@@ -253,7 +253,7 @@ const Preview = ({
       <div className="max-w-6xl mx-auto px-4 py-6 space-y-8">
         
         {/* Experience Section */}
-        {isExperienceEnabled && experiences && experiences.length > 0 && (
+        {isExperienceEnabled && Array.isArray(experiences) && experiences.length > 0 && (
           <section className="animate-slide-up section-hover-animation">
             <h2 className={
               isMinimal ? "text-2xl font-bold text-black mb-4" :
