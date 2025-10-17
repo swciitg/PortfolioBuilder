@@ -6,10 +6,10 @@ import he from "he";
 import Form from "./Form";
 import Header from "./Bootstrap/Header";
 import Preview from "./Preview";
-import NavbarDesign1 from ".././components/options/navbar/NavbarDesign1";
-import NavbarDesign2 from ".././components/options/navbar/NavbarDesign2";
-import NavbarDesign3 from "./options/navbar/NavbarDesign3";
-import NavbarDesign4 from ".././components/options/navbar/NavbarDesign4";
+// import NavbarDesign1 from ".././components/options/navbar/NavbarDesign1";
+// import NavbarDesign2 from ".././components/options/navbar/NavbarDesign2";
+// import NavbarDesign3 from "./options/navbar/NavbarDesign3";
+// import NavbarDesign4 from ".././components/options/navbar/NavbarDesign4";
 import ReactDOMServer from "react-dom/server";
 import { connect } from "react-redux";
 import TopPortion1 from "./options/about/option1";
@@ -89,7 +89,7 @@ const PortfolioCard = ({
           return {
             ...prevState,
             FormData: {
-              ...prevState.FormData, //changes here intialState to prevState
+              ...prevState.FormData,//changes here intialState to prevState
               Socials: {
                 ...prevState.FormData.Socials,
                 [e.target.name]: e.target.value,
@@ -313,7 +313,8 @@ const PortfolioCard = ({
       );
       break;
   }
-
+  
+/*
   let selectedNavbarDesign;
   switch (navbarDesign) {
     case "NavbarDesign1":
@@ -410,7 +411,8 @@ const PortfolioCard = ({
         />
       );
       break;
-  }
+  } 
+  */
 
   let getInTouchDesign = ReactDOMServer.renderToString(
     <GetInTouch {...initialState.FormData} />
@@ -828,7 +830,7 @@ const PortfolioCard = ({
                 isInterestEnabled={isInterestEnabled}
                 isAwardsEnabled={isAwardsEnabled}
                 isProjectEnabled={isProjectEnabled}
-                Navbar={selectedNavbarDesign}
+                //Navbar={selectedNavbarDesign}
                 getInTouch={getInTouchDesign}
                 TopPortion={selectedTopPortionDesign}
                 projectsTitle={projectsTitle}
