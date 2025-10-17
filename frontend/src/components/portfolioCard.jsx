@@ -313,8 +313,8 @@ const PortfolioCard = ({
       );
       break;
   }
-  
-/*
+
+
   let selectedNavbarDesign;
   switch (navbarDesign) {
     case "NavbarDesign1":
@@ -412,7 +412,7 @@ const PortfolioCard = ({
       );
       break;
   } 
-  */
+  
 
   let getInTouchDesign = ReactDOMServer.renderToString(
     <GetInTouch {...initialState.FormData} />
@@ -830,7 +830,7 @@ const PortfolioCard = ({
                 isInterestEnabled={isInterestEnabled}
                 isAwardsEnabled={isAwardsEnabled}
                 isProjectEnabled={isProjectEnabled}
-                //Navbar={selectedNavbarDesign}
+                Navbar={selectedNavbarDesign}
                 getInTouch={getInTouchDesign}
                 TopPortion={selectedTopPortionDesign}
                 projectsTitle={projectsTitle}
