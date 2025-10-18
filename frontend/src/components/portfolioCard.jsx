@@ -79,23 +79,23 @@ const PortfolioCard = ({
           return {
             ...prevState,
             FormData: {
-              ...initialState.FormData,
+              ...prevState.FormData,//changes here intialState to prevState
               [e.target.name]: e.target.value,
             },
-            PreviewMode: false,
+            //PreviewMode: false,
           };
         })
       : setInitialState((prevState) => {
           return {
             ...prevState,
             FormData: {
-              ...initialState.FormData,
+              ...prevState.FormData,//changes here intialState to prevState
               Socials: {
-                ...initialState.FormData.Socials,
+                ...prevState.FormData.Socials,
                 [e.target.name]: e.target.value,
               },
             },
-            PreviewMode: false,
+            //PreviewMode: false,
           };
         });
   };
@@ -314,6 +314,7 @@ const PortfolioCard = ({
       break;
   }
 
+
   let selectedNavbarDesign;
   switch (navbarDesign) {
     case "NavbarDesign1":
@@ -410,7 +411,8 @@ const PortfolioCard = ({
         />
       );
       break;
-  }
+  } 
+  
 
   let getInTouchDesign = ReactDOMServer.renderToString(
     <GetInTouch {...initialState.FormData} />
