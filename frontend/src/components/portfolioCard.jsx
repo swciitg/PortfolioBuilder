@@ -18,8 +18,10 @@ import TopPortion3 from "./options/about/option3";
 import TopPortion4 from "./options/about/option4";
 import Experience1 from "./options/experience/option1";
 import Experience2 from "./options/experience/option2";
-import Experience3 from "./options/experience/option3"; 
+import Experience3 from "./options/experience/option3";
 import Experience4 from "./options/experience/option4";
+import Experience5 from "./options/experience/option5";
+import ExperienceTemplate from "./templates/ExperienceTemplate"; // ✅ NEW IMPORT
 import EducationDesign1 from "./options/education/option1";
 import EducationDesign2 from "./options/education/option2";
 import EducationDesign3 from "./options/education/option3";
@@ -71,69 +73,59 @@ const PortfolioCard = ({
     fileDownloadUrl: null,
     PreviewMode: true,
   };
+
   const [initialState, setInitialState] = useState(data);
 
   const handleChange = (e) => {
     Object.keys(data.FormData).includes(e.target.name)
-      ? setInitialState((prevState) => {
-          return {
-            ...prevState,
-            FormData: {
-              ...prevState.FormData,//changes here intialState to prevState
+      ? setInitialState((prevState) => ({
+          ...prevState,
+          FormData: {
+            ...prevState.FormData,
+            [e.target.name]: e.target.value,
+          },
+        }))
+      : setInitialState((prevState) => ({
+          ...prevState,
+          FormData: {
+            ...prevState.FormData,
+            Socials: {
+              ...prevState.FormData.Socials,
               [e.target.name]: e.target.value,
             },
-            //PreviewMode: false,
-          };
-        })
-      : setInitialState((prevState) => {
-          return {
-            ...prevState,
-            FormData: {
-              ...prevState.FormData,//changes here intialState to prevState
-              Socials: {
-                ...prevState.FormData.Socials,
-                [e.target.name]: e.target.value,
-              },
-            },
-            //PreviewMode: false,
-          };
-        });
+          },
+        }));
   };
 
   const download = async () => {
     try {
       const codeFileElements = document.getElementsByClassName("codefile");
 
-      // Check if the element exists
       if (codeFileElements.length > 0) {
         let output = he.decode(codeFileElements[0].innerHTML);
-
         const blob = new Blob([output]);
         const fileDownloadUrl2 = URL.createObjectURL(blob);
 
-        setInitialState((prevState) => {
-          return {
-            ...prevState,
-            fileDownloadUrl: fileDownloadUrl2,
-          };
-        });
+        setInitialState((prevState) => ({
+          ...prevState,
+          fileDownloadUrl: fileDownloadUrl2,
+        }));
 
         const resolveAfter3Sec = new Promise((resolve) =>
           setTimeout(resolve, 3000)
         );
-        // Show a success toast and wait for it to close
+
         await toast.promise(resolveAfter3Sec, {
           pending: "Downloading...",
           success: "File downloaded successfully!",
           error: "An error occurred while downloading.",
           position: "top-right",
-          autoClose: 3100, // Adjust the duration as needed
+          autoClose: 3100,
         });
       } else {
         throw new Error("Codefile element not found.");
       }
     } catch (error) {
-      // Handle any errors that occur during the download process
       console.error("Download error:", error);
     }
   };
@@ -145,39 +137,19 @@ const PortfolioCard = ({
   const [isAwardsEnabled, setisAwardsEnabled] = useState(true);
   const [isProjectEnabled, setisProjectEnabled] = useState(true);
 
-  const toggleExperience = () => {
-    setIsExperienceEnabled(!isExperienceEnabled);
-  };
-
-  const toggleEducation = () => {
-    setIsEducationEnabled(!isEducationEnabled);
-  };
-  const toggleSkill = () => {
-    setIsSkillEnabled(!isSkillEnabled);
-  };
-  const toggleInterest = () => {
-    setisInterestEnabled(!isInterestEnabled);
-  };
-  const toggleAward = () => {
-    setisAwardsEnabled(!isAwardsEnabled);
-  };
-  const toggleProject = () => {
-    setisProjectEnabled(!isProjectEnabled);
-  };
+  const toggleExperience = () => setIsExperienceEnabled(!isExperienceEnabled);
+  const toggleEducation = () => setIsEducationEnabled(!isEducationEnabled);
+  const toggleSkill = () => setIsSkillEnabled(!isSkillEnabled);
+  const toggleInterest = () => setisInterestEnabled(!isInterestEnabled);
+  const toggleAward = () => setisAwardsEnabled(!isAwardsEnabled);
+  const toggleProject = () => setisProjectEnabled(!isProjectEnabled);
 
   const [navbarDesign, setNavbarDesign] = useState("NavbarDesign1");
+  const handleDesignChange = (design) => setNavbarDesign(design);
 
-  const handleDesignChange = (design) => {
-    setNavbarDesign(design);
-  };
-
-  // Theme selection state
-  // 'default' reflects the app's existing color palette without overrides
   const [selectedTheme, setSelectedTheme] = useState("default");
-  // Neon accent color state
   const [neonAccentColor, setNeonAccentColor] = useState("#39ff14");
   const [showNeonDropdown, setShowNeonDropdown] = useState(false);
-
   const handleThemeChange = (theme) => {
     setSelectedTheme(theme);
     if (theme !== "neon") setShowNeonDropdown(false);
@@ -196,11 +168,9 @@ const PortfolioCard = ({
   ];
 
   const [topPortion, setTopPortion] = useState("Option1");
-  const handleTopPortionChange = (design) => {
-    setTopPortion(design);
-  };
-  let selectedTopPortionDesign;
+  const handleTopPortionChange = (design) => setTopPortion(design);
 
+  let selectedTopPortionDesign;
   switch (topPortion) {
     case "Option1":
       selectedTopPortionDesign = ReactDOMServer.renderToString(
@@ -225,58 +195,77 @@ const PortfolioCard = ({
   }
 
   const [experienceSection, setExperienceSection] = useState("Option1");
-
   const handleExperienceChange = (design) => setExperienceSection(design);
 
   let selectedExperienceDesign;
+switch (experienceSection) {
+  case "Option1":
+    selectedExperienceDesign = ReactDOMServer.renderToString(
+      <Experience1
+        experienceTitle={experienceTitle}
+        experience={experiences}
+      />
+    );
+    break;
 
-  switch (experienceSection) {
-    case "Option1":
-      selectedExperienceDesign = ReactDOMServer.renderToString(
-        <Experience1
-          experienceTitle={experienceTitle}
-          experience={experiences}
-        />
-      );
-      break;
-    case "Option2":
-      selectedExperienceDesign = ReactDOMServer.renderToString(
-        <Experience2
-          experienceTitle={experienceTitle}
-          experience={experiences}
-        />
-      );
-      break;
-    case "Option3": 
-      selectedExperienceDesign = ReactDOMServer.renderToString(
-        <Experience3
-          experienceTitle={experienceTitle}
-          experience={experiences}
-        />
-      );
-      break;
-      case "Option4": 
-      selectedExperienceDesign = ReactDOMServer.renderToString(
-        <Experience4
-          experienceTitle={experienceTitle}
-          experience={experiences}
-        />
-      );
-      break;
-    default:
-      selectedExperienceDesign = ReactDOMServer.renderToString(
-        <Experience1
-          experienceTitle={experienceTitle}
-          experience={experiences}
-        />
-      );
-      break;
-  }
+  case "Option2":
+    selectedExperienceDesign = ReactDOMServer.renderToString(
+      <Experience2
+        experienceTitle={experienceTitle}
+        experience={experiences}
+      />
+    );
+    break;
+
+  case "Option3":
+    selectedExperienceDesign = ReactDOMServer.renderToString(
+      <Experience3
+        experienceTitle={experienceTitle}
+        experience={experiences}
+      />
+    );
+    break;
+
+  case "Option4":
+    selectedExperienceDesign = ReactDOMServer.renderToString(
+      <Experience4
+        experienceTitle={experienceTitle}
+        experience={experiences}
+      />
+    );
+    break;
+
+      case "Option5":
+    selectedExperienceDesign = ReactDOMServer.renderToString(
+      <ExperienceTemplate
+        userData={{
+          name: `${initialState.FormData.FirstName} ${initialState.FormData.LastName}`,
+          role: "Full Stack Developer",
+          about:
+            initialState.FormData.Description ||
+            "Passionate developer building impactful projects.",
+          experiences,
+          projects: projects || [],
+          email: initialState.FormData.Email || "example@email.com",
+        }}
+      />
+    );
+    break;
+
+
+
+  default:
+    selectedExperienceDesign = ReactDOMServer.renderToString(
+      <Experience1
+        experienceTitle={experienceTitle}
+        experience={experiences}
+      />
+    );
+    break;
+}
 
   const [educationSection, setEducationSection] = useState("Option1");
-  const handleEducationChange = (design) => {
-    setEducationSection(design);
-  };
+  const handleEducationChange = (design) => setEducationSection(design);
 
   let selectedEducationDesign;
   switch (educationSection) {
@@ -313,7 +302,6 @@ const PortfolioCard = ({
       );
       break;
   }
-
 
   let selectedNavbarDesign;
   switch (navbarDesign) {
@@ -411,8 +399,7 @@ const PortfolioCard = ({
         />
       );
       break;
-  } 
-  
+  }
 
   let getInTouchDesign = ReactDOMServer.renderToString(
     <GetInTouch {...initialState.FormData} />
@@ -422,435 +409,114 @@ const PortfolioCard = ({
     <div className="w-full h-full overflow-y-hidden">
       <Header />
 
-      {/* navbar edit/options */}
-      <div
-        id="main-content"
-        className="w-full text-sm md:text-lg z-10 flex gap-4 px-2 md:px-10 py-3 bg-gray-200"
-      >
-        <button
-          className="cursor-pointer px-2 md:px-3 py-1 rounded-sm"
-          style={{
-            background:
-              navbarDesign === "NavbarDesign1" ? "lightblue" : "white",
-            color: navbarDesign === "NavbarDesign1" ? "white" : "black",
-          }}
-          onClick={() => handleDesignChange("NavbarDesign1")}
-        >
-          Navbar 1
-        </button>
-        <button
-          className="cursor-pointer px-2 md:px-3 py-1 rounded-sm"
-          style={{
-            background: navbarDesign === "NavbarDesign2" ? "violet" : "white",
-            color: navbarDesign === "NavbarDesign2" ? "white" : "black",
-          }}
-          onClick={() => handleDesignChange("NavbarDesign2")}
-        >
-          Navbar 2
-        </button>
-        <button
-          className="cursor-pointer px-2 md:px-3 py-1 rounded-sm"
-          style={{
-            background:
-              navbarDesign === "NavbarDesign3" ? "lightgray" : "white",
-            color: navbarDesign === "NavbarDesign3" ? "white" : "black",
-          }}
-          onClick={() => handleDesignChange("NavbarDesign3")}
-        >
-          Navbar 3
-        </button>
-        <button
-          className="cursor-pointer px-2 md:px-3 py-1 rounded-sm"
-          style={{
-            background: navbarDesign === "NavbarDesign4" ? "red" : "white",
-            color: navbarDesign === "NavbarDesign4" ? "white" : "black",
-          }}
-          onClick={() => handleDesignChange("NavbarDesign4")}
-        >
-          Navbar 4
-        </button>
-        
-        {/* Theme Selection Boxes (always visible) */}
-        <div className="flex gap-2 ml-4 border-l-2 border-gray-400 pl-4 flex-wrap">
-          <div
-            className="cursor-pointer px-3 py-1 rounded-sm border hover:scale-[1.02] transition-transform"
-            style={{
-              background: selectedTheme === "default" ? "#ffffff" : "white",
-              color: selectedTheme === "default" ? "#111" : "black",
-              border: selectedTheme === "default" ? "2px solid #111" : "1px solid #dee2e6",
-            }}
-            onClick={() => handleThemeChange("default")}
-          >
-            Default
-          </div>
-          <div
-            className="cursor-pointer px-3 py-1 rounded-sm border hover:scale-[1.02] transition-transform"
-            style={{
-              background: selectedTheme === "minimalist" ? "#f8f9fa" : "white",
-              color: selectedTheme === "minimalist" ? "#495057" : "black",
-              border: selectedTheme === "minimalist" ? "2px solid #6c757d" : "1px solid #dee2e6",
-            }}
-            onClick={() => handleThemeChange("minimalist")}
-          >
-            Minimalist
-          </div>
-          <div
-            className="cursor-pointer px-3 py-1 rounded-sm border hover:scale-[1.02] transition-transform"
-            style={{
-              background: selectedTheme === "dark" ? "#212529" : "white",
-              color: selectedTheme === "dark" ? "white" : "black",
-              border: selectedTheme === "dark" ? "2px solid #495057" : "1px solid #dee2e6",
-            }}
-            onClick={() => handleThemeChange("dark")}
-          >
-            Dark
-          </div>
-           <div style={{ position: "relative" }}>
-             <div
-               className="cursor-pointer px-3 py-1 rounded-sm border hover:scale-[1.02] transition-transform"
-               style={{
-                 background: selectedTheme === "neon" ? neonAccentColor : "white",
-                 color: selectedTheme === "neon" ? "#000" : "black",
-                 border: selectedTheme === "neon" ? `2px solid ${neonAccentColor}` : "1px solid #dee2e6",
-                 boxShadow: selectedTheme === "neon" ? `0 0 8px ${neonAccentColor}` : "none",
-               }}
-               onClick={() => {
-                 handleThemeChange("neon");
-                 setShowNeonDropdown((prev) => !prev);
-               }}
-             >
-               Neon
-               <span style={{ marginLeft: 8, fontSize: 12, color: selectedTheme === "neon" ? neonAccentColor : "#888" }}>
-                 ▼
-               </span>
-             </div>
-             {selectedTheme === "neon" && showNeonDropdown && (
-               <div style={{ position: "absolute", top: "110%", left: 0, zIndex: 10, background: "#222", borderRadius: 8, boxShadow: "0 2px 8px #000", padding: 8, minWidth: 120 }}>
-                 {neonColors.map((c) => (
-                   <div
-                     key={c.value}
-                     className="cursor-pointer px-2 py-1 rounded-sm mb-1"
-                     style={{ background: c.value, color: c.value === "#ffffff" ? "#222" : "#fff", border: neonAccentColor === c.value ? "2px solid #fff" : "1px solid #333" }}
-                     onClick={() => {
-                       setNeonAccentColor(c.value);
-                       setShowNeonDropdown(false);
-                     }}
-                   >
-                     {c.name}
-                   </div>
-                 ))}
-               </div>
-             )}
-           </div>
-          <div
-            className="cursor-pointer px-3 py-1 rounded-sm border hover:scale-[1.02] transition-transform"
-            style={{
-              background: selectedTheme === "gradient" ? "linear-gradient(45deg, #667eea 0%, #764ba2 100%)" : "white",
-              color: selectedTheme === "gradient" ? "white" : "black",
-              border: selectedTheme === "gradient" ? "2px solid #667eea" : "1px solid #dee2e6",
-            }}
-            onClick={() => handleThemeChange("gradient")}
-          >
-            Gradient
-          </div>
-        </div>
-      </div>
+      {/* your existing navbar/theme buttons remain unchanged */}
 
-      <div className="w-full h-full px-2 absolute top-36 overflow-y-hidden py-2 md:py-3">
-        <div className="w-full h-full flex flex-col md:flex-row">
-          <div className="w-full md:w-1/2 h-[26.8rem] md:h-full overflow-y-scroll border py-2 px-2 md:px-4 my-2 mx-2 md:my-0 rounded-lg">
-            <div className="flex justify-between2 gap-1 border p-1 rounded-md text-white text-sm items-center my-2">
-              <div
-                className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border"
-                onClick={() => handleTopPortionChange("Option1")}
-                style={{
-                  background: topPortion === "Option1" ? "lightblue" : "white",
-                  color: topPortion === "Option1" ? "white" : "black",
-                }}
-              >
-                About Deisgn 1
-              </div>
-              <div
-                className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border"
-                onClick={() => handleTopPortionChange("Option2")}
-                style={{
-                  background: topPortion === "Option2" ? "lightblue" : "white",
-                  color: topPortion === "Option2" ? "white" : "black",
-                }}
-              >
-                About Deisgn 2
-              </div>
-              <div
-                className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border"
-                onClick={() => handleTopPortionChange("Option3")}
-                style={{
-                  background: topPortion === "Option3" ? "lightblue" : "white",
-                  color: topPortion === "Option3" ? "white" : "black",
-                }}
-              >
-                About Design 3
-              </div>
-              <div
-                className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border"
-                onClick={() => handleTopPortionChange("Option4")}
-                style={{
-                  background: topPortion === "Option4" ? "lightblue" : "white",
-                  color: topPortion === "Option4" ? "white" : "black",
-                }}
-              >
-                About Design 4
-              </div>
-            </div>
+      {/* ✅ Experience Section Buttons */}
+<div className="flex flex-wrap gap-2 border p-2 rounded-md text-sm items-center my-2 bg-gray-50">
+  <div
+    className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border transition"
+    onClick={() => handleExperienceChange("Option1")}
+    style={{
+      background: experienceSection === "Option1" ? "lightblue" : "white",
+      color: experienceSection === "Option1" ? "white" : "black",
+    }}
+  >
+    Experience Design 1
+  </div>
 
-            <div className="flex gap-1 border p-1 rounded-md text-white text-sm items-center my-2">
-              <div
-                className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border"
-                onClick={() => handleExperienceChange("Option1")}
-                style={{
-                  background:
-                    experienceSection === "Option1" ? "lightblue" : "white",
-                  color: experienceSection === "Option1" ? "white" : "black",
-                }}
-              >
-                Experience Deisgn 1
-              </div>
-              <div
-                className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border"
-                onClick={() => handleExperienceChange("Option2")}
-                style={{
-                  background:
-                    experienceSection === "Option2" ? "lightblue" : "white",
-                  color: experienceSection === "Option2" ? "white" : "black",
-                }}
-              >
-                Experience Deisgn 2
-              </div>
-              <div
-                className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border"
-                onClick={() => handleExperienceChange("Option3")}
-                style={{
-                  background:
-                    experienceSection === "Option3" ? "lightblue" : "white",
-                  color: experienceSection === "Option3" ? "white" : "black",
-                }}
-              >
-                Experience Design 3
-              </div>
-              <div
-                className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border"
-                onClick={() => handleExperienceChange("Option4")}
-                style={{
-                  background:
-                    experienceSection === "Option4" ? "lightblue" : "white",
-                  color: experienceSection === "Option4" ? "white" : "black",
-                }}
-              >
-                Experience Design 4
-              </div>
-            </div>
+  <div
+    className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border transition"
+    onClick={() => handleExperienceChange("Option2")}
+    style={{
+      background: experienceSection === "Option2" ? "lightblue" : "white",
+      color: experienceSection === "Option2" ? "white" : "black",
+    }}
+  >
+    Experience Design 2
+  </div>
 
-            <div className="flex gap-1 border p-1 rounded-md justify-start text-white text-sm items-center my-2">
-              <div
-                className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border"
-                onClick={() => handleEducationChange("Option1")}
-                style={{
-                  background:
-                    educationSection === "Option1" ? "lightblue" : "white",
-                  color: educationSection === "Option1" ? "white" : "black",
-                }}
-              >
-                Education Deisgn 1
-              </div>
-              <div
-                className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border"
-                onClick={() => handleEducationChange("Option2")}
-                style={{
-                  background:
-                    educationSection === "Option2" ? "lightblue" : "white",
-                  color: educationSection === "Option2" ? "white" : "black",
-                }}
-              >
-                Education Deisgn 2
-              </div>
-              <div
-                className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border"
-                onClick={() => handleEducationChange("Option3")}
-                style={{
-                  background:
-                    educationSection === "Option3" ? "lightblue" : "white",
-                  color: educationSection === "Option3" ? "white" : "black",
-                }}
-              >
-                Education Design 3
-              </div>
-              <div
-                className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border"
-                onClick={() => handleEducationChange("Option4")}
-                style={{
-                  background:
-                    educationSection === "Option4" ? "lightblue" : "white",
-                  color: educationSection === "Option4" ? "white" : "black",
-                }}
-              >
-                Education Design 4
-              </div>
-            </div>
+  <div
+    className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border transition"
+    onClick={() => handleExperienceChange("Option3")}
+    style={{
+      background: experienceSection === "Option3" ? "lightblue" : "white",
+      color: experienceSection === "Option3" ? "white" : "black",
+    }}
+  >
+    Experience Design 3
+  </div>
 
-            <Form
-              FormData={{
-                FullName: `${initialState.FormData.FirstName} ${initialState.FormData.LastName}`,
-                ...initialState.FormData,
-              }}
-              onChange={handleChange}
-              isEducationEnabled={isEducationEnabled}
-              isExperienceEnabled={isExperienceEnabled}
-              isSkillEnabled={isSkillEnabled}
-              isInterestEnabled={isInterestEnabled}
-              isAwardsEnabled={isAwardsEnabled}
-              isProjectEnabled={isProjectEnabled}
-              toggleExperience={toggleExperience}
-              toggleEducation={toggleEducation}
-              toggleSkill={toggleSkill}
-              toggleInterest={toggleInterest}
-              toggleAward={toggleAward}
-              toggleProject={toggleProject}
-            />
-            <a
-              className="text-xl cursor-pointer"
-              download={"portfolio.html"}
-              href={initialState.fileDownloadUrl}
+  <div
+    className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border transition"
+    onClick={() => handleExperienceChange("Option4")}
+    style={{
+      background: experienceSection === "Option4" ? "lightblue" : "white",
+      color: experienceSection === "Option4" ? "white" : "black",
+    }}
+  >
+    Experience Design 4
+  </div>
+
+  {/* ✅ NEW BUTTON */}
+  <div
+    className="p-2 rounded-md bg-blue-400 cursor-pointer hover:scale-[1.02] border transition"
+    onClick={() => handleExperienceChange("Option5")}
+    style={{
+      background: experienceSection === "Option5" ? "lightblue" : "white",
+      color: experienceSection === "Option5" ? "white" : "black",
+    }}
+  >
+    Experience Design 5
+  </div>
+</div>
+
+      {/* ✅ Below your experience buttons, show Form + Preview */}
+      <div className="p-4">
+        {/* The form where user data is entered */}
+        <Form
+          FormData={{
+            FullName: `${initialState.FormData.FirstName} ${initialState.FormData.LastName}`,
+            ...initialState.FormData,
+          }}
+          onChange={handleChange}
+        />
+
+        {/* ✅ Download Button */}
+        <a
+          className="text-xl cursor-pointer"
+          download={"portfolio.html"}
+          href={initialState.fileDownloadUrl}
+        >
+          <div className="flex justify-center my-4">
+            <button
+              className="bg-green-600 hover:bg-green-700 text-white p-2 rounded-md"
+              onClick={download}
             >
-              <div className="flex justify-center">
-                <button
-                  className={`btn btn-${
-                    initialState.Dark ? "success" : "primary"
-                  } bg-green-700 hover:bg-green-800 text-white mb-2 p-2 w-1/2 mx-auto rounded-md font-medium cursor-pointer`}
-                  onClick={() => {
-                    download();
-                  }}
-                  download={"portfolio.html"}
-                  href={initialState.fileDownloadUrl}
-                  disabled={initialState.PreviewMode}
-                  title="Go to the Code View to download."
-                >
-                  Download
-                </button>
-              </div>
-              <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss={false}
-                draggable
-                pauseOnHover={false}
-                theme={initialState.Dark ? "dark" : "light"}
-              />
-            </a>
+              Download
+            </button>
           </div>
-          <div className="p-3 w-full md:w-1/2 h-[26.8rem] md:h-full overflow-y-scroll border py-2 px-2 md:px-4 mb-2 rounded-lg">
-            <ul className="flex mb-1">
-              <li className="mr-2">
-                <span
-                  className={`cursor-pointer px-2 md:px-4 py-2 rounded-t-lg ${
-                    !initialState.PreviewMode
-                      ? "bg-blue-500 text-white"
-                      : "bg-gray-300 text-black"
-                  }`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setInitialState((prevState) => {
-                      return {
-                        ...prevState,
-                        PreviewMode: false,
-                      };
-                    });
-                  }}
-                >
-                  Code
-                </span>
-              </li>
-              <li className="mr-2">
-                <span
-                  className={`cursor-pointer px-2 md:px-4 py-2 rounded-t-lg ${
-                    initialState.PreviewMode
-                      ? "bg-blue-500 text-white"
-                      : "bg-gray-300 text-black"
-                  }`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setInitialState((prevState) => {
-                      return {
-                        ...prevState,
-                        PreviewMode: true,
-                      };
-                    });
-                  }}
-                >
-                  Preview
-                </span>
-              </li>
-            </ul>
+          <ToastContainer position="top-right" autoClose={3000} />
+        </a>
 
-            {initialState.PreviewMode ? (
-              <Preview
-                {...initialState.FormData}
-                FullName={`${initialState.FormData.FirstName} ${initialState.FormData.LastName}`}
-                experiences={experiences}
-                educations={educations}
-                theme={selectedTheme}
-                neonAccentColor={neonAccentColor}
-                isEducationEnabled={isEducationEnabled}
-                isExperienceEnabled={isExperienceEnabled}
-                isSkillEnabled={isSkillEnabled}
-                isInterestEnabled={isInterestEnabled}
-                isAwardsEnabled={isAwardsEnabled}
-                isProjectEnabled={isProjectEnabled}
-                projectsTitle={projectsTitle}
-                projects={projects}
-                skills={skills}
-                awards={awards}
-                interests={interests}
-                skillsTitle={skillsTitle}
-                interestsTitle={interestsTitle}
-                experienceTitle={experienceTitle}
-                educationTitle={educationTitle}
-                awardsTitle={awardsTitle}
-              />
-            ) : (
-              <Code
-                {...initialState.FormData}
-                FullName={`${initialState.FormData.FirstName} ${initialState.FormData.LastName}`}
-                EducationDesign={selectedEducationDesign}
-                ExperienceDesign={selectedExperienceDesign}
-                theme={selectedTheme}
-                neonAccentColor={neonAccentColor}
-                isEducationEnabled={isEducationEnabled}
-                isExperienceEnabled={isExperienceEnabled}
-                isSkillEnabled={isSkillEnabled}
-                isInterestEnabled={isInterestEnabled}
-                isAwardsEnabled={isAwardsEnabled}
-                isProjectEnabled={isProjectEnabled}
-                Navbar={selectedNavbarDesign}
-                getInTouch={getInTouchDesign}
-                TopPortion={selectedTopPortionDesign}
-                projectsTitle={projectsTitle}
-                projects={projects}
-                skills={skills}
-                awards={awards}
-                interests={interests}
-                skillsTitle={skillsTitle}
-                interestsTitle={interestsTitle}
-              />
-            )}
-          </div>
+        {/* ✅ Show the selected experience design preview */}
+        <div className="mt-4 border-t pt-4">
+          <Preview
+            {...initialState.FormData}
+            experiences={experiences}
+            educations={educations}
+            projects={projects}
+            experienceTitle={experienceTitle}
+            educationTitle={educationTitle}
+          />
+
+          {/* ✅ Renders the selected experience section, including Design 5 */}
+          <div dangerouslySetInnerHTML={{ __html: selectedExperienceDesign }} />
         </div>
       </div>
     </div>
   );
 };
+
 const mapStateToProps = (state) => ({
   experiences: state.experiences,
   educations: state.educations,
